@@ -1,4 +1,7 @@
 
+# VSCode Files
+*.vscode
+
 # Visual Studio Files
 x64
 *.sln

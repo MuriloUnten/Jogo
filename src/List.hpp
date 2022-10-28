@@ -64,8 +64,9 @@ public:
 	List();
 	~List();
 
-	Element<TL>* getHead(); // :P
+	Element<TL>* getHead(); // Your only possible way to get head.
 	void pushElement(TL* newData);
+	Element<TL>* pop(int index);
 	void clear();
 
 };
@@ -107,6 +108,17 @@ void List<TL>::pushElement(TL* newData)
 	element->setPrev(tail);
 	tail->setNext(element);
 	tail = element;
+}
+
+
+template <class TL>
+List<TL>::Element<TL>* List<TL>::pop(int index)
+{
+	Element<TL>* pAux = head;
+	while(pAux != NULL)
+	{
+		if(pAux->getdata())
+	}
 }
 
 
