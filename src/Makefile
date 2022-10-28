@@ -1,7 +1,7 @@
 all:
 	g++ -c **.cpp -IC:/SFML-2.5.1/include
 	g++ **.o -o sfml-app -LC:/SFML-2.5.1/lib -lsfml-graphics -lsfml-window -lsfml-system
-	./sfml-app
+	# ./sfml-app
 
 clean:
-	rm **.o
+	-del -fR *.o
