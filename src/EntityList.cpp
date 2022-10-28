@@ -31,12 +31,12 @@ List<Entity> EntityList::getList()
 }
 
 
-void EntityList::removeEntity(int id)
+void EntityList::removeEntity(int index)
 {
 	List<Entity>::Element<Entity>* pAux = entityList.getHead();
 	while (pAux != NULL)
 	{
-		if (pAux->getData()->getId() == id)
+		if (pAux->getData()->getId() == index)
 		{
 			if (pAux->getPrev() != NULL)
 			{

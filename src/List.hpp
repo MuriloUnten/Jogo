@@ -5,7 +5,7 @@
 template <class TL>
 class List
 {
-public:
+private:
 	template <class TE>
 	class Element
 	{
@@ -46,11 +46,11 @@ public:
 			return prev;
 		}
 
-		void setdata(TE* newData)
+		void setData(TE* newData)
 		{
 			data = newData;
 		}
-		TE* getdata()
+		TE* getData()
 		{
 			return data;
 		}
@@ -60,21 +60,24 @@ private:
 	Element<TL>* head;
 	Element<TL>* tail;
 
+	unsigned int size;
+
 public:
 	List();
 	~List();
 
-	Element<TL>* getHead(); // Your only possible way to get head.
+	Element<TL>* getHead(); // The only way you're getting head.
+	TL* operator[](int index);
 	void pushElement(TL* newData);
 	Element<TL>* pop(int index);
 	void clear();
-
 };
 
 
 template <class TL>
 List<TL>::List()
 {
+	size = 0;
 	head = NULL;
 	tail = NULL;
 }
@@ -89,6 +92,24 @@ template <class TL>
 List<TL>::Element<TL>* List<TL>::getHead()
 {
 	return head;
+}
+
+
+/* Overloads the operator [] to access element in given index */
+template <class TL>
+TL* List<TL>::operator[](int index)
+{
+	if(index >= size || index < 0)
+	{
+		std::cout << "Index out of range on template list." << std::endl;
+		exit(1);
+	}
+
+	Element<TL>* pAux = head;
+	for(int i = 0; i < index; i++)
+		pAux = pAux->getNext();
+	
+	return pAux->getData();
 }
 
 
@@ -108,12 +129,17 @@ void List<TL>::pushElement(TL* newData)
 	element->setPrev(tail);
 	tail->setNext(element);
 	tail = element;
+	size++;
 }
 
 
 template <class TL>
 List<TL>::Element<TL>* List<TL>::pop(int index)
 {
+	if(index >= size || index < 0)
+	{
+
+	}
 	Element<TL>* pAux = head;
 	while(pAux != NULL)
 	{
