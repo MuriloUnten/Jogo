@@ -4,4 +4,4 @@ all:
 	./sfml-app
 
 clean:
-	rm **.o
+	rm **.okk
