@@ -31,25 +31,7 @@ List<Entity> EntityList::getList()
 }
 
 
-void EntityList::removeEntity(int index)
+Entity* EntityList::removeEntity(int index)
 {
-	List<Entity>::Element<Entity>* pAux = entityList.getHead();
-	while (pAux != NULL)
-	{
-		if (pAux->getData()->getId() == index)
-		{
-			if (pAux->getPrev() != NULL)
-			{
-				pAux->getPrev()->setNext(pAux->getNext());
-			}
-			if (pAux->getNext() != NULL)
-			{
-				pAux->getNext()->setPrev(pAux->getPrev());
-			}
-
-			List<Entity>::Element<Entity>* pAux2 = pAux->getNext();
-			delete pAux;
-			pAux = pAux2;
-		}
-	}
+	return entityList.pop(index);
 }
