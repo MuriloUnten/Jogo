@@ -3,4 +3,4 @@ all:
 	g++ **.o -o sfml-app -LC:/SFML-2.5.1/lib -lsfml-graphics -lsfml-window -lsfml-system
 
 clean:
-	-del -fR *.o
+	-rm -fR *.o
