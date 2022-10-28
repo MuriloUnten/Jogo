@@ -1,9 +1,13 @@
 #include "Game.hpp"
 
+#define BACKGROUND_PATH "../assets/background.png"
+#define MARIO_PATH "../assets/mario.png"
+
+
 Game::Game() :
-	background("background.png", sf::Vector2f(0.0, 0.0), sf::Vector2f(800.0, 600.0)),
-	mario("mario.png", sf::Vector2f(100.0, 100.0), sf::Vector2f(450.0, 50.0)),
-    graphics(GraphicsManager::getInstance())
+    graphics(GraphicsManager::getInstance()),
+	background(BACKGROUND_PATH,  sf::Vector2f(800.0, 600.0), sf::Vector2f(0.0, 0.0)),
+	mario(MARIO_PATH, sf::Vector2f(100.0, 100.0), sf::Vector2f(450.0, 50.0))
 {
 	entityList.pushEntity(&background);
 	entityList.pushEntity(&mario);
@@ -50,9 +54,10 @@ void Game::execute()
         {
             mario.getHitBox()->move(sf::Vector2f(3, 0));
         }
-        
-        graphics->getWindow()->draw(*(background.getHitBox()));
-        graphics->getWindow()->draw(*(mario.getHitBox()));
+
+        graphics->clear();
+        graphics->draw(background.getHitBox());
+        graphics->draw(mario.getHitBox());
         
         graphics->display();
     }

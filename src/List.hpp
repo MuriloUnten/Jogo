@@ -118,7 +118,7 @@ template <class TL>
 void List<TL>::pushElement(TL* newData)
 {
 	Element<TL>* element = new Element<TL>();
-	element->setdata(newData);
+	element->setData(newData);
 
 	if (head == NULL)
 	{
@@ -149,7 +149,7 @@ TL* List<TL>::pop(int index)
 		pAux = pAux->getNext();
 	
 	if(pAux == head)
-		head = paux->getNext();
+		head = pAux->getNext();
 	else if(pAux == tail)
 		pAux->getPrev()->setNext(NULL);
 	else
@@ -168,12 +168,12 @@ void List<TL>::clear()
 {
 	if (head != NULL)
 	{
-		Element<TL>* pAux = head->getnext();
+		Element<TL>* pAux = head->getNext();
 		while (pAux != NULL)
 		{
-			head->setNext(pAux->getnext());
+			head->setNext(pAux->getNext());
 			delete pAux;
-			pAux = head->getnext();
+			pAux = head->getNext();
 		}
 
 		delete head;

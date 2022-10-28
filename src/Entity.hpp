@@ -11,8 +11,7 @@ protected:
 	sf::Texture* texture;
 
 public:
-	Entity(const std::string fileName, sf::Vector2f size,
-		sf::Vector2f position=sf::Vector2f(0.0f,0.0f));
+	Entity(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f));
 	Entity();
 	~Entity();
 	virtual void execute();
@@ -23,7 +22,7 @@ public:
 	void setSize(sf::Vector2f size);
 	sf::Vector2f getSize();
 
-	bool loadTexture(const std::string fileName);
+	void loadTexture(const std::string fileName);
 
 	sf::RectangleShape* getHitBox();
 

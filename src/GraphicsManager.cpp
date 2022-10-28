@@ -63,6 +63,13 @@ sf::RenderWindow* GraphicsManager::getWindow()
 }
 
 
+void GraphicsManager::draw(sf::RectangleShape* rect)
+{
+    if(isWindowOpen())
+        window->draw(*rect);
+}
+
+
 void GraphicsManager::draw(EntityList entities)
 {
     
