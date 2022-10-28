@@ -32,7 +32,7 @@ private:
 		{
 			next = newNext;
 		}
-		Element<TE>* getnext()
+		Element<TE>* getNext()
 		{
 			return next;
 		}
@@ -41,7 +41,7 @@ private:
 		{
 			prev = newPrev;
 		}
-		Element<TE>* getprev()
+		Element<TE>* getPrev()
 		{
 			return prev;
 		}
@@ -69,7 +69,7 @@ public:
 	Element<TL>* getHead(); // The only way you're getting head.
 	TL* operator[](int index);
 	void pushElement(TL* newData);
-	Element<TL>* pop(int index);
+	TL* pop(int index);
 	void clear();
 };
 
@@ -113,6 +113,7 @@ TL* List<TL>::operator[](int index)
 }
 
 
+/* Adds element to list*/
 template <class TL>
 void List<TL>::pushElement(TL* newData)
 {
@@ -133,21 +134,35 @@ void List<TL>::pushElement(TL* newData)
 }
 
 
+/* Removes element from list at given index */
 template <class TL>
-List<TL>::Element<TL>* List<TL>::pop(int index)
+TL* List<TL>::pop(int index)
 {
 	if(index >= size || index < 0)
 	{
+		std::cout << "Index out of range on template list." << std::endl;
+		exit(1);
+	}
 
-	}
 	Element<TL>* pAux = head;
-	while(pAux != NULL)
-	{
-		if(pAux->getdata())
-	}
+	for(int i = 0; i < index; i++)
+		pAux = pAux->getNext();
+	
+	if(pAux == head)
+		head = paux->getNext();
+	else if(pAux == tail)
+		pAux->getPrev()->setNext(NULL);
+	else
+		pAux->getPrev()->setNext(pAux->getNext());
+		pAux->getNext()->setPrev(pAux->getPrev());
+	
+	TL* pAux2 = pAux->getData();
+	delete pAux;
+	return pAux2;
 }
 
 
+/* Removes all elements from list */
 template <class TL>
 void List<TL>::clear()
 {
@@ -164,5 +179,6 @@ void List<TL>::clear()
 		delete head;
 		head = NULL;
 		tail = NULL;
+		size = 0;
 	}
 }
