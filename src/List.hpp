@@ -28,29 +28,29 @@ private:
 			data = NULL;
 		}
 
-		void setNext(Element<TE>* newNext)
+		void setNext(const Element<TE>* newNext)
 		{
 			next = newNext;
 		}
-		Element<TE>* getNext()
+		const Element<TE>* getNext() const
 		{
 			return next;
 		}
 
-		void setPrev(Element<TE>* newPrev)
+		void setPrev(const Element<TE>* newPrev)
 		{
 			prev = newPrev;
 		}
-		Element<TE>* getPrev()
+		const Element<TE>* getPrev() const
 		{
 			return prev;
 		}
 
-		void setData(TE* newData)
+		void setData(const TE* newData)
 		{
 			data = newData;
 		}
-		TE* getData()
+		const TE* getData() const
 		{
 			return data;
 		}
@@ -66,9 +66,9 @@ public:
 	List();
 	~List();
 
-	Element<TL>* getHead(); // The only way you're getting head.
+	const Element<TL>* getHead() const; // The only way you're getting head.
 	TL* operator[](int index);
-	void pushElement(TL* newData);
+	void pushElement(const TL* newData);
 	TL* pop(int index);
 	void clear();
 };
@@ -89,7 +89,7 @@ List<TL>::~List()
 }
 
 template <class TL>
-List<TL>::Element<TL>* List<TL>::getHead()
+const List<TL>::Element<TL>* List<TL>::getHead() const
 {
 	return head;
 }
@@ -115,7 +115,7 @@ TL* List<TL>::operator[](int index)
 
 /* Adds element to list*/
 template <class TL>
-void List<TL>::pushElement(TL* newData)
+void List<TL>::pushElement(const TL* newData)
 {
 	Element<TL>* element = new Element<TL>();
 	element->setData(newData);
