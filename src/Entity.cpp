@@ -49,7 +49,7 @@ sf::Vector2f Entity::getPos()
 
 void Entity::setSize(sf::Vector2f size)
 {
-	hitBox->setSize(sf::Vector2f(size.x, size.y));
+	hitBox->setSize(size);
 }
 
 
