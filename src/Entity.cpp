@@ -1,11 +1,14 @@
 #include "Entity.hpp"
 
 
-Entity::Entity(const std::string fileName, sf::Vector2f size,
-	sf::Vector2f position)
+Entity::Entity(const std::string fileName, sf::Vector2f size, sf::Vector2f position)
 {
+	hitBox = new sf::RectangleShape;
+	texture = new sf::Texture;
 	loadTexture(fileName);
+	std::cout << "teste";
 	hitBox->setSize(size);
+	std::cout << "teste2";
 	hitBox->setPosition(position);
 	hitBox->setTexture(texture);
 }
@@ -19,7 +22,10 @@ Entity::Entity()
 
 Entity::~Entity()
 {
-
+	delete hitBox;
+	hitBox = NULL;
+	delete texture;
+	texture = NULL;
 }
 
 
@@ -43,7 +49,7 @@ sf::Vector2f Entity::getPos()
 
 void Entity::setSize(sf::Vector2f size)
 {
-	hitBox->setSize(size);
+	hitBox->setSize(sf::Vector2f(size.x, size.y));
 }
 
 
@@ -53,9 +59,13 @@ sf::Vector2f Entity::getSize()
 }
 
 
-bool Entity::loadTexture(const std::string fileName)
+void Entity::loadTexture(const std::string fileName)
 {
-	return (texture->loadFromFile(fileName));
+	if(!texture->loadFromFile(fileName))
+	{
+		std::cout << "ERROR. Unable to load texture from path: " << fileName << std::endl;
+		exit(1);
+	}
 }
 
 

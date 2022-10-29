@@ -21,6 +21,6 @@ public:
 	void close();
 	void display();
 	sf::RenderWindow* getWindow();
-
+	void draw(sf::RectangleShape* rect);
     void draw(EntityList entities);
 };

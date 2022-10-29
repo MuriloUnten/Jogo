@@ -18,5 +18,5 @@ public:
 	void pushEntity(Entity* entity);
 	void clear();
 	List<Entity> getList();
-	void removeEntity(int id);
+	Entity* removeEntity(int index);
 };
