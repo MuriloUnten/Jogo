@@ -8,6 +8,7 @@ class GraphicsManager
 private:
 	sf::RenderWindow* window;
 
+	/* Singleton Design pattern */
 	static GraphicsManager* instance;
 	GraphicsManager();
 

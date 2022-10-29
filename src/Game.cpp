@@ -22,8 +22,10 @@ Game::~Game()
 }
 
 
+/* Runs the core of the program */
 void Game::execute()
 {
+    // Main loop
     while (graphics->isWindowOpen())
     {
         sf::Event event;

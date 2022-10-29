@@ -23,8 +23,8 @@ Entity::Entity()
 Entity::~Entity()
 {
 	delete hitBox;
-	hitBox = NULL;
 	delete texture;
+	hitBox = NULL;
 	texture = NULL;
 }
 

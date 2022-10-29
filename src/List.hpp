@@ -138,6 +138,7 @@ void List<TL>::pushElement(TL* newData)
 template <class TL>
 TL* List<TL>::pop(int index)
 {
+	// Checks if index is inside of list boundaries
 	if(index >= size || index < 0)
 	{
 		std::cout << "Index out of range on template list." << std::endl;

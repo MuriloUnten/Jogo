@@ -13,12 +13,14 @@ EntityList::~EntityList()
 }
 
 
+/* Adds Entity element to the list */
 void EntityList::pushEntity(Entity* entity)
 {
 	entityList.pushElement(entity);
 }
 
 
+/* Deletes all Entity elements in the list */
 void EntityList::clear()
 {
 	entityList.clear();
@@ -31,6 +33,7 @@ List<Entity> EntityList::getList()
 }
 
 
+/* Removes Entity element from given index */
 Entity* EntityList::removeEntity(int index)
 {
 	return entityList.pop(index);

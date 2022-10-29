@@ -49,7 +49,7 @@ void GraphicsManager::close()
         window->close();
 }
 
-
+/* Updates the window onto the screen */
 void GraphicsManager::display()
 {
     if (isWindowOpen())
@@ -63,6 +63,7 @@ sf::RenderWindow* GraphicsManager::getWindow()
 }
 
 
+/* Draws given RectangleShape* onto the screen */
 void GraphicsManager::draw(sf::RectangleShape* rect)
 {
     if(isWindowOpen())
@@ -70,6 +71,7 @@ void GraphicsManager::draw(sf::RectangleShape* rect)
 }
 
 
+/* Draws every element of given list */
 void GraphicsManager::draw(EntityList entities)
 {
     
