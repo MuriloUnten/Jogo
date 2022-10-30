@@ -12,8 +12,8 @@ public:
 	Arquetype();
 	~Arquetype();
 
-	void setId(int id);
-	int getId();
+	void setId(const int ID);
+	const int getId() const;
 
 	//virtual void draw();
 

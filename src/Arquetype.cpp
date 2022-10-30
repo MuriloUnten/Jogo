@@ -11,13 +11,13 @@ Arquetype::~Arquetype()
 	id = -1;
 }
 
-void Arquetype::setId(int id)
+void Arquetype::setId(const int ID)
 {
-	id = id;
+	id = ID;
 }
 
 
-int Arquetype::getId()
+const int Arquetype::getId() const
 {
 	return id;
 }

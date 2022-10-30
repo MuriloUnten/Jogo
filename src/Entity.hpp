@@ -16,15 +16,15 @@ public:
 	~Entity();
 	virtual void execute();
 
-	void setPos(sf::Vector2f position);
-	sf::Vector2f getPos();
+	void setPos(const sf::Vector2f position);
+	sf::Vector2f getPos() const;
 
-	void setSize(sf::Vector2f size);
-	sf::Vector2f getSize();
+	void setSize(const sf::Vector2f size);
+	sf::Vector2f getSize() const;
 
 	void loadTexture(const std::string fileName);
 
-	sf::RectangleShape* getHitBox();
+	sf::RectangleShape* getHitBox() const;
 
 
 	//virtual void draw();

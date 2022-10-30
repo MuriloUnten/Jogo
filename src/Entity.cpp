@@ -6,9 +6,7 @@ Entity::Entity(const std::string fileName, sf::Vector2f size, sf::Vector2f posit
 	hitBox = new sf::RectangleShape;
 	texture = new sf::Texture;
 	loadTexture(fileName);
-	std::cout << "teste";
 	hitBox->setSize(size);
-	std::cout << "teste2";
 	hitBox->setPosition(position);
 	hitBox->setTexture(texture);
 }
@@ -35,25 +33,25 @@ void Entity::execute()
 }
 
 
-void Entity::setPos(sf::Vector2f position)
+void Entity::setPos(const sf::Vector2f position)
 {
 	hitBox->setPosition(position);
 }
 
 
-sf::Vector2f Entity::getPos()
+sf::Vector2f Entity::getPos() const
 {
 	return hitBox->getPosition();
 }
 
 
-void Entity::setSize(sf::Vector2f size)
+void Entity::setSize(const sf::Vector2f size)
 {
 	hitBox->setSize(size);
 }
 
 
-sf::Vector2f Entity::getSize()
+sf::Vector2f Entity::getSize() const
 {
 	return hitBox->getSize();
 }
@@ -69,7 +67,7 @@ void Entity::loadTexture(const std::string fileName)
 }
 
 
-sf::RectangleShape* Entity::getHitBox()
+sf::RectangleShape* Entity::getHitBox() const
 {
 	return hitBox;
 }
