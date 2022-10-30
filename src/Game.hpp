@@ -14,8 +14,8 @@ private:
 	Lists::EntityList entityList;
 
 	// Temporary staticly created entities
-	Entity background;
-	Entity mario;
+	Entities::Entity background;
+	Entities::Entity mario;
 
 public:
 	Game();

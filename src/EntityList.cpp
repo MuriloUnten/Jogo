@@ -1,5 +1,5 @@
 #include "EntityList.hpp"
-#include "Entity.hpp"
+
 
 namespace Lists
 {
@@ -16,7 +16,7 @@ namespace Lists
 
 
 	/* Adds Entity element to the list */
-	void EntityList::pushEntity(Entity* entity)
+	void EntityList::pushEntity(Entities::Entity* entity)
 	{
 		entityList.pushElement(entity);
 	}
@@ -29,14 +29,14 @@ namespace Lists
 	}
 
 
-	List<Entity> EntityList::getList()
+	List<Entities::Entity> EntityList::getList()
 	{
 		return entityList;
 	}
 
 
 	/* Removes Entity element from given index */
-	Entity* EntityList::removeEntity(int index)
+	Entities::Entity* EntityList::removeEntity(int index)
 	{
 		return entityList.pop(index);
 	}

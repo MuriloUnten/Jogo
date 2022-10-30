@@ -1,10 +1,9 @@
 #pragma once
 
-
 #include <SFML/Graphics.hpp>
 #include "List.hpp"
+#include "Entity.hpp"
 
-class Entity;
 
 namespace Lists
 {
@@ -12,15 +11,15 @@ namespace Lists
 	class EntityList
 	{
 	private:
-		List<Entity> entityList;
+		List<Entities::Entity> entityList;
 
 	public:
 		EntityList();
 		~EntityList();
 
-		void pushEntity(Entity* entity);
+		void pushEntity(Entities::Entity* entity);
 		void clear();
-		List<Entity> getList();
-		Entity* removeEntity(int index);
+		List<Entities::Entity> getList();
+		Entities::Entity* removeEntity(int index);
 	};
 }// namespace Lists

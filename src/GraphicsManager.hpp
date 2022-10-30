@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "EntityList.hpp"
 
+
 namespace Managers
 {
 	class GraphicsManager
