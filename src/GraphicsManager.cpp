@@ -4,75 +4,77 @@
 
 #include "GraphicsManager.hpp"
 
-
-GraphicsManager* GraphicsManager::instance = NULL;
-
-GraphicsManager* GraphicsManager::getInstance()
+namespace Managers
 {
-    if (instance == NULL)
+    GraphicsManager* GraphicsManager::instance = NULL;
+
+    GraphicsManager* GraphicsManager::getInstance()
     {
-        instance = new GraphicsManager();
+        if (instance == NULL)
+        {
+            instance = new GraphicsManager();
+        }
+        return instance;
     }
-    return instance;
-}
 
 
-GraphicsManager::GraphicsManager() :
-    window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "JOGO"))
-{
+    GraphicsManager::GraphicsManager() :
+        window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "JOGO"))
+    {
 
-}
-
-
-GraphicsManager::~GraphicsManager()
-{
-    delete window;
-}
+    }
 
 
-bool GraphicsManager::isWindowOpen()
-{
-    return (window->isOpen());
-}
+    GraphicsManager::~GraphicsManager()
+    {
+        delete window;
+    }
 
 
-void GraphicsManager::clear()
-{
-    if (isWindowOpen())
-        window->clear();
-}
+    bool GraphicsManager::isWindowOpen()
+    {
+        return (window->isOpen());
+    }
 
 
-void GraphicsManager::close()
-{
-    if (isWindowOpen())
-        window->close();
-}
-
-/* Updates the window onto the screen */
-void GraphicsManager::display()
-{
-    if (isWindowOpen())
-        window->display();
-}
+    void GraphicsManager::clear()
+    {
+        if (isWindowOpen())
+            window->clear();
+    }
 
 
-sf::RenderWindow* GraphicsManager::getWindow()
-{
-    return window;
-}
+    void GraphicsManager::close()
+    {
+        if (isWindowOpen())
+            window->close();
+    }
+
+    /* Updates the window onto the screen */
+    void GraphicsManager::display()
+    {
+        if (isWindowOpen())
+            window->display();
+    }
 
 
-/* Draws given RectangleShape* onto the screen */
-void GraphicsManager::draw(sf::RectangleShape* rect)
-{
-    if(isWindowOpen())
-        window->draw(*rect);
-}
+    sf::RenderWindow* GraphicsManager::getWindow()
+    {
+        return window;
+    }
 
 
-/* Draws every element of given list */
-void GraphicsManager::draw(Lists::EntityList entities)
-{
-    
-}
+    /* Draws given RectangleShape* onto the screen */
+    void GraphicsManager::draw(sf::RectangleShape* rect)
+    {
+        if(isWindowOpen())
+            window->draw(*rect);
+    }
+
+
+    /* Draws every element of given list */
+    void GraphicsManager::draw(Lists::EntityList entities)
+    {
+        
+    }
+}// namespace Managers

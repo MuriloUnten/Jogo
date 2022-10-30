@@ -5,7 +5,7 @@
 
 
 Game::Game() :
-    graphics(GraphicsManager::getInstance()),
+    graphics(Managers::GraphicsManager::getInstance()),
 	background(BACKGROUND_PATH,  sf::Vector2f(800.0, 600.0), sf::Vector2f(0.0, 0.0)),
 	mario(MARIO_PATH, sf::Vector2f(100.0, 100.0), sf::Vector2f(450.0, 50.0))
 {

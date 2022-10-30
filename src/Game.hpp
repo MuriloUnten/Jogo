@@ -10,7 +10,7 @@
 class Game
 {
 private:
-	GraphicsManager* graphics;
+	Managers::GraphicsManager* graphics;
 	Lists::EntityList entityList;
 
 	// Temporary staticly created entities
