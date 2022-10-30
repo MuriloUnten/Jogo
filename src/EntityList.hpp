@@ -6,17 +6,21 @@
 
 class Entity;
 
-class EntityList
+namespace Lists
 {
-private:
-	List<Entity> entityList;
 
-public:
-	EntityList();
-	~EntityList();
+	class EntityList
+	{
+	private:
+		List<Entity> entityList;
 
-	void pushEntity(Entity* entity);
-	void clear();
-	List<Entity> getList();
-	Entity* removeEntity(int index);
-};
+	public:
+		EntityList();
+		~EntityList();
+
+		void pushEntity(Entity* entity);
+		void clear();
+		List<Entity> getList();
+		Entity* removeEntity(int index);
+	};
+}// namespace Lists

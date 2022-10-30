@@ -1,40 +1,43 @@
 #include "EntityList.hpp"
 #include "Entity.hpp"
 
-EntityList::EntityList()
+namespace Lists
 {
+	EntityList::EntityList()
+	{
 
-}
-
-
-EntityList::~EntityList()
-{
-
-}
+	}
 
 
-/* Adds Entity element to the list */
-void EntityList::pushEntity(Entity* entity)
-{
-	entityList.pushElement(entity);
-}
+	EntityList::~EntityList()
+	{
+
+	}
 
 
-/* Deletes all Entity elements in the list */
-void EntityList::clear()
-{
-	entityList.clear();
-}
+	/* Adds Entity element to the list */
+	void EntityList::pushEntity(Entity* entity)
+	{
+		entityList.pushElement(entity);
+	}
 
 
-List<Entity> EntityList::getList()
-{
-	return entityList;
-}
+	/* Deletes all Entity elements in the list */
+	void EntityList::clear()
+	{
+		entityList.clear();
+	}
 
 
-/* Removes Entity element from given index */
-Entity* EntityList::removeEntity(int index)
-{
-	return entityList.pop(index);
-}
+	List<Entity> EntityList::getList()
+	{
+		return entityList;
+	}
+
+
+	/* Removes Entity element from given index */
+	Entity* EntityList::removeEntity(int index)
+	{
+		return entityList.pop(index);
+	}
+}// namespace Lists

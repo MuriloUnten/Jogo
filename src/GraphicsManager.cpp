@@ -72,7 +72,7 @@ void GraphicsManager::draw(sf::RectangleShape* rect)
 
 
 /* Draws every element of given list */
-void GraphicsManager::draw(EntityList entities)
+void GraphicsManager::draw(Lists::EntityList entities)
 {
     
 }

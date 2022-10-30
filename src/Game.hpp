@@ -11,7 +11,7 @@ class Game
 {
 private:
 	GraphicsManager* graphics;
-	EntityList entityList;
+	Lists::EntityList entityList;
 
 	// Temporary staticly created entities
 	Entity background;
