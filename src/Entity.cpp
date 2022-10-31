@@ -74,11 +74,12 @@ namespace Entities
 	
 	void Entity::draw()
 	{
-		Managers::GraphicsManager* gManager = Managers::GraphicsManager::getInstance();
+		
+		/*Managers::GraphicsManager* gManager = Managers::GraphicsManager::getInstance();
 		sf::RenderWindow* window = gManager->getWindow();
 
 		if(window)
-			window->draw(*hitBox);
+			gManager->draw(hitBox);*/
 	}
 
 }// namespace Entities

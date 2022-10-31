@@ -8,9 +8,9 @@ Game::Game() :
 	mario(MARIO_PATH, sf::Vector2f(100.0, 100.0), sf::Vector2f(450.0, 50.0))
 {
     
-    Entities::MovingEntities::Player* pAuxMario = &mario;
-    Entities::Entity* pAux = static_cast<Entities::Entity*>(pAuxMario);
-	entityList.pushEntity(pAuxMario);
+    //Entities::Entity* pAuxMario = &mario;
+    Entities::Entity* pAux = static_cast<Entities::Entity*>(&mario);
+	entityList.pushEntity(pAux);
 
 	execute();
 }
@@ -58,8 +58,10 @@ void Game::execute()
         }
 
         graphics->clear();
+        graphics->draw(mario.getHitBox());
+        graphics->display();
         graphics->draw(entityList);
         
-        graphics->display();
+        std::cout << "teste";
     }
 }

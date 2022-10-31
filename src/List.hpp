@@ -127,6 +127,7 @@ namespace Lists
 		{
 			head = element;
 			tail = element;
+			size++;
 			return;
 		}
 

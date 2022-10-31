@@ -13,6 +13,13 @@ namespace Entities
         }
 
 
+        Character::Character()
+        {
+            vel = sf::Vector2f(0, 0);
+            acc = sf::Vector2f(0, 0);     
+        }
+
+
         Character::~Character()
         {
 
