@@ -6,18 +6,18 @@ namespace Entities
 {
     namespace MovingEntities
     {
-        class MovingEntity: public Entity
+        class Character: public Entity
         {
         protected:
             sf::Vector2f vel;
             sf::Vector2f acc;
         
         public:
-            MovingEntity();
-            ~MovingEntity();
+            Character();
+            ~Character();
 
             virtual void execute() = 0;
-            void update(const double dt, sf::Vector2f newAcc=sf::Vector2f(0,0));
+            void update(const double dt, sf::Vector2f newVel=sf::Vector2f(0,0));
 
         };
 

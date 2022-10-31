@@ -39,6 +39,7 @@ void Game::execute()
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
+            
             mario.getHitBox()->move(sf::Vector2f(0, -3));
         }
 

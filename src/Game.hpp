@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "GraphicsManager.hpp"
 #include "Entity.hpp"
+#include "Character.hpp"
 #include "EntityList.hpp"
 
 class Game
@@ -15,7 +16,7 @@ private:
 
 	// Temporary staticly created entities
 	Entities::Entity background;
-	Entities::Entity mario;
+	Entities::MovingEntities::Player mario;
 
 public:
 	Game();

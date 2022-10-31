@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Arquetype.hpp"
 
+#define GRAVITY 1000
 
 namespace Entities
 {
