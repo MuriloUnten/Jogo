@@ -5,7 +5,8 @@ namespace Entities
 {
     namespace MovingEntities
     {
-        Character::Character()
+        Character::Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp):
+        Entity(fileName, size, position)
         {
             vel = sf::Vector2f(0, 0);
             acc = sf::Vector2f(0, 0);

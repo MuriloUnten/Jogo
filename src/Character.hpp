@@ -13,7 +13,7 @@ namespace Entities
             sf::Vector2f acc;
         
         public:
-            Character();
+            Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp=3);
             ~Character();
 
             virtual void execute() = 0;

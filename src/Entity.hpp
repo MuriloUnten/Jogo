@@ -19,7 +19,8 @@ namespace Entities
 		Entity(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f));
 		Entity();
 		~Entity();
-		virtual void execute();
+		
+		virtual void execute() = 0;
 
 		void setPos(const sf::Vector2f position);
 		sf::Vector2f getPos() const;
