@@ -4,9 +4,10 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "GraphicsManager.hpp"
+#include "EntityList.hpp"
 #include "Entity.hpp"
 #include "Character.hpp"
-#include "EntityList.hpp"
+#include "Player.hpp"
 
 class Game
 {
@@ -15,7 +16,6 @@ private:
 	Lists::EntityList entityList;
 
 	// Temporary staticly created entities
-	Entities::Entity background;
 	Entities::MovingEntities::Player mario;
 
 public:

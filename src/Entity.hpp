@@ -6,6 +6,8 @@
 
 #define GRAVITY 1000
 
+class GraphicsManager;
+
 namespace Entities
 {
 	class Entity : public Arquetype
@@ -32,6 +34,6 @@ namespace Entities
 
 		sf::RectangleShape* getHitBox() const;
 
-		//virtual void draw();
+		void draw();
 	};
 }// namespace Entities

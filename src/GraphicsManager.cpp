@@ -75,6 +75,9 @@ namespace Managers
     /* Draws every element of given list */
     void GraphicsManager::draw(Lists::EntityList entities)
     {
-        
+        for(int i = 0; i <= entities.getSize(); i++)
+        {
+            entities.getList()[i]->draw();
+        }
     }
 }// namespace Managers

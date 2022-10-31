@@ -29,5 +29,11 @@ namespace Entities
         }
 
 
+        void Character::takeDamage(const int damage)
+        {
+            hp -= damage;
+        }
+
+
     }// namespace MovingEntities
 }// namespace Entities

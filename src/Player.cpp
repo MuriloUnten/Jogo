@@ -12,6 +12,12 @@ namespace Entities
         }
 
 
+        Player::Player()
+        {
+            hp = 3;
+        }
+
+
         Player::~Player()
         {
 
@@ -20,7 +26,7 @@ namespace Entities
 
         void Player::execute()
         {
-
+            
         }
 
     }// namespace MovingEntities
