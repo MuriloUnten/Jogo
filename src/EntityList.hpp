@@ -21,5 +21,6 @@ namespace Lists
 		void clear();
 		List<Entities::Entity> getList();
 		Entities::Entity* removeEntity(int index);
+		const unsigned int getSize() const;
 	};
 }// namespace Lists

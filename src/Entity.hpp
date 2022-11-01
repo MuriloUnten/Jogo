@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Arquetype.hpp"
+#include "Coordinate.hpp"
 
 
 namespace Entities
@@ -29,7 +30,8 @@ namespace Entities
 		void loadTexture(const std::string fileName);
 
 		sf::RectangleShape* getHitBox() const;
-
+		
+		virtual void Collide(Entity* otherEntity, Math::Coordinate intersect) = 0;
 		//virtual void draw();
 	};
 }// namespace Entities

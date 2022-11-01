@@ -73,6 +73,8 @@ namespace Lists
 		void pushElement(TL* newData);
 		TL* pop(int index);
 		void clear();
+		const unsigned int getSize() const;
+
 	};
 
 
@@ -184,5 +186,10 @@ namespace Lists
 			tail = NULL;
 			size = 0;
 		}
+	}
+	template<class TL>
+	const unsigned int List<TL>::getSize() const
+	{
+		return size;
 	}
 }// namespace Lists
