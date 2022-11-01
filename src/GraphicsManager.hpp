@@ -26,6 +26,6 @@ namespace Managers
 		void display();
 		sf::RenderWindow* getWindow();
 		void draw(sf::RectangleShape* rect);
-		void draw(Lists::EntityList entities);
+		void draw(Lists::EntityList* entities);
 	};
 }// namespace Managers

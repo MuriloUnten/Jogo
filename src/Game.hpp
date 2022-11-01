@@ -13,7 +13,7 @@ class Game
 {
 private:
 	Managers::GraphicsManager* graphics;
-	Lists::EntityList entityList;
+	Lists::EntityList* entityList;
 
 	// Temporary staticly created entities
 	Entities::MovingEntities::Player mario;

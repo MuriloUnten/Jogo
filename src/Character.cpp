@@ -5,18 +5,17 @@ namespace Entities
 {
     namespace MovingEntities
     {
-        Character::Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp):
-        Entity(fileName, size, position)
+        Character::Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health):
+        MovingEntity(fileName, size, position)
         {
-            vel = sf::Vector2f(0, 0);
-            acc = sf::Vector2f(0, 0);
+            hp = health;
         }
 
 
-        Character::Character()
+        Character::Character():
+        MovingEntity()
         {
-            vel = sf::Vector2f(0, 0);
-            acc = sf::Vector2f(0, 0);     
+            hp = 3;
         }
 
 
@@ -25,21 +24,6 @@ namespace Entities
 
         }
 
-
-        void Character::update(const double dt, sf::Vector2f newVel)
-        {
-            vel.x = newVel.x;
-            vel.y = newVel.y + GRAVITY * dt;
-
-            pos.x += vel.x * dt;
-            pos.y += vel.y * dt;
-        }
-
-
-        void Character::takeDamage(const int damage)
-        {
-            hp -= damage;
-        }
 
 
     }// namespace MovingEntities

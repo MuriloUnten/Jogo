@@ -5,12 +5,13 @@
 
 Game::Game() :
     graphics(Managers::GraphicsManager::getInstance()),
+    entityList(new Lists::EntityList()),
 	mario(MARIO_PATH, sf::Vector2f(100.0, 100.0), sf::Vector2f(450.0, 50.0))
 {
     
     //Entities::Entity* pAuxMario = &mario;
     Entities::Entity* pAux = static_cast<Entities::Entity*>(&mario);
-	entityList.pushEntity(pAux);
+	entityList->pushEntity(pAux);
 
 	execute();
 }
@@ -25,6 +26,7 @@ Game::~Game()
 /* Runs the core of the program */
 void Game::execute()
 {
+    //Entities::Entity* pAux = static_cast<Entities::Entity*>(&mario);
     // Main loop
     while (graphics->isWindowOpen())
     {
@@ -59,8 +61,8 @@ void Game::execute()
 
         graphics->clear();
         graphics->draw(entityList);
-        
         graphics->display();
+
         
     }
 }

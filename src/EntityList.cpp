@@ -29,7 +29,7 @@ namespace Lists
 	}
 
 
-	List<Entities::Entity> EntityList::getList()
+	List<Entities::Entity>& EntityList::getList()
 	{
 		return entityList;
 	}

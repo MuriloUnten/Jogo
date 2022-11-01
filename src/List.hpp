@@ -120,6 +120,12 @@ namespace Lists
 	template <class TL>
 	void List<TL>::pushElement(TL* newData)
 	{
+		if(newData == NULL)
+		{
+			std::cout << "Trying to push NULL pointer to list." << std::endl;
+			exit(1);
+		}
+			
 		Element<TL>* element = new Element<TL>();
 		element->setData(newData);
 
@@ -132,6 +138,7 @@ namespace Lists
 		}
 
 		element->setPrev(tail);
+		element->setNext(NULL);
 		tail->setNext(element);
 		tail = element;
 		size++;
