@@ -77,10 +77,9 @@ namespace Managers
     {
         for(int i = 0; i < entities.getSize(); i++)
         {
-            std::cout << "oi";
-            
-            draw(entities.getList()[i]->getHitBox());
-            //entities.getList()[i]->draw();
+            //draw(entities.getList()[i]->getHitBox());
+
+            entities.getList()[i]->draw();
         }
     }
 }// namespace Managers

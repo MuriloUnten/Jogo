@@ -58,10 +58,9 @@ void Game::execute()
         }
 
         graphics->clear();
-        graphics->draw(mario.getHitBox());
-        graphics->display();
         graphics->draw(entityList);
         
-        std::cout << "teste";
+        graphics->display();
+        
     }
 }
