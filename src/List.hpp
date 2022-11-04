@@ -73,6 +73,7 @@ namespace Lists
 		void pushElement(TL* newData);
 		TL* pop(int index);
 		void clear();
+		const unsigned int getSize() const;
 	};
 
 
@@ -119,6 +120,12 @@ namespace Lists
 	template <class TL>
 	void List<TL>::pushElement(TL* newData)
 	{
+		if(newData == NULL)
+		{
+			std::cout << "Trying to push NULL pointer to list." << std::endl;
+			exit(1);
+		}
+			
 		Element<TL>* element = new Element<TL>();
 		element->setData(newData);
 
@@ -126,10 +133,12 @@ namespace Lists
 		{
 			head = element;
 			tail = element;
+			size++;
 			return;
 		}
 
 		element->setPrev(tail);
+		element->setNext(NULL);
 		tail->setNext(element);
 		tail = element;
 		size++;
@@ -185,4 +194,12 @@ namespace Lists
 			size = 0;
 		}
 	}
+
+
+	template<class TL>
+	const unsigned int List<TL>::getSize() const
+	{
+		return size;
+	}
+
 }// namespace Lists

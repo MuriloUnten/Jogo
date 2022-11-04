@@ -4,18 +4,19 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "GraphicsManager.hpp"
-#include "Entity.hpp"
 #include "EntityList.hpp"
+#include "Entity.hpp"
+#include "Character.hpp"
+#include "Player.hpp"
 
 class Game
 {
 private:
 	Managers::GraphicsManager* graphics;
-	Lists::EntityList entityList;
+	Lists::EntityList* entityList;
 
 	// Temporary staticly created entities
-	Entities::Entity background;
-	Entities::Entity mario;
+	Entities::MovingEntities::Player mario;
 
 public:
 	Game();

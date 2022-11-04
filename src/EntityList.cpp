@@ -29,7 +29,7 @@ namespace Lists
 	}
 
 
-	List<Entities::Entity> EntityList::getList()
+	List<Entities::Entity>& EntityList::getList()
 	{
 		return entityList;
 	}
@@ -39,5 +39,11 @@ namespace Lists
 	Entities::Entity* EntityList::removeEntity(int index)
 	{
 		return entityList.pop(index);
+	}
+
+
+	const unsigned int EntityList::getSize() const
+	{
+		return (entityList.getSize());
 	}
 }// namespace Lists

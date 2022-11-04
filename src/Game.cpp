@@ -1,16 +1,17 @@
 #include "Game.hpp"
 
-#define BACKGROUND_PATH "../assets/background.png"
 #define MARIO_PATH "../assets/mario.png"
 
 
 Game::Game() :
     graphics(Managers::GraphicsManager::getInstance()),
-	background(BACKGROUND_PATH,  sf::Vector2f(800.0, 600.0), sf::Vector2f(0.0, 0.0)),
+    entityList(new Lists::EntityList()),
 	mario(MARIO_PATH, sf::Vector2f(100.0, 100.0), sf::Vector2f(450.0, 50.0))
 {
-	entityList.pushEntity(&background);
-	entityList.pushEntity(&mario);
+    
+    //Entities::Entity* pAuxMario = &mario;
+    Entities::Entity* pAux = static_cast<Entities::Entity*>(&mario);
+	entityList->pushEntity(pAux);
 
 	execute();
 }
@@ -25,6 +26,7 @@ Game::~Game()
 /* Runs the core of the program */
 void Game::execute()
 {
+    //Entities::Entity* pAux = static_cast<Entities::Entity*>(&mario);
     // Main loop
     while (graphics->isWindowOpen())
     {
@@ -58,9 +60,9 @@ void Game::execute()
         }
 
         graphics->clear();
-        graphics->draw(background.getHitBox());
-        graphics->draw(mario.getHitBox());
-        
+        graphics->draw(entityList);
         graphics->display();
+
+        
     }
 }

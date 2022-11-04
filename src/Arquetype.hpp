@@ -2,7 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 
-
 class Arquetype
 {
 protected:
@@ -15,7 +14,6 @@ public:
 	void setId(const int ID);
 	const int getId() const;
 
-	//virtual void draw();
-
+	virtual void draw() = 0;
 	virtual void execute() = 0;
 };

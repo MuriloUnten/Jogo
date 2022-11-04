@@ -1,5 +1,5 @@
 #include "Entity.hpp"
-
+#include "GraphicsManager.hpp"
 
 namespace Entities
 {
@@ -16,7 +16,10 @@ namespace Entities
 
 	Entity::Entity()
 	{
-
+		hitBox = new sf::RectangleShape;
+		texture = new sf::Texture;
+		hitBox->setSize(sf::Vector2f(0, 0));
+		hitBox->setPosition(sf::Vector2f(0, 0));
 	}
 
 
@@ -26,12 +29,6 @@ namespace Entities
 		delete texture;
 		hitBox = NULL;
 		texture = NULL;
-	}
-
-
-	void Entity::execute()
-	{
-
 	}
 
 
@@ -73,4 +70,15 @@ namespace Entities
 	{
 		return hitBox;
 	}
+
+	
+	void Entity::draw()
+	{
+
+		Managers::GraphicsManager* gManager = Managers::GraphicsManager::getInstance();
+		sf::RenderWindow* window = gManager->getWindow();
+
+		gManager->draw(hitBox);
+	}
+
 }// namespace Entities

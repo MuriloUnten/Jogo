@@ -4,6 +4,9 @@
 #include <iostream>
 #include "Arquetype.hpp"
 
+#define GRAVITY 1000
+
+class GraphicsManager;
 
 namespace Entities
 {
@@ -18,7 +21,8 @@ namespace Entities
 		Entity(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f));
 		Entity();
 		~Entity();
-		virtual void execute();
+		
+		virtual void execute() = 0;
 
 		void setPos(const sf::Vector2f position);
 		sf::Vector2f getPos() const;
@@ -30,6 +34,6 @@ namespace Entities
 
 		sf::RectangleShape* getHitBox() const;
 
-		//virtual void draw();
+		void draw();
 	};
 }// namespace Entities

@@ -19,7 +19,8 @@ namespace Lists
 
 		void pushEntity(Entities::Entity* entity);
 		void clear();
-		List<Entities::Entity> getList();
+		List<Entities::Entity>& getList();
 		Entities::Entity* removeEntity(int index);
+		const unsigned int getSize() const;
 	};
 }// namespace Lists
