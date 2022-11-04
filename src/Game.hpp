@@ -21,6 +21,5 @@ private:
 public:
 	Game();
 	~Game();
-
 	void execute();
 };
