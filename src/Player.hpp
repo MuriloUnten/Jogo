@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Caracter.hpp"
-#include "Coordinate.hpp"
+#include "Character.hpp"
+  
 
 namespace Entities
 {
@@ -10,15 +10,16 @@ namespace Entities
         class Player : public Character
         {
         private:
-
+            bool attack;
+            bool run;
+            bool jump;
 
         public:
             Player(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0), int hp=3);
             Player();
             ~Player();
-
             void execute();
-            void Collide(Entity* otherEntity, Math::Coordinate intersect);
+            void Collide(Entity* otherEntity, Math::CoordI intersect);
 
         };
     }// namespace MovingEntities

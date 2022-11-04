@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Arquetype.hpp"
 #include "Coordinate.hpp"
+#include <math.h>
 
 
 namespace Entities
@@ -31,7 +32,7 @@ namespace Entities
 
 		sf::RectangleShape* getHitBox() const;
 		
-		virtual void Collide(Entity* otherEntity, Math::Coordinate intersect) = 0;
+		virtual void Collide(Entity* otherEntity, Math::CoordI intersect) = 0;
 		//virtual void draw();
 	};
 }// namespace Entities

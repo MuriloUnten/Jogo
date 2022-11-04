@@ -18,6 +18,7 @@ namespace Entities
 
             virtual void execute() = 0;
             void update(const double dt, sf::Vector2f newAcc=sf::Vector2f(0,0));
+            void Collide(Entity* otherEntity, Math::Coordinate intersect)=0;
 
         };
 
