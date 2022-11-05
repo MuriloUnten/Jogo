@@ -1,6 +1,6 @@
 #include "Game.hpp"
 
-#define MARIO_PATH "../assets/mario.png"
+#define MARIO_PATH "../assets/personagem/naruto.png"
 
 
 Game::Game() :
@@ -26,7 +26,6 @@ Game::~Game()
 /* Runs the core of the program */
 void Game::execute()
 {
-    //Entities::Entity* pAux = static_cast<Entities::Entity*>(&mario);
     // Main loop
     while (graphics->isWindowOpen())
     {
@@ -59,10 +58,14 @@ void Game::execute()
             mario.getHitBox()->move(sf::Vector2f(3, 0));
         }
 
-        graphics->clear();
-        graphics->draw(entityList);
-        graphics->display();
 
-        
+        graphics->clear();
+
+        for(int i = 0; i < entityList->getSize(); i++)
+        {
+            entityList->getList()[i]->draw();
+        }
+
+        graphics->display();   
     }
 }

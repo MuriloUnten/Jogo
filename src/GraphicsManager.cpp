@@ -63,21 +63,4 @@ namespace Managers
         return window;
     }
 
-
-    /* Draws given RectangleShape* onto the screen */
-    void GraphicsManager::draw(sf::RectangleShape* rect)
-    {
-        if(isWindowOpen())
-            window->draw(*rect);
-    }
-
-
-    /* Draws every element of given list */
-    void GraphicsManager::draw(Lists::EntityList* entities)
-    {
-        for(int i = 0; i < entities->getSize(); i++)
-        {
-            entities->getList()[i]->draw();
-        }
-    }
 }// namespace Managers

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "EntityList.hpp"
 
 
 namespace Managers
@@ -25,7 +24,5 @@ namespace Managers
 		void close();
 		void display();
 		sf::RenderWindow* getWindow();
-		void draw(sf::RectangleShape* rect);
-		void draw(Lists::EntityList* entities);
 	};
 }// namespace Managers
