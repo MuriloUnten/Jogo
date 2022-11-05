@@ -3,10 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Arquetype.hpp"
-
-#define GRAVITY 1000
-
-class GraphicsManager;
+#include "Coordinate.hpp"
 
 namespace Entities
 {
@@ -35,5 +32,8 @@ namespace Entities
 		sf::RectangleShape* getHitBox() const;
 
 		void draw();
+		
+		virtual void Collide(Entity* otherEntity, Math::Coordinate intersect) = 0;
+		//virtual void draw();
 	};
 }// namespace Entities

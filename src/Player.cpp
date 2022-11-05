@@ -28,7 +28,37 @@ namespace Entities
         {
             
         }
+        void Player::Collide(Entity* otherEntity, Math::Coordinate intersect)
+        {
+            /*
+        //Colisão com plaforma
+        else if (pEntidade->getID() == Ids::Ids::plataforma || pEntidade->getID() == Ids::Ids::pedra || pEntidade->getID() == Ids::Ids::ponte || pEntidade->getID() == Ids::Ids::andaime) {
+            colisaoPlataforma(intersecao, pEntidade);
+            if (velocidade.y == 0.0f) {
+                noChao = true;
+                caindo = false;
+            }
+        }
+        //Colisao com inimigos
+        else if (pEntidade->getID() == Ids::Ids::goblin_bate ||
+            pEntidade->getID() == Ids::Ids::esqueleto_bate ||
+            pEntidade->getID() == Ids::Ids::animagus ||
+            pEntidade->getID() == Ids::Ids::noturno) {
+            Personagem* pPerson = static_cast<Personagem*>(pEntidade);
+            pPerson->ativarAtacar();
+            if (pPerson->podeAtacar()) {
+                pPerson->desligarAtacar();
+                podeTomarDano(pPerson->valorDano());
+            }
+        }
+        //colisão com obstáculos
+        else if (pEntidade->getID() == Ids::Ids::espinhos) {
+            Obstaculo::Espinhos* pEsp = dynamic_cast<Obstaculo::Espinhos*>(pEntidade);
+            if (pEsp->podeTomarDano()) {
+                podeTomarDano(pEsp->getDano());
+            }
+        }*/
+        }
 
     }// namespace MovingEntities
 }// namespace Entities
-
