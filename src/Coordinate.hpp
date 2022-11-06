@@ -117,4 +117,4 @@ namespace Math {
         return Coordinate<TL>(this->x / scalar, this->y / scalar);
     }
 
-}
+} //namespace Math
