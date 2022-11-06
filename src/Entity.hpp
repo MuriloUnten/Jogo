@@ -33,7 +33,7 @@ namespace Entities
 
 		void draw();
 		
-		virtual void Collide(Entity* otherEntity, Math::Coordinate intersect) = 0;
+		virtual void Collide(Entity* otherEntity, Math::CoordF intersect) = 0;
 		//virtual void draw();
 	};
 }// namespace Entities

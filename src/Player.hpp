@@ -18,7 +18,7 @@ namespace Entities
             ~Player();
 
             void execute();
-            void Collide(Entity* otherEntity, Math::Coordinate intersect);
+            void Collide(Entity* otherEntity, Math::CoordF intersect);
 
         };
     }// namespace MovingEntities

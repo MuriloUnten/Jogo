@@ -73,6 +73,7 @@ namespace Lists
 		void pushElement(TL* newData);
 		TL* pop(int index);
 		void clear();
+		const unsigned int getSize() const;
 	};
 
 

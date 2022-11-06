@@ -28,7 +28,7 @@ namespace Entities
         {
             
         }
-        void Player::Collide(Entity* otherEntity, Math::Coordinate intersect)
+        void Player::Collide(Entity* otherEntity, Math::CoordF intersect)
         {
             /*
         //Colisão com plaforma
@@ -58,6 +58,7 @@ namespace Entities
                 podeTomarDano(pEsp->getDano());
             }
         }*/
+
         }
 
     }// namespace MovingEntities

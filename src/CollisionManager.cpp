@@ -16,8 +16,8 @@ void CollisionManager:: Collision(){
 
     Entities::Entity *Entity1 = nullptr;
     Entities::Entity *Entity2 = nullptr;
-    Math::Coordinate<int> Intersection;
-    Math::Coordinate<int> CenterDistance;
+    Math::Coordinate<float> Intersection;
+    Math::Coordinate<float> CenterDistance;
 
     //testa colisão enter objetos móveis com estáticos
     for(int i=0; i < pStaticEntities->getSize(); i++){
