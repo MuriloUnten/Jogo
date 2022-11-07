@@ -1,18 +1,12 @@
 #include "Game.hpp"
 
-#define MARIO_PATH "../assets/personagem/naruto.png"
+#define BG_PATH "../assets/mundo/images.jpeg"
 
 
 Game::Game() :
-    graphics(Managers::GraphicsManager::getInstance()),
-    entityList(new Lists::EntityList()),
-	mario(MARIO_PATH, sf::Vector2f(100.0, 100.0), sf::Vector2f(450.0, 50.0))
+graphics(Managers::GraphicsManager::getInstance()),
+firstLevel(BG_PATH, sf::Vector2f(WIDTH, HEIGHT))
 {
-    
-    //Entities::Entity* pAuxMario = &mario;
-    Entities::Entity* pAux = static_cast<Entities::Entity*>(&mario);
-	entityList->pushEntity(pAux);
-
 	execute();
 }
 
@@ -38,34 +32,8 @@ void Game::execute()
             }
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        {
-            mario.getHitBox()->move(sf::Vector2f(0, -3));
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        {
-            mario.getHitBox()->move(sf::Vector2f(-3, 0));
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            mario.getHitBox()->move(sf::Vector2f(0, 3));
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            mario.getHitBox()->move(sf::Vector2f(3, 0));
-        }
-
-
         graphics->clear();
-
-        for(int i = 0; i < entityList->getSize(); i++)
-        {
-            entityList->getList()[i]->draw();
-        }
-
+        firstLevel.execute();
         graphics->display();   
     }
 }

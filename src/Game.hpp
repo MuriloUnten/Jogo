@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "FirstLevel.hpp"
 #include "GraphicsManager.hpp"
 #include "EntityList.hpp"
 #include "Entity.hpp"
@@ -13,10 +14,7 @@ class Game
 {
 private:
 	Managers::GraphicsManager* graphics;
-	Lists::EntityList* entityList;
-
-	// Temporary staticly created entities
-	Entities::MovingEntities::Player mario;
+	Levels::FirstLevel firstLevel;
 
 public:
 	Game();

@@ -25,8 +25,29 @@ namespace Entities
 
 
         void Player::execute()
-        {
-            
+        { 
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            {
+                hitBox->move(sf::Vector2f(0, -3));
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+            {
+                hitBox->move(sf::Vector2f(-3, 0));
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+            {
+                hitBox->move(sf::Vector2f(0, 3));
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+            {
+                hitBox->move(sf::Vector2f(3, 0));
+            }
+
+            draw();
         }
 
     }// namespace MovingEntities

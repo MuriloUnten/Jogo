@@ -10,7 +10,6 @@ Being::Being(std::string fileName, sf::Vector2f size, sf::Vector2f position)
 	hitBox->setPosition(position);
 	hitBox->setTexture(texture);
 
-
 	id = -1;
 }
 
@@ -78,6 +77,12 @@ void Being::loadTexture(const std::string fileName)
 		std::cout << "ERROR. Unable to load texture from path: " << fileName << std::endl;
 		exit(1);
 	}
+}
+
+
+sf::Texture* Being::getTexture() const
+{
+	return texture;
 }
 
 

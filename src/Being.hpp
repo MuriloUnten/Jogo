@@ -29,6 +29,7 @@ public:
 	sf::Vector2f getSize() const;
 
 	void loadTexture(const std::string fileName);
+	sf::Texture* getTexture() const;
 	sf::RectangleShape* getHitBox() const;
 	void draw();
 	virtual void execute() = 0;
