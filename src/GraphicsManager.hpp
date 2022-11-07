@@ -18,6 +18,7 @@ namespace Managers
 		~GraphicsManager();
 
 		static GraphicsManager* getInstance();
+		static void deleteInstance();
 
 		bool isWindowOpen();
 		void clear();

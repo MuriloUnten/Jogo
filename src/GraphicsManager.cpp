@@ -18,6 +18,13 @@ namespace Managers
     }
 
 
+    void GraphicsManager::deleteInstance()
+    {
+        if (instance)
+            delete instance;
+    }
+    
+    
     GraphicsManager::GraphicsManager() :
         window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "JOGO"))
     {
