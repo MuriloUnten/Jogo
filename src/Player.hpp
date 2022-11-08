@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Character.hpp"
+#include "Coordinate.hpp"
 
 namespace Entities
 {
