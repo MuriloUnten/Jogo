@@ -43,5 +43,11 @@ namespace Entities
             return slow;
         }
 
+
+        void Obstacle::execute()
+        {
+            draw();
+        }
+
     }// namespace Staticentities
 }// namespace Entities
