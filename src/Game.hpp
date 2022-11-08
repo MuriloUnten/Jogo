@@ -15,6 +15,7 @@ class Game
 private:
 	Managers::GraphicsManager* graphics;
 	Levels::FirstLevel firstLevel;
+	Entities::MovingEntities::Player player;
 
 public:
 	Game();

@@ -30,7 +30,10 @@ public:
 
 	void loadTexture(const std::string fileName);
 	sf::Texture* getTexture() const;
+	void setTexture(const std::string fileName);
+	
 	sf::RectangleShape* getHitBox() const;
+	
 	void draw();
 	virtual void execute() = 0;
 };
