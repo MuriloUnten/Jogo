@@ -2,7 +2,7 @@
 
 #include "Being.hpp"
 #include "EntityList.hpp"
-#include "PLayer.hpp"
+#include "Player.hpp"
 
 
 namespace Levels
