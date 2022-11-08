@@ -11,10 +11,10 @@ namespace Levels
     {
     protected:
 	    Lists::EntityList* entityList;
-        Entities::MovingEntities::Player player;
+        Entities::MovingEntities::Player* pPlayer;
 
     public:
-        Level(std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0));
+        Level(std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0), Entities::MovingEntities::Player* player=NULL);
         Level();
         ~Level();
         void execute();

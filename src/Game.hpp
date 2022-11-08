@@ -13,9 +13,9 @@
 class Game
 {
 private:
+	Entities::MovingEntities::Player player;
 	Managers::GraphicsManager* graphics;
 	Levels::FirstLevel firstLevel;
-	Entities::MovingEntities::Player player;
 
 public:
 	Game();

@@ -3,12 +3,12 @@
 
 namespace Levels
 {
-    Level::Level(std::string fileName, sf::Vector2f size, sf::Vector2f position):
+    Level::Level(std::string fileName, sf::Vector2f size, sf::Vector2f position, Entities::MovingEntities::Player* player):
     Being(fileName, size, position),
-    player(),
     entityList(new Lists::EntityList())
     {
-        Entities::Entity* pAux = static_cast<Entities::Entity*>(&player);
+        pPlayer = player;
+        Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer);
         entityList->pushEntity(pAux);
     }
 
@@ -17,7 +17,7 @@ namespace Levels
     Being(),
     entityList(new Lists::EntityList())
     {
-        
+        pPlayer = NULL;
     }
 
 

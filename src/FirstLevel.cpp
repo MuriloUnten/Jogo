@@ -5,13 +5,13 @@
 
 namespace Levels
 {
-    FirstLevel::FirstLevel(std::string fileName, sf::Vector2f size, sf::Vector2f position):
-    Level(fileName, size, position)
+    FirstLevel::FirstLevel(std::string fileName, sf::Vector2f size, sf::Vector2f position, Entities::MovingEntities::Player* player):
+    Level(fileName, size, position, player)
     {
-        player.loadTexture(NARUTO_PATH);
-        player.getHitBox()->setSize(sf::Vector2f(100, 100));
-        player.getHitBox()->setPosition(sf::Vector2f(0, 0));
-        player.getHitBox()->setTexture(player.getTexture());
+        pPlayer->loadTexture(NARUTO_PATH);
+        pPlayer->getHitBox()->setSize(sf::Vector2f(100, 100));
+        pPlayer->getHitBox()->setPosition(sf::Vector2f(0, 0));
+        pPlayer->getHitBox()->setTexture(pPlayer->getTexture());
     }
 
 

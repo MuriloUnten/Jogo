@@ -5,7 +5,8 @@
 
 Game::Game() :
 graphics(Managers::GraphicsManager::getInstance()),
-firstLevel(BG_PATH, sf::Vector2f(WIDTH, HEIGHT))
+player(),
+firstLevel(BG_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player)
 {
 	execute();
 }

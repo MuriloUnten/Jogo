@@ -80,12 +80,6 @@ void Being::loadTexture(const std::string fileName)
 }
 
 
-void Being::setTexture(const std::string fileName)
-{
-	texture = fileName;
-}
-
-
 sf::Texture* Being::getTexture() const
 {
 	return texture;
