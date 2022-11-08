@@ -3,6 +3,7 @@
 #include "Being.hpp"
 #include "EntityList.hpp"
 #include "Player.hpp"
+#include "Obstacle.hpp"
 
 
 namespace Levels
