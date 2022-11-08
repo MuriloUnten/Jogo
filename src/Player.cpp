@@ -37,31 +37,19 @@ namespace Entities
         void Player::Collide(Entity* otherEntity, Math::CoordF intersect)
         {
             /*
-        //Colisão com plaforma
-        else if (pEntidade->getID() == Ids::Ids::plataforma || pEntidade->getID() == Ids::Ids::pedra || pEntidade->getID() == Ids::Ids::ponte || pEntidade->getID() == Ids::Ids::andaime) {
-            colisaoPlataforma(intersecao, pEntidade);
-            if (velocidade.y == 0.0f) {
-                noChao = true;
-                caindo = false;
+        //collison whith plataform
+        else if (pEntidade->getID() == Ids::Ids::plataforma ) {
+            colisaoPlataforma(intersected, pEntidade);
+                
             }
         }
-        //Colisao com inimigos
-        else if (pEntidade->getID() == Ids::Ids::goblin_bate ||
-            pEntidade->getID() == Ids::Ids::esqueleto_bate ||
-            pEntidade->getID() == Ids::Ids::animagus ||
-            pEntidade->getID() == Ids::Ids::noturno) {
-            Personagem* pPerson = static_cast<Personagem*>(pEntidade);
-            pPerson->ativarAtacar();
-            if (pPerson->podeAtacar()) {
-                pPerson->desligarAtacar();
-                podeTomarDano(pPerson->valorDano());
-            }
+        //collision whith Enemy
+        else if (pEntidade->getID() == Ids::Ids::Enemy) {
+            
         }
-        //colisão com obstáculos
-        else if (pEntidade->getID() == Ids::Ids::espinhos) {
-            Obstaculo::Espinhos* pEsp = dynamic_cast<Obstaculo::Espinhos*>(pEntidade);
-            if (pEsp->podeTomarDano()) {
-                podeTomarDano(pEsp->getDano());
+        //collision whith obstacle damage
+        else if (pEntidade->getID() == Ids::Ids::obstacle) {
+
             }
         }*/
 

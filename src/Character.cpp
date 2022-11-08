@@ -1,11 +1,10 @@
 #include "Character.hpp"
-#define GRAVITY 980
 
 namespace Entities
 {
     namespace MovingEntities
     {
-        Character::Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp):
+        Character::Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health):
         Entity(fileName, size, position)
         {
             hp = health;

@@ -40,4 +40,10 @@ namespace Lists
 	{
 		return entityList.pop(index);
 	}
+
+
+	const unsigned int EntityList::getSize() const
+	{
+		return (entityList.getSize());
+	}
 }// namespace Lists

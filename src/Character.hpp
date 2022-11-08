@@ -14,7 +14,7 @@ namespace Entities
             int hp;
 
         public:
-            Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp=3);
+            Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health=3);
             Character();
             ~Character();
 

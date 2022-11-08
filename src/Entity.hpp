@@ -5,6 +5,8 @@
 #include "Arquetype.hpp"
 #include "Coordinate.hpp"
 
+#define GRAVITY 1000
+
 namespace Entities
 {
 	class Entity : public Arquetype
