@@ -14,9 +14,9 @@ namespace Entities
 
 
         public:
-            Enemy(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0), int hp=3);
+            Enemy(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0), int hp=1);
             Enemy();
-            Enemy();
+            ~Enemy();
 
             void execute();
 

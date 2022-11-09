@@ -92,7 +92,7 @@ void CollisionManager:: Collision(){
 
     /*------------------------------Collision between Obstacle and Enemy---------------------------------------------------------------*/
     for(int i = 0; i < ListObstacle.getSize(); i++){
-        Obstacle1=ListObstacle.operator[](i);
+        Obstacle1=ListObstacle[i];
         for(int j=0; j < ListEnemy.getSize(); j++ ){
             Enemy1 = ListEnemy.operator[](j);
             //módulo da distância entre o centro das entidades
@@ -107,6 +107,16 @@ void CollisionManager:: Collision(){
             }
             }
         }
+}
+
+
+void CollisionManager::MoveX(Entities::Entity *Entity, float x){
+
+}
+
+
+void CollisionManager::MoveY(Entities::Entity *Entity, float y){
+
 }
 
 //altera velocidade na direção que bateu e reposiciona o jogador

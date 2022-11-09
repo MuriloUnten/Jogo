@@ -3,6 +3,7 @@
 
 namespace Entities
 {
+
 	Entity::Entity(const std::string fileName, sf::Vector2f size, sf::Vector2f position):
 	Being(fileName, size, position)
 	{
@@ -21,5 +22,6 @@ namespace Entities
 	{
 
 	}
+
 
 }// namespace Entities

@@ -17,7 +17,7 @@ namespace Entities
         }
 
 
-        Enemy::Enemy()
+        Enemy::~Enemy()
         {
 
         }
