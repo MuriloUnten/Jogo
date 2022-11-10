@@ -1,7 +1,7 @@
 #pragma once
 
-#define WIDTH 800
-#define HEIGHT 600
+#define WIDTH 960
+#define HEIGHT 540
 
 #include <SFML/Graphics.hpp>
 
