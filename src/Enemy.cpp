@@ -28,20 +28,5 @@ namespace Entities
         { 
 
         }
-
-
-        int Enemy::takeDamage(){
-            hp-=1;
-        }
-
-        int Enemy::getDamage(){
-
-            return damage;
-        }
-        int Enemy::getHp(){
-
-            return hp;
-        }
-
     }// namespace MovingEntities
 }// namespace Entities
