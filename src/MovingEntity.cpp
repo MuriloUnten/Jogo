@@ -29,13 +29,14 @@ namespace Entities
         void MovingEntity::update()
         {
             float dt = pGraphics->getDeltaTime();
-            std::cout << dt << std::endl;
+
             vel.y += GRAVITY * dt;
 
             pos.x += vel.x * dt;
             pos.y += vel.y * dt;
 
             hitBox->setPosition(pos);
+            std::cout << "VEL: " << vel.y << std::endl;
         }
 
 

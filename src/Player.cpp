@@ -89,7 +89,6 @@ namespace Entities
 
             update();
 
-            draw();
         }
         
         bool Player::isAttacking()

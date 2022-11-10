@@ -46,7 +46,7 @@ namespace Entities
 
         void Obstacle::execute()
         {
-            draw();
+            
         }
 
     }// namespace Staticentities

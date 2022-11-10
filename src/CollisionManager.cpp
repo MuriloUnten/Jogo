@@ -59,7 +59,6 @@ namespace Managers
             for(int j = 0; j < enemyList.getSize(); j++)
             {
                 Enemy1 = enemyList[j];
-                std::cout << "y:"<<Enemy1->getPos().y << std::endl;
                 //módulo da distância entre o centro das entidades
                 CenterDistance.x= fabs((pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2)- (Enemy1->getPos().x + Enemy1->getSize().x/2));
                 CenterDistance.y= fabs((pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2) - (Enemy1->getPos().y + Enemy1->getSize().y/2));
@@ -114,6 +113,7 @@ namespace Managers
             coordinate = Player->getPos();
             coordinate.y += Intersection.y;
             Player->setPos(coordinate);
+            Player->getHitBox()->setPosition(coordinate);
 
             //change velocity
             coordinate = Player->getVel();
@@ -128,6 +128,7 @@ namespace Managers
             coordinate = Player->getPos();
             coordinate.x += Intersection.x;
             Player->setPos(coordinate);
+            Player->getHitBox()->setPosition(coordinate);
             
             //change velocity
             coordinate= Player->getVel();
