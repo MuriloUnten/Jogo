@@ -2,12 +2,14 @@
 
 #define PLAYER_PATH "../assets/personagem/correndo.png"
 #define TILE_PATH "../assets/mundo/plataform.png"
+#define ENEMY_PATH "../assets/inimigos/enemy1.png"
 
 
 namespace Levels
 {
     FirstLevel::FirstLevel(std::string fileName, sf::Vector2f size, sf::Vector2f position, Entities::MovingEntities::Player* player):
-    Level(fileName, size, position, player)
+    Level(fileName, size, position, player),
+    enemy(new Entities::MovingEntities::Enemy(ENEMY_PATH, sf::Vector2f(100,100), sf::Vector2f(400,400) ))
     {
         pPlayer->loadTexture(PLAYER_PATH);
         pPlayer->getHitBox()->setSize(sf::Vector2f(100, 100));
@@ -15,6 +17,10 @@ namespace Levels
         pPlayer->getHitBox()->setTexture(pPlayer->getTexture());
         pPlayer->setPos(sf::Vector2f(0, 300));
 
+
+        Entities::Entity* pEnemy = static_cast<Entities::Entity*>(enemy);
+        entityList->pushEntity(pEnemy);
+        collisions->pushEnemy(enemy);
 
         // Temporary ground
         float obstacleSize = 50;
@@ -30,6 +36,7 @@ namespace Levels
 
     FirstLevel::~FirstLevel()
     {
+        delete enemy;
         entityList->clear();
         entityList = NULL;
     }

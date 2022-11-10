@@ -4,5 +4,7 @@
 int main()
 {
     Game game;
+    
+    getchar();
     return 0;
 }

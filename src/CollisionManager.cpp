@@ -33,7 +33,7 @@ namespace Managers
             Entities::MovingEntities::Player* pAuxPlayer = playerList[i];
             if(pAuxPlayer == NULL)
                 continue;
-            std::cout << pAuxPlayer->getPos().y << std::endl;
+            //std::cout << pAuxPlayer->getPos().y << std::endl;
 
             /* Collision between Player and Obstacles */
             for(int j = 0; j < obstacleList.getSize(); j++)
@@ -60,6 +60,7 @@ namespace Managers
             for(int j = 0; j < enemyList.getSize(); j++)
             {
                 Enemy1 = enemyList[j];
+                std::cout << "y:"<<Enemy1->getPos().y << std::endl;
                 //módulo da distância entre o centro das entidades
                 CenterDistance.x= fabs((pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2)- (Enemy1->getPos().x + Enemy1->getSize().x/2));
                 CenterDistance.y= fabs((pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2) - (Enemy1->getPos().y + Enemy1->getSize().y/2));
@@ -82,11 +83,15 @@ namespace Managers
             {
                 Enemy1 = enemyList[j];
                 //módulo da distância entre o centro das entidades
-                CenterDistance.x= fabs(Obstacle1->getPos().x - Enemy1->getPos().x);
-                CenterDistance.y= fabs(Obstacle1->getPos().y - Enemy1->getPos().y);
+                //CenterDistance.x= fabs(Obstacle1->getPos().x - Enemy1->getPos().x);
+                //CenterDistance.y= fabs(Obstacle1->getPos().y - Enemy1->getPos().y);
                 //distância que as extremidades mais próximas das entidades se econtram  
-                Intersection.x= CenterDistance.x - (Obstacle1->getSize().x/2 + Enemy1->getSize().x/2);
-                Intersection.y= CenterDistance.y - (Obstacle1->getSize().y/2 + Enemy1->getSize().y/2);
+                //Intersection.x= CenterDistance.x - (Obstacle1->getSize().x/2 + Enemy1->getSize().x/2);
+                //Intersection.y= CenterDistance.y - (Obstacle1->getSize().y/2 + Enemy1->getSize().y/2);
+                CenterDistance.x = fabs(Enemy1->getPos().x + Enemy1->getSize().x/2 - (Obstacle1->getPos().x + Obstacle1->getSize().x/2));
+                CenterDistance.y = fabs(Enemy1->getPos().y + Enemy1->getSize().y/2 - (Obstacle1->getPos().y + Obstacle1->getSize().y/2));
+                Intersection.x = CenterDistance.x - (Enemy1->getSize().x/2 + Obstacle1->getSize().x/2);
+                Intersection.y = CenterDistance.y - (Enemy1->getSize().y/2 + Obstacle1->getSize().y/2);
                 //verifica se houve colisão
                 if(Intersection.x < 0 && Intersection.y < 0)
                 {
@@ -169,29 +174,30 @@ namespace Managers
     {
         sf::Vector2f coordinate;
         //collision in the Y direction
-        if( Enemy->getVel().y > 0 )
+        if(Intersection.y > Intersection.x)
         {
             //change position
             coordinate = Enemy->getPos();
-            coordinate.y+= Intersection.y;
+            coordinate.y += Intersection.y;
             Enemy->setPos(coordinate);
 
             //change velocity
-            coordinate= Enemy->getVel();
+            coordinate = Enemy->getVel();
             coordinate.y = 0.0;
             Enemy->setVel(coordinate);
         }
+
         //collision in the x direction
-        else if( Enemy->getVel().x > 0 )
+        else
         {
             //change position
             coordinate = Enemy->getPos();
-            coordinate.x+= Intersection.x;
+            coordinate.x += Intersection.x;
             Enemy->setPos(coordinate);
             
             //change velocity
             coordinate= Enemy->getVel();
-            coordinate.x *= -1;
+            coordinate.x = 0.0;
             Enemy->setVel(coordinate);
         }
     }
