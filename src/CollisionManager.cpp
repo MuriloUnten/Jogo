@@ -33,17 +33,22 @@ namespace Managers
             Entities::MovingEntities::Player* pAuxPlayer = playerList[i];
             if(pAuxPlayer == NULL)
                 continue;
+            std::cout << pAuxPlayer->getPos().y << std::endl;
 
             /* Collision between Player and Obstacles */
-            for(int j=0; j < obstacleList.getSize(); j++)
+            for(int j = 0; j < obstacleList.getSize(); j++)
             {
                 //módulo da distância entre o centro das entidades
                 Obstacle1 = obstacleList[j];
-                CenterDistance.x= fabs(pAuxPlayer->getPos().x - Obstacle1->getPos().x);
-                CenterDistance.y= fabs(pAuxPlayer->getPos().y - Obstacle1->getPos().y);
+                //CenterDistance.x = fabs(pAuxPlayer->getPos().x - Obstacle1->getPos().x);
+                //CenterDistance.y = fabs(pAuxPlayer->getPos().y - Obstacle1->getPos().y);
+                CenterDistance.x = fabs(pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2 - (Obstacle1->getPos().x + Obstacle1->getSize().x/2));
+                CenterDistance.y = fabs(pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2 - (Obstacle1->getPos().y + Obstacle1->getSize().y/2));
+                Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2 + Obstacle1->getSize().x/2);
+                Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Obstacle1->getSize().y/2);
                 //distância que as extremidades mais próximas das entidades se econtram  
-                Intersection.x= CenterDistance.x - (pAuxPlayer->getSize().x/2 + Obstacle1->getSize().x/2);
-                Intersection.y= CenterDistance.y - (pAuxPlayer->getSize().y/2 + Obstacle1->getSize().y/2);
+                //Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2 + Obstacle1->getSize().x/2);
+                //Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Obstacle1->getSize().y/2);
                 //verifica se houve colisão
                 if(Intersection.x < 0 && Intersection.y < 0)
                 {
@@ -51,20 +56,20 @@ namespace Managers
                 }
             }
 
-            /* Collision between Player1 and Enemy */
+            /* Collision between Player and Enemy */
             for(int j = 0; j < enemyList.getSize(); j++)
             {
                 Enemy1 = enemyList[j];
                 //módulo da distância entre o centro das entidades
-                CenterDistance.x= fabs(pAuxPlayer->getPos().x - Enemy1->getPos().x);
-                CenterDistance.y= fabs(pAuxPlayer->getPos().y - Enemy1->getPos().y);
-                //distância que as extremidades mais próximas das entidades se econtram  
-                Intersection.x= CenterDistance.x - (pAuxPlayer->getSize().x/2 + Enemy1->getSize().x/2);
-                Intersection.y= CenterDistance.y - (pAuxPlayer->getSize().y/2 + Enemy1->getSize().y/2);
+                CenterDistance.x= fabs((pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2)- (Enemy1->getPos().x + Enemy1->getSize().x/2));
+                CenterDistance.y= fabs((pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2) - (Enemy1->getPos().y + Enemy1->getSize().y/2));
+                //distância que as extremidades mais próximas das entidades se econtram
+                Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2 + Enemy1->getSize().x/2);
+                Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Enemy1->getSize().y/2);
                 //verifica se houve colisão
                 if(Intersection.x < 0 && Intersection.y < 0)
                 {
-                    CollisionPlayerEnemy( pAuxPlayer, Enemy1, Intersection);
+                    CollisionPlayerEnemy(pAuxPlayer, Enemy1, Intersection);
                 }
             }
         }
@@ -83,7 +88,8 @@ namespace Managers
                 Intersection.x= CenterDistance.x - (Obstacle1->getSize().x/2 + Enemy1->getSize().x/2);
                 Intersection.y= CenterDistance.y - (Obstacle1->getSize().y/2 + Enemy1->getSize().y/2);
                 //verifica se houve colisão
-                if(Intersection.x < 0 && Intersection.y < 0){
+                if(Intersection.x < 0 && Intersection.y < 0)
+                {
                     CollisionObstacleEnemy( Enemy1, Intersection);
                 }
             }
@@ -98,24 +104,25 @@ namespace Managers
 
         sf::Vector2f coordinate;
         //collision in the Y direction
-        if(Player->getVel().y > 0 )
+        if(Intersection.y > Intersection.x)
         {
             //change position
             coordinate = Player->getPos();
-            coordinate.y-= Intersection.y;
+            coordinate.y += Intersection.y;
             Player->setPos(coordinate);
 
             //change velocity
-            coordinate= Player->getVel();
+            coordinate = Player->getVel();
             coordinate.y = 0.0;
             Player->setVel(coordinate);
         }
+
         //collision in the x direction
-        else if(fabs(Player->getVel().x) > 0)
+        else
         {
             //change position
             coordinate = Player->getPos();
-            coordinate.x-= Intersection.x;
+            coordinate.x += Intersection.x;
             Player->setPos(coordinate);
             
             //change velocity
