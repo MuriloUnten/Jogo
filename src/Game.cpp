@@ -1,6 +1,6 @@
 #include "Game.hpp"
 
-#define BG_PATH "../assets/mundo/images.jpeg"
+#define BG_PATH "../assets/mundo/teste.jpg"
 
 
 Game::Game() :
