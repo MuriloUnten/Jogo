@@ -26,17 +26,32 @@ namespace Entities
 
         void Player::execute()
         { 
-            if(vel.x != 0){run=true;}
-            else{run=false;}
+            // TODO Rever
+            if(vel.x != 0 && !jumping)
+                walking = true;
+            else
+                walking = false;
 
-            if(vel.y != 0){jump=true;}
-            else{jump=false;}
+            if(vel.y != 0)
+            {
+                jumping = true;
+                canJump = false;
+            }
+            else
+            {
+                jumping = false;
+                canJump = true;
+            }
 
-            if (sf::Keyboard::isKeyPressed( sf::Keyboard::Space )){
-                atack=true;
-                std::cout<<"apertou:"<<atack<<std::endl;
-                }
-            else{atack=false;}
+            draw();
+            // Provisory test for keys pressed. TODO Remove
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+            {
+                attacking = true;
+                std::cout<<"apertou:"<<canAttack<<std::endl;
+            }
+            else
+                attacking = false;
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
@@ -58,15 +73,11 @@ namespace Entities
                 hitBox->move(sf::Vector2f(1, 0));
             }
 
-            draw();
         }
         
-        bool Player::isAtack(){
-            return atack;
-        }
-
-        void Player::takeDamage(Enemy *Enemy){
-            hp-=Enemy->getDamage();
+        bool Player::isAttacking()
+        {
+            return attacking;
         }
 
     }// namespace MovingEntities

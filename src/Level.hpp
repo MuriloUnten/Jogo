@@ -4,6 +4,7 @@
 #include "EntityList.hpp"
 #include "Player.hpp"
 #include "Obstacle.hpp"
+#include "CollisionManager.hpp"
 
 
 namespace Levels
@@ -13,6 +14,7 @@ namespace Levels
     protected:
 	    Lists::EntityList* entityList;
         Entities::MovingEntities::Player* pPlayer;
+        Managers::CollisionManager* collisions;
 
     public:
         Level(std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0), Entities::MovingEntities::Player* player=NULL);

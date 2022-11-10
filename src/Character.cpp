@@ -5,10 +5,11 @@ namespace Entities
 {
     namespace MovingEntities
     {
-        Character::Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health):
+        Character::Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health, int newDamage):
         MovingEntity(fileName, size, position)
         {
             hp = health;
+            damage = newDamage;
         }
 
 
@@ -16,6 +17,7 @@ namespace Entities
         MovingEntity()
         {
             hp = 3;
+            damage = 1;
         }
 
 
@@ -25,6 +27,22 @@ namespace Entities
         }
 
 
+        void Character::takeDamage(const int damageTaken)
+        {
+            hp -= damageTaken;
+        }
+
+
+        const int Character::getHp() const
+        {
+            return hp;
+        }
+
+
+        const int Character::getDamage() const
+        {
+            return damage;
+        }
 
     }// namespace MovingEntities
 }// namespace Entities

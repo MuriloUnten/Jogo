@@ -10,23 +10,26 @@
 #include <math.h>
 #include <vector>
 
-namespace Managers{
-    class CollisionManager{
+namespace Managers
+{
+    class CollisionManager
+    {
     private:
-        //ponteiro para Players, entidades móveis e estáticas
-        Entities::MovingEntities::Player* pPlayer1;
-        Entities::MovingEntities::Player* pPlayer2;
-        Lists::List<Entities::StaticEntities::Obstacle> ListObstacle;
-        Lists::List<Entities::MovingEntities::Enemy> ListEnemy;
+        Lists::List<Entities::MovingEntities::Player> playerList;
+        Lists::List<Entities::MovingEntities::Enemy> enemyList;
+        Lists::List<Entities::StaticEntities::Obstacle> obstacleList;
+    
     public:
-        CollisionManager(Entities::MovingEntities::Player* P1, Entities::MovingEntities::Player* P2, 
-        Lists::List<Entities::StaticEntities::Obstacle> LObstacle, Lists::List<Entities::MovingEntities::Enemy> LEnemy);
+        CollisionManager();
         ~CollisionManager();
         void Collision();
         void CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Math::CoordF Intersection);
         void CollisionPlayerEnemy(Entities::MovingEntities::Player *Player, Entities::MovingEntities::Enemy *Enemy, Math::CoordF Intersection);
         void CollisionObstacleEnemy(Entities::MovingEntities::Enemy *Enemy, Math::CoordF Intersection);
-        
+
+        void pushPlayer(Entities::MovingEntities::Player* player);
+		void pushEnemy(Entities::MovingEntities::Enemy* enemy);
+		void pushObstacle(Entities::StaticEntities::Obstacle* obstacle);    
         //void Clear();
     };
 }//namespace Managers

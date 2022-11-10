@@ -1,6 +1,6 @@
 #include "FirstLevel.hpp"
 
-#define PLAYER_PATH "../assets/personagem/naruto.png"
+#define PLAYER_PATH "../assets/personagem/correndo.png"
 #define TILE_PATH "../assets/mundo/tile_0000.png"
 
 
@@ -13,6 +13,8 @@ namespace Levels
         pPlayer->getHitBox()->setSize(sf::Vector2f(100, 100));
         pPlayer->getHitBox()->setPosition(sf::Vector2f(0, 0));
         pPlayer->getHitBox()->setTexture(pPlayer->getTexture());
+        pPlayer->setPos(sf::Vector2f(0, 300));
+
 
         // Temporary ground
         float obstacleSize = 50;
@@ -21,6 +23,7 @@ namespace Levels
             Entities::StaticEntities::Obstacle* pAuxObstacle = new Entities::StaticEntities::Obstacle(TILE_PATH, sf::Vector2f(obstacleSize, obstacleSize), sf::Vector2f(i * obstacleSize, HEIGHT - obstacleSize));
             Entities::Entity* pCastAux = static_cast<Entities::Entity*>(pAuxObstacle);
             entityList->pushEntity(pCastAux);
+            collisions->pushObstacle(pAuxObstacle);
         }
     }
 

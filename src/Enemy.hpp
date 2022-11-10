@@ -20,11 +20,6 @@ namespace Entities
 
             void execute();
 
-            int takeDamage();
-            int getDamage();
-            int getHp();
-
-
         };
     }// namespace MovingEntities
 
