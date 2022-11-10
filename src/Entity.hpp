@@ -5,7 +5,7 @@
 #include "Being.hpp"
 #include <vector>
 
-#define GRAVITY 1000
+#define GRAVITY 2000
 
 class GraphicsManager;
 
@@ -22,7 +22,6 @@ namespace Entities
 		~Entity();
 
 		virtual void execute() = 0;
-
-		void getPosition();
+		
 	};
 }// namespace Entities

@@ -67,4 +67,17 @@ namespace Managers
         return window;
     }
 
+
+    void GraphicsManager::updateDeltaTime()
+    {
+        deltaTime = clock.restart().asSeconds();
+
+    }
+
+
+    const float GraphicsManager::getDeltaTime() const
+    {
+        return deltaTime;
+    }
+
 }// namespace Managers

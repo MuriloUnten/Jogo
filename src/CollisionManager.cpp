@@ -33,7 +33,6 @@ namespace Managers
             Entities::MovingEntities::Player* pAuxPlayer = playerList[i];
             if(pAuxPlayer == NULL)
                 continue;
-            //std::cout << pAuxPlayer->getPos().y << std::endl;
 
             /* Collision between Player and Obstacles */
             for(int j = 0; j < obstacleList.getSize(); j++)
@@ -105,7 +104,7 @@ namespace Managers
     void CollisionManager::CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Math::CoordF Intersection)
     {
         /* Velocidade em y pode ser > 0 e mesmo assim a colisao ser em x, e vice versa */
-        std::cout << "entrando na CollisionPlayerObstacle\n";
+        //std::cout << "entrando na CollisionPlayerObstacle\n";
 
         sf::Vector2f coordinate;
         //collision in the Y direction

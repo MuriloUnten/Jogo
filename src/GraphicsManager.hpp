@@ -17,6 +17,10 @@ namespace Managers
 		static GraphicsManager* instance;
 		GraphicsManager();
 
+		sf::Clock clock;
+		float deltaTime;
+
+
 	public:
 		~GraphicsManager();
 
@@ -28,5 +32,8 @@ namespace Managers
 		void close();
 		void display();
 		sf::RenderWindow* getWindow();
+
+		void updateDeltaTime();
+		const float getDeltaTime() const;
 	};
 }// namespace Managers

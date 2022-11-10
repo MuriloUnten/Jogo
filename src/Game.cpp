@@ -25,6 +25,8 @@ void Game::execute()
     // Main loop
     while (graphics->isWindowOpen())
     {
+        graphics->updateDeltaTime();
+
         sf::Event event;
         while (graphics->getWindow()->pollEvent(event))
         {
