@@ -1,6 +1,6 @@
 #include "Game.hpp"
 
-#define BG_PATH "../assets/mundo/images.jpeg"
+#define BG_PATH "../assets/mundo/teste.jpg"
 
 
 Game::Game() :
@@ -25,6 +25,8 @@ void Game::execute()
     // Main loop
     while (graphics->isWindowOpen())
     {
+        graphics->updateDeltaTime();
+
         sf::Event event;
         while (graphics->getWindow()->pollEvent(event))
         {

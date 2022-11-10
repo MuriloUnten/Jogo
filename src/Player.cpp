@@ -43,7 +43,6 @@ namespace Entities
                 canJump = true;
             }
 
-            draw();
             // Provisory test for keys pressed. TODO Remove
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
@@ -53,26 +52,44 @@ namespace Entities
             else
                 attacking = false;
 
+
+            if(canJump)
+            {
+                vel.x = 0;
+            }
+
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
-                hitBox->move(sf::Vector2f(0, -1));
+                if(canJump)
+                {
+                    vel.y = -1000;
+                    jumping = true;
+                    canJump = false;
+                }
+                //hitBox->move(sf::Vector2f(0, -1));
             }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
-                hitBox->move(sf::Vector2f(-1, 0));
+                vel.x = -350;
+                //hitBox->move(sf::Vector2f(-1, 0));
             }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
             {
-                hitBox->move(sf::Vector2f(0, 1));
+                vel.y += 200 * pGraphics->getDeltaTime();
+                //hitBox->move(sf::Vector2f(0, 1));
             }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
             {
-                hitBox->move(sf::Vector2f(1, 0));
+                vel.x = 350;
+                //hitBox->move(sf::Vector2f(1, 0));
             }
 
+            update();
+
+            draw();
         }
         
         bool Player::isAttacking()

@@ -26,20 +26,26 @@ namespace Entities
         }
 
 
-        void MovingEntity::update(const double dt, sf::Vector2f newVel)
+        void MovingEntity::update()
         {
-            vel.x = newVel.x;
-            vel.y = newVel.y + GRAVITY * dt;
+            float dt = pGraphics->getDeltaTime();
+            std::cout << dt << std::endl;
+            vel.y += GRAVITY * dt;
 
             pos.x += vel.x * dt;
             pos.y += vel.y * dt;
+
+            hitBox->setPosition(pos);
         }
+
 
         void MovingEntity::setVel(sf::Vector2f velocity){
 
             vel.x = velocity.x;
             vel.y = velocity.y;
         }
+
+
         sf::Vector2f MovingEntity::getVel(){
             return vel;
         }

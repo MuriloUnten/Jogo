@@ -1,7 +1,7 @@
 #include "FirstLevel.hpp"
 
 #define PLAYER_PATH "../assets/personagem/correndo.png"
-#define TILE_PATH "../assets/mundo/tile_0000.png"
+#define TILE_PATH "../assets/mundo/plataform.png"
 
 
 namespace Levels
