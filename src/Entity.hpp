@@ -22,5 +22,7 @@ namespace Entities
 		~Entity();
 
 		virtual void execute() = 0;
+
+		void getPosition();
 	};
 }// namespace Entities

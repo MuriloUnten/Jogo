@@ -3,10 +3,12 @@
 #include "Coordinate.hpp"
 #include "Entity.hpp"
 #include "Player.hpp"
-#include <math.h>
 #include "Obstacle.hpp"
 #include "Enemy.hpp"
 #include "List.hpp"
+
+#include <math.h>
+#include <vector>
 
 namespace Managers{
     class CollisionManager{
@@ -21,11 +23,10 @@ namespace Managers{
         Lists::List<Entities::StaticEntities::Obstacle> LObstacle, Lists::List<Entities::MovingEntities::Enemy> LEnemy);
         ~CollisionManager();
         void Collision();
-        void CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Entities::StaticEntities::Obstacle *Obstacle, Math::CoordF Intersection);
+        void CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Math::CoordF Intersection);
         void CollisionPlayerEnemy(Entities::MovingEntities::Player *Player, Entities::MovingEntities::Enemy *Enemy, Math::CoordF Intersection);
-        void CollisionObstacleEnemy(Entities::MovingEntities::Enemy *Enemy, Entities::StaticEntities::Obstacle *Obstacle, Math::CoordF Intersection);
-        void MoveX(Entities::Entity *Entity, float x);
-        void MoveY(Entities::Entity *Entity, float y);
+        void CollisionObstacleEnemy(Entities::MovingEntities::Enemy *Enemy, Math::CoordF Intersection);
+        
         //void Clear();
     };
 }//namespace Managers

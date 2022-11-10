@@ -35,5 +35,14 @@ namespace Entities
             pos.y += vel.y * dt;
         }
 
+        void MovingEntity::setVel(sf::Vector2f velocity){
+
+            vel.x = velocity.x;
+            vel.y = velocity.y;
+        }
+        sf::Vector2f MovingEntity::getVel(){
+            return vel;
+        }
+
     }// namespace MovingEntities
 }// namespace Entities

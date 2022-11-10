@@ -11,7 +11,7 @@ namespace Entities
         class Enemy : public Character
         {
         private:
-
+            int damage;
 
         public:
             Enemy(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0), int hp=1);
@@ -19,6 +19,11 @@ namespace Entities
             ~Enemy();
 
             void execute();
+
+            int takeDamage();
+            int getDamage();
+            int getHp();
+
 
         };
     }// namespace MovingEntities

@@ -31,6 +31,7 @@ namespace Managers
     GraphicsManager::~GraphicsManager()
     {
         delete window;
+        window = NULL;
     }
 
 

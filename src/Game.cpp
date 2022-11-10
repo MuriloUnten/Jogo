@@ -14,7 +14,8 @@ firstLevel(BG_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player)
 
 Game::~Game()
 {
-
+    Managers::GraphicsManager::deleteInstance();
+    graphics = NULL;
 }
 
 

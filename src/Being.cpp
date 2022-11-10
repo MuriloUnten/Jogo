@@ -96,4 +96,6 @@ void Being::draw()
 {
 	if(pGraphics->isWindowOpen())
 		pGraphics->getWindow()->draw(*hitBox);
+	
+
 }
