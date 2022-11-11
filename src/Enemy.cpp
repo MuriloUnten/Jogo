@@ -26,7 +26,7 @@ namespace Entities
 
         void Enemy::execute()
         { 
-
+        
         }
     }// namespace MovingEntities
 }// namespace Entities
