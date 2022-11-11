@@ -134,6 +134,7 @@ namespace Managers
             coordinate= Player->getVel();
             coordinate.x = 0.0;
             Player->setVel(coordinate);
+     
         }
     }
 
@@ -141,6 +142,8 @@ namespace Managers
     void CollisionManager::CollisionPlayerEnemy(Entities::MovingEntities::Player *Player, Entities::MovingEntities::Enemy *Enemy, 
     Math::CoordF Intersection)
     {
+        sf::Vector2f coordinate;
+        
         //Player atacking
         if(Player->isAttacking())
         {
@@ -166,6 +169,37 @@ namespace Managers
         {
             //Player takes damage
             Player->takeDamage(Enemy->getDamage());
+            //collision in the Y direction
+            if(Intersection.y > Intersection.x)
+            {
+                //change position
+                coordinate = Player->getPos();
+                coordinate.y += Intersection.y;
+                Player->setPos(coordinate);
+                Player->getHitBox()->setPosition(coordinate);
+
+                //change velocity
+                coordinate = Player->getVel();
+                coordinate.y = 0.0;
+                Player->setVel(coordinate);
+        }
+
+        //collision in the x direction
+            else
+            {
+                //change position
+                coordinate = Player->getPos();
+                coordinate.x += Intersection.x;
+                Player->setPos(coordinate);
+                Player->getHitBox()->setPosition(coordinate);
+                
+                //change velocity
+                coordinate= Player->getVel();
+                coordinate.x = 0.0;
+                Player->setVel(coordinate);
+
+
+            }
         }
     }
 
@@ -203,21 +237,21 @@ namespace Managers
     }
 
 
-        void CollisionManager::pushPlayer(Entities::MovingEntities::Player* player)
-        {
-            playerList.pushElement(player);
-        }
+    void CollisionManager::pushPlayer(Entities::MovingEntities::Player* player)
+    {
+        playerList.pushElement(player);
+    }
 
 
-		void CollisionManager::pushEnemy(Entities::MovingEntities::Enemy* enemy)
-        {
-            enemyList.pushElement(enemy);
-        }
+    void CollisionManager::pushEnemy(Entities::MovingEntities::Enemy* enemy)
+    {
+        enemyList.pushElement(enemy);
+    }
 
 
-		void CollisionManager::pushObstacle(Entities::StaticEntities::Obstacle* obstacle)
-        {
-            obstacleList.pushElement(obstacle);
-        }
+    void CollisionManager::pushObstacle(Entities::StaticEntities::Obstacle* obstacle)
+    {
+        obstacleList.pushElement(obstacle);
+    }
 
 }//namespace Managers
