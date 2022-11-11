@@ -15,7 +15,7 @@ namespace Levels
         pPlayer->getHitBox()->setSize(sf::Vector2f(100, 100));
         pPlayer->getHitBox()->setPosition(sf::Vector2f(0, 0));
         pPlayer->getHitBox()->setTexture(pPlayer->getTexture());
-        pPlayer->setPos(sf::Vector2f(50, 300));
+        pPlayer->setPos(sf::Vector2f(50, 490));
 
 
         Entities::Entity* pEnemy = static_cast<Entities::Entity*>(enemy);
