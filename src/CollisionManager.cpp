@@ -34,6 +34,23 @@ namespace Managers
             if(pAuxPlayer == NULL)
                 continue;
 
+            /* Collision between Player and Enemy */
+            for(int j = 0; j < enemyList.getSize(); j++)
+            {
+                Enemy1 = enemyList[j];
+                //módulo da distância entre o centro das entidades
+                CenterDistance.x= fabs((pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2)- (Enemy1->getPos().x + Enemy1->getSize().x/2));
+                CenterDistance.y= fabs((pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2) - (Enemy1->getPos().y + Enemy1->getSize().y/2));
+                //distância que as extremidades mais próximas das entidades se econtram
+                Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2 + Enemy1->getSize().x/2);
+                Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Enemy1->getSize().y/2);
+                //verifica se houve colisão
+                if(Intersection.x < 0 && Intersection.y < 0)
+                {
+                    CollisionPlayerEnemy(pAuxPlayer, Enemy1, Intersection);
+                }
+            }
+
             /* Collision between Player and Obstacles */
             for(int j = 0; j < obstacleList.getSize(); j++)
             {
@@ -52,23 +69,6 @@ namespace Managers
                 if(Intersection.x < 0 && Intersection.y < 0)
                 {
                     CollisionPlayerObstacle(pAuxPlayer, Intersection);
-                }
-            }
-
-            /* Collision between Player and Enemy */
-            for(int j = 0; j < enemyList.getSize(); j++)
-            {
-                Enemy1 = enemyList[j];
-                //módulo da distância entre o centro das entidades
-                CenterDistance.x= fabs((pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2)- (Enemy1->getPos().x + Enemy1->getSize().x/2));
-                CenterDistance.y= fabs((pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2) - (Enemy1->getPos().y + Enemy1->getSize().y/2));
-                //distância que as extremidades mais próximas das entidades se econtram
-                Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2 + Enemy1->getSize().x/2);
-                Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Enemy1->getSize().y/2);
-                //verifica se houve colisão
-                if(Intersection.x < 0 && Intersection.y < 0)
-                {
-                    CollisionPlayerEnemy(pAuxPlayer, Enemy1, Intersection);
                 }
             }
         }
@@ -111,10 +111,16 @@ namespace Managers
         {
             //change position
             coordinate = Player->getPos();
-            coordinate.y += Intersection.y;
+            if(Player->getVel().y > 0)
+            {
+                coordinate.y += Intersection.y;
+            }
+            else
+            {
+                coordinate.y -= Intersection.y;
+            }
             Player->setPos(coordinate);
             Player->getHitBox()->setPosition(coordinate);
-
             //change velocity
             coordinate = Player->getVel();
             coordinate.y = 0.0;
@@ -169,12 +175,20 @@ namespace Managers
         {
             //Player takes damage
             Player->takeDamage(Enemy->getDamage());
+
             //collision in the Y direction
             if(Intersection.y > Intersection.x)
             {
                 //change position
                 coordinate = Player->getPos();
-                coordinate.y += Intersection.y;
+                if(Player->getVel().y > 0)
+                {
+                    coordinate.y += Intersection.y;
+                }
+                else
+                {
+                    coordinate.y -= Intersection.y;
+                }
                 Player->setPos(coordinate);
                 Player->getHitBox()->setPosition(coordinate);
 
@@ -182,14 +196,21 @@ namespace Managers
                 coordinate = Player->getVel();
                 coordinate.y = 0.0;
                 Player->setVel(coordinate);
-        }
-
-        //collision in the x direction
+            }
+            //collision in the x direction
             else
             {
                 //change position
                 coordinate = Player->getPos();
-                coordinate.x += Intersection.x;
+                if(Player->getVel().x < 0)
+                {
+                    coordinate.x -= Intersection.x;
+                }
+                else
+                {
+                    coordinate.x += Intersection.x;
+                }
+                
                 Player->setPos(coordinate);
                 Player->getHitBox()->setPosition(coordinate);
                 

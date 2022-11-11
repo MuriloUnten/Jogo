@@ -36,7 +36,7 @@ namespace Entities
             pos.y += vel.y * dt;
 
             hitBox->setPosition(pos);
-            std::cout << "VEL: " << vel.y << std::endl;
+            //std::cout << "VEL: " << vel.y << std::endl;
         }
 
 
