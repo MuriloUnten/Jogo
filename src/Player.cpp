@@ -35,7 +35,6 @@ namespace Entities
             if(vel.y != 0)
             {
                 jumping = true;
-                canJump = false;
             }
             else
             {
@@ -77,7 +76,7 @@ namespace Entities
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
             {
-                vel.y += 200 * pGraphics->getDeltaTime();
+                vel.y += 4000 * pGraphics->getDeltaTime();
                 //hitBox->move(sf::Vector2f(0, 1));
             }
 
