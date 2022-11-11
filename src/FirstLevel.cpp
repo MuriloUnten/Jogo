@@ -1,6 +1,6 @@
 #include "FirstLevel.hpp"
 
-#define PLAYER_PATH "../assets/personagem/kakashi.png"
+#define PLAYER_PATH "../assets/personagem/kakashi1.png"
 #define TILE_PATH "../assets/mundo/plataform.png"
 #define ENEMY_PATH "../assets/inimigos/enemy1.png"
 
@@ -12,10 +12,10 @@ namespace Levels
     enemy(new Entities::MovingEntities::Enemy(ENEMY_PATH, sf::Vector2f(100,100), sf::Vector2f(400,400) ))
     {
         pPlayer->loadTexture(PLAYER_PATH);
-        pPlayer->getHitBox()->setSize(sf::Vector2f(100, 100));
-        pPlayer->getHitBox()->setPosition(sf::Vector2f(50, 300));
+        pPlayer->getHitBox()->setSize(sf::Vector2f(100, 120));
+        pPlayer->getHitBox()->setPosition(sf::Vector2f(100, 300));
         pPlayer->getHitBox()->setTexture(pPlayer->getTexture());
-        pPlayer->setPos(sf::Vector2f(50, 300));
+        pPlayer->setPos(sf::Vector2f(100, 300));
 
 
         Entities::Entity* pEnemy = static_cast<Entities::Entity*>(enemy);
