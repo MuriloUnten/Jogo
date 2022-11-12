@@ -23,5 +23,4 @@ namespace Entities
 
 	}
 
-
 }// namespace Entities

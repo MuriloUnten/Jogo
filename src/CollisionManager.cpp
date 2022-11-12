@@ -34,27 +34,6 @@ namespace Managers
             if(pAuxPlayer == NULL)
                 continue;
 
-            /* Collision between Player and Obstacles */
-            for(int j = 0; j < obstacleList.getSize(); j++)
-            {
-                //módulo da distância entre o centro das entidades
-                Obstacle1 = obstacleList[j];
-                //CenterDistance.x = fabs(pAuxPlayer->getPos().x - Obstacle1->getPos().x);
-                //CenterDistance.y = fabs(pAuxPlayer->getPos().y - Obstacle1->getPos().y);
-                CenterDistance.x = fabs(pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2.0 - (Obstacle1->getPos().x + Obstacle1->getSize().x/2.0));
-                CenterDistance.y = fabs(pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2.0 - (Obstacle1->getPos().y + Obstacle1->getSize().y/2.0));
-                Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2.0 + Obstacle1->getSize().x/2.0);
-                Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2.0 + Obstacle1->getSize().y/2.0);
-                //distância que as extremidades mais próximas das entidades se econtram  
-                //Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2 + Obstacle1->getSize().x/2);
-                //Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Obstacle1->getSize().y/2);
-                //verifica se houve colisão
-                if(Intersection.x < 0 && Intersection.y < 0)
-                {
-                    CollisionPlayerObstacle(pAuxPlayer, Intersection);
-                }
-            }
-
             /* Collision between Player and Enemy */
             for(int j = 0; j < enemyList.getSize(); j++)
             {
@@ -69,6 +48,23 @@ namespace Managers
                 if(Intersection.x < 0 && Intersection.y < 0)
                 {
                     CollisionPlayerEnemy(pAuxPlayer, Enemy1, Intersection);
+                }
+            }
+
+            /* Collision between Player and Obstacles */
+            for(int j = 0; j < obstacleList.getSize(); j++)
+            {
+                //módulo da distância entre o centro das entidades
+                Obstacle1 = obstacleList[j];
+                CenterDistance.x = fabs(pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2 - (Obstacle1->getPos().x + Obstacle1->getSize().x/2));
+                CenterDistance.y = fabs(pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2 - (Obstacle1->getPos().y + Obstacle1->getSize().y/2));
+                Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2 + Obstacle1->getSize().x/2);
+                Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Obstacle1->getSize().y/2);
+                //distância que as extremidades mais próximas das entidades se econtram  
+                //verifica se houve colisão
+                if(Intersection.x < 0 && Intersection.y < 0)
+                {
+                    CollisionPlayerObstacle(pAuxPlayer,Obstacle1, Intersection);
                 }
             }
         }
@@ -93,49 +89,65 @@ namespace Managers
                 //verifica se houve colisão
                 if(Intersection.x < 0 && Intersection.y < 0)
                 {
-                    CollisionObstacleEnemy( Enemy1, Intersection);
+                    CollisionObstacleEnemy( Enemy1, Obstacle1, Intersection);
                 }
             }
         }
     }
 
     //altera velocidade na direção que bateu e reposiciona o jogador
-    void CollisionManager::CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Math::CoordF Intersection)
+    void CollisionManager::CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection)
     {
         /* Velocidade em y pode ser > 0 e mesmo assim a colisao ser em x, e vice versa */
         //std::cout << "entrando na CollisionPlayerObstacle\n";
-
         sf::Vector2f coordinate;
+        coordinate = Player->getPos();
         //collision in the Y direction
         if(Intersection.y > Intersection.x)
         {
+            if (Player->getPos().y < obstacle->getPos().y)
+            {
+                //change position
+                coordinate.y += Intersection.y;
+                Player->setPos(coordinate);
+                //change velocity
+                coordinate = Player->getVel();
+                coordinate.y = 0.0;
+            }
             //change position
-            coordinate = Player->getPos();
-            coordinate.y += Intersection.y;
-            Player->setPos(coordinate);
-            Player->getHitBox()->setPosition(coordinate);
-
-            //change velocity
-            coordinate = Player->getVel();
-            coordinate.y = 0.0;
-            Player->setVel(coordinate);
+            else
+            {
+                coordinate.y -= Intersection.y;
+                Player->setPos(coordinate);
+                //change velocity
+                coordinate = Player->getVel();
+                coordinate.y = 0.0;
+            }
+            
         }
-
         //collision in the x direction
         else
         {
-            //change position
-            coordinate = Player->getPos();
-            coordinate.x += Intersection.x;
-            Player->setPos(coordinate);
-            Player->getHitBox()->setPosition(coordinate);
-            
-            //change velocity
-            coordinate= Player->getVel();
-            coordinate.x = 0.0;
-            Player->setVel(coordinate);
-     
+            if (Player->getPos().x < obstacle->getPos().x)
+                {
+                    //change position
+                    coordinate.x += Intersection.x;
+                    Player->setPos(coordinate);
+                    //change velocity
+                    coordinate = Player->getVel();
+                    coordinate.x = 0.0;
+                }
+                //change position
+                else
+                {
+                    coordinate.x -= Intersection.x;
+                    Player->setPos(coordinate);
+                    //change velocity
+                    coordinate = Player->getVel();
+                    coordinate.x = 0.0;
+                }
         }
+        Player->setVel(coordinate);
     }
 
     //dano no jogador, a menos que ele esja atacando
@@ -170,70 +182,108 @@ namespace Managers
             //Player takes damage
             Player->takeDamage(Enemy->getDamage());
             //collision in the Y direction
+            sf::Vector2f coordinate;
+            coordinate = Player->getPos();
+            //collision in the Y direction
             if(Intersection.y > Intersection.x)
             {
+                if (Player->getPos().y < Enemy->getPos().y)
+                {
+                    //change position
+                    coordinate.y += Intersection.y;
+                    Player->setPos(coordinate);
+                    //change velocity
+                    coordinate = Player->getVel();
+                    coordinate.y = 0.0;
+                }
                 //change position
-                coordinate = Player->getPos();
-                coordinate.y += Intersection.y * (-(Player->getVel().y > 0) + 1);
-                Player->setPos(coordinate);
-                Player->getHitBox()->setPosition(coordinate);
-
-                //change velocity
-                coordinate = Player->getVel();
-                coordinate.y = 0.0;
-                Player->setVel(coordinate);
+                else
+                {
+                    coordinate.y -= Intersection.y;
+                    Player->setPos(coordinate);
+                    //change velocity
+                    coordinate = Player->getVel();
+                    coordinate.y = 0.0;
+                }
+                
             }
-
             //collision in the x direction
             else
             {
-                //change position
-                coordinate = Player->getPos();
-                coordinate.x += Intersection.x * (-(Player->getVel().x > 0) + 1);
-                Player->setPos(coordinate);
-                Player->getHitBox()->setPosition(coordinate);
-                
-                //change velocity
-                coordinate= Player->getVel();
-                coordinate.x = 0.0;
-                Player->setVel(coordinate);
-
-
+                if (Player->getPos().x < Enemy->getPos().x)
+                    {
+                        //change position
+                        coordinate.x += Intersection.x;
+                        Player->setPos(coordinate);
+                        //change velocity
+                        coordinate = Player->getVel();
+                        coordinate.x = 0.0;
+                    }
+                    //change position
+                    else
+                    {
+                        coordinate.x -= Intersection.x;
+                        Player->setPos(coordinate);
+                        //change velocity
+                        coordinate = Player->getVel();
+                        coordinate.x = 0.0;
+                    }
             }
+            Player->setVel(coordinate);
         }
     }
 
     ////altera velocidade na direção que bateu e reposiciona o inimigo
-    void CollisionManager::CollisionObstacleEnemy(Entities::MovingEntities::Enemy *Enemy , Math::CoordF Intersection)
+    void CollisionManager::CollisionObstacleEnemy(Entities::MovingEntities::Enemy* Enemy, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection)
     {
         sf::Vector2f coordinate;
+        coordinate = Enemy->getPos();
         //collision in the Y direction
         if(Intersection.y > Intersection.x)
         {
+            if (Enemy->getPos().y < obstacle->getPos().y)
+            {
+                //change position
+                coordinate.y += Intersection.y;
+                Enemy->setPos(coordinate);
+                //change velocity
+                coordinate = Enemy->getVel();
+                coordinate.y = 0.0;
+            }
             //change position
-            coordinate = Enemy->getPos();
-            coordinate.y += Intersection.y;
-            Enemy->setPos(coordinate);
-
-            //change velocity
-            coordinate = Enemy->getVel();
-            coordinate.y = 0.0;
-            Enemy->setVel(coordinate);
+            else
+            {
+                coordinate.y -= Intersection.y;
+                Enemy->setPos(coordinate);
+                //change velocity
+                coordinate = Enemy->getVel();
+                coordinate.y = 0.0;
+            }
+            
         }
-
         //collision in the x direction
         else
         {
-            //change position
-            coordinate = Enemy->getPos();
-            coordinate.x += Intersection.x;
-            Enemy->setPos(coordinate);
-            
-            //change velocity
-            coordinate= Enemy->getVel();
-            coordinate.x = 0.0;
-            Enemy->setVel(coordinate);
+            if (Enemy->getPos().x < obstacle->getPos().x)
+                {
+                    //change position
+                    coordinate.x += Intersection.x;
+                    Enemy->setPos(coordinate);
+                    //change velocity
+                    coordinate = Enemy->getVel();
+                    coordinate.x = 0.0;
+                }
+                //change position
+                else
+                {
+                    coordinate.x -= Intersection.x;
+                    Enemy->setPos(coordinate);
+                    //change velocity
+                    coordinate = Enemy->getVel();
+                    coordinate.x = 0.0;
+                }
         }
+        Enemy->setVel(coordinate);
     }
 
 

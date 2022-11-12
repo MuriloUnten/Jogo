@@ -23,9 +23,10 @@ namespace Managers
         CollisionManager();
         ~CollisionManager();
         void Collision();
-        void CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Math::CoordF Intersection);
+        void CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection);
         void CollisionPlayerEnemy(Entities::MovingEntities::Player *Player, Entities::MovingEntities::Enemy *Enemy, Math::CoordF Intersection);
-        void CollisionObstacleEnemy(Entities::MovingEntities::Enemy *Enemy, Math::CoordF Intersection);
+        void CollisionObstacleEnemy(Entities::MovingEntities::Enemy *Enemy,Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection);
+
 
         void pushPlayer(Entities::MovingEntities::Player* player);
 		void pushEnemy(Entities::MovingEntities::Enemy* enemy);
