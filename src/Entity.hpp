@@ -22,6 +22,9 @@ namespace Entities
 		~Entity();
 
 		virtual void execute() = 0;
+
+		void setVel(sf::Vector2f velocity);
+        sf::Vector2f getVel();
 		
 	};
 }// namespace Entities
