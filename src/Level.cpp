@@ -35,6 +35,8 @@ namespace Levels
         //update delta time
         draw();
 
+        //std::cout << pPlayer->getPos().x << "   " << pPlayer->getPos().y << std::endl;
+
         // TODO Fix. 1st move, 2nd collide, 3rd draw
         for(int i = 0; i < entityList->getSize(); i++)
             entityList->getList()[i]->execute();
@@ -43,6 +45,8 @@ namespace Levels
         
         for(int i = 0; i < entityList->getSize(); i++)
             entityList->getList()[i]->draw();
+        
+        //std::cout << pPlayer->getPos().x << "   " << pPlayer->getPos().y << std::endl;
 
     }
 

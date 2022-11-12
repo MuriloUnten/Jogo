@@ -71,6 +71,8 @@ namespace Managers
     void GraphicsManager::updateDeltaTime()
     {
         deltaTime = clock.restart().asSeconds();
+        if(deltaTime > 0.1f)
+            deltaTime = 0.1f;
 
     }
 

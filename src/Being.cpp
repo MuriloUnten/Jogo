@@ -6,8 +6,8 @@ Being::Being(std::string fileName, sf::Vector2f size, sf::Vector2f position)
 	hitBox = new sf::RectangleShape;
 	texture = new sf::Texture;
 	loadTexture(fileName);
+	setPos(position);
 	hitBox->setSize(size);
-	hitBox->setPosition(position);
 	hitBox->setTexture(texture);
 
 	id = -1;

@@ -62,9 +62,10 @@ namespace Managers
                 Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Obstacle1->getSize().y/2);
                 //distância que as extremidades mais próximas das entidades se econtram  
                 //verifica se houve colisão
+                //std::cout << "x: " << Intersection.x << "   y: " << Intersection.y << std::endl;
                 if(Intersection.x < 0 && Intersection.y < 0)
                 {
-                    CollisionPlayerObstacle(pAuxPlayer,Obstacle1, Intersection);
+                    CollisionPlayerObstacle(pAuxPlayer, Obstacle1, Intersection);
                 }
             }
         }
@@ -99,7 +100,7 @@ namespace Managers
     void CollisionManager::CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection)
     {
         /* Velocidade em y pode ser > 0 e mesmo assim a colisao ser em x, e vice versa */
-        //std::cout << "entrando na CollisionPlayerObstacle\n";
+        std::cout << "entrando na CollisionPlayerObstacle\n";
         sf::Vector2f coordinate;
         coordinate = Player->getPos();
         //collision in the Y direction
@@ -113,6 +114,7 @@ namespace Managers
                 //change velocity
                 coordinate = Player->getVel();
                 coordinate.y = 0.0;
+                Player->setVel(coordinate);
             }
             //change position
             else
