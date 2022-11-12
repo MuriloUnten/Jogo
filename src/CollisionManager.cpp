@@ -21,8 +21,8 @@ namespace Managers
     {
         /* Talvez ter lista de players, para nao precisar ficar testando muita coisa */
 
-        Entities::StaticEntities::Obstacle *Obstacle1=nullptr;
-        Entities::MovingEntities::Enemy *Enemy1= nullptr;
+        Entities::StaticEntities::Obstacle *Obstacle1 = nullptr;
+        Entities::MovingEntities::Enemy *Enemy1 = nullptr;
 
         Math::Coordinate<float> Intersection;
         Math::Coordinate<float> CenterDistance;
@@ -41,10 +41,10 @@ namespace Managers
                 Obstacle1 = obstacleList[j];
                 //CenterDistance.x = fabs(pAuxPlayer->getPos().x - Obstacle1->getPos().x);
                 //CenterDistance.y = fabs(pAuxPlayer->getPos().y - Obstacle1->getPos().y);
-                CenterDistance.x = fabs(pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2 - (Obstacle1->getPos().x + Obstacle1->getSize().x/2));
-                CenterDistance.y = fabs(pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2 - (Obstacle1->getPos().y + Obstacle1->getSize().y/2));
-                Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2 + Obstacle1->getSize().x/2);
-                Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Obstacle1->getSize().y/2);
+                CenterDistance.x = fabs(pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2.0 - (Obstacle1->getPos().x + Obstacle1->getSize().x/2.0));
+                CenterDistance.y = fabs(pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2.0 - (Obstacle1->getPos().y + Obstacle1->getSize().y/2.0));
+                Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2.0 + Obstacle1->getSize().x/2.0);
+                Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2.0 + Obstacle1->getSize().y/2.0);
                 //distância que as extremidades mais próximas das entidades se econtram  
                 //Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2 + Obstacle1->getSize().x/2);
                 //Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Obstacle1->getSize().y/2);
@@ -60,11 +60,11 @@ namespace Managers
             {
                 Enemy1 = enemyList[j];
                 //módulo da distância entre o centro das entidades
-                CenterDistance.x= fabs((pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2)- (Enemy1->getPos().x + Enemy1->getSize().x/2));
-                CenterDistance.y= fabs((pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2) - (Enemy1->getPos().y + Enemy1->getSize().y/2));
+                CenterDistance.x= fabs((pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2.0)- (Enemy1->getPos().x + Enemy1->getSize().x/2.0));
+                CenterDistance.y= fabs((pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2.0) - (Enemy1->getPos().y + Enemy1->getSize().y/2.0));
                 //distância que as extremidades mais próximas das entidades se econtram
-                Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2 + Enemy1->getSize().x/2);
-                Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Enemy1->getSize().y/2);
+                Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2.0 + Enemy1->getSize().x/2.0);
+                Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2.0 + Enemy1->getSize().y/2.0);
                 //verifica se houve colisão
                 if(Intersection.x < 0 && Intersection.y < 0)
                 {
@@ -86,10 +86,10 @@ namespace Managers
                 //distância que as extremidades mais próximas das entidades se econtram  
                 //Intersection.x= CenterDistance.x - (Obstacle1->getSize().x/2 + Enemy1->getSize().x/2);
                 //Intersection.y= CenterDistance.y - (Obstacle1->getSize().y/2 + Enemy1->getSize().y/2);
-                CenterDistance.x = fabs(Enemy1->getPos().x + Enemy1->getSize().x/2 - (Obstacle1->getPos().x + Obstacle1->getSize().x/2));
-                CenterDistance.y = fabs(Enemy1->getPos().y + Enemy1->getSize().y/2 - (Obstacle1->getPos().y + Obstacle1->getSize().y/2));
-                Intersection.x = CenterDistance.x - (Enemy1->getSize().x/2 + Obstacle1->getSize().x/2);
-                Intersection.y = CenterDistance.y - (Enemy1->getSize().y/2 + Obstacle1->getSize().y/2);
+                CenterDistance.x = fabs(Enemy1->getPos().x + Enemy1->getSize().x/2.0 - (Obstacle1->getPos().x + Obstacle1->getSize().x/2.0));
+                CenterDistance.y = fabs(Enemy1->getPos().y + Enemy1->getSize().y/2.0 - (Obstacle1->getPos().y + Obstacle1->getSize().y/2.0));
+                Intersection.x = CenterDistance.x - (Enemy1->getSize().x/2.0 + Obstacle1->getSize().x/2.0);
+                Intersection.y = CenterDistance.y - (Enemy1->getSize().y/2.0 + Obstacle1->getSize().y/2.0);
                 //verifica se houve colisão
                 if(Intersection.x < 0 && Intersection.y < 0)
                 {
@@ -174,7 +174,7 @@ namespace Managers
             {
                 //change position
                 coordinate = Player->getPos();
-                coordinate.y += Intersection.y;
+                coordinate.y += Intersection.y * (-(Player->getVel().y > 0) + 1);
                 Player->setPos(coordinate);
                 Player->getHitBox()->setPosition(coordinate);
 
@@ -182,14 +182,14 @@ namespace Managers
                 coordinate = Player->getVel();
                 coordinate.y = 0.0;
                 Player->setVel(coordinate);
-        }
+            }
 
-        //collision in the x direction
+            //collision in the x direction
             else
             {
                 //change position
                 coordinate = Player->getPos();
-                coordinate.x += Intersection.x;
+                coordinate.x += Intersection.x * (-(Player->getVel().x > 0) + 1);
                 Player->setPos(coordinate);
                 Player->getHitBox()->setPosition(coordinate);
                 
@@ -253,5 +253,21 @@ namespace Managers
     {
         obstacleList.pushElement(obstacle);
     }
+
+
+
+
+/* teste de nova implementação a partir daqui */
+
+    
+
+
+
+
+
+
+
+
+
 
 }//namespace Managers

@@ -9,13 +9,12 @@ namespace Levels
 {
     FirstLevel::FirstLevel(std::string fileName, sf::Vector2f size, sf::Vector2f position, Entities::MovingEntities::Player* player):
     Level(fileName, size, position, player),
-    enemy(new Entities::MovingEntities::Enemy(ENEMY_PATH, sf::Vector2f(100,100), sf::Vector2f(400,400) ))
+    enemy(new Entities::MovingEntities::Enemy(ENEMY_PATH, sf::Vector2f(100,100), sf::Vector2f(400,490)))
     {
         pPlayer->loadTexture(PLAYER_PATH);
         pPlayer->getHitBox()->setSize(sf::Vector2f(100, 100));
-        pPlayer->getHitBox()->setPosition(sf::Vector2f(0, 0));
         pPlayer->getHitBox()->setTexture(pPlayer->getTexture());
-        pPlayer->setPos(sf::Vector2f(10, 490));
+        pPlayer->setPos(sf::Vector2f(200, 490));
 
 
         Entities::Entity* pEnemy = static_cast<Entities::Entity*>(enemy);

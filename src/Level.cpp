@@ -38,7 +38,9 @@ namespace Levels
         // TODO Fix. 1st move, 2nd collide, 3rd draw
         for(int i = 0; i < entityList->getSize(); i++)
             entityList->getList()[i]->execute();
+            
         collisions->Collision();
+        
         for(int i = 0; i < entityList->getSize(); i++)
             entityList->getList()[i]->draw();
 

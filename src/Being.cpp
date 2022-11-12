@@ -48,13 +48,14 @@ const int Being::getId() const
 
 void Being::setPos(const sf::Vector2f position)
 {
+	pos = position;
 	hitBox->setPosition(position);
 }
 
 
 sf::Vector2f Being::getPos() const
 {
-	return hitBox->getPosition();
+	return pos;
 }
 
 
@@ -96,6 +97,4 @@ void Being::draw()
 {
 	if(pGraphics->isWindowOpen())
 		pGraphics->getWindow()->draw(*hitBox);
-	
-
 }

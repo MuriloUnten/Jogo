@@ -18,6 +18,8 @@ namespace Entities
             Character();
             ~Character();
 
+            virtual void execute() = 0;
+
             void takeDamage(const int damageTaken=1);
             const int getHp() const;
 
