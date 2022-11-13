@@ -115,6 +115,7 @@ namespace Managers
                 coordinate = Player->getVel();
                 coordinate.y = 0.0;
                 Player->setVel(coordinate);
+                Player->setCanJump(true);
             }
             //change position
             else

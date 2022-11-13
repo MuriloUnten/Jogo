@@ -39,7 +39,6 @@ namespace Entities
             else
             {
                 jumping = false;
-                canJump = true;
             }
 
             // Provisory test for keys pressed. TODO Remove
@@ -88,11 +87,6 @@ namespace Entities
 
             update();
 
-        }
-        
-        bool Player::isAttacking()
-        {
-            return attacking;
         }
 
     }// namespace MovingEntities

@@ -10,6 +10,7 @@ namespace Entities
         {
             hp = health;
             damage = newDamage;
+            canJump = true;
         }
 
 
@@ -18,6 +19,7 @@ namespace Entities
         {
             hp = 3;
             damage = 1;
+            canJump = true;
         }
 
 
@@ -43,6 +45,18 @@ namespace Entities
         const int Character::getDamage() const
         {
             return damage;
+        }
+
+
+        const bool Character::isAttacking() const
+        {
+            return attacking;
+        }
+
+
+        void Character::setCanJump(const bool jump)
+        {
+            canJump = jump;
         }
 
     }// namespace MovingEntities
