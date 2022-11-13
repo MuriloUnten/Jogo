@@ -28,7 +28,6 @@ namespace Entities
 
         void Enemy::execute()
         { 
-
             /*if((pos.x < 200) || (pos.x > 700) )
             {
                 vel.x*=-1;

@@ -18,6 +18,7 @@ namespace Entities
             bool attacking;
             bool canJump;
             bool jumping;
+            bool movingInX;
 
         public:
             Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health=3, int newDamage=1);

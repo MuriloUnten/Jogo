@@ -100,12 +100,12 @@ namespace Managers
     void CollisionManager::CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection)
     {
         /* Velocidade em y pode ser > 0 e mesmo assim a colisao ser em x, e vice versa */
-        std::cout << "entrando na CollisionPlayerObstacle\n";
         sf::Vector2f coordinate;
         coordinate = Player->getPos();
         //collision in the Y direction
         if(Intersection.y > Intersection.x)
         {
+            //std::cout << "entrando na CollisionPlayerObstacle em Yasdsadsadsadsad.\n";
             if (Player->getPos().y < obstacle->getPos().y)
             {
                 //change position
@@ -131,6 +131,7 @@ namespace Managers
         //collision in the x direction
         else
         {
+            //std::cout << "entrando na CollisionPlayerObstacle em X.\n";
             if (Player->getPos().x < obstacle->getPos().x)
                 {
                     //change position
@@ -151,6 +152,7 @@ namespace Managers
                 }
         }
         Player->setVel(coordinate);
+        //std::cout << Player->getVel().x << "   " << Player->getVel().y << std::endl;
     }
 
     //dano no jogador, a menos que ele esja atacando
@@ -198,6 +200,7 @@ namespace Managers
                     //change velocity
                     coordinate = Player->getVel();
                     coordinate.y = 0.0;
+                    Player->setCanJump(true);
                 }
                 //change position
                 else
@@ -207,6 +210,7 @@ namespace Managers
                     //change velocity
                     coordinate = Player->getVel();
                     coordinate.y = 0.0;
+                    Enemy->setCanJump(true);
                 }
                 
             }
@@ -252,6 +256,7 @@ namespace Managers
                 //change velocity
                 coordinate = Enemy->getVel();
                 coordinate.y = 0.0;
+                Enemy->setCanJump(true);
             }
             //change position
             else
