@@ -1,8 +1,10 @@
 #include "Being.hpp"
 
+
+Managers::GraphicsManager* pGraphics = Managers::GraphicsManager::getInstance();
+
 Being::Being(std::string fileName, sf::Vector2f size, sf::Vector2f position)
 {
-	pGraphics = Managers::GraphicsManager::getInstance();
 	hitBox = new sf::RectangleShape;
 	texture = new sf::Texture;
 	loadTexture(fileName);
@@ -16,7 +18,6 @@ Being::Being(std::string fileName, sf::Vector2f size, sf::Vector2f position)
 
 Being::Being()
 {
-	pGraphics = Managers::GraphicsManager::getInstance();
 	id = -1;
 	hitBox = new sf::RectangleShape;
 	texture = new sf::Texture;
