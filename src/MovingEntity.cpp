@@ -1,5 +1,6 @@
 #include "MovingEntity.hpp"
 
+#define MAX_VELOCITY 500
 
 namespace Entities
 {
@@ -9,14 +10,14 @@ namespace Entities
         Entity(fileName, size, position)
         {
             vel = sf::Vector2f(0, 0);
-            acc = sf::Vector2f(0, 0);
+            acc = sf::Vector2f(0, GRAVITY);
         }
 
 
         MovingEntity::MovingEntity()
         {
             vel = sf::Vector2f(0, 0);
-            acc = sf::Vector2f(0, 0);     
+            acc = sf::Vector2f(0, GRAVITY);
         }
 
 
@@ -30,10 +31,20 @@ namespace Entities
         {
             float dt = pGraphics->getDeltaTime();
 
-            vel.y += GRAVITY * dt;
+            pos.x += (vel.x * dt);
+            pos.y += (vel.y * dt) + (acc.y * dt * dt) / 2;
 
-            pos.x += vel.x * dt;
-            pos.y += vel.y * dt;
+            //vel.x += acc.x * dt;
+            if(vel.x > MAX_VELOCITY)
+                vel.x = MAX_VELOCITY;
+            else if(vel.x < -MAX_VELOCITY)
+                vel.x = -MAX_VELOCITY;
+            
+            vel.y += acc.y * dt;
+            if(vel.y > 2 * MAX_VELOCITY)
+            {
+                vel.y = 2 * MAX_VELOCITY;
+            }
 
             hitBox->setPosition(pos);
             //std::cout << "VEL: " << vel.y << std::endl;

@@ -13,6 +13,13 @@ namespace Entities
             int hp;
             int damage;
 
+            bool walking;
+            bool canAttack;
+            bool attacking;
+            bool canJump;
+            bool jumping;
+            bool movingInX;
+
         public:
             Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health=3, int newDamage=1);
             Character();
@@ -24,7 +31,10 @@ namespace Entities
             const int getHp() const;
 
             const int getDamage() const;
-        
+
+            const bool isAttacking() const;
+
+            void setCanJump(const bool jump);
         };
 
     }// namespace MovingEntities

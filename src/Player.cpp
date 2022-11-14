@@ -1,5 +1,6 @@
 #include "Player.hpp"
 
+#include <math.h>
 
 namespace Entities
 {
@@ -26,6 +27,7 @@ namespace Entities
 
         void Player::execute()
         { 
+            std::cout << "X: " << pos.x << "   Y: " << pos.y << std::endl;
             // TODO Rever
             if(vel.x != 0 && !jumping)
                 walking = true;
@@ -39,7 +41,6 @@ namespace Entities
             else
             {
                 jumping = false;
-                canJump = true;
             }
 
             // Provisory test for keys pressed. TODO Remove
@@ -51,12 +52,6 @@ namespace Entities
             else
                 attacking = false;
 
-
-            if(canJump)
-            {
-                vel.x = 0;
-            }
-
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
                 if(canJump)
@@ -65,34 +60,28 @@ namespace Entities
                     jumping = true;
                     canJump = false;
                 }
-                //hitBox->move(sf::Vector2f(0, -1));
             }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
                 vel.x = -350;
-                //hitBox->move(sf::Vector2f(-1, 0));
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+            {
+                vel.x = 350;
+            }
+            else
+            {
+                vel.x = 0;
             }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
             {
                 vel.y += 4000 * pGraphics->getDeltaTime();
-                //hitBox->move(sf::Vector2f(0, 1));
-            }
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            {
-                vel.x = 350;
-                //hitBox->move(sf::Vector2f(1, 0));
             }
 
             update();
 
-        }
-        
-        bool Player::isAttacking()
-        {
-            return attacking;
         }
 
     }// namespace MovingEntities
