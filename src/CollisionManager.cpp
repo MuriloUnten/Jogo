@@ -62,7 +62,6 @@ namespace Managers
                 Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Obstacle1->getSize().y/2);
                 //distância que as extremidades mais próximas das entidades se econtram  
                 //verifica se houve colisão
-                //std::cout << "x: " << Intersection.x << "   y: " << Intersection.y << std::endl;
                 if(Intersection.x < 0 && Intersection.y < 0)
                 {
                     CollisionPlayerObstacle(pAuxPlayer, Obstacle1, Intersection);
@@ -105,7 +104,6 @@ namespace Managers
         //collision in the Y direction
         if(Intersection.y > Intersection.x)
         {
-            //std::cout << "entrando na CollisionPlayerObstacle em Yasdsadsadsadsad.\n";
             if (Player->getPos().y < obstacle->getPos().y)
             {
                 //change position
@@ -131,7 +129,6 @@ namespace Managers
         //collision in the x direction
         else
         {
-            //std::cout << "entrando na CollisionPlayerObstacle em X.\n";
             if (Player->getPos().x < obstacle->getPos().x)
                 {
                     //change position
@@ -152,7 +149,6 @@ namespace Managers
                 }
         }
         Player->setVel(coordinate);
-        //std::cout << Player->getVel().x << "   " << Player->getVel().y << std::endl;
     }
 
     //dano no jogador, a menos que ele esja atacando

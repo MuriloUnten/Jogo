@@ -9,7 +9,7 @@ class Being
 {
 protected:
 	int id;
-	static Managers::GraphicsManager* pGraphics;
+	Managers::GraphicsManager* pGraphics;
 	sf::Vector2f pos;
 	sf::RectangleShape* hitBox;
 	sf::Texture* texture;
@@ -32,6 +32,8 @@ public:
 	sf::Texture* getTexture() const;
 	
 	sf::RectangleShape* getHitBox() const;
+
+	static void setInstance();
 	
 	void draw();
 	virtual void execute() = 0;

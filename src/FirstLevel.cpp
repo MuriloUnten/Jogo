@@ -51,6 +51,8 @@ namespace Levels
             entityList->pushEntity(pCastAux);
             collisions->pushObstacle(pAuxObstacle);
         }
+
+        //Being::setInstance();
     }
 
 

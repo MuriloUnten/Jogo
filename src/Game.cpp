@@ -22,11 +22,11 @@ Game::~Game()
 /* Runs the core of the program */
 void Game::execute()
 {
+    std::cout << "Game.graphics: "<< graphics << std::endl; // TODO remover
     // Main loop
     while (graphics->isWindowOpen())
     {
         graphics->updateDeltaTime();
-        //std::cout << graphics->getDeltaTime() << std::endl;
 
         sf::Event event;
         while (graphics->getWindow()->pollEvent(event))
