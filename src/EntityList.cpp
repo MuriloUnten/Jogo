@@ -46,4 +46,28 @@ namespace Lists
 	{
 		return (entityList.getSize());
 	}
+
+
+	/* Iterates through the list, calling the execute() method of all entities */
+	void EntityList::execute()
+	{
+		List<Entities::Entity>::Element<Entities::Entity>* iterator = entityList.getHead();
+		while(iterator != NULL)
+		{
+			iterator->getData()->execute();
+			iterator = iterator->getNext();
+		}
+	}
+
+	/* Iterates through the list, calling the draw() method of all entities */
+	void EntityList::draw()
+	{
+		List<Entities::Entity>::Element<Entities::Entity>* iterator = entityList.getHead();
+		while(iterator != NULL)
+		{
+			iterator->getData()->draw();
+			iterator = iterator->getNext();
+		}
+	}
+
 }// namespace Lists

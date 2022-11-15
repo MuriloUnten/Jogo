@@ -27,7 +27,6 @@ namespace Entities
 
         void Player::execute()
         { 
-            std::cout << "X: " << pos.x << "   Y: " << pos.y << std::endl;
             // TODO Rever
             if(vel.x != 0 && !jumping)
                 walking = true;

@@ -8,6 +8,7 @@ graphics(Managers::GraphicsManager::getInstance()),
 player(),
 firstLevel(BG_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player)
 {
+    Being::setInstance();
 	execute();
 }
 
@@ -26,7 +27,6 @@ void Game::execute()
     while (graphics->isWindowOpen())
     {
         graphics->updateDeltaTime();
-        //std::cout << graphics->getDeltaTime() << std::endl;
 
         sf::Event event;
         while (graphics->getWindow()->pollEvent(event))

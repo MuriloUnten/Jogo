@@ -6,6 +6,7 @@
 #include "FirstLevel.hpp"
 #include "GraphicsManager.hpp"
 #include "EntityList.hpp"
+#include "Being.hpp"
 #include "Entity.hpp"
 #include "Character.hpp"
 #include "Player.hpp"

@@ -7,7 +7,7 @@ namespace Lists
 	template <class TL>
 	class List
 	{
-	private:
+	public:
 		template <class TE>
 		class Element
 		{
@@ -68,7 +68,7 @@ namespace Lists
 		List();
 		~List();
 
-		Element<TL>* getHead() const; // The only way you're getting head.
+		Element<TL>* getHead() const;
 		TL* operator[](int index);
 		void pushElement(TL* newData);
 		TL* pop(int index);
@@ -129,7 +129,7 @@ namespace Lists
 		Element<TL>* element = new Element<TL>();
 		element->setData(newData);
 
-		if (head == NULL)
+		if(head == NULL)
 		{
 			head = element;
 			tail = element;

@@ -32,6 +32,8 @@ public:
 	sf::Texture* getTexture() const;
 	
 	sf::RectangleShape* getHitBox() const;
+
+	static void setInstance();
 	
 	void draw();
 	virtual void execute() = 0;
