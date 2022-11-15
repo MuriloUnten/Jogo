@@ -11,7 +11,6 @@ namespace Entities
         {
         protected:
             int hp;
-            int damage;
 
             bool walking;
             bool canAttack;

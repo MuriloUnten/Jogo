@@ -1,8 +1,11 @@
 #include "FirstLevel.hpp"
+#include <cstdlib>
 
 #define PLAYER_PATH "../assets/personagem/kakashi1.png"
-#define TILE_PATH "../assets/mundo/plataform.png"
 #define ENEMY_PATH "../assets/inimigos/enemy1.png"
+#define CACTUS_PATH "../assets/mundo/ground2_tile.png"
+#define GROUND2_PATH "../assets/mundo/ground_tile.png" 
+#define GROUND3_PATH "../assets/mundo/ground2_tile.png"
 
 
 namespace Levels
@@ -21,36 +24,62 @@ namespace Levels
         entityList->pushEntity(pEnemy);
         collisions->pushEnemy(enemy);
 
-        // Temporary ground
-        float obstacleSize = 50;
-        for(int i = 0; i < int(WIDTH / obstacleSize); i++)
+        //Construindo fase
+        FILE *file;
+        int ch;
+        float obstacleSize = 20.0;
+        float width =0.0, height=0.0;
+        file = fopen("Firstlevel.txt", "r");
+
+        while((ch = fgetc(file)) != EOF)
         {
-            Entities::StaticEntities::Obstacle* pAuxObstacle = new Entities::StaticEntities::Obstacle(TILE_PATH, sf::Vector2f(obstacleSize, obstacleSize), sf::Vector2f(i * obstacleSize, HEIGHT - obstacleSize));
-            Entities::Entity* pCastAux = static_cast<Entities::Entity*>(pAuxObstacle);
-            entityList->pushEntity(pCastAux);
-            collisions->pushObstacle(pAuxObstacle);
+            //cactus
+            if(ch == 1)
+            {
+                Entities::StaticEntities::Cactus *pAuxObstacle = new Entities::StaticEntities::Cactus(CACTUS_PATH, sf::Vector2f(obstacleSize,obstacleSize), sf::Vector2f(width,height));
+
+                Entities::StaticEntities::Obstacle* pCastObsAux = static_cast<Entities::StaticEntities::Obstacle* >(pAuxObstacle);
+                collisions->pushObstacle(pCastObsAux);
+
+                Entities::Entity* pCastAux = static_cast<Entities::Entity*>(pAuxObstacle);
+                entityList->pushEntity(pCastAux);
+                
+                width++;
+            }
+            //gound
+            else if(ch == 2)
+            {
+                Entities::StaticEntities::Ground *pAuxObstacle = new Entities::StaticEntities::Ground(GROUND2_PATH, sf::Vector2f(obstacleSize,obstacleSize), sf::Vector2f(width,height));
+                
+                Entities::StaticEntities::Obstacle* pCastObsAux = static_cast<Entities::StaticEntities::Obstacle* >(pAuxObstacle);
+                collisions->pushObstacle(pCastObsAux);
+
+                Entities::Entity* pCastAux = static_cast<Entities::Entity*>(pAuxObstacle);
+                entityList->pushEntity(pCastAux);
+                
+                width++;
+            }
+            else if(ch == 3)
+            {
+                Entities::StaticEntities::Ground* pAuxObstacle = new Entities::StaticEntities::Ground(GROUND3_PATH, sf::Vector2f(obstacleSize,obstacleSize), sf::Vector2f(width,height));
+                
+                Entities::StaticEntities::Obstacle* pCastObsAux = static_cast<Entities::StaticEntities::Obstacle* >(pAuxObstacle);
+                collisions->pushObstacle(pCastObsAux);
+                
+                Entities::Entity* pCastAux = static_cast<Entities::Entity*>(pAuxObstacle);
+                entityList->pushEntity(pCastAux);
+                
+                width++;
+            }
+
+            if(width == 63)
+            {
+                width = 0;
+                height++;
+            }
         }
-        for(int i = 0; i < int(WIDTH / obstacleSize); i++)
-        {
-            Entities::StaticEntities::Obstacle* pAuxObstacle = new Entities::StaticEntities::Obstacle(TILE_PATH, sf::Vector2f(obstacleSize, obstacleSize), sf::Vector2f(i * obstacleSize, 0));
-            Entities::Entity* pCastAux = static_cast<Entities::Entity*>(pAuxObstacle);
-            entityList->pushEntity(pCastAux);
-            collisions->pushObstacle(pAuxObstacle);
-        }
-        for(int i = 0; i < int(HEIGHT / obstacleSize); i++)
-        {
-            Entities::StaticEntities::Obstacle* pAuxObstacle = new Entities::StaticEntities::Obstacle(TILE_PATH, sf::Vector2f(obstacleSize, obstacleSize), sf::Vector2f( 0, i * obstacleSize));
-            Entities::Entity* pCastAux = static_cast<Entities::Entity*>(pAuxObstacle);
-            entityList->pushEntity(pCastAux);
-            collisions->pushObstacle(pAuxObstacle);
-        }
-        for(int i = 0; i < int(HEIGHT / obstacleSize); i++)
-        {
-            Entities::StaticEntities::Obstacle* pAuxObstacle = new Entities::StaticEntities::Obstacle(TILE_PATH, sf::Vector2f(obstacleSize, obstacleSize), sf::Vector2f( (WIDTH- obstacleSize) , i * obstacleSize));
-            Entities::Entity* pCastAux = static_cast<Entities::Entity*>(pAuxObstacle);
-            entityList->pushEntity(pCastAux);
-            collisions->pushObstacle(pAuxObstacle);
-        }
+        fclose(file);
+
     }
 
 

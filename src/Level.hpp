@@ -3,7 +3,8 @@
 #include "Being.hpp"
 #include "EntityList.hpp"
 #include "Player.hpp"
-#include "Obstacle.hpp"
+#include "Cactus.hpp"
+#include "Ground.hpp"
 #include "CollisionManager.hpp"
 
 

@@ -4,10 +4,9 @@ namespace Entities
 {
     namespace StaticEntities
     {
-        Obstacle::Obstacle(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newDamage, int newSlow):
+        Obstacle::Obstacle(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newSlow=0):
         Entity(fileName, size, position)
         {
-            damage = newDamage;
             slow = newSlow;
         }
 
@@ -15,20 +14,7 @@ namespace Entities
         Obstacle::Obstacle():
         Entity()
         {
-            damage = 0;
             slow = 0;
-        }
-
-
-        void Obstacle::setDamage(const int newDamage)
-        {
-            damage = newDamage;
-        }
-
-
-        const int Obstacle::getDamage() const
-        {
-            return damage;
         }
 
 
@@ -41,12 +27,6 @@ namespace Entities
         const int Obstacle::getSlow() const
         {
             return slow;
-        }
-
-
-        void Obstacle::execute()
-        {
-            
         }
 
     }// namespace Staticentities

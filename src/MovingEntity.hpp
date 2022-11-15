@@ -11,9 +11,10 @@ namespace Entities
         protected:
             sf::Vector2f vel;
             sf::Vector2f acc;
+            int damage;
 
         public:
-            MovingEntity(const std::string fileName, sf::Vector2f size, sf::Vector2f position);
+            MovingEntity(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage=1);
             MovingEntity();
             ~MovingEntity();
 

@@ -9,21 +9,18 @@ namespace Entities
         class Obstacle : public Entity
         {
         protected:
-            int damage;
             int slow;
+            bool Odamage;
 
         public:
-            Obstacle(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f), int newDamage=0, int newSlow=0);
+            Obstacle(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f), int newSlow=0);
             Obstacle();
             ~Obstacle();
-
-            void setDamage(const int newDamage);
-            const int getDamage() const;
 
             void setSlow(const int newSlow);
             const int getSlow() const;
 
-            void execute();
+            void execute()=0;
         };
 
     }// namespace StaticEntities
