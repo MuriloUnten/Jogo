@@ -122,7 +122,7 @@ namespace Managers
                 Player->setPos(coordinate);
                 //change velocity
                 coordinate = Player->getVel();
-                coordinate.y = 0.0;
+                coordinate.y *= -1.0;
             }
             
         }

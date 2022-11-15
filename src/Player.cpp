@@ -46,7 +46,7 @@ namespace Entities
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
                 attacking = true;
-                std::cout<<"apertou:"<<canAttack<<std::endl;
+                //std::cout<<"apertou:"<<canAttack<<std::endl;
             }
             else
                 attacking = false;
