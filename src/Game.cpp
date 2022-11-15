@@ -8,6 +8,7 @@ graphics(Managers::GraphicsManager::getInstance()),
 player(),
 firstLevel(BG_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player)
 {
+    Being::setInstance();
 	execute();
 }
 
@@ -22,7 +23,6 @@ Game::~Game()
 /* Runs the core of the program */
 void Game::execute()
 {
-    std::cout << "Game.graphics: "<< graphics << std::endl; // TODO remover
     // Main loop
     while (graphics->isWindowOpen())
     {

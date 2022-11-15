@@ -52,7 +52,6 @@ namespace Levels
             collisions->pushObstacle(pAuxObstacle);
         }
 
-        //Being::setInstance();
     }
 
 

@@ -9,7 +9,7 @@ class Being
 {
 protected:
 	int id;
-	Managers::GraphicsManager* pGraphics;
+	static Managers::GraphicsManager* pGraphics;
 	sf::Vector2f pos;
 	sf::RectangleShape* hitBox;
 	sf::Texture* texture;

@@ -1,7 +1,7 @@
 #include "Being.hpp"
 
 
-//Managers::GraphicsManager* pGraphics = Managers::GraphicsManager::getInstance();
+Managers::GraphicsManager* Being::pGraphics = NULL;
 
 Being::Being(std::string fileName, sf::Vector2f size, sf::Vector2f position)
 {
@@ -98,11 +98,10 @@ sf::RectangleShape* Being::getHitBox() const
 }
 
 
-/*void Being::setInstance()
+void Being::setInstance()
 {
 	pGraphics = Managers::GraphicsManager::getInstance();
-	std::cout << "Being::pGraphics: " << pGraphics << std::endl; //TODO remover
-}*/
+}
 
 
 void Being::draw()
