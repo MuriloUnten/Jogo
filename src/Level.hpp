@@ -22,5 +22,6 @@ namespace Levels
         Level();
         ~Level();
         void execute();
+        void draw();
     };
 }// namespace Levels

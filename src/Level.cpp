@@ -32,13 +32,20 @@ namespace Levels
 
     void Level::execute()
     {
-        //update delta time
         draw();
 
         entityList->execute();
         collisions->Collision();
         entityList->draw();
+    }
 
+
+    void Level::draw()
+    {
+        /* TODO implementar mais coisas talvez?*/
+
+        if(pGraphics->isWindowOpen())
+            pGraphics->getWindow()->draw(*hitBox);
     }
 
 }// namespace Levels

@@ -35,6 +35,6 @@ public:
 
 	static void setInstance();
 	
-	void draw();
+	virtual void draw();
 	virtual void execute() = 0;
 };
