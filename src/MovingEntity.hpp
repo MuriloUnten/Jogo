@@ -9,20 +9,22 @@ namespace Entities
         class MovingEntity: public Entity
         {
         protected:
-            sf::Vector2f vel;
-            sf::Vector2f acc;
-            int damage;
+            // True if facing right, false if facing left.
+            bool facingRight;
+            
+            int damage; // Talvez damage deve ser atributo de Entity
+
 
         public:
             MovingEntity(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage=1);
             MovingEntity();
             ~MovingEntity();
 
-            virtual void execute() = 0;
-            void update();
+            void setFacingRight(const bool isFacingRight);
+            const bool getFacingRight() const;
 
-            void setVel(sf::Vector2f velocity);
-            sf::Vector2f getVel();
+            virtual void execute() = 0;
+
         };
 
     }// namespace MovingEntities
