@@ -39,6 +39,6 @@ void Game::execute()
 
         graphics->clear();
         firstLevel.execute();
-        graphics->display();   
+        graphics->display();
     }
 }

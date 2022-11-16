@@ -32,6 +32,7 @@ namespace Managers
     {
         delete window;
         window = NULL;
+        instance = NULL;
     }
 
 

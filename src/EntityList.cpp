@@ -1,5 +1,5 @@
 #include "EntityList.hpp"
-
+#include "Player.hpp"
 
 namespace Lists
 {
@@ -8,10 +8,37 @@ namespace Lists
 
 	}
 
-
+	/* Deletes all entities, except if that entity is a Player */
 	EntityList::~EntityList()
 	{
+		if(entityList.getHead() != NULL)
+		{
+			List<Entities::Entity>::Element<Entities::Entity>* pAux = entityList.getHead()->getNext();
+			while(pAux != NULL)
+			{
+				entityList.getHead()->setNext(pAux->getNext());
 
+				Entities::MovingEntities::Player* pAuxPlayer = dynamic_cast<Entities::MovingEntities::Player*>(pAux->getData());
+				if(pAuxPlayer == NULL)
+					delete pAux;
+				else
+				{
+					pAux->setNext(NULL);
+					pAux->setPrev(NULL);
+				}
+
+				pAux = entityList.getHead()->getNext();
+			}
+			Entities::MovingEntities::Player* pAuxPlayer = dynamic_cast<Entities::MovingEntities::Player*>(entityList.getHead()->getData());
+			if(pAuxPlayer == NULL)
+				delete entityList.getHead();
+			else
+			{
+				entityList.getHead()->setNext(NULL);
+				entityList.getHead()->setPrev(NULL);
+				entityList.getHead()->setData(NULL);
+			}
+		}
 	}
 
 

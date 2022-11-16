@@ -33,6 +33,7 @@ namespace Levels
         if(file == NULL)
         {
             std::cout << "Error opening File.\n";
+            exit(1);
         }
 
         while((ch = fgetc(file)) != EOF)

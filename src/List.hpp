@@ -27,6 +27,7 @@ namespace Lists
 			{
 				next = NULL;
 				prev = NULL;
+				delete data;
 				data = NULL;
 			}
 
