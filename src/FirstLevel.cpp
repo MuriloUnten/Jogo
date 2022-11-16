@@ -29,7 +29,7 @@ namespace Levels
         int ch;
         float obstacleSize = 20.0;
         float width = 0.0, height = 0.0;
-        file = fopen("Firstlevel.txt", "r");
+        file = fopen("FirstLevel.txt", "r");
         if(file == NULL)
         {
             std::cout << "Error opening File.\n";
