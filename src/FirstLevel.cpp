@@ -11,20 +11,39 @@
 namespace Levels
 {
     FirstLevel::FirstLevel(std::string fileName, sf::Vector2f size, sf::Vector2f position, Entities::MovingEntities::Player* player):
-    Level(fileName, size, position, player),
-    enemy(new Entities::MovingEntities::Enemy(ENEMY_PATH, sf::Vector2f(50, 50), sf::Vector2f(780, 390)))
+    Level(fileName, size, position, player)
+    {
+        createLevel();
+    }
+
+
+    FirstLevel::~FirstLevel()
+    {
+        entityList->clear();
+        entityList = NULL;
+    }
+
+
+    void FirstLevel::createPlayers()
     {
         pPlayer->loadTexture(PLAYER_PATH);
         pPlayer->setSize(sf::Vector2f(50, 60));
         pPlayer->getHitBox()->setTexture(pPlayer->getTexture());
         pPlayer->setPos(sf::Vector2f(100, 250));
+    }
 
 
+    void FirstLevel::createEnemies()
+    {
+        Entities::MovingEntities::Enemy* enemy = new Entities::MovingEntities::Enemy(ENEMY_PATH, sf::Vector2f(50, 50), sf::Vector2f(780, 390));
         Entities::Entity* pEnemy = static_cast<Entities::Entity*>(enemy);
         entityList->pushEntity(pEnemy);
         collisions->pushEnemy(enemy);
+    }
 
-        //Construindo fase
+
+    void FirstLevel::createObstacles()
+    {
         FILE *file;
         int ch;
         float obstacleSize = 20.0;
@@ -82,14 +101,6 @@ namespace Levels
             }
         }
         fclose(file);
-    }
-
-
-    FirstLevel::~FirstLevel()
-    {
-        delete enemy;
-        entityList->clear();
-        entityList = NULL;
     }
 
 }// namespace Levels

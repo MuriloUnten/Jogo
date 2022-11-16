@@ -12,6 +12,7 @@ namespace Levels
         Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer);
         entityList->pushEntity(pAux);
         collisions->pushPlayer(player);
+
     }
 
 
@@ -46,6 +47,14 @@ namespace Levels
 
         if(pGraphics->isWindowOpen())
             pGraphics->getWindow()->draw(*hitBox);
+    }
+
+
+    void Level::createLevel()
+    {
+        createPlayers();
+        createEnemies();
+        createObstacles();
     }
 
 }// namespace Levels
