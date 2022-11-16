@@ -4,7 +4,7 @@ namespace Entities
 {
     namespace StaticEntities
     {
-        Obstacle::Obstacle(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newSlow=0):
+        Obstacle::Obstacle(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newSlow):
         Entity(fileName, size, position)
         {
             slow = newSlow;
@@ -15,6 +15,12 @@ namespace Entities
         Entity()
         {
             slow = 0;
+        }
+
+
+        Obstacle::~Obstacle()
+        {
+            
         }
 
 

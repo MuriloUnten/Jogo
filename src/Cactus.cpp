@@ -1,8 +1,10 @@
 #include "Cactus.hpp"
 
-namespace Entities{
-    namespace StaticEntities{
-        Cactus::Cactus(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f), int newDamage=50):
+namespace Entities
+{
+    namespace StaticEntities
+    {
+        Cactus::Cactus(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newDamage):
         Obstacle(fileName, size, position)
         {
             Odamage = true;

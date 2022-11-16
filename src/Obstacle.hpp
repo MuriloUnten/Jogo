@@ -20,7 +20,7 @@ namespace Entities
             void setSlow(const int newSlow);
             const int getSlow() const;
 
-            void execute()=0;
+            virtual void execute() = 0;
         };
 
     }// namespace StaticEntities

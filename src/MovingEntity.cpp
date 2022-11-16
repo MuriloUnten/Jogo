@@ -6,7 +6,7 @@ namespace Entities
 {
     namespace MovingEntities
     {
-        MovingEntity::MovingEntity(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage=1):
+        MovingEntity::MovingEntity(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage):
         Entity(fileName, size, position)
         {
             vel = sf::Vector2f(0, 0);
