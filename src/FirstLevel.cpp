@@ -39,6 +39,18 @@ namespace Levels
         Entities::MovingEntities::Enemy* pEnemy = static_cast<Entities::MovingEntities::Enemy*>(enemy);
         entityList->pushEntity(pEntity);
         collisions->pushEnemy(pEnemy);
+
+        enemy = new Entities::MovingEntities::Enemy1(ENEMY_PATH, sf::Vector2f(50, 50), sf::Vector2f(1000, 100));
+        pEntity = static_cast<Entities::Entity*>(enemy);
+        pEnemy = static_cast<Entities::MovingEntities::Enemy*>(enemy);
+        entityList->pushEntity(pEntity);
+        collisions->pushEnemy(pEnemy);
+        
+        enemy = new Entities::MovingEntities::Enemy1(ENEMY_PATH, sf::Vector2f(50, 50), sf::Vector2f(100, 600));
+        pEntity = static_cast<Entities::Entity*>(enemy);
+        pEnemy = static_cast<Entities::MovingEntities::Enemy*>(enemy);
+        entityList->pushEntity(pEntity);
+        collisions->pushEnemy(pEnemy);
     }
 
 
