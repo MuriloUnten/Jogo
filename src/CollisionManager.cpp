@@ -248,54 +248,63 @@ namespace Managers
     ////altera velocidade na direção que bateu e reposiciona o inimigo
     void CollisionManager::CollisionObstacleEnemy(Entities::MovingEntities::Enemy* Enemy, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection)
     {
-        sf::Vector2f coordinate;
-        coordinate = Enemy->getPos();
-        //collision in the Y direction
-        if(Intersection.y > Intersection.x)
+        
+        //inimigo sendo um projetil
+        if(Enemy->getId() == Earrow)
         {
-            if (Enemy->getPos().y < obstacle->getPos().y)
-            {
-                //change position
-                coordinate.y += Intersection.y;
-                Enemy->setPos(coordinate);
-                //change velocity
-                coordinate = Enemy->getVel();
-                coordinate.y = 0.0;
-                Enemy->setCanJump(true);
-            }
-            //change position
-            else
-            {
-                coordinate.y -= Intersection.y;
-                Enemy->setPos(coordinate);
-                //change velocity
-                coordinate = Enemy->getVel();
-                coordinate.y = 0.0;
-            }
-            
+            Enemy->setExecutable(false);
         }
-        //collision in the x direction
         else
         {
-            if (Enemy->getPos().x < obstacle->getPos().x)
+            sf::Vector2f coordinate;
+            coordinate = Enemy->getPos();
+            //collision in the Y direction
+            if(Intersection.y > Intersection.x)
+            {
+                if (Enemy->getPos().y < obstacle->getPos().y)
                 {
                     //change position
-                    coordinate.x += Intersection.x;
+                    coordinate.y += Intersection.y;
                     Enemy->setPos(coordinate);
                     //change velocity
                     coordinate = Enemy->getVel();
+                    coordinate.y = 0.0;
+                    Enemy->setCanJump(true);
                 }
                 //change position
                 else
                 {
-                    coordinate.x -= Intersection.x;
+                    coordinate.y -= Intersection.y;
                     Enemy->setPos(coordinate);
                     //change velocity
                     coordinate = Enemy->getVel();
+                    coordinate.y = 0.0;
                 }
-            coordinate.x *= -1;
+                
+            }
+            //collision in the x direction
+            else
+            {
+                if (Enemy->getPos().x < obstacle->getPos().x)
+                    {
+                        //change position
+                        coordinate.x += Intersection.x;
+                        Enemy->setPos(coordinate);
+                        //change velocity
+                        coordinate = Enemy->getVel();
+                    }
+                    //change position
+                    else
+                    {
+                        coordinate.x -= Intersection.x;
+                        Enemy->setPos(coordinate);
+                        //change velocity
+                        coordinate = Enemy->getVel();
+                    }
+                coordinate.x *= -1;
+            }
+            Enemy->setVel(coordinate);
         }
-        Enemy->setVel(coordinate);
     }
 
 

@@ -4,8 +4,8 @@ namespace Entities
 {
     namespace MovingEntities
     {
-        Archer::Archer(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp, Player* player, Arrow* arrow):
-        Enemy(fileName, size, position)
+        Archer::Archer( const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp, Player* player, Arrow* arrow):
+        Enemy(Eplayer, fileName, size, position)
         {
             attacktime = TIME_ARCHER;
             pPlayer = player;
