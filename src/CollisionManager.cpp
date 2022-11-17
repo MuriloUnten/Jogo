@@ -98,6 +98,18 @@ namespace Managers
     //altera velocidade na direção que bateu e reposiciona o jogador
     void CollisionManager::CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection)
     {
+        if(obstacle->getDamage())
+        {
+            if(Player->getTimeCollision() == TIMECOLLISON)
+            {
+                Player->takeDamage(obstacle->getDamage());
+            }
+            else 
+            {
+                Player->setTimeCollision(Player->getDT());
+            }
+        }
+
         /* Velocidade em y pode ser > 0 e mesmo assim a colisao ser em x, e vice versa */
         sf::Vector2f coordinate;
         coordinate = Player->getPos();

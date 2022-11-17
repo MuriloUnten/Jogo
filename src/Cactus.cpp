@@ -16,7 +16,7 @@ namespace Entities
         Obstacle()
         {
             Odamage = true;
-            damage = 50;
+            damage = 1;
         }
         
         Cactus::~Cactus()

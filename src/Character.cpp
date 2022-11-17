@@ -32,7 +32,7 @@ namespace Entities
         void Character::takeDamage(const int damageTaken)
         {
             hp -= damageTaken;
-            //std::cout<< "hp: "<<hp<<std::endl;
+            std::cout<< "hp: "<<hp<<std::endl;
         }
 
 

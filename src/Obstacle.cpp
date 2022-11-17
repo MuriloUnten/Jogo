@@ -8,6 +8,7 @@ namespace Entities
         Entity(fileName, size, position)
         {
             slow = newSlow;
+            buoancy = -GRAVITY;
         }
 
 
@@ -15,12 +16,18 @@ namespace Entities
         Entity()
         {
             slow = 0;
+            buoancy = -GRAVITY;
         }
 
 
         Obstacle::~Obstacle()
         {
             
+        }
+
+        const bool Obstacle::getDamage()
+        {
+            return Odamage;
         }
 
 
@@ -33,6 +40,14 @@ namespace Entities
         const int Obstacle::getSlow() const
         {
             return slow;
+        }
+
+        void Obstacle::execute()
+        {
+            float dt = getDT();
+
+            vel.y += dt * buoancy;
+            update();
         }
 
     }// namespace Staticentities
