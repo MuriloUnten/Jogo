@@ -11,7 +11,7 @@ namespace Entities
 	{
 		vel = sf::Vector2f(0, 0);
 		acc = sf::Vector2f(0, GRAVITY);
-		timeCollision = TIMECOLLISON;
+		executable = true;
 	}
 
 
@@ -20,6 +20,7 @@ namespace Entities
 	{
 		vel = sf::Vector2f(0, 0);
 		acc = sf::Vector2f(0, GRAVITY);
+		executable = true;
 	}
 
 
@@ -71,27 +72,22 @@ namespace Entities
 	}
 
 
-	sf::Vector2f Entity::getAcc()
+	sf::Vector2f Entity::getAcc() const
 	{
 		return acc;
 	}
 
-	void Entity::updateTimeCollision()
+
+	void Entity::setExecutable(const bool newExecutable)
 	{
-		timeCollision -= Managers::GraphicsManager::getDeltaTime();
-		if(timeCollision <= 0.0f)
-			timeCollision = -1.0f;
+		executable = newExecutable;
 	}
 
 
-	void Entity::restartTimeCollision()
+	const bool Entity::getExecutable() const
 	{
-		timeCollision = TIMECOLLISON;
+		return executable;
 	}
 
-	float Entity::getTimeCollision() const 
-	{
-		return timeCollision;
-	}
 
 }// namespace Entities

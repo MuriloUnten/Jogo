@@ -5,6 +5,7 @@
 #include "Player.hpp"
 #include "Cactus.hpp"
 #include "Ground.hpp"
+#include "Enemy1.hpp"
 #include "CollisionManager.hpp"
 
 

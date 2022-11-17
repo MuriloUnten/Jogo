@@ -1,5 +1,6 @@
 #include "Character.hpp"
 
+#define TIMECOLLISON 0.3
 
 namespace Entities
 {
@@ -11,6 +12,8 @@ namespace Entities
             hp = health;
             damage = newDamage;
             canJump = true;
+    		timeCollision = TIMECOLLISON;
+
         }
 
 
@@ -20,6 +23,7 @@ namespace Entities
             hp = 3;
             damage = 1;
             canJump = true;
+    		timeCollision = TIMECOLLISON;
         }
 
 
@@ -58,6 +62,28 @@ namespace Entities
         {
             canJump = jump;
         }
+
+
+        void Character::updateTimeCollision()
+        {
+            timeCollision -= Managers::GraphicsManager::getDeltaTime();
+            if(timeCollision <= 0.0f)
+                timeCollision = -1.0f;
+        }
+
+
+        void Character::restartTimeCollision()
+        {
+            timeCollision = TIMECOLLISON;
+        }
+
+
+        float Character::getTimeCollision() const 
+        {
+            return timeCollision;
+        }
+
+
 
     }// namespace MovingEntities
 }// namespace Entities

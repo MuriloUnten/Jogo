@@ -57,7 +57,7 @@ namespace Entities
             {
                 if(canJump)
                 {
-                    vel.y = -800;
+                    vel.y = -600;
                     jumping = true;
                     canJump = false;
                 }
