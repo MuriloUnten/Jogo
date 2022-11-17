@@ -13,13 +13,11 @@ Being::Being(std::string fileName, sf::Vector2f size, sf::Vector2f position)
 	hitBox->setTexture(texture);
 	//Managers::GraphicsManager* pGraphics = Managers::GraphicsManager::getInstance();
 
-	id = -1;
 }
 
 
 Being::Being()
 {
-	id = -1;
 	hitBox = new sf::RectangleShape;
 	texture = new sf::Texture;
 	hitBox->setSize(sf::Vector2f(0, 0));
@@ -29,22 +27,10 @@ Being::Being()
 
 Being::~Being()
 {
-	id = -1;
 	delete hitBox;
 	delete texture;
 	hitBox = NULL;
 	texture = NULL;
-}
-
-void Being::setId(const int ID)
-{
-	id = ID;
-}
-
-
-const int Being::getId() const
-{
-	return id;
 }
 
 

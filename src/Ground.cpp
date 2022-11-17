@@ -4,7 +4,7 @@ namespace Entities{
     namespace StaticEntities{
         
         Ground::Ground(const std::string fileName, sf::Vector2f size, sf::Vector2f position):
-        Obstacle(fileName, size, position)
+        Obstacle(Eground,fileName, size, position)
         {
             Odamage = false;
         }

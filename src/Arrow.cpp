@@ -7,7 +7,7 @@ namespace Entities
     namespace MovingEntities
     {
         Arrow::Arrow(sf::Vector2f size, sf::Vector2f position, int newdamage):
-        Projectile(ARROW_PATH, size, position)
+        Projectile(Earrow, ARROW_PATH, size, position)
         {
 
         }

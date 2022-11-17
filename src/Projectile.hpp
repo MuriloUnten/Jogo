@@ -14,7 +14,7 @@ namespace Entities
             bool discard;
 
         public:
-            Projectile(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage=1);
+            Projectile(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage=1);
             Projectile();
             ~Projectile();
 

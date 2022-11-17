@@ -4,8 +4,8 @@ namespace Entities
 {
     namespace MovingEntities
     {
-        MovingEntity::MovingEntity(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage):
-        Entity(fileName, size, position)
+        MovingEntity::MovingEntity(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage):
+        Entity(id, fileName, size, position)
         {
             
         }

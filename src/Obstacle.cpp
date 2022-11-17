@@ -4,8 +4,8 @@ namespace Entities
 {
     namespace StaticEntities
     {
-        Obstacle::Obstacle(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newSlow):
-        Entity(fileName, size, position)
+        Obstacle::Obstacle(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newSlow):
+        Entity(id, fileName, size, position)
         {
             slow = newSlow;
             buoyancy = -GRAVITY;

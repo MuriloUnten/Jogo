@@ -6,7 +6,7 @@
 namespace Entities
 {
 
-	Entity::Entity(const std::string fileName, sf::Vector2f size, sf::Vector2f position):
+	Entity::Entity(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position):
 	Being(fileName, size, position)
 	{
 		vel = sf::Vector2f(0, 0);
@@ -29,6 +29,10 @@ namespace Entities
 
 	}
 
+	const int Entity::getId() const
+	{
+		return Id;
+	}
 
 	void Entity::update()
 	{

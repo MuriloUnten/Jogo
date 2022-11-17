@@ -4,8 +4,8 @@ namespace Entities
 {
     namespace MovingEntities
     {
-        Projectile::Projectile(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage):
-        MovingEntity(fileName, size, position)
+        Projectile::Projectile(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage):
+        MovingEntity(id, fileName, size, position)
         {
             executable = false;
         }

@@ -5,7 +5,7 @@ namespace Entities
     namespace MovingEntities
     {
         Archer::Archer(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp, Player* player):
-        Enemy(fileName, size, position),
+        Enemy(Earcher, fileName, size, position),
         pArrow(new Arrow())
         {
             attackTime = TIME_ARCHER;

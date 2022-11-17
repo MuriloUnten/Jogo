@@ -16,7 +16,7 @@ namespace Entities
 
 
         public:
-            MovingEntity(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage=1);
+            MovingEntity(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage=1);
             MovingEntity();
             ~MovingEntity();
 

@@ -6,13 +6,14 @@ namespace Entities
 {
     namespace MovingEntities
     {
-        Character::Character(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health, int newDamage):
-        MovingEntity(fileName, size, position)
+        Character::Character(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health, int newDamage):
+        MovingEntity(id, fileName, size, position)
         {
             hp = health;
             damage = newDamage;
             canJump = true;
     		timeCollision = TIMECOLLISON;
+            Id = id;
 
         }
 
@@ -24,6 +25,7 @@ namespace Entities
             damage = 1;
             canJump = true;
     		timeCollision = TIMECOLLISON;
+            Id = Eempty;
         }
 
 

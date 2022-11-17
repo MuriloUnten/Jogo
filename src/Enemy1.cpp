@@ -6,7 +6,7 @@ namespace Entities
     namespace MovingEntities
     {
         Enemy1::Enemy1(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp):
-        Enemy(fileName, size, position, hp)
+        Enemy(Eenemy1,fileName, size, position, hp)
         {
 
         }

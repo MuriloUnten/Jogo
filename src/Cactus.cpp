@@ -5,7 +5,7 @@ namespace Entities
     namespace StaticEntities
     {
         Cactus::Cactus(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newDamage):
-        Obstacle(fileName, size, position)
+        Obstacle(Ecactus, fileName, size, position)
         {
             Odamage = true;
             damage = newDamage;

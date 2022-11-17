@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Being.hpp"
+#include "Id.hpp"
 #include <vector>
 
 #define GRAVITY 1000
@@ -11,26 +12,23 @@ class GraphicsManager;
 
 namespace Entities
 {
-	enum ID
-	{
-		empty = 0,
-		player,
-		cactus,
-		
-	};
-
 
 	class Entity : public Being
 	{
 	protected:
+
 		sf::Vector2f vel;
 		sf::Vector2f acc;
 		bool executable;
+		ID Id;
 
 	public:
-		Entity(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f));
+		Entity(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f));
 		Entity();
 		~Entity();
+
+		void setId(const int ID);
+		const int getId() const;
 
 		virtual void execute() = 0;
 		void update();

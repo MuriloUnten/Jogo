@@ -8,7 +8,6 @@
 class Being
 {
 protected:
-	int id;
 	static Managers::GraphicsManager* pGraphics;
 	sf::Vector2f pos;
 	sf::RectangleShape* hitBox;
@@ -18,9 +17,6 @@ public:
 	Being(std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0));
 	Being();
 	~Being();
-
-	void setId(const int ID);
-	const int getId() const;
 
 	void setPos(const sf::Vector2f position);
 	sf::Vector2f getPos() const;

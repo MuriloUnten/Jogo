@@ -10,13 +10,13 @@ namespace Entities
         class Player : public Character
         {
         private:
-
+            bool posDirection;
 
         public:
             Player(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0), int hp=3);
             Player();
             ~Player();
-
+            bool getPositiveDirection() const;
             void execute();
         };
     }// namespace MovingEntities
