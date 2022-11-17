@@ -9,13 +9,15 @@ namespace Entities
         Player::Player(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp):
         Character(Eplayer, fileName, size, position, hp)
         {
-
+            posDirection = true;
         }
 
 
         Player::Player()
         {
             hp = 3;
+            posDirection = true;
+
         }
 
 
@@ -24,6 +26,10 @@ namespace Entities
 
         }
 
+        bool Player::getPositiveDirection() const
+        {
+            return posDirection;
+        }
 
         void Player::execute()
         { 
@@ -66,10 +72,12 @@ namespace Entities
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
                 vel.x = -350;
+                posDirection = false;
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
             {
                 vel.x = 350;
+                posDirection = true;
             }
             else
             {

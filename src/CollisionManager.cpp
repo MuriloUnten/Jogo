@@ -212,8 +212,8 @@ namespace Managers
             if(Player->isAttacking())
             {
                 //Enemy takes damage
-                if(( Player->getVel().x > 0) && ((Player->getPos().x - Enemy->getPos().x) < 0) ||
-                    ((Player->getVel().x < 0) && ((Player->getPos().x - Enemy->getPos().x) > 0)))
+                if(( Player->getPositiveDirection()) && ((Player->getPos().x - Enemy->getPos().x) < 0) ||
+                    ((!Player->getPositiveDirection()) && ((Player->getPos().x - Enemy->getPos().x) > 0)))
                     {
                         Enemy->takeDamage(Player->getDamage());
                         if(Enemy->getHp() <= 0)
