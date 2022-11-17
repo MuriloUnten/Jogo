@@ -8,7 +8,7 @@ namespace Entities
         Character(fileName, size, position, hp)
         {
 
-            vel = sf::Vector2f(10,0);
+            vel = sf::Vector2f(100.0f, 0.0f);
             damage=1;
         }
 
@@ -28,12 +28,9 @@ namespace Entities
 
         void Enemy::execute()
         { 
-            /*if((pos.x < 200) || (pos.x > 700) )
-            {
-                vel.x*=-1;
-            }
-            update();*/
+            updateTimeCollision();
 
+            update();
         }
     }// namespace MovingEntities
 }// namespace Entities

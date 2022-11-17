@@ -5,8 +5,7 @@
 #include "Being.hpp"
 #include <vector>
 
-#define GRAVITY 2000
-#define TIMECOLLISON 0.3
+#define GRAVITY 1000
 
 class GraphicsManager;
 
@@ -21,13 +20,12 @@ namespace Entities
 	};
 
 
-
 	class Entity : public Being
 	{
 	protected:
 		sf::Vector2f vel;
 		sf::Vector2f acc;
-		float timeCollision;
+		bool executable;
 
 	public:
 		Entity(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f));
@@ -41,10 +39,10 @@ namespace Entities
         sf::Vector2f getVel() const;
 
 		void setAcc(sf::Vector2f newAcc);
-		sf::Vector2f getAcc();
+		sf::Vector2f getAcc() const;
 
-		void updateTimeCollision();
-		void restartTimeCollision();
-		float getTimeCollision() const;
+		void setExecutable(const bool newExecutable);
+		const bool getExecutable() const;
+
 	};
 }// namespace Entities

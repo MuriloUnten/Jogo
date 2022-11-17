@@ -81,7 +81,9 @@ namespace Lists
 		List<Entities::Entity>::Element<Entities::Entity>* iterator = entityList.getHead();
 		while(iterator != NULL)
 		{
-			iterator->getData()->execute();
+			if(iterator->getData()->getExecutable())
+				iterator->getData()->execute();
+			
 			iterator = iterator->getNext();
 		}
 	}
@@ -92,7 +94,8 @@ namespace Lists
 		List<Entities::Entity>::Element<Entities::Entity>* iterator = entityList.getHead();
 		while(iterator != NULL)
 		{
-			iterator->getData()->draw();
+			if(iterator->getData()->getExecutable())
+				iterator->getData()->draw();
 			iterator = iterator->getNext();
 		}
 	}

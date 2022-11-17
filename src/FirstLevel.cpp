@@ -28,16 +28,17 @@ namespace Levels
         pPlayer->loadTexture(PLAYER_PATH);
         pPlayer->setSize(sf::Vector2f(50, 60));
         pPlayer->getHitBox()->setTexture(pPlayer->getTexture());
-        pPlayer->setPos(sf::Vector2f(100, 250));
+        pPlayer->setPos(sf::Vector2f(400, 380));
     }
 
 
     void FirstLevel::createEnemies()
     {
-        Entities::MovingEntities::Enemy* enemy = new Entities::MovingEntities::Enemy(ENEMY_PATH, sf::Vector2f(50, 50), sf::Vector2f(780, 390));
-        Entities::Entity* pEnemy = static_cast<Entities::Entity*>(enemy);
-        entityList->pushEntity(pEnemy);
-        collisions->pushEnemy(enemy);
+        Entities::MovingEntities::Enemy1* enemy = new Entities::MovingEntities::Enemy1(ENEMY_PATH, sf::Vector2f(50, 50), sf::Vector2f(780, 390));
+        Entities::Entity* pEntity = static_cast<Entities::Entity*>(enemy);
+        Entities::MovingEntities::Enemy* pEnemy = static_cast<Entities::MovingEntities::Enemy*>(enemy);
+        entityList->pushEntity(pEntity);
+        collisions->pushEnemy(pEnemy);
     }
 
 
