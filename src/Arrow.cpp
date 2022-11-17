@@ -5,14 +5,14 @@ namespace Entities
     namespace MovingEntities
     {
         Arrow::Arrow(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage):
-        MovingEntity(fileName, size, position)
+        Projectile(fileName, size, position)
         {
 
         }
 
 
         Arrow::Arrow():
-        MovingEntity()
+        Projectile()
         {
 
         }
@@ -26,7 +26,7 @@ namespace Entities
 
         void Arrow::execute()
         {
-            
+            update();
         }
     }// namespace MovingEntities
 }// namespace Entities

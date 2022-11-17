@@ -178,7 +178,6 @@ namespace Managers
                     {
                         //desaloco ou reposiciono Enemy
                     }
-                
                 }
             //Player takes damage
             else

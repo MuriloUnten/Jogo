@@ -6,6 +6,7 @@
 #define CACTUS_PATH "../assets/mundo/espinho_tile.png"
 #define GROUND2_PATH "../assets/mundo/ground_tile.png" 
 #define GROUND3_PATH "../assets/mundo/ground2_tile.png"
+#define ARROW_PATH "../assets/inimigos/flexa.png"
 
 
 namespace Levels

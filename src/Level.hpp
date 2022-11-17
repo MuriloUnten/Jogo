@@ -28,5 +28,6 @@ namespace Levels
         virtual void createPlayers() = 0;
         virtual void createEnemies() = 0;
         virtual void createObstacles() = 0;
+
     };
 }// namespace Levels

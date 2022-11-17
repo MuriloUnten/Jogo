@@ -2,6 +2,12 @@
 
 #include "Enemy.hpp"
 #include "Arrow.hpp"
+#include "Player.hpp"
+#include "Level.hpp"
+
+#include <math.h>
+
+#define TIME_ARCHER 1
 
 namespace Entities
 {
@@ -12,15 +18,17 @@ namespace Entities
 
             private:
                 Arrow* pArrow;
+                Player* pPlayer;
                 float attacktime;
 
             public:
-                Archer(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0), int hp=3);
+                Archer(const std::string fileName, sf::Vector2f size, sf::Vector2f position = sf::Vector2f(0, 0), int hp=3, Player* player = NULL, Arrow* arrow = NULL);
                 Archer();
                 ~Archer();
 
+                bool alcancePlayer();
+
                 void execute();
-                Arrow* shoot();
 
         };
     }//namespace MovingEntities
