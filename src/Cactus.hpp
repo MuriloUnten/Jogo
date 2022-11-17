@@ -12,7 +12,7 @@ namespace Entities
             int damage;
 
         public:
-            Cactus(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f), int newDamage=50);
+            Cactus(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f), int newDamage=1);
             Cactus();
             ~Cactus();
             

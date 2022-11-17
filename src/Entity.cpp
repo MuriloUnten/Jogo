@@ -11,6 +11,7 @@ namespace Entities
 	{
 		vel = sf::Vector2f(0, 0);
 		acc = sf::Vector2f(0, GRAVITY);
+		timeCollision = TIMECOLLISON;
 	}
 
 
@@ -58,7 +59,7 @@ namespace Entities
 	}
 
 
-	sf::Vector2f Entity::getVel()
+	sf::Vector2f Entity::getVel() const
 	{
 		return vel;
 	}
@@ -73,6 +74,27 @@ namespace Entities
 	sf::Vector2f Entity::getAcc()
 	{
 		return acc;
+	}
+
+	void Entity::setTimeCollision(float time)
+	{
+		timeCollision -= time;
+		if(timeCollision < 0.0)
+		{
+			timeCollision = TIMECOLLISON;
+		}
+	}
+
+
+	float Entity::getTimeCollision() const 
+	{
+		return timeCollision;
+	}
+
+	float Entity::getDT() const
+	{
+		float dt = pGraphics->getDeltaTime();
+		return dt;
 	}
 
 }// namespace Entities

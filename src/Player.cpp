@@ -79,6 +79,7 @@ namespace Entities
                 vel.y += 4000 * pGraphics->getDeltaTime();
             }
 
+            //std::cout<< "hp Player:"<< hp;
             update();
 
         }

@@ -28,6 +28,8 @@ namespace Levels
     {
         delete entityList;
         delete collisions;
+        entityList = NULL;
+        collisions = NULL;
     }
 
 

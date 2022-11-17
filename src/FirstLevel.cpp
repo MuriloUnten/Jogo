@@ -19,8 +19,7 @@ namespace Levels
 
     FirstLevel::~FirstLevel()
     {
-        entityList->clear();
-        entityList = NULL;
+        
     }
 
 

@@ -11,16 +11,19 @@ namespace Entities
         protected:
             int slow;
             bool Odamage;
+            float buoancy;
 
         public:
             Obstacle(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f), int newSlow=0);
             Obstacle();
             ~Obstacle();
 
+            const bool getDamage();
+            
             void setSlow(const int newSlow);
             const int getSlow() const;
 
-            virtual void execute() = 0;
+            void execute();
         };
 
     }// namespace StaticEntities
