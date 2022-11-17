@@ -8,7 +8,7 @@ namespace Entities
         Entity(fileName, size, position)
         {
             slow = newSlow;
-            buoancy = -GRAVITY;
+            buoyancy = -GRAVITY;
         }
 
 
@@ -16,7 +16,7 @@ namespace Entities
         Entity()
         {
             slow = 0;
-            buoancy = -GRAVITY;
+            buoyancy = -GRAVITY;
         }
 
 
@@ -25,7 +25,7 @@ namespace Entities
             
         }
 
-        const bool Obstacle::getDamage()
+        const bool Obstacle::getDamage() // TODO arrumar
         {
             return Odamage;
         }
@@ -44,9 +44,9 @@ namespace Entities
 
         void Obstacle::execute()
         {
-            float dt = getDT();
+            float dt = pGraphics->getDeltaTime();
 
-            vel.y += dt * buoancy;
+            vel.y += dt * buoyancy;
             update();
         }
 

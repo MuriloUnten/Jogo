@@ -31,7 +31,7 @@ namespace Entities
 
 	void Entity::update()
 	{
-		float dt = pGraphics->getDeltaTime();
+		float dt = Managers::GraphicsManager::getDeltaTime();
 
 		pos.x += (vel.x * dt);
 		pos.y += (vel.y * dt) + (acc.y * dt * dt) / 2;
@@ -76,25 +76,22 @@ namespace Entities
 		return acc;
 	}
 
-	void Entity::setTimeCollision(float time)
+	void Entity::updateTimeCollision()
 	{
-		timeCollision -= time;
-		if(timeCollision < 0.0)
-		{
-			timeCollision = TIMECOLLISON;
-		}
+		timeCollision -= Managers::GraphicsManager::getDeltaTime();
+		if(timeCollision <= 0.0f)
+			timeCollision = -1.0f;
 	}
 
+
+	void Entity::restartTimeCollision()
+	{
+		timeCollision = TIMECOLLISON;
+	}
 
 	float Entity::getTimeCollision() const 
 	{
 		return timeCollision;
-	}
-
-	float Entity::getDT() const
-	{
-		float dt = pGraphics->getDeltaTime();
-		return dt;
 	}
 
 }// namespace Entities

@@ -43,9 +43,8 @@ namespace Entities
 		void setAcc(sf::Vector2f newAcc);
 		sf::Vector2f getAcc();
 
-		void setTimeCollision(float time);
+		void updateTimeCollision();
+		void restartTimeCollision();
 		float getTimeCollision() const;
-
-		float getDT() const;
 	};
 }// namespace Entities

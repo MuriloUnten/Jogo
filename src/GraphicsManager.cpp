@@ -3,6 +3,7 @@
 namespace Managers
 {
     GraphicsManager* GraphicsManager::instance = NULL;
+    float GraphicsManager::deltaTime = 0;
 
     GraphicsManager* GraphicsManager::getInstance()
     {
@@ -78,7 +79,7 @@ namespace Managers
     }
 
 
-    const float GraphicsManager::getDeltaTime() const
+    const float GraphicsManager::getDeltaTime()
     {
         return deltaTime;
     }

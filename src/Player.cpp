@@ -27,6 +27,8 @@ namespace Entities
 
         void Player::execute()
         { 
+            updateTimeCollision();
+
             // TODO Rever
             if(vel.x != 0 && !jumping)
                 walking = true;

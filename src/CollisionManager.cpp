@@ -98,15 +98,12 @@ namespace Managers
     //altera velocidade na direção que bateu e reposiciona o jogador
     void CollisionManager::CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection)
     {
-        if(obstacle->getDamage())
+        if(obstacle->getDamage())// *
         {
-            if(Player->getTimeCollision() == TIMECOLLISON)
+            if(Player->getTimeCollision() < 0)
             {
-                Player->takeDamage(obstacle->getDamage());
-            }
-            else 
-            {
-                Player->setTimeCollision(Player->getDT());
+                Player->takeDamage(obstacle->getDamage());// mesmo método de * com a intenção de fazer coisas diferentes???
+                Player->restartTimeCollision();
             }
         }
 

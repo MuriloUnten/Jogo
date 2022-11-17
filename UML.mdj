@@ -5710,6 +5710,42 @@
 											"height": 13,
 											"text": "-instance: GraphicsManager*",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGEhU4Mm695cvQ=",
+											"_parent": {
+												"$ref": "AAAAAAGEU66nknAT4LU="
+											},
+											"model": {
+												"$ref": "AAAAAAGEhU4MeK9huDs="
+											},
+											"fillColor": "#a3ffa3",
+											"font": "Arial;13;0",
+											"left": 1165,
+											"top": 321,
+											"width": 271,
+											"height": 13,
+											"text": "-clock: Clock",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGEhU5GfrTYpcM=",
+											"_parent": {
+												"$ref": "AAAAAAGEU66nknAT4LU="
+											},
+											"model": {
+												"$ref": "AAAAAAGEhU5Gc7TAvp8="
+											},
+											"fillColor": "#a3ffa3",
+											"font": "Arial;13;0",
+											"left": 1165,
+											"top": 336,
+											"width": 271,
+											"height": 13,
+											"text": "-deltaTime: static float",
+											"horizontalAlignment": 0
 										}
 									],
 									"fillColor": "#a3ffa3",
@@ -5717,7 +5753,7 @@
 									"left": 1160,
 									"top": 286,
 									"width": 281,
-									"height": 38
+									"height": 68
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -5741,7 +5777,7 @@
 											"fillColor": "#a3ffa3",
 											"font": "Arial;13;0",
 											"left": 1165,
-											"top": 329,
+											"top": 359,
 											"width": 271,
 											"height": 13,
 											"text": "«create»-GraphicsManager()",
@@ -5759,7 +5795,7 @@
 											"fillColor": "#a3ffa3",
 											"font": "Arial;13;0",
 											"left": 1165,
-											"top": 344,
+											"top": 374,
 											"width": 271,
 											"height": 13,
 											"text": "+getInstance(): static GraphicsManager*",
@@ -5777,7 +5813,7 @@
 											"fillColor": "#a3ffa3",
 											"font": "Arial;13;0",
 											"left": 1165,
-											"top": 359,
+											"top": 389,
 											"width": 271,
 											"height": 13,
 											"text": "+deleteInstance(): static void",
@@ -5795,7 +5831,7 @@
 											"fillColor": "#a3ffa3",
 											"font": "Arial;13;0",
 											"left": 1165,
-											"top": 374,
+											"top": 404,
 											"width": 271,
 											"height": 13,
 											"text": "+isWindowOpen(): bool",
@@ -5813,7 +5849,7 @@
 											"fillColor": "#a3ffa3",
 											"font": "Arial;13;0",
 											"left": 1165,
-											"top": 389,
+											"top": 419,
 											"width": 271,
 											"height": 13,
 											"text": "+clear(): void",
@@ -5831,7 +5867,7 @@
 											"fillColor": "#a3ffa3",
 											"font": "Arial;13;0",
 											"left": 1165,
-											"top": 404,
+											"top": 434,
 											"width": 271,
 											"height": 13,
 											"text": "+close(): void",
@@ -5849,7 +5885,7 @@
 											"fillColor": "#a3ffa3",
 											"font": "Arial;13;0",
 											"left": 1165,
-											"top": 419,
+											"top": 449,
 											"width": 271,
 											"height": 13,
 											"text": "+display(): void",
@@ -5867,7 +5903,7 @@
 											"fillColor": "#a3ffa3",
 											"font": "Arial;13;0",
 											"left": 1165,
-											"top": 434,
+											"top": 464,
 											"width": 271,
 											"height": 13,
 											"text": "+getWindow(): RenderWindow*",
@@ -5885,10 +5921,10 @@
 											"fillColor": "#a3ffa3",
 											"font": "Arial;13;0",
 											"left": 1165,
-											"top": 449,
+											"top": 479,
 											"width": 271,
 											"height": 13,
-											"text": "+updateDeltaTime(): void",
+											"text": "+updateDeltaTime(): static void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5903,17 +5939,17 @@
 											"fillColor": "#a3ffa3",
 											"font": "Arial;13;0",
 											"left": 1165,
-											"top": 464,
+											"top": 494,
 											"width": 271,
 											"height": 13,
-											"text": "+const getDeltaTime(): const float",
+											"text": "+getDeltaTime(): static const float",
 											"horizontalAlignment": 0
 										}
 									],
 									"fillColor": "#a3ffa3",
 									"font": "Arial;13;0",
 									"left": 1160,
-									"top": 324,
+									"top": 354,
 									"width": 281,
 									"height": 158
 								},
@@ -8611,7 +8647,7 @@
 											"top": 782,
 											"width": 319,
 											"height": 13,
-											"text": "+getVel(): Vector2f",
+											"text": "+const getVel(): Vector2f",
 											"horizontalAlignment": 0
 										},
 										{
@@ -14987,7 +15023,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGEU7tHVK7/GsQ="
 									},
-									"name": "getVel",
+									"name": "const getVel",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -16068,6 +16104,26 @@
 							"name": "instance",
 							"visibility": "private",
 							"type": "GraphicsManager*"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGEhU4MeK9huDs=",
+							"_parent": {
+								"$ref": "AAAAAAGEU66nknALCVs="
+							},
+							"name": "clock",
+							"visibility": "private",
+							"type": "Clock"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGEhU5Gc7TAvp8=",
+							"_parent": {
+								"$ref": "AAAAAAGEU66nknALCVs="
+							},
+							"name": "deltaTime",
+							"visibility": "private",
+							"type": "static float"
 						}
 					],
 					"operations": [
@@ -16228,7 +16284,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGEZ35dkxDCGxg="
 									},
-									"type": "void",
+									"type": "static void",
 									"direction": "return"
 								}
 							]
@@ -16239,7 +16295,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEU66nknALCVs="
 							},
-							"name": "const getDeltaTime",
+							"name": "getDeltaTime",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -16247,7 +16303,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGEZ36AtxN37hk="
 									},
-									"type": "const float",
+									"type": "static const float",
 									"direction": "return"
 								}
 							]

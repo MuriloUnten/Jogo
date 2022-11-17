@@ -10,8 +10,8 @@ namespace Entities
         {
         protected:
             int slow;
-            bool Odamage;
-            float buoancy;
+            bool Odamage; // Q isso????
+            float buoyancy;
 
         public:
             Obstacle(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f), int newSlow=0);
