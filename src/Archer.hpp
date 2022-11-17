@@ -19,12 +19,15 @@ namespace Entities
             private:
                 Arrow* pArrow;
                 Player* pPlayer;
-                float attacktime;
+                float attackTime;
 
             public:
-                Archer(const std::string fileName, sf::Vector2f size, sf::Vector2f position = sf::Vector2f(0, 0), int hp=3, Player* player = NULL, Arrow* arrow = NULL);
+                Archer(const std::string fileName, sf::Vector2f size, sf::Vector2f position = sf::Vector2f(0, 0), int hp=3, Player* player = NULL);
                 Archer();
                 ~Archer();
+
+                void setPlayer(Player* player);
+                Arrow* getArrow() const;
 
                 bool alcancePlayer();
 

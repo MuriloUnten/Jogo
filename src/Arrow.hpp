@@ -12,8 +12,7 @@ namespace Entities
         private:
 
         public:
-            Arrow(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage=1);
-            Arrow();
+            Arrow(sf::Vector2f size=sf::Vector2f(0.0f, 0.0f), sf::Vector2f position=sf::Vector2f(0.0f, 0.0f), int newdamage=1);
             ~Arrow();
 
             void execute();

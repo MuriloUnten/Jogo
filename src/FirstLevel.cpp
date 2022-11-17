@@ -2,11 +2,12 @@
 #include <cstdlib>
 
 #define PLAYER_PATH "../assets/personagem/kakashi1.png"
-#define ENEMY_PATH "../assets/inimigos/enemy1.png"
+#define ENEMY1_PATH "../assets/inimigos/enemy1.png"
+#define ARCHER_PATH "../assets/inimigos/arqueiro.png"
 #define CACTUS_PATH "../assets/mundo/espinho_tile.png"
 #define GROUND2_PATH "../assets/mundo/ground_tile.png" 
 #define GROUND3_PATH "../assets/mundo/ground2_tile.png"
-#define ARROW_PATH "../assets/inimigos/flexa.png"
+#define ARROW_PATH "../assets/inimigos/flecha.png"
 
 
 namespace Levels
@@ -35,23 +36,34 @@ namespace Levels
 
     void FirstLevel::createEnemies()
     {
-        Entities::MovingEntities::Enemy1* enemy = new Entities::MovingEntities::Enemy1(ENEMY_PATH, sf::Vector2f(50, 50), sf::Vector2f(780, 390));
+        Entities::MovingEntities::Enemy1* enemy = new Entities::MovingEntities::Enemy1(ENEMY1_PATH, sf::Vector2f(50, 50), sf::Vector2f(780, 390));
         Entities::Entity* pEntity = static_cast<Entities::Entity*>(enemy);
         Entities::MovingEntities::Enemy* pEnemy = static_cast<Entities::MovingEntities::Enemy*>(enemy);
         entityList->pushEntity(pEntity);
         collisions->pushEnemy(pEnemy);
 
-        enemy = new Entities::MovingEntities::Enemy1(ENEMY_PATH, sf::Vector2f(50, 50), sf::Vector2f(1000, 100));
+        enemy = new Entities::MovingEntities::Enemy1(ENEMY1_PATH, sf::Vector2f(50, 50), sf::Vector2f(1000, 100));
         pEntity = static_cast<Entities::Entity*>(enemy);
         pEnemy = static_cast<Entities::MovingEntities::Enemy*>(enemy);
         entityList->pushEntity(pEntity);
         collisions->pushEnemy(pEnemy);
         
-        enemy = new Entities::MovingEntities::Enemy1(ENEMY_PATH, sf::Vector2f(50, 50), sf::Vector2f(100, 600));
+        enemy = new Entities::MovingEntities::Enemy1(ENEMY1_PATH, sf::Vector2f(50, 50), sf::Vector2f(100, 600));
         pEntity = static_cast<Entities::Entity*>(enemy);
         pEnemy = static_cast<Entities::MovingEntities::Enemy*>(enemy);
         entityList->pushEntity(pEntity);
         collisions->pushEnemy(pEnemy);
+
+
+        Entities::MovingEntities::Archer* archer = new Entities::MovingEntities::Archer(ARCHER_PATH, sf::Vector2f(50, 50), sf::Vector2f(440.0f, 40));
+        archer->setPlayer(pPlayer);
+        pEntity = static_cast<Entities::Entity*>(archer);
+        pEnemy = static_cast<Entities::MovingEntities::Enemy*>(archer);
+        entityList->pushEntity(pEntity);
+        collisions->pushEnemy(pEnemy);
+
+        pEntity = static_cast<Entities::Entity*>(archer->getArrow());
+        entityList->pushEntity(pEntity);
     }
 
 

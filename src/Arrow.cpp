@@ -1,18 +1,13 @@
 #include "Arrow.hpp"
 
+#define ARROW_PATH "../assets/inimigos/flecha.png"
+
 namespace Entities
 {
     namespace MovingEntities
     {
-        Arrow::Arrow(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage):
-        Projectile(fileName, size, position)
-        {
-
-        }
-
-
-        Arrow::Arrow():
-        Projectile()
+        Arrow::Arrow(sf::Vector2f size, sf::Vector2f position, int newdamage):
+        Projectile(ARROW_PATH, size, position)
         {
 
         }

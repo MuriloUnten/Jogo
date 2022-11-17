@@ -7,36 +7,29 @@ namespace Entities
         Projectile::Projectile(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage):
         MovingEntity(fileName, size, position)
         {
-            discard = true;
+            executable = false;
         }
 
         Projectile::Projectile():
         MovingEntity()
         {
-            discard = true;
+            executable = false;
         }
+
+
         Projectile::~Projectile()
         {
 
         }
 
-        bool Projectile::getDiscard()
-        {
-            return discard;
-        }
-
-        void Projectile::setDiscard( bool condition)
-        {
-            discard = condition;
-        }
-
 
         void  Projectile::shoot(sf::Vector2f newPos, sf::Vector2f newVel)
         {
+            std::cout << "Atirando flecha\n";
+            executable = true;
             setPos(newPos);
             setVel(newVel);
-            discard = false;
         }
 
-    }//namespace MovingEntities
-}//Entities
+    }// namespace MovingEntities
+}// namespace Entities
