@@ -11,6 +11,16 @@ class GraphicsManager;
 
 namespace Entities
 {
+	enum ID
+	{
+		empty = 0,
+		player,
+		cactus,
+		
+	};
+
+
+
 	class Entity : public Being
 	{
 	protected:
