@@ -10,14 +10,16 @@ namespace Entities
         Character(Eplayer, fileName, size, position, hp)
         {
             posDirection = true;
+            attackTimer->setLimit(PLAYER_ATTACK_COOLDOWN);
         }
 
 
-        Player::Player()
+        Player::Player():
+        Character()
         {
             hp = 3;
             posDirection = true;
-
+            attackTimer->setLimit(PLAYER_ATTACK_COOLDOWN);
         }
 
 
@@ -26,14 +28,19 @@ namespace Entities
 
         }
 
+
         bool Player::getPositiveDirection() const
         {
             return posDirection;
         }
 
+
         void Player::execute()
         { 
-            updateTimeCollision();
+            float dt = Managers::GraphicsManager::getDeltaTime();
+
+            collisionTimer->update(dt);
+
 
             // TODO Rever
             if(vel.x != 0 && !jumping)
@@ -86,7 +93,7 @@ namespace Entities
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
             {
-                vel.y += 4000 * pGraphics->getDeltaTime();
+                vel.y += 4000 * dt;
             }
 
             //std::cout<< "hp Player:"<< hp;

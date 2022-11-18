@@ -18,7 +18,7 @@ namespace Entities
             Enemy();
             ~Enemy();
 
-            void execute();
+            virtual void execute() = 0;
 
         };
     }// namespace MovingEntities

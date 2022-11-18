@@ -13,7 +13,8 @@ namespace Entities
         }
 
 
-        Enemy::Enemy()
+        Enemy::Enemy():
+        Character()
         {
             hp = 1;
             damage= 1;
@@ -23,14 +24,6 @@ namespace Entities
         Enemy::~Enemy()
         {
 
-        }
-
-
-        void Enemy::execute()
-        { 
-            updateTimeCollision();
-
-            update();
         }
     }// namespace MovingEntities
 }// namespace Entities

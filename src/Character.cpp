@@ -7,31 +7,32 @@ namespace Entities
     namespace MovingEntities
     {
         Character::Character(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health, int newDamage):
-        MovingEntity(id, fileName, size, position)
+        MovingEntity(id, fileName, size, position),
+        collisionTimer(new Timer(TIMECOLLISON)),
+        attackTimer(new Timer())
         {
             hp = health;
             damage = newDamage;
             canJump = true;
-    		timeCollision = TIMECOLLISON;
             Id = id;
-
         }
 
 
         Character::Character():
-        MovingEntity()
+        MovingEntity(),
+        collisionTimer(new Timer(TIMECOLLISON)),
+        attackTimer(new Timer())
         {
             hp = 3;
             damage = 1;
             canJump = true;
-    		timeCollision = TIMECOLLISON;
             Id = Eempty;
         }
 
 
         Character::~Character()
         {
-
+            delete collisionTimer;
         }
 
 
@@ -66,26 +67,9 @@ namespace Entities
         }
 
 
-        void Character::updateTimeCollision()
+        Timer* Character::getCollisionTimer() const
         {
-            timeCollision -= Managers::GraphicsManager::getDeltaTime();
-            if(timeCollision <= 0.0f)
-                timeCollision = -1.0f;
+            return collisionTimer;
         }
-
-
-        void Character::restartTimeCollision()
-        {
-            timeCollision = TIMECOLLISON;
-        }
-
-
-        float Character::getTimeCollision() const 
-        {
-            return timeCollision;
-        }
-
-
-
     }// namespace MovingEntities
 }// namespace Entities
