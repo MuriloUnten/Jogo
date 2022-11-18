@@ -13,7 +13,9 @@ namespace Entities
         class Player : public Character
         {
         private:
-            bool posDirection;
+
+            // bool posDirection; Já tem direção em MovingEntity
+            int score;
 
         public:
             Player(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0), int hp=3);

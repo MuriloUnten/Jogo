@@ -27,7 +27,6 @@ namespace Entities
 		Entity();
 		~Entity();
 
-		void setId(const int ID);
 		const int getId() const;
 
 		virtual void execute() = 0;
