@@ -71,5 +71,11 @@ namespace Entities
         {
             return collisionTimer;
         }
+
+
+        Timer* Character::getAttackTimer() const
+        {
+            return attackTimer;
+        }
     }// namespace MovingEntities
 }// namespace Entities

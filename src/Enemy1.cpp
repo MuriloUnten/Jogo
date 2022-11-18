@@ -16,6 +16,7 @@ namespace Entities
         { 
             float dt = Managers::GraphicsManager::getDeltaTime();
             collisionTimer->update(dt);
+            attackTimer->update(dt);
 
 
             update();

@@ -40,6 +40,7 @@ namespace Entities
             void setCanJump(const bool jump);
 
             Timer* getCollisionTimer() const;
+            Timer* getAttackTimer() const;
 
         };
 

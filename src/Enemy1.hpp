@@ -1,6 +1,6 @@
 #pragma once
 
-#define ENEMY1_ATTACK_COOLDOWN 2
+#define ENEMY1_ATTACK_COOLDOWN 1
 
 #include "Enemy.hpp"
 

@@ -179,13 +179,6 @@ namespace Managers
         sf::Vector2f coordinate;
         coordinate = Player->getPos();
 
-        //Enemy is a arrow
-        if(Enemy->getId() == Earrow)
-        {
-            Enemy->setExecutable(false);
-            std::cout<< "enemy is a arrow"<<std::endl;
-        }
-
         //collision in the Y direction
         if(Intersection.y > Intersection.x)
         {
@@ -228,7 +221,13 @@ namespace Managers
                     }
             }
             else
-                Player->takeDamage(Enemy->getDamage());
+            {
+                if(Enemy->getAttackTimer()->getElapsedTime() == Enemy->getAttackTimer()->getLimit())
+                {
+                    Player->takeDamage(Enemy->getDamage());
+                    Enemy->getAttackTimer()->restart();
+                }
+            }
 
             if (Player->getPos().x < Enemy->getPos().x)
                 {

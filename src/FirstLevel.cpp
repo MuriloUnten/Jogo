@@ -72,7 +72,7 @@ namespace Levels
         entityList->pushEntity(pEntity);
         collisions->pushEnemy(pEnemy);
 
-        pEntity = static_cast<Entities::Entity*>(archer->getArrow());
+        pEntity = static_cast<Entities::Entity*>(archer2->getArrow());
         entityList->pushEntity(pEntity);
     }
 
