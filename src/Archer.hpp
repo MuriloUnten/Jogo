@@ -1,5 +1,8 @@
 #pragma once
 
+#define TIME_ARCHER 0.5
+#define ARCHER_TIME_COOLDOWN 1
+
 #include "Enemy.hpp"
 #include "Arrow.hpp"
 #include "Player.hpp"
@@ -7,7 +10,6 @@
 
 #include <math.h>
 
-#define TIME_ARCHER 1
 
 namespace Entities
 {
@@ -19,7 +21,6 @@ namespace Entities
             private:
                 Arrow* pArrow;
                 Player* pPlayer;
-                float attackTime;
 
             public:
                 Archer(const std::string fileName, sf::Vector2f size, sf::Vector2f position = sf::Vector2f(0, 0), int hp=3, Player* player = NULL);

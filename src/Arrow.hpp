@@ -1,5 +1,5 @@
 #pragma once
-#define ARROW_VELOCITYX 1000
+#define ARROW_VELOCITYX 1000.0f
 
 #include "Projectile.hpp"
 

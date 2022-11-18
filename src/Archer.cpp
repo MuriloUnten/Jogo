@@ -8,19 +8,20 @@ namespace Entities
         Enemy(Earcher, fileName, size, position),
         pArrow(new Arrow())
         {
-            attackTime = TIME_ARCHER;
             pPlayer = player;
             vel = sf::Vector2f(0.0f, 0.0f);
+            attackTimer->setLimit(ARCHER_TIME_COOLDOWN);
         }
 
 
         Archer::Archer():
-        Enemy()
+        Enemy(),
+        pArrow(new Arrow())
         {
-            attackTime = TIME_ARCHER;
             pPlayer = NULL;
             pArrow = NULL;
             vel = sf::Vector2f(0.0f, 0.0f);
+            attackTimer->setLimit(ARCHER_TIME_COOLDOWN);
         }
 
 
@@ -47,7 +48,7 @@ namespace Entities
         {
             float distanceY = fabs( pPlayer->getPos().y - getPos().y);
 
-            if(distanceY <= 120.f)
+            if(distanceY <= 150.0f)
             {
                 return true;
             }
@@ -61,40 +62,31 @@ namespace Entities
 
         void Archer::execute()
         {
+            float dt = Managers::GraphicsManager::getDeltaTime();
+            attackTimer->update(dt);
+
             if(pPlayer != NULL)
             {
-                if(attackTime == TIME_ARCHER && alcancePlayer())
+                if(attackTimer->getElapsedTime() == attackTimer->getLimit() && alcancePlayer())
                 {
-                    float deltaH = pPlayer->getPos().y - getPos().y;
-                    float deltaX = pPlayer->getPos().x - getPos().x;
-                    float time = abs(pPlayer->getPos().y - getPos().y) / ARROW_VELOCITYX;
+                    float deltaH = (pPlayer->getPos().y + pPlayer->getSize().y/2) - (getPos().y + getSize().y/2);
+                    float deltaX = (pPlayer->getPos().x + pPlayer->getSize().x/2) - (getPos().x + getSize().y/2);
+                    float time = fabs(deltaX) / ARROW_VELOCITYX;
 
                     float vy;
-                    
-                    if (deltaH < 0)
-                        vy = -(deltaH - GRAVITY * time * time / 2) / time; 
-                    else
-                        vy = -(-deltaH - GRAVITY * time * time / 2) / time;
+                    vy = (-deltaH + (GRAVITY * time * time / 2)) / time; 
 
-                    sf::Vector2f pos = getPos() + getSize();
+                    sf::Vector2f pos = getPos() + getSize()/2.0f;
                     
                     if(deltaX > 0)
                         pArrow->shoot(pos, sf::Vector2f(ARROW_VELOCITYX, vy));
                     else
                         pArrow->shoot(pos, sf::Vector2f(-ARROW_VELOCITYX, vy));
-                    
-                    attackTime -= Managers::GraphicsManager::getDeltaTime();
-                    
                 }
 
-                if( attackTime < TIME_ARCHER)
-                {
-                    attackTime -= Managers::GraphicsManager::getDeltaTime();
-                    if(attackTime <= 0.0f)
-                    {
-                        attackTime = TIME_ARCHER;
-                    }
-                }
+                if( attackTimer->getElapsedTime() == attackTimer->getLimit())
+                    attackTimer->restart();
+
             }
 
             update();

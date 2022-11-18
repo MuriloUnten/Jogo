@@ -20,9 +20,6 @@ namespace Entities
 
             void shoot(sf::Vector2f newPos, sf::Vector2f newVel);
 
-            bool getDiscard();
-            void setDiscard(bool condition);
-
             virtual void execute()=0;
 
         };

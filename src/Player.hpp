@@ -1,7 +1,10 @@
 #pragma once
 
+#define PLAYER_ATTACK_COOLDOWN 1
+
 #include "Character.hpp"
 #include "Enemy.hpp"
+
 
 namespace Entities
 {

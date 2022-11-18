@@ -110,10 +110,10 @@ namespace Managers
     {
         if(obstacle->getDamage())// *
         {
-            if(Player->getTimeCollision() < 0)
+            if(Player->getCollisionTimer()->getElapsedTime() >= Player->getCollisionTimer()->getLimit())
             {
                 Player->takeDamage(obstacle->getDamage());// mesmo método de * com a intenção de fazer coisas diferentes???
-                Player->restartTimeCollision();
+                Player->getCollisionTimer()->restart();
             }
         }
 
@@ -336,16 +336,5 @@ namespace Managers
 
 
 /* teste de nova implementação a partir daqui */
-
-    
-
-
-
-
-
-
-
-
-
 
 }//namespace Managers

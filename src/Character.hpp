@@ -1,6 +1,7 @@
 #pragma once
 
 #include "MovingEntity.hpp"
+#include "Timer.hpp"
 
 
 namespace Entities
@@ -19,7 +20,8 @@ namespace Entities
             bool jumping;
             bool movingInX;
 
-            float timeCollision;
+            Timer* collisionTimer;
+            Timer* attackTimer;
 
         public:
             Character(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health=3, int newDamage=1);
@@ -37,9 +39,8 @@ namespace Entities
 
             void setCanJump(const bool jump);
 
-            void updateTimeCollision();
-            void restartTimeCollision();
-            float getTimeCollision() const;
+            Timer* getCollisionTimer() const;
+
         };
 
     }// namespace MovingEntities
