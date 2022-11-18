@@ -48,7 +48,7 @@ namespace Entities
         {
             float distanceY = fabs( pPlayer->getPos().y - getPos().y);
 
-            if(distanceY <= 120.0f)
+            if(distanceY <= 150.0f)
             {
                 return true;
             }
@@ -74,8 +74,7 @@ namespace Entities
                     float time = fabs(deltaX) / ARROW_VELOCITYX;
 
                     float vy;
-                    
-                    vy = (deltaH - GRAVITY * time * time / 2) / time; 
+                    vy = (-deltaH + (GRAVITY * time * time / 2)) / time; 
 
                     sf::Vector2f pos = getPos() + getSize()/2.0f;
                     

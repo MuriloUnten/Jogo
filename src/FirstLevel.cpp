@@ -55,10 +55,20 @@ namespace Levels
         collisions->pushEnemy(pEnemy);
 
 
-        Entities::MovingEntities::Archer* archer = new Entities::MovingEntities::Archer(ARCHER_PATH, sf::Vector2f(50, 50), sf::Vector2f(440.0f, 40));
+        Entities::MovingEntities::Archer* archer = new Entities::MovingEntities::Archer(ARCHER_PATH, sf::Vector2f(70, 100), sf::Vector2f(440.0f, 40));
         archer->setPlayer(pPlayer);
         pEntity = static_cast<Entities::Entity*>(archer);
         pEnemy = static_cast<Entities::MovingEntities::Enemy*>(archer);
+        entityList->pushEntity(pEntity);
+        collisions->pushEnemy(pEnemy);
+
+        pEntity = static_cast<Entities::Entity*>(archer->getArrow());
+        entityList->pushEntity(pEntity);
+
+        Entities::MovingEntities::Archer* archer2 = new Entities::MovingEntities::Archer(ARCHER_PATH, sf::Vector2f(50, 70), sf::Vector2f(800, 20));
+        archer2->setPlayer(pPlayer);
+        pEntity = static_cast<Entities::Entity*>(archer2);
+        pEnemy = static_cast<Entities::MovingEntities::Enemy*>(archer2);
         entityList->pushEntity(pEntity);
         collisions->pushEnemy(pEnemy);
 
