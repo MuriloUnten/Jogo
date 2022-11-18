@@ -12,6 +12,7 @@ namespace Entities
 		vel = sf::Vector2f(0, 0);
 		acc = sf::Vector2f(0, GRAVITY);
 		executable = true;
+		Id = id;
 	}
 
 

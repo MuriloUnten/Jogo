@@ -47,7 +47,7 @@ namespace Entities
         {
             float distanceY = fabs( pPlayer->getPos().y - getPos().y);
 
-            if(distanceY <= 50.f)
+            if(distanceY <= 120.f)
             {
                 return true;
             }
@@ -72,9 +72,9 @@ namespace Entities
                     float vy;
                     
                     if (deltaH < 0)
-                        vy = -(deltaH + GRAVITY * time * time / 2) / time; 
+                        vy = -(deltaH - GRAVITY * time * time / 2) / time; 
                     else
-                        vy = -(-deltaH + GRAVITY * time * time / 2) / time;
+                        vy = -(-deltaH - GRAVITY * time * time / 2) / time;
 
                     sf::Vector2f pos = getPos() + getSize();
                     
@@ -82,6 +82,8 @@ namespace Entities
                         pArrow->shoot(pos, sf::Vector2f(ARROW_VELOCITYX, vy));
                     else
                         pArrow->shoot(pos, sf::Vector2f(-ARROW_VELOCITYX, vy));
+                    
+                    attackTime -= Managers::GraphicsManager::getDeltaTime();
                     
                 }
 
