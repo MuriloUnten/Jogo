@@ -8,5 +8,6 @@ enum ID
 		Ecactus = 3,
 		Eenemy1 = 4,
 		Earcher = 5,
-		Earrow = 6
+		Earrow = 6,
+		Eweb = 7
 	};

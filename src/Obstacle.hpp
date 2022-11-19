@@ -9,19 +9,20 @@ namespace Entities
         class Obstacle : public Entity
         {
         protected:
-            int slow;
-            bool Odamage; // Q isso????
+
+            bool Odamage;
             float buoyancy;
+            float slow;
 
         public:
-            Obstacle(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f), int newSlow=0);
+            Obstacle(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f), float newSlow = 0.0f);
             Obstacle();
             ~Obstacle();
 
             const bool getDamage();
-            
-            void setSlow(const int newSlow);
-            const int getSlow() const;
+
+            void setSlow( const float newSlow);
+            const float getSlow() const;
 
             void execute();
         };

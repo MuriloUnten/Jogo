@@ -13,10 +13,7 @@ namespace Levels
             FirstLevel(std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0), Entities::MovingEntities::Player* player=NULL);
             ~FirstLevel();
 
-            void createPlayers();
-            void createEnemies();
-            void createObstacles();
-
+            void createLevel();
     };
 
 }// namespace Levels
