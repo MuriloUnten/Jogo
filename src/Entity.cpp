@@ -2,7 +2,7 @@
 #include "GraphicsManager.hpp"
 #include "Player.hpp"
 
-#define MAX_VELOCITY 500
+#define MAX_VELOCITY 2000
 
 namespace Entities
 {

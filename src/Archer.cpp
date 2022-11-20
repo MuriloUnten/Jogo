@@ -74,7 +74,7 @@ namespace Entities
                     float time = fabs(deltaX) / ARROW_VELOCITYX;
 
                     float vy;
-                    vy = (-deltaH + (GRAVITY * time * time / 2)) / time; 
+                    vy = (deltaH + (-GRAVITY * time * time / 2)) / time; 
 
                     sf::Vector2f pos = getPos() + getSize()/2.0f;
                     
