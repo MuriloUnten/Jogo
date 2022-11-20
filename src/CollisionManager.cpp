@@ -126,59 +126,57 @@ namespace Managers
         else
         {
             /* Velocidade em y pode ser > 0 e mesmo assim a colisao ser em x, e vice versa */
-        sf::Vector2f coordinate;
-        coordinate = Player->getPos();
-        //collision in the Y direction
-        if(Intersection.y > Intersection.x)
-        {
-            if (Player->getPos().y < obstacle->getPos().y)
+            sf::Vector2f coordinate;
+            coordinate = Player->getPos();
+            //collision in the Y direction
+            if(Intersection.y > Intersection.x)
             {
-                //change position
-                coordinate.y += Intersection.y;
-                Player->setPos(coordinate);
-                //change velocity
-                coordinate = Player->getVel();
-                coordinate.y = 0.0;
-                Player->setVel(coordinate);
-                Player->setCanJump(true);
-            }
-            //change position
-            else
-            {
-                coordinate.y -= Intersection.y;
-                Player->setPos(coordinate);
-                //change velocity
-                coordinate = Player->getVel();
-                coordinate.y = 0.0f;
-            }
-            
-        }
-        //collision in the x direction
-        else
-        {
-            if (Player->getPos().x < obstacle->getPos().x)
+                if (Player->getPos().y < obstacle->getPos().y)
                 {
                     //change position
-                    coordinate.x += Intersection.x;
+                    coordinate.y += Intersection.y;
                     Player->setPos(coordinate);
                     //change velocity
                     coordinate = Player->getVel();
-                    coordinate.x = 0.0;
+                    coordinate.y = 0.0;
+                    Player->setVel(coordinate);
+                    Player->setCanJump(true);
                 }
                 //change position
                 else
                 {
-                    coordinate.x -= Intersection.x;
+                    coordinate.y -= Intersection.y;
                     Player->setPos(coordinate);
                     //change velocity
                     coordinate = Player->getVel();
-                    coordinate.x = 0.0;
+                    coordinate.y = 0.0f;
                 }
+                
             }
-         Player->setVel(coordinate);
+            //collision in the x direction
+            else
+            {
+                if (Player->getPos().x < obstacle->getPos().x)
+                    {
+                        //change position
+                        coordinate.x += Intersection.x;
+                        Player->setPos(coordinate);
+                        //change velocity
+                        coordinate = Player->getVel();
+                        coordinate.x = 0.0;
+                    }
+                    //change position
+                    else
+                    {
+                        coordinate.x -= Intersection.x;
+                        Player->setPos(coordinate);
+                        //change velocity
+                        coordinate = Player->getVel();
+                        coordinate.x = 0.0;
+                    }
+                }
+            Player->setVel(coordinate);
         }
-        
-       
     }
 
     //dano no jogador, a menos que ele esja atacando

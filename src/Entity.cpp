@@ -99,6 +99,6 @@ namespace Entities
 
 	void Entity::setPlayer1(MovingEntities::Player* newPlayer)
 	{
-		//pPlayer1 = newPlayer;
+		pPlayer1 = newPlayer;
 	}
 }// namespace Entities

@@ -10,7 +10,7 @@ namespace Entities
         {
             pPlayer = player;
             vel = sf::Vector2f(0.0f, 0.0f);
-            attackTimer->setLimit(ARCHER_TIME_COOLDOWN);
+            attackTimer->setLimit(ARCHER_ATTACK_COOLDOWN);
         }
 
 
@@ -21,7 +21,7 @@ namespace Entities
             pPlayer = NULL;
             pArrow = NULL;
             vel = sf::Vector2f(0.0f, 0.0f);
-            attackTimer->setLimit(ARCHER_TIME_COOLDOWN);
+            attackTimer->setLimit(ARCHER_ATTACK_COOLDOWN);
         }
 
 
