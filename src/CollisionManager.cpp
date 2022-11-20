@@ -116,13 +116,14 @@ namespace Managers
                 Player->getCollisionTimer()->restart();
             }
         }
+
         if(obstacle->getId() == Eweb)
         {
             sf::Vector2f vel = Player->getVel();
             vel.x *= obstacle->getSlow();
             Player->setVel(vel);
         }
-        if(obstacle->getId() != Eweb)
+        else
         {
             /* Velocidade em y pode ser > 0 e mesmo assim a colisao ser em x, e vice versa */
         sf::Vector2f coordinate;

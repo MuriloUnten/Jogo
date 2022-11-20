@@ -21,6 +21,7 @@ namespace Levels
 
     void FirstLevel::createLevel()
     {
+        srand(time(NULL));
         FILE *file;
         int ch;
         float obstacleSize = 20.0;
