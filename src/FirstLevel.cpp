@@ -37,7 +37,7 @@ namespace Levels
             //cactus or web
             if(ch == '1')
             {
-                srand((unsigned) time(NULL));
+                //srand((unsigned) time(NULL));
 
                 int aux = rand()%2;
                 if ( aux == 1)
