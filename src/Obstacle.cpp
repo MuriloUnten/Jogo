@@ -7,6 +7,7 @@ namespace Entities
         Obstacle::Obstacle(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, float newSlow):
         Entity(id, fileName, size, position)
         {
+            Odamage = false;
             slow = newSlow;
             buoyancy = -GRAVITY;
         }
@@ -15,6 +16,7 @@ namespace Entities
         Obstacle::Obstacle():
         Entity()
         {
+            Odamage = false;
             slow = 0;
             buoyancy = -GRAVITY;
         }
