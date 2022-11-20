@@ -10,7 +10,7 @@ namespace Entities{
             float slow;
 
         public:
-            Web(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(80.0f,20.0f), float newSlow = 0.5f);
+            Web(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(80.0f,20.0f), float newSlow = 0.005f);
             Web();
             ~Web();
 
