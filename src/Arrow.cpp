@@ -1,6 +1,6 @@
 #include "Arrow.hpp"
 
-#define ARROW_PATH "../assets/inimigos/flecha.png"
+#define ARROW_PATH "../assets/inimigos/flechaBranca.png"
 
 namespace Entities
 {

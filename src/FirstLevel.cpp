@@ -1,13 +1,8 @@
 #include "FirstLevel.hpp"
 #include <cstdlib>
 
-#define PLAYER_PATH "../assets/personagem/kakashi1.png"
-#define ENEMY1_PATH "../assets/inimigos/enemy1.png"
-#define ARCHER_PATH "../assets/inimigos/arqueiro.png"
-#define CACTUS_PATH "../assets/mundo/espinho_tile.png"
 #define GROUND2_PATH "../assets/mundo/ground_tile.png" 
 #define GROUND3_PATH "../assets/mundo/ground2_tile.png"
-#define ARROW_PATH "../assets/inimigos/flecha.png"
 
 
 namespace Levels
@@ -24,61 +19,9 @@ namespace Levels
 
     }
 
-
-    void FirstLevel::createPlayers()
+    void FirstLevel::createLevel()
     {
-        pPlayer->loadTexture(PLAYER_PATH);
-        pPlayer->setSize(sf::Vector2f(50, 60));
-        pPlayer->getHitBox()->setTexture(pPlayer->getTexture());
-        pPlayer->setPos(sf::Vector2f(400, 380));
-    }
-
-
-    void FirstLevel::createEnemies()
-    {
-        Entities::MovingEntities::Enemy1* enemy = new Entities::MovingEntities::Enemy1(ENEMY1_PATH, sf::Vector2f(50, 50), sf::Vector2f(780, 390));
-        Entities::Entity* pEntity = static_cast<Entities::Entity*>(enemy);
-        Entities::MovingEntities::Enemy* pEnemy = static_cast<Entities::MovingEntities::Enemy*>(enemy);
-        entityList->pushEntity(pEntity);
-        collisions->pushEnemy(pEnemy);
-
-        enemy = new Entities::MovingEntities::Enemy1(ENEMY1_PATH, sf::Vector2f(50, 50), sf::Vector2f(1000, 100));
-        pEntity = static_cast<Entities::Entity*>(enemy);
-        pEnemy = static_cast<Entities::MovingEntities::Enemy*>(enemy);
-        entityList->pushEntity(pEntity);
-        collisions->pushEnemy(pEnemy);
-        
-        enemy = new Entities::MovingEntities::Enemy1(ENEMY1_PATH, sf::Vector2f(50, 50), sf::Vector2f(100, 600));
-        pEntity = static_cast<Entities::Entity*>(enemy);
-        pEnemy = static_cast<Entities::MovingEntities::Enemy*>(enemy);
-        entityList->pushEntity(pEntity);
-        collisions->pushEnemy(pEnemy);
-
-
-        Entities::MovingEntities::Archer* archer = new Entities::MovingEntities::Archer(ARCHER_PATH, sf::Vector2f(70, 100), sf::Vector2f(440.0f, 40));
-        archer->setPlayer(pPlayer);
-        pEntity = static_cast<Entities::Entity*>(archer);
-        pEnemy = static_cast<Entities::MovingEntities::Enemy*>(archer);
-        entityList->pushEntity(pEntity);
-        collisions->pushEnemy(pEnemy);
-
-        pEntity = static_cast<Entities::Entity*>(archer->getArrow());
-        entityList->pushEntity(pEntity);
-
-        Entities::MovingEntities::Archer* archer2 = new Entities::MovingEntities::Archer(ARCHER_PATH, sf::Vector2f(50, 70), sf::Vector2f(800, 20));
-        archer2->setPlayer(pPlayer);
-        pEntity = static_cast<Entities::Entity*>(archer2);
-        pEnemy = static_cast<Entities::MovingEntities::Enemy*>(archer2);
-        entityList->pushEntity(pEntity);
-        collisions->pushEnemy(pEnemy);
-
-        pEntity = static_cast<Entities::Entity*>(archer2->getArrow());
-        entityList->pushEntity(pEntity);
-    }
-
-
-    void FirstLevel::createObstacles()
-    {
+        srand(time(NULL));
         FILE *file;
         int ch;
         float obstacleSize = 20.0;
@@ -92,50 +35,53 @@ namespace Levels
 
         while((ch = fgetc(file)) != EOF)
         {
-            //cactus
+            //cactus or web
             if(ch == '1')
             {
-                Entities::StaticEntities::Cactus *pAuxObstacle = new Entities::StaticEntities::Cactus(CACTUS_PATH, sf::Vector2f(obstacleSize,obstacleSize), sf::Vector2f(width * obstacleSize, height * obstacleSize));
+                //srand((unsigned) time(NULL));
 
-                Entities::StaticEntities::Obstacle* pCastObsAux = static_cast<Entities::StaticEntities::Obstacle*>(pAuxObstacle);
-                collisions->pushObstacle(pCastObsAux);
-
-                Entities::Entity* pCastAux = static_cast<Entities::Entity*>(pAuxObstacle);
-                entityList->pushEntity(pCastAux);
+                int aux = rand()%2;
+                if ( aux == 1)
+                {
+                    createWeb(sf::Vector2f( width, height));
+                }
+                else
+                {
+                    createCactus(sf::Vector2f( width, height));       
+                }
+                
             }
 
             //ground
             else if(ch == '2')
             {
-                Entities::StaticEntities::Ground *pAuxObstacle = new Entities::StaticEntities::Ground(GROUND2_PATH, sf::Vector2f(obstacleSize,obstacleSize), sf::Vector2f(width * obstacleSize, height * obstacleSize));
-                
-                Entities::StaticEntities::Obstacle* pCastObsAux = static_cast<Entities::StaticEntities::Obstacle*>(pAuxObstacle);
-                collisions->pushObstacle(pCastObsAux);
-
-                Entities::Entity* pCastAux = static_cast<Entities::Entity*>(pAuxObstacle);
-                entityList->pushEntity(pCastAux);
+                createGround(GROUND2_PATH, sf::Vector2f( width, height));
             }
 
             else if(ch == '3')
             {
-                Entities::StaticEntities::Ground* pAuxObstacle = new Entities::StaticEntities::Ground(GROUND3_PATH, sf::Vector2f(obstacleSize,obstacleSize), sf::Vector2f(width * obstacleSize, height * obstacleSize));
-                
-                Entities::StaticEntities::Obstacle* pCastObsAux = static_cast<Entities::StaticEntities::Obstacle*>(pAuxObstacle);
-                collisions->pushObstacle(pCastObsAux);
-                
-                Entities::Entity* pCastAux = static_cast<Entities::Entity*>(pAuxObstacle);
-                entityList->pushEntity(pCastAux);
+                createGround(GROUND3_PATH, sf::Vector2f( width, height));
+            }
+            else if(ch == '4')
+            {
+                createArcher(sf::Vector2f( width, height));
+            }
+            else if(ch == '6')
+            {
+                createEnemy1(sf::Vector2f( width, height));
             }
 
-            width++;
+            width+=20.0f;
 
-            if(width == 65)
+            if(width == 1300.0f)
             {
-                width = 0;
-                height++;
+                width = 0.0f;
+                height+=20.0f;
             }
         }
         fclose(file);
+
+        createPlayers(sf::Vector2f(400, 380));
     }
 
 }// namespace Levels

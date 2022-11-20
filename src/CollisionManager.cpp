@@ -117,7 +117,15 @@ namespace Managers
             }
         }
 
-        /* Velocidade em y pode ser > 0 e mesmo assim a colisao ser em x, e vice versa */
+        if(obstacle->getId() == Eweb)
+        {
+            sf::Vector2f vel = Player->getVel();
+            vel.x *= obstacle->getSlow();
+            Player->setVel(vel);
+        }
+        else
+        {
+            /* Velocidade em y pode ser > 0 e mesmo assim a colisao ser em x, e vice versa */
         sf::Vector2f coordinate;
         coordinate = Player->getPos();
         //collision in the Y direction
@@ -166,8 +174,11 @@ namespace Managers
                     coordinate = Player->getVel();
                     coordinate.x = 0.0;
                 }
+            }
+         Player->setVel(coordinate);
         }
-        Player->setVel(coordinate);
+        
+       
     }
 
     //dano no jogador, a menos que ele esja atacando
