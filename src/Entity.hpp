@@ -4,7 +4,6 @@
 #include <iostream>
 #include "Being.hpp"
 #include "Id.hpp"
-#include <vector>
 
 #define GRAVITY 1000
 
@@ -12,6 +11,10 @@ class GraphicsManager;
 
 namespace Entities
 {
+	namespace MovingEntities
+	{
+		class Player;
+	}
 
 	class Entity : public Being
 	{
@@ -22,8 +25,10 @@ namespace Entities
 		bool executable;
 		ID Id;
 
+		static Entities::MovingEntities::Player* pPlayer1;
+
 	public:
-		Entity(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f));
+		Entity(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f, 0.0f));
 		Entity();
 		~Entity();
 
@@ -40,6 +45,8 @@ namespace Entities
 
 		void setExecutable(const bool newExecutable);
 		const bool getExecutable() const;
+
+		static void setPlayer1(Entities::MovingEntities::Player* newPlayer);
 
 	};
 }// namespace Entities

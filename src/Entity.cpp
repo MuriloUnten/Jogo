@@ -1,10 +1,12 @@
 #include "Entity.hpp"
 #include "GraphicsManager.hpp"
+#include "Player.hpp"
 
 #define MAX_VELOCITY 500
 
 namespace Entities
 {
+	MovingEntities::Player* pPlayer1 = NULL;
 
 	Entity::Entity(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position):
 	Being(fileName, size, position)
@@ -32,7 +34,7 @@ namespace Entities
 
 	const int Entity::getId() const
 	{
-		return Id;
+		// return Id;
 	}
 
 	void Entity::update()
@@ -95,4 +97,8 @@ namespace Entities
 	}
 
 
+	void Entity::setPlayer1(MovingEntities::Player* newPlayer)
+	{
+		//pPlayer1 = newPlayer;
+	}
 }// namespace Entities
