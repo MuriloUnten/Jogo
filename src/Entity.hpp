@@ -46,7 +46,7 @@ namespace Entities
 		void setExecutable(const bool newExecutable);
 		const bool getExecutable() const;
 
-		static void setPlayer1(Entities::MovingEntities::Player* newPlayer);
+		static void setPlayer1(MovingEntities::Player* newPlayer);
 
 	};
 }// namespace Entities

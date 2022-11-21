@@ -125,7 +125,7 @@ namespace Managers
         }
         else
         {
-                /* Velocidade em y pode ser > 0 e mesmo assim a colisao ser em x, e vice versa */
+            /* Velocidade em y pode ser > 0 e mesmo assim a colisao ser em x, e vice versa */
             sf::Vector2f coordinate;
             coordinate = Player->getPos();
             //collision in the Y direction
@@ -176,7 +176,7 @@ namespace Managers
                     }
                 }
             Player->setVel(coordinate);
-            }
+        }
     }
 
     //dano no jogador, a menos que ele esja atacando
