@@ -4,7 +4,7 @@
 #define HEIGHT 720
 
 #include <SFML/Graphics.hpp>
-
+#include <iostream>
 
 namespace Managers
 {
@@ -12,6 +12,8 @@ namespace Managers
 	{
 	private:
 		sf::RenderWindow* window;
+
+		sf::Font* font;
 
 		/* Singleton Design pattern */
 		static GraphicsManager* instance;
@@ -32,6 +34,8 @@ namespace Managers
 		void close();
 		void display();
 		sf::RenderWindow* getWindow();
+
+		sf::Font* getFont();
 
 		void updateDeltaTime();
 		static const float getDeltaTime();

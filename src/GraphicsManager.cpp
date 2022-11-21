@@ -1,5 +1,7 @@
 #include "GraphicsManager.hpp"
 
+#define FONT_PATH "../assets/Fonts/ethn.otf"
+
 namespace Managers
 {
     GraphicsManager* GraphicsManager::instance = NULL;
@@ -82,6 +84,18 @@ namespace Managers
     const float GraphicsManager::getDeltaTime()
     {
         return deltaTime;
+    }
+
+    /* Returns a font pointer to be used by texts. */
+    sf::Font* GraphicsManager::getFont() {
+        if (!font) {
+            font = new sf::Font();
+            if (!font->loadFromFile(FONT_PATH)) {
+                std::cout << "Error loading Font!" << std::endl;
+                exit(1);
+            }
+        }
+        return font;
     }
 
 }// namespace Managers
