@@ -5,6 +5,7 @@
 
 Game::Game() :
 graphics(Managers::GraphicsManager::getInstance()),
+events(Managers::EventsManager::getInstance()),
 player(),
 firstLevel(BG_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player)
 {
@@ -17,6 +18,8 @@ Game::~Game()
 {
     Managers::GraphicsManager::deleteInstance();
     graphics = NULL;
+    Managers::EventsManager::deleteInstance();
+    events = NULL;
 }
 
 
@@ -28,17 +31,12 @@ void Game::execute()
     {
         graphics->updateDeltaTime();
 
-        sf::Event event;
-        while (graphics->getWindow()->pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                graphics->close();
-            }
-        }
-
         graphics->clear();
+
+        events->pollEvents();
+
         firstLevel.execute();
+
         graphics->display();
     }
 }
