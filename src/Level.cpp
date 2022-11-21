@@ -79,7 +79,7 @@ namespace Levels
 
     void Level::createArcher(sf::Vector2f pos)
     {
-        Entities::MovingEntities::Archer* archer = new Entities::MovingEntities::Archer(ARCHER_PATH, sf::Vector2f(70, 100), pos);
+        Entities::MovingEntities::Archer* archer = new Entities::MovingEntities::Archer(ARCHER_PATH, sf::Vector2f(50, 70), pos);
         archer->setPlayer(pPlayer);
         Entities::Entity* pEntity = static_cast<Entities::Entity*>(archer);
         Entities::MovingEntities::Enemy* pEnemy = static_cast<Entities::MovingEntities::Enemy*>(archer);

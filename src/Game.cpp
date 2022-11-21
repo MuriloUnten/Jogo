@@ -1,12 +1,13 @@
 #include "Game.hpp"
 
-#define BG_PATH "../assets/mundo/teste.jpg"
+#define BG1_PATH "../assets/mundo/teste.jpg"
+#define BG2_PATH "../assets/mundo/forestBlack.png"
 
 
 Game::Game() :
 graphics(Managers::GraphicsManager::getInstance()),
 player(),
-firstLevel(BG_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player)
+secondLevel(BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player)
 {
     Being::setInstance();
 	execute();
@@ -38,7 +39,7 @@ void Game::execute()
         }
 
         graphics->clear();
-        firstLevel.execute();
+        secondLevel.execute();
         graphics->display();
     }
 }
