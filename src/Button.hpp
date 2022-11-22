@@ -22,7 +22,7 @@ public:
     Button();
     ~Button();
 
-    void render();
+    void draw();
     void execute();
 
     void setMessage(const char* m);

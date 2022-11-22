@@ -11,8 +11,6 @@ Being::Being(std::string fileName, sf::Vector2f size, sf::Vector2f position)
 	setPos(position);
 	hitBox->setSize(size);
 	hitBox->setTexture(texture);
-	//Managers::GraphicsManager* pGraphics = Managers::GraphicsManager::getInstance();
-
 }
 
 

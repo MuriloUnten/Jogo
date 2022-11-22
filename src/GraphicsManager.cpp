@@ -25,9 +25,14 @@ namespace Managers
     
     
     GraphicsManager::GraphicsManager() :
-        window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "JOGO"))
+        window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "JOGO")),
+        font(new sf::Font())
     {
-
+        if (!font->loadFromFile(FONT_PATH))
+        {
+            std::cout << "Error loading Font!" << std::endl;
+            exit(1);
+        }
     }
 
 
@@ -86,15 +91,10 @@ namespace Managers
         return deltaTime;
     }
 
+
     /* Returns a font pointer to be used by texts. */
-    sf::Font* GraphicsManager::getFont() {
-        if (!font) {
-            font = new sf::Font();
-            if (!font->loadFromFile(FONT_PATH)) {
-                std::cout << "Error loading Font!" << std::endl;
-                exit(1);
-            }
-        }
+    sf::Font* GraphicsManager::getFont() const
+    {
         return font;
     }
 

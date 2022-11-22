@@ -5,12 +5,13 @@
 #include <SFML/Graphics.hpp>
 #include "Level.hpp"
 #include "GraphicsManager.hpp"
+#include "EventsManager.hpp"
 #include "EntityList.hpp"
 #include "Being.hpp"
 #include "Entity.hpp"
 #include "Character.hpp"
 #include "Player.hpp"
-#include "PrincipalMenu.hpp"
+#include "MainMenu.hpp"
 
 class Game
 {
@@ -18,6 +19,7 @@ private:
 
 	//Entities::MovingEntities::Player player;
 	Managers::GraphicsManager* graphics;
+	Managers::EventsManager* events;
 
 	//Levels::FirstLevel firstLevel;
 	Levels::Level* pLevel;
@@ -26,7 +28,7 @@ private:
     Entities::MovingEntities::Player* player1;
 	Entities::MovingEntities::Player* player2;
 
-	Menu::PrincipalMenu* principalMenu;
+	Menu::MainMenu* mainMenu;
 
 	bool lvlEnded;
 

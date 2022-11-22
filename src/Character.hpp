@@ -41,7 +41,6 @@ namespace Entities
 
             Timer* getCollisionTimer() const;
             Timer* getAttackTimer() const;
-
         };
 
     }// namespace MovingEntities

@@ -7,15 +7,18 @@ namespace Entities
     namespace MovingEntities
     {
         Player::Player(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp):
-        Character(Eplayer, fileName, size, position, hp)
+        Character(Eplayer, fileName, size, position, hp),
+        controls(this)        
         {
             facingRight = true;
             attackTimer->setLimit(PLAYER_ATTACK_COOLDOWN);
+            controls.setKeys("W", "A", "S", "D", "Space");
         }
 
 
         Player::Player():
-        Character()
+        Character(),
+        controls(this)
         {
             hp = 3;
             facingRight = true;
@@ -32,67 +35,62 @@ namespace Entities
         void Player::execute()
         { 
             float dt = Managers::GraphicsManager::getDeltaTime();
-
             collisionTimer->update(dt);
 
-
             // TODO Rever
-            if(vel.x != 0 && !jumping)
-                walking = true;
-            else
-                walking = false;
-
-            if(vel.y != 0)
+            if(walking)
             {
-                jumping = true;
+                if(facingRight)
+                    vel.x = 350.0f;
+                else
+                    vel.x = -350.0f;
             }
             else
-            {
-                jumping = false;
-            }
-
-            // Provisory test for keys pressed. TODO Remove
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-            {
-                attacking = true;
-                //std::cout<<"apertou:"<<canAttack<<std::endl;
-            }
-            else
-                attacking = false;
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            {
-                if(canJump)
-                {
-                    vel.y = -600;
-                    jumping = true;
-                    canJump = false;
-                }
-            }
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            {
-                vel.x = -350;
-                facingRight= false;
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            {
-                vel.x = 350;
-                facingRight= true;
-            }
-            else
-            {
                 vel.x = 0;
-            }
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            {
-                vel.y += 4000 * dt;
-            }
-
-            //std::cout<< "hp Player:"<< hp;
             update();
+        }
 
+        void Player::jump()
+        {
+            if(canJump)
+            {
+                vel.y = -600;
+                jumping = true;
+                canJump = false;
+            }
+        }
+
+
+        void Player::move(bool right)
+        {
+            walking = true;
+            facingRight = right;
+        }
+
+
+        void Player::moveDown()
+        {
+            vel.y += 4000 * Managers::GraphicsManager::getDeltaTime();
+        }
+
+
+        void Player::attack()
+        {
+            attacking = true;
+        }
+
+
+        void Player::stopWalking(bool side)
+        {
+            if(side == facingRight)
+            walking = false;
+        }
+
+
+        void Player::stopAttacking()
+        {
+                attacking = false;
         }
 
     }// namespace MovingEntities

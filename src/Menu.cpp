@@ -4,44 +4,36 @@
 
 namespace Menu
 {
-    Menu::Menu(std::string fileName, sf::Vector2f position, sf::Vector2f size) :
-    Being(fileName, position, size)
+    Menu::Menu(std::string fileName, sf::Vector2f size, sf::Vector2f position) :
+    Being(fileName, size, position),
+    buttonList(),
+    selected()
     {
-        selected = 0;
-        min = 0;
-        max = 2;
-        active = false ;
+        selected = buttonList.getHead();
+        active = false;
     }
 
-    Menu::~Menu() {
-        Button* bt = NULL;
-        while (vectorOfButtons.size() != 0) {
-            bt = vectorOfButtons.back();
-            delete (bt);
-            vectorOfButtons.pop_back();
-        }
-        vectorOfButtons.clear();
+    Menu::~Menu()
+    {
+        buttonList.clear();
+        selected = NULL;
     }
 
     /* Make the menu selection go Down */
     void Menu::selectDown() {
-        if (active) {
-            vectorOfButtons[selected]->select(false);
-            selected++;
-            if (selected > max)
-                selected = max;
-            vectorOfButtons[selected]->select(true);
+        if (active)
+        {
+            if(selected->getNext() != NULL)
+                selected = selected->getNext();
         }
     }
 
     /* Make the menu selection go Up */
     void Menu::selectUp() {
-        if (active) {
-            vectorOfButtons[selected]->select(false);
-            selected--;
-            if (selected < min)
-                selected = min;
-            vectorOfButtons[selected]->select(true);
+        if (active)
+        {
+            if(selected->getPrev() != NULL)
+                selected = selected->getPrev();
         }
     }
 

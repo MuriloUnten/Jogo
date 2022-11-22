@@ -2,28 +2,28 @@
 
 #define BG1_PATH "../assets/mundo/teste.jpg"
 #define BG2_PATH "../assets/mundo/forestBlack.png"
-#define PRINCIPAL_PATH "../assets/Menu/PrincipalMenu.png"
+
 
 Game::Game():
 graphics(Managers::GraphicsManager::getInstance()),
-//player(),
+events(Managers::EventsManager::getInstance()),
+player1(),
 //secondLevel(BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player)
-principalMenu(new Menu::PrincipalMenu(this))
+mainMenu(new Menu::MainMenu(this))
 {
     Being::setInstance();
-/*
-    graphics = NULL;
-    player1 = NULL;
-    player2 = NULL;
-    pLevel = NULL;
+
     lvlEnded = false;
-*/
+
     execute();
 }
 
 
 Game::~Game()
 {
+    Managers::GraphicsManager::deleteInstance();
+    Managers::EventsManager::deleteInstance();
+
     if (pLevel != NULL)
         delete (pLevel);
     if (player1)
@@ -31,8 +31,6 @@ Game::~Game()
     if (player2)
         delete (player2);
     
-    Managers::GraphicsManager::deleteInstance();
-    graphics = NULL;
 
 }
 
@@ -40,23 +38,16 @@ Game::~Game()
 /* Runs the core of the program */
 void Game::execute()
 {
-    std::cout << "main loop\n";
     // Main loop
     while (graphics->isWindowOpen())
     {
         graphics->updateDeltaTime();
 
-        sf::Event event;
-        while (graphics->getWindow()->pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                graphics->close();
-            }
-        }
-
         graphics->clear();
-        principalMenu->execute();
+
+        events->pollEvents();
+
+        mainMenu->execute();
         //secondLevel.execute();
         graphics->display();
     }
