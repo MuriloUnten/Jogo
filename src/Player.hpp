@@ -14,8 +14,10 @@ namespace Entities
         class Player : public Character
         {
         private:
+
             PlayerControl controls;
 
+            bool  onWeb;
             int score;
 
         public:
@@ -25,12 +27,17 @@ namespace Entities
 
             void execute();
 
+            void setOnWeb(bool status);
+            bool getOnWeb() const;
+            void changeVelocity();
+
             void jump();
             void move(bool right);
             void moveDown();
             void attack();
             void stopWalking(bool side);
             void stopAttacking();
+            void draw();
 
         };
     }// namespace MovingEntities

@@ -9,7 +9,7 @@ namespace Entities
         Arrow::Arrow(sf::Vector2f size, sf::Vector2f position, int newdamage):
         Projectile(Earrow, ARROW_PATH, size, position)
         {
-
+            damage = newdamage;
         }
 
 

@@ -36,25 +36,18 @@ namespace Entities
         }
 
 
+        const int Character::getHp() const
+        {
+            return hp;
+        }
+
         void Character::takeDamage(const int damageTaken)
         {
             hp -= damageTaken;
             std::cout<< "hp: "<<hp<<std::endl;
         }
 
-
-        const int Character::getHp() const
-        {
-            return hp;
-        }
-
-
-        const int Character::getDamage() const
-        {
-            return damage;
-        }
-
-
+        
         const bool Character::isAttacking() const
         {
             return attacking;

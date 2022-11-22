@@ -1,5 +1,6 @@
 #include "Game.hpp"
-
+#define FASE1 "FirstLevel.txt"
+#define FASE2 "SecondLevel.txt"
 #define BG1_PATH "../assets/mundo/teste.jpg"
 #define BG2_PATH "../assets/mundo/forestBlack.png"
 
@@ -7,12 +8,12 @@
 Game::Game():
 graphics(Managers::GraphicsManager::getInstance()),
 events(Managers::EventsManager::getInstance()),
-player1(),
-//secondLevel(BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player)
-mainMenu(new Menu::MainMenu(this))
+player1(new Entities::MovingEntities::Player()),
+pLevel( new Levels::Level(FASE2, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), player1 ))
+//Level(SecondLevel.txt, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player1)
+//mainMenu(new Menu::MainMenu(this))
 {
     Being::setInstance();
-
     lvlEnded = false;
 
     execute();
@@ -30,10 +31,11 @@ Game::~Game()
         delete (player1);
     if (player2)
         delete (player2);
+    
+
 }
 
 
-/* Runs the core of the program */
 void Game::execute()
 {
     // Main loop
@@ -45,8 +47,9 @@ void Game::execute()
 
         events->pollEvents();
 
-        mainMenu->execute();
-        //secondLevel.execute();
+        //mainMenu->execute();
+        pLevel->execute();
+
         graphics->display();
     }
 }
@@ -89,6 +92,11 @@ int Game::getCurrentLevel() const
 void Game::setCurrentLevel(int num) 
 {
     currentLevel = num;
+}
+
+void Game::newGame()
+{
+
 }
 
 void Game::endGame() 

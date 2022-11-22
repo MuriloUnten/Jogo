@@ -19,7 +19,7 @@ namespace Entities
             ~Projectile();
 
             void shoot(sf::Vector2f newPos, sf::Vector2f newVel);
-
+            
             virtual void execute()=0;
 
         };

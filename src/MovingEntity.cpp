@@ -22,16 +22,30 @@ namespace Entities
 
         }
 
+        const int MovingEntity::getDamage() const
+        {
+            return damage;
+        }
 
         void MovingEntity::setFacingRight(const bool isFacingRight)
         {
             facingRight = isFacingRight;
+            //hitBox->scale(-1,1);
         }
+
 
 
         const bool MovingEntity::getFacingRight() const
         {
             return facingRight;
+        }
+
+
+        void MovingEntity::flipImage()
+        {
+            float posX = pos.x;
+            hitBox->scale(-1, 1);
+            setPos(sf::Vector2f(pos.x + (pos.x - posX)/2, pos.y));
         }
 
 

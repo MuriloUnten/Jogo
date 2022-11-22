@@ -33,8 +33,6 @@ namespace Entities
             void takeDamage(const int damageTaken=1);
             const int getHp() const;
 
-            const int getDamage() const;
-
             const bool isAttacking() const;
 
             void setCanJump(const bool jump);

@@ -22,7 +22,7 @@ namespace Levels
         {
             Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer1);
             entityList->pushEntity(pAux);
-             collisions->pushPlayer(player1);
+            collisions->pushPlayer(player1);
         }
             
         if(pPlayer2 != NULL)
@@ -73,10 +73,16 @@ namespace Levels
 
     void Level::createPlayers(Entities::MovingEntities::Player* player, sf::Vector2f pos)
     {
-        player->loadTexture(PLAYER_PATH);
-        player->setSize(sf::Vector2f(50, 80));
-        player->getHitBox()->setTexture(player->getTexture());
-        player->setPos(pos);
+        std::cout << "player criado" << std::endl;
+        if(player != NULL)
+        {
+            std::cout << "player criado" << std::endl;
+            player->loadTexture(PLAYER_PATH);
+            player->setSize(sf::Vector2f(50, 60));
+            player->getHitBox()->setTexture(player->getTexture());
+            player->setPos(pos);
+
+        }
 
     }
 
@@ -100,7 +106,8 @@ namespace Levels
 
         pEntity = static_cast<Entities::Entity*>(archer->getArrow());
         entityList->pushEntity(pEntity);
-
+        Entities::MovingEntities::Projectile* pProjectile = static_cast<Entities::MovingEntities::Arrow*>(pEntity);
+        collisions->pushProjectile(pProjectile);
     }
     void Level::createBoss(sf::Vector2f pos)
     {
@@ -143,6 +150,7 @@ namespace Levels
 
     void Level::createLevel( char* nameLevel)
     {
+        std::cout<<"create fase"<<std::endl;
         srand(time(NULL));
         FILE *file;
         int ch;
@@ -204,5 +212,6 @@ namespace Levels
         }
         fclose(file);
         // todo Player
+        createPlayers(pPlayer1, sf::Vector2f(150, 600));
     }
 }// namespace Levels
