@@ -21,17 +21,13 @@ PlayerControl::~PlayerControl()
 
 void PlayerControl::handleKeyPressed(std::string key)
 {
-    std::cout << "PlayerControl::handleKeyPressed.\n";
-    std::cout << jump << " " << left << "\n";
     if(key == jump)
     {
-        std::cout << "Jumping.\n";
         pPlayer->jump();
     }
 
     else if(key == left)
     {
-        std::cout << "Moving left.\n";
         pPlayer->move(false);
     }
 

@@ -167,9 +167,12 @@ namespace Managers
 
         if(obstacle->getId() == Eweb)
         {
-            sf::Vector2f vel = Player->getVel();
+            /*sf::Vector2f vel = Player->getVel();
             vel.x *= obstacle->getSlow();
-            Player->setVel(vel);
+            Player->setVel(vel);*/
+            Player->setOnWeb(true);
+            //std::cout<<"teia:"<<Player->getOnWeb()<<std::endl;
+
         }
         else
         {

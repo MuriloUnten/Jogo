@@ -21,13 +21,14 @@ private:
 	Managers::GraphicsManager* graphics;
 	Managers::EventsManager* events;
 
-	//Levels::FirstLevel firstLevel;
-	Levels::Level* pLevel;
 	int currentLevel;
 	
     Entities::MovingEntities::Player* player1;
 	Entities::MovingEntities::Player* player2;
 
+	//Levels::FirstLevel firstLevel;
+	Levels::Level* pLevel;
+	
 	Menu::MainMenu* mainMenu;
 
 	bool lvlEnded;

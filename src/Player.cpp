@@ -1,7 +1,8 @@
 #include "Player.hpp"
 
 #include <math.h>
-
+#define WALKING "../assets/personagem/kakashi1.png"
+#define ATTAKING "../assets/personagem/attacking.png"
 namespace Entities
 {
     namespace MovingEntities
@@ -10,6 +11,7 @@ namespace Entities
         Character(Eplayer, fileName, size, position, hp),
         controls(this)        
         {
+            onWeb = false;
             facingRight = true;
             attackTimer->setLimit(PLAYER_ATTACK_COOLDOWN);
             controls.setKeys("W", "A", "S", "D", "Space");
@@ -34,6 +36,7 @@ namespace Entities
 
         void Player::execute()
         { 
+            
             float dt = Managers::GraphicsManager::getDeltaTime();
             collisionTimer->update(dt);
 
@@ -47,6 +50,9 @@ namespace Entities
             }
             else
                 vel.x = 0;
+
+            changeVelocity();
+            onWeb = false;
 
             update();
         }
@@ -65,7 +71,7 @@ namespace Entities
         void Player::move(bool right)
         {
             walking = true;
-            facingRight = right;
+            setFacingRight(right);
         }
 
 
@@ -90,7 +96,43 @@ namespace Entities
 
         void Player::stopAttacking()
         {
-                attacking = false;
+            attacking = false;
+        }
+
+        void Player::draw()
+        {
+            if(attacking)
+            {
+                loadTexture(ATTAKING);
+                //hitBox->setSize(sf::Vector2f(60, 60));
+            }
+            else
+            {
+                loadTexture(WALKING);
+                //hitBox->setSize(sf::Vector2f(50, 60));
+            }
+            hitBox->setTexture(texture);
+
+            if(pGraphics->isWindowOpen())
+		        pGraphics->getWindow()->draw(*hitBox);
+        }
+
+        void Player::setOnWeb( bool status )
+        {
+            onWeb = status;
+        }
+
+        bool Player::getOnWeb() const
+        {
+            return onWeb;
+        }
+
+        void Player::changeVelocity()
+        {
+            if(onWeb)
+            {
+                vel.x *= 0.3;
+            }
         }
 
     }// namespace MovingEntities

@@ -21,9 +21,11 @@ namespace Entities
             ~MovingEntity();
 
             const int getDamage() const;
-            
+
             void setFacingRight(const bool isFacingRight);
             const bool getFacingRight() const;
+
+            void flipImage();
 
             virtual void execute() = 0;
 

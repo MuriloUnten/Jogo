@@ -1,7 +1,7 @@
 #pragma once
 
 #define TIME_ARCHER 0.5
-#define ARCHER_ATTACK_COOLDOWN 2.5f
+#define ARCHER_ATTACK_COOLDOWN 3.0f
 
 #include "Enemy.hpp"
 #include "Arrow.hpp"
