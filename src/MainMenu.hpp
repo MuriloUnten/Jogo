@@ -22,6 +22,8 @@ namespace Menu {
         void draw();
         void execute();
         void pushButton();
+
+        void resetState();
     };
 
 }

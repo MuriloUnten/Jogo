@@ -3,6 +3,7 @@
 
 
 MenuControl::MenuControl(Menu::Menu* menu):
+Observer(),
 pMenu(menu),
 up("W"),
 down("S"),
@@ -20,13 +21,16 @@ MenuControl::~MenuControl()
 
 void MenuControl::handleKeyPressed(std::string key)
 {
-    std::cout << "keypressed: " << key << std::endl;
-    if(key == up)
-        pMenu->selectUp();
-    else if(key == down)
-        pMenu->selectDown();
-    else if(key == select)
-        pMenu->pushButton();
+    std::cout << "inside MenuControl::handleKeyPressed()\n";
+    if(pMenu->getActive())
+    {
+        if(key == up)
+            pMenu->selectUp();
+        else if(key == down)
+            pMenu->selectDown();
+        else if(key == select)
+            pMenu->pushButton();
+    }
 }
 
 

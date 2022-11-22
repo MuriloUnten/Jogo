@@ -5,7 +5,7 @@
 namespace Menu
 {
     MainMenu::MainMenu(Game* pG, std::string fileName, sf::Vector2f size , sf::Vector2f position):
-    Menu(fileName, size, position)
+    Menu(stateID::mainMenu, fileName, size, position)
     {
         active = true;
         pGame =  pG;
@@ -43,10 +43,12 @@ namespace Menu
 
     }
 
+
     void MainMenu::update()
     {
         active = true;
     }
+
 
     void MainMenu::draw()
     {
@@ -77,10 +79,14 @@ namespace Menu
 
         case 0:
             pGame->setCurrentLevel(1);
+            pStateManager->changeState(stateID::level);
+            active = false;
             break;
         
         case 1:
             pGame->setCurrentLevel(2);
+            pStateManager->changeState(stateID::level);
+            active = false;
             break;
 
         case 2:
@@ -97,5 +103,10 @@ namespace Menu
         }
     }
 
+
+    void MainMenu::resetState()
+    {
+
+    }
 
 }//namespace Menu

@@ -11,7 +11,7 @@
 namespace Levels
 {
     Level::Level(char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position, Entities::MovingEntities::Player* player1, Entities::MovingEntities::Player* player2):
-    Being(fileName, size, position),
+    State(stateID::level, fileName, size),
     entityList(new Lists::EntityList()),
     collisions(new Managers::CollisionManager())
     {
@@ -37,7 +37,7 @@ namespace Levels
 
 
     Level::Level():
-    Being(),
+    State(stateID::level),
     entityList(new Lists::EntityList())
     {
         pPlayer1 = NULL;
@@ -61,6 +61,7 @@ namespace Levels
         entityList->execute();
         collisions->Collision();
         entityList->draw();
+
     }
 
     void Level::draw()
@@ -213,5 +214,11 @@ namespace Levels
         fclose(file);
         // todo Player
         createPlayers(pPlayer1, sf::Vector2f(150, 600));
+    }
+
+
+    void Level::resetState()
+    {
+        
     }
 }// namespace Levels

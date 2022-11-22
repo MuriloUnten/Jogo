@@ -27,5 +27,5 @@ public:
     void setMenu(Menu::Menu* newMenu);
 
     void setKeys(std::string newUp, std::string newDown, std::string newSelect);
-    
+
 };

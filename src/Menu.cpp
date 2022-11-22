@@ -4,8 +4,8 @@
 
 namespace Menu
 {
-    Menu::Menu(std::string fileName, sf::Vector2f size, sf::Vector2f position) :
-    Being(fileName, size, position),
+    Menu::Menu(stateID id, std::string fileName, sf::Vector2f size, sf::Vector2f position) :
+    State(id, fileName, size),
     controls(this),
     buttonList(),
     selected()
@@ -25,7 +25,7 @@ namespace Menu
 
     /* Make the menu selection go Up */
     void Menu::selectUp() {
-        std::cout << "up\n";
+        std::cout << "menu up\n";
         if (active)
         {
             if(selected->getPrev() != NULL)
@@ -51,6 +51,18 @@ namespace Menu
                 hoveredButton++;
             }
         }
+    }
+
+
+    const bool Menu::getActive() const
+    {
+        return active;
+    }
+
+
+    void Menu::setActive(const bool isActive)
+    {
+        active = isActive;
     }
 
 }//namespace Menu

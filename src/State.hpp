@@ -6,7 +6,7 @@ enum stateID
 {
     undefined = -1,
     mainMenu = 0,
-    playing,
+    level,
     leaderboard
 
 };
@@ -28,6 +28,7 @@ public:
 
     virtual void execute() = 0;
     virtual void draw() = 0;
+    virtual void resetState() = 0;
 
     void changeState(stateID id);
     stateID getID() const;
