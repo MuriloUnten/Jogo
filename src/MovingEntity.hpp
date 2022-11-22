@@ -20,6 +20,8 @@ namespace Entities
             MovingEntity();
             ~MovingEntity();
 
+            const int getDamage() const;
+            
             void setFacingRight(const bool isFacingRight);
             const bool getFacingRight() const;
 

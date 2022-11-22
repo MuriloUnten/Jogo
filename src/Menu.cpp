@@ -37,8 +37,4 @@ namespace Menu
         }
     }
 
-    void Menu::updateView() 
-    {
-        
-    }
 }//namespace Menu

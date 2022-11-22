@@ -23,6 +23,7 @@ namespace Managers
 
         Entities::StaticEntities::Obstacle *Obstacle1 = nullptr;
         Entities::MovingEntities::Enemy *Enemy1 = nullptr;
+        Entities::MovingEntities::Projectile *Projectile1 = nullptr;
 
         Math::Coordinate<float> Intersection;
         Math::Coordinate<float> CenterDistance;
@@ -73,14 +74,38 @@ namespace Managers
                     CollisionPlayerObstacle(pAuxPlayer, Obstacle1, Intersection);
                 }
             }
+
+            /* Collision between Player and Projectiles */
+            for(int j = 0; j < projectileList.getSize(); j++)
+            {
+                //módulo da distância entre o centro das entidades
+                Projectile1 = projectileList[j];
+                if(Projectile1 == NULL || !Projectile1->getExecutable())
+                    continue;
+
+                CenterDistance.x = fabs(pAuxPlayer->getPos().x + pAuxPlayer->getSize().x/2 - (Projectile1->getPos().x + Projectile1->getSize().x/2));
+                CenterDistance.y = fabs(pAuxPlayer->getPos().y + pAuxPlayer->getSize().y/2 - (Projectile1->getPos().y + Projectile1->getSize().y/2));
+                Intersection.x = CenterDistance.x - (pAuxPlayer->getSize().x/2 + Projectile1->getSize().x/2);
+                Intersection.y = CenterDistance.y - (pAuxPlayer->getSize().y/2 + Projectile1->getSize().y/2);
+                //distância que as extremidades mais próximas das entidades se econtram  
+                //verifica se houve colisão
+                if(Intersection.x < 0 && Intersection.y < 0)
+                {
+                    CollisionPlayerProjectile(pAuxPlayer, Projectile1, Intersection);
+                }
+            }
+
+
         }
 
-        /*------------------------------Collision between Obstacle and Enemy---------------------------------------------------------------*/
+        /*------------------------------Collision between Obstacle---------------------------------------------------------------*/
         for(int i = 0; i < obstacleList.getSize(); i++)
         {
             Obstacle1 = obstacleList[i];
-            if(Obstacle1 == NULL || !Obstacle1->getExecutable())
+            if(Obstacle1 == NULL)
+
                 continue;
+             //Obstacle and Enemy
             for(int j = 0; j < enemyList.getSize(); j++)
             {
                 Enemy1 = enemyList[j];
@@ -100,6 +125,29 @@ namespace Managers
                 if(Intersection.x < 0 && Intersection.y < 0)
                 {
                     CollisionObstacleEnemy( Enemy1, Obstacle1, Intersection);
+                }
+            }
+            //Obstacle and Projectile
+            for(int j = 0; j < projectileList.getSize(); j++)
+            {
+                Projectile1 = projectileList[j];
+                if(Projectile1 == NULL || !Projectile1->getExecutable())
+                    continue;
+                //módulo da distância entre o centro das entidades
+                //CenterDistance.x= fabs(Obstacle1->getPos().x - Enemy1->getPos().x);
+                //CenterDistance.y= fabs(Obstacle1->getPos().y - Enemy1->getPos().y);
+                //distância que as extremidades mais próximas das entidades se econtram  
+                //Intersection.x= CenterDistance.x - (Obstacle1->getSize().x/2 + Enemy1->getSize().x/2);
+                //Intersection.y= CenterDistance.y - (Obstacle1->getSize().y/2 + Enemy1->getSize().y/2);
+                CenterDistance.x = fabs(Projectile1->getPos().x + Projectile1->getSize().x/2.0 - (Obstacle1->getPos().x + Obstacle1->getSize().x/2.0));
+                CenterDistance.y = fabs(Projectile1->getPos().y + Projectile1->getSize().y/2.0 - (Obstacle1->getPos().y + Obstacle1->getSize().y/2.0));
+                Intersection.x = CenterDistance.x - (Projectile1->getSize().x/2.0 + Obstacle1->getSize().x/2.0);
+                Intersection.y = CenterDistance.y - (Projectile1->getSize().y/2.0 + Obstacle1->getSize().y/2.0);
+                //verifica se houve colisão
+                if(Intersection.x < 0 && Intersection.y < 0)
+                {
+                    CollisionObstacleProjectile( Projectile1, Obstacle1, Intersection);
+                    //Projectile1->setExecutable(false);
                 }
             }
         }
@@ -259,6 +307,8 @@ namespace Managers
         }
         Player->setVel(coordinate);
     }
+    //
+    
 
     ////altera velocidade na direção que bateu e reposiciona o inimigo
     void CollisionManager::CollisionObstacleEnemy(Entities::MovingEntities::Enemy* Enemy, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection)
@@ -322,6 +372,8 @@ namespace Managers
         }
     }
 
+    
+
 
     void CollisionManager::pushPlayer(Entities::MovingEntities::Player* player)
     {
@@ -342,7 +394,22 @@ namespace Managers
 
 
 
-
 /* teste de nova implementação a partir daqui */
+    void CollisionManager::CollisionObstacleProjectile(Entities::MovingEntities::Projectile *projectile, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection)
+    {
+        projectile->setExecutable(false);
+    }
+
+    void CollisionManager::CollisionPlayerProjectile(Entities::MovingEntities::Player *Player, Entities::MovingEntities::Projectile *projectile, Math::CoordF Intersection)
+    {
+        Player->takeDamage(projectile->getDamage());
+        projectile->setExecutable(false);
+    }
+
+    void CollisionManager::pushProjectile(Entities::MovingEntities::Projectile* projectile)
+    {
+        projectileList.pushElement(projectile);
+    }
+
 
 }//namespace Managers

@@ -22,6 +22,10 @@ namespace Entities
 
         }
 
+        const int MovingEntity::getDamage() const
+        {
+            return damage;
+        }
 
         void MovingEntity::setFacingRight(const bool isFacingRight)
         {
