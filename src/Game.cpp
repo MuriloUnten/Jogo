@@ -30,6 +30,9 @@ Game::~Game()
         delete (player1);
     if (player2)
         delete (player2);
+    
+    Managers::GraphicsManager::deleteInstance();
+    graphics = NULL;
 
 }
 
