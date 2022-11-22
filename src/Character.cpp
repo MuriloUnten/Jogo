@@ -48,8 +48,6 @@ namespace Entities
         }
 
         
-
-
         const bool Character::isAttacking() const
         {
             return attacking;
