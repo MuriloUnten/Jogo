@@ -73,10 +73,8 @@ namespace Levels
 
     void Level::createPlayers(Entities::MovingEntities::Player* player, sf::Vector2f pos)
     {
-        std::cout << "player criado" << std::endl;
         if(player != NULL)
         {
-            std::cout << "player criado" << std::endl;
             player->loadTexture(PLAYER_PATH);
             player->setSize(sf::Vector2f(50, 60));
             player->getHitBox()->setTexture(player->getTexture());
@@ -153,10 +151,13 @@ namespace Levels
         std::cout<<"create fase"<<std::endl;
         srand(time(NULL));
         FILE *file;
-        int ch;
+        char ch;
+        int aux;
         float obstacleSize = 20.0;
         float width = 0.0, height = 0.0;
+
         file = fopen( nameLevel, "r");
+
         if(file == NULL)
         {
             std::cout << "Error opening File.\n";
@@ -165,41 +166,49 @@ namespace Levels
 
         while((ch = fgetc(file)) != EOF)
         {
-            //cactus or web
-            if(ch == '1')
+            aux = rand()%2;
+            switch (ch)
             {
-                int aux = rand()%2;
-                if ( aux == 1)
+            case '1':
+                switch (aux)
                 {
+                case 0 :
                     createWeb(sf::Vector2f( width, height));
-                }
-                else
-                {
+                    break;
+                case 1:
                     createCactus(sf::Vector2f( width, height));       
+                    break;
                 }
-                
-            }
-            //ground
-            else if(ch == '2')
-            {
+                break;
+            case '2':
                 createGround(GROUND2_PATH, sf::Vector2f( width, height));
-            }
-
-            else if(ch == '3')
-            {
+                break;
+            case '3': 
                 createGround(GROUND3_PATH, sf::Vector2f( width, height));
-            }
-            else if(ch == '4')
-            {
-                createArcher(sf::Vector2f( width, height));
-            }
-            else if(ch == '5')
-            {
+                break;
+            case '4':
+                createArcher( sf::Vector2f( width, height));                
+                break;
+            case '5':
                 createBoss(sf::Vector2f( width, height));
-            }
-            else if(ch == '6')
-            {
+                break;
+            case '6':
                 createEnemy1(sf::Vector2f( width, height));
+                break;
+            case '7':
+                createPlayers(pPlayer1, sf::Vector2f(width, height));
+                break;
+            case '8':
+                switch (aux)
+                {
+                case 0 :
+                    createArcher(sf::Vector2f( width, height));
+                    break;
+                case 1:
+                    createEnemy1(sf::Vector2f( width, height));       
+                    break;
+                }
+                break;
             }
 
             width+=20.0f;
@@ -212,6 +221,6 @@ namespace Levels
         }
         fclose(file);
         // todo Player
-        createPlayers(pPlayer1, sf::Vector2f(150, 600));
+        //createPlayers(pPlayer1, sf::Vector2f(150, 600));
     }
 }// namespace Levels

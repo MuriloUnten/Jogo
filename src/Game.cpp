@@ -9,7 +9,7 @@ Game::Game():
 graphics(Managers::GraphicsManager::getInstance()),
 events(Managers::EventsManager::getInstance()),
 player1(new Entities::MovingEntities::Player()),
-pLevel( new Levels::Level(FASE2, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), player1 ))
+pLevel( new Levels::Level(FASE1, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), player1 ))
 //Level(SecondLevel.txt, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player1)
 //mainMenu(new Menu::MainMenu(this))
 {
