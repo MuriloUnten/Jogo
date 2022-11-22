@@ -10,7 +10,6 @@ namespace Entities::MovingEntities
     private:
 
 
-
     public:
         Boss();
         ~Boss();

@@ -48,7 +48,7 @@ namespace Entities
         {
             float distanceY = fabs( pPlayer->getPos().y - getPos().y);
 
-            if(distanceY <= 150.0f)
+            if(distanceY <= 100.0f)
             {
                 return true;
             }

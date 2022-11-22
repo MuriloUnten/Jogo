@@ -34,7 +34,7 @@ namespace Entities
 
 	const int Entity::getId() const
 	{
-		// return Id;
+		return Id;
 	}
 
 	void Entity::update()

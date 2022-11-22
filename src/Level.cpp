@@ -10,16 +10,29 @@
 
 namespace Levels
 {
-    Level::Level(std::string fileName, sf::Vector2f size, sf::Vector2f position, Entities::MovingEntities::Player* player):
+    Level::Level(char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position, Entities::MovingEntities::Player* player1, Entities::MovingEntities::Player* player2):
     Being(fileName, size, position),
     entityList(new Lists::EntityList()),
     collisions(new Managers::CollisionManager())
     {
-        pPlayer = player;
-        Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer);
-        entityList->pushEntity(pAux);
-        collisions->pushPlayer(player);
+        pPlayer1 = player1;
+        pPlayer2 = player2;
 
+        if(pPlayer1 != NULL)
+        {
+            Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer1);
+            entityList->pushEntity(pAux);
+             collisions->pushPlayer(player1);
+        }
+            
+        if(pPlayer2 != NULL)
+        {
+            Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer2);
+            entityList->pushEntity(pAux);
+            collisions->pushPlayer(player2);
+        }
+
+        createLevel(nameLevel);
     }
 
 
@@ -27,7 +40,8 @@ namespace Levels
     Being(),
     entityList(new Lists::EntityList())
     {
-        pPlayer = NULL;
+        pPlayer1 = NULL;
+        pPlayer2 = NULL;
     }
 
 
@@ -49,22 +63,20 @@ namespace Levels
         entityList->draw();
     }
 
-
     void Level::draw()
     {
         /* TODO implementar mais coisas talvez?*/
-
         if(pGraphics->isWindowOpen())
             pGraphics->getWindow()->draw(*hitBox);
     }
 
 
-    void Level::createPlayers(sf::Vector2f pos)
+    void Level::createPlayers(Entities::MovingEntities::Player* player, sf::Vector2f pos)
     {
-        pPlayer->loadTexture(PLAYER_PATH);
-        pPlayer->setSize(sf::Vector2f(50, 60));
-        pPlayer->getHitBox()->setTexture(pPlayer->getTexture());
-        pPlayer->setPos(pos);
+        player->loadTexture(PLAYER_PATH);
+        player->setSize(sf::Vector2f(50, 80));
+        player->getHitBox()->setTexture(player->getTexture());
+        player->setPos(pos);
 
     }
 
@@ -79,8 +91,8 @@ namespace Levels
 
     void Level::createArcher(sf::Vector2f pos)
     {
-        Entities::MovingEntities::Archer* archer = new Entities::MovingEntities::Archer(ARCHER_PATH, sf::Vector2f(70, 100), pos);
-        archer->setPlayer(pPlayer);
+        Entities::MovingEntities::Archer* archer = new Entities::MovingEntities::Archer(ARCHER_PATH, sf::Vector2f(50, 70), pos);
+        archer->setPlayer(pPlayer1);
         Entities::Entity* pEntity = static_cast<Entities::Entity*>(archer);
         Entities::MovingEntities::Enemy* pEnemy = static_cast<Entities::MovingEntities::Enemy*>(archer);
         entityList->pushEntity(pEntity);
@@ -129,4 +141,68 @@ namespace Levels
         entityList->pushEntity(pCastAux);
     }
 
+    void Level::createLevel( char* nameLevel)
+    {
+        srand(time(NULL));
+        FILE *file;
+        int ch;
+        float obstacleSize = 20.0;
+        float width = 0.0, height = 0.0;
+        file = fopen( nameLevel, "r");
+        if(file == NULL)
+        {
+            std::cout << "Error opening File.\n";
+            exit(1);
+        }
+
+        while((ch = fgetc(file)) != EOF)
+        {
+            //cactus or web
+            if(ch == '1')
+            {
+                int aux = rand()%2;
+                if ( aux == 1)
+                {
+                    createWeb(sf::Vector2f( width, height));
+                }
+                else
+                {
+                    createCactus(sf::Vector2f( width, height));       
+                }
+                
+            }
+            //ground
+            else if(ch == '2')
+            {
+                createGround(GROUND2_PATH, sf::Vector2f( width, height));
+            }
+
+            else if(ch == '3')
+            {
+                createGround(GROUND3_PATH, sf::Vector2f( width, height));
+            }
+            else if(ch == '4')
+            {
+                createArcher(sf::Vector2f( width, height));
+            }
+            else if(ch == '5')
+            {
+                createBoss(sf::Vector2f( width, height));
+            }
+            else if(ch == '6')
+            {
+                createEnemy1(sf::Vector2f( width, height));
+            }
+
+            width+=20.0f;
+
+            if(width == 1300.0f)
+            {
+                width = 0.0f;
+                height+=20.0f;
+            }
+        }
+        fclose(file);
+        // todo Player
+    }
 }// namespace Levels
