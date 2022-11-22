@@ -7,6 +7,7 @@ namespace Menu
     MainMenu::MainMenu(Game* pG, std::string fileName, sf::Vector2f size , sf::Vector2f position):
     Menu(fileName, size, position)
     {
+        active = true;
         pGame =  pG;
         Button* bt = NULL;
         sf::Vector2f buttonSize = sf::Vector2f(280.0f, 40.0f);

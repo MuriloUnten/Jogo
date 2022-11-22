@@ -3,6 +3,7 @@
 #include "Being.hpp"
 #include "Button.hpp"
 #include "List.hpp"
+#include "MenuControl.hpp"
 #include <list>
 
 #define MENU_BACKGROUND_PATH "../assets/Menu/menuBackground.png"
@@ -13,6 +14,8 @@ namespace Menu
     class Menu : public Being
     {
     protected:
+        MenuControl controls;
+
         Lists::List<Button> buttonList;
         Lists::List<Button>::Element<Button>* selected;
 
