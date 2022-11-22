@@ -2,6 +2,7 @@
 #include "Player.hpp"
 
 PlayerControl::PlayerControl(Entities::MovingEntities::Player* player):
+Observer(),
 pPlayer(player),
 jump("W"),
 left("A"),
@@ -21,6 +22,7 @@ PlayerControl::~PlayerControl()
 
 void PlayerControl::handleKeyPressed(std::string key)
 {
+    std::cout << "inside PlayerControl::handleKeyPressed()\n";
     if(key == jump)
     {
         pPlayer->jump();

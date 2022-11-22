@@ -8,13 +8,20 @@
 Game::Game():
 graphics(Managers::GraphicsManager::getInstance()),
 events(Managers::EventsManager::getInstance()),
+states(Managers::StateManager::getInstance()),
 player1(new Entities::MovingEntities::Player()),
-pLevel( new Levels::Level(FASE1, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), player1 ))
+pLevel( new Levels::Level(FASE1, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), player1)),
+mainMenu(new Menu::MainMenu(this))
 //Level(SecondLevel.txt, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player1)
-//mainMenu(new Menu::MainMenu(this))
 {
     Being::setInstance();
-    lvlEnded = false;
+
+    states->addState(static_cast<State*>(mainMenu));
+    states->addState(static_cast<State*>(pLevel));
+    states->changeState(stateID::mainMenu);
+
+    // mainMenu->setActive(false);
+    // lvlEnded = false;
 
     execute();
 }
@@ -48,7 +55,7 @@ void Game::execute()
         events->pollEvents();
 
         //mainMenu->execute();
-        pLevel->execute();
+        states->executeState();
 
         graphics->display();
     }
