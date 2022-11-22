@@ -8,7 +8,7 @@ namespace Entities
     {
         Player::Player(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp):
         Character(Eplayer, fileName, size, position, hp),
-        controls(this)        
+        controls(this)
         {
             facingRight = true;
             attackTimer->setLimit(PLAYER_ATTACK_COOLDOWN);
@@ -53,6 +53,7 @@ namespace Entities
 
         void Player::jump()
         {
+            std::cout << "jumping\n";
             if(canJump)
             {
                 vel.y = -600;
@@ -95,4 +96,3 @@ namespace Entities
 
     }// namespace MovingEntities
 }// namespace Entities
-

@@ -65,39 +65,37 @@ namespace Menu
     void MainMenu::execute()
     {
         draw();
-    //     if (active) {
-    //         active = false;
-    //         switch (selected) {
-    //         case 0:
-    //             /*pGame->setCurrentLevel(1);
-    //             changeState(stateID::newGame);
-    //             break;*/
-    //         case 1:
-    //             /*
-    //             pGame->setCurrentLevel(2);
-    //             changeState(stateID::newGame);
-    //             break;
-    //             */
-    //         case 2:
-    //         /*
-    //             changeState(stateID::loadGame);
-    //             break;
-    //         */
-    //         case 3:
-    //             /*
-    //             changeState(stateID::leaderboard);
-    //             break;
-    //             */
-    //         case 4:
-    //         /*
-    //             pGame->endGame();
-    //             break;
-
-    //             */
-    //         default:
-    //             break;
-    //         }
-    // }
     }
+
+
+    void MainMenu::pushButton()
+    {
+        switch (hoveredButton)
+        {
+        case -1:
+            break;
+
+        case 0:
+            pGame->setCurrentLevel(1);
+            break;
+        
+        case 1:
+            pGame->setCurrentLevel(2);
+            break;
+
+        case 2:
+            // pGame->loadGame();
+            break;
+        
+        case 3:
+            // pGame->showLeaderBoard();
+            break;
+        
+        case 4:
+            pGame->endGame();
+            break;
+        }
+    }
+
 
 }//namespace Menu

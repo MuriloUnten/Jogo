@@ -27,4 +27,5 @@ public:
 
     void setMessage(const char* m);
     void select(const bool isSelected);
+
 };

@@ -36,8 +36,8 @@ void Button::draw() {
         loadTexture(BUTTONSELECTED_PATH);
     else
         loadTexture(BUTTONDISSELECTED_PATH);
-    
     hitBox->setTexture(texture);
+    
     // std::cout << "Texture set\n";
     if(pGraphics->isWindowOpen())
     {

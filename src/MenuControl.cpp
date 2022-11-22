@@ -25,8 +25,8 @@ void MenuControl::handleKeyPressed(std::string key)
         pMenu->selectUp();
     else if(key == down)
         pMenu->selectDown();
-    // else if(key == select)
-        // pMenu->select();
+    else if(key == select)
+        pMenu->pushButton();
 }
 
 

@@ -20,14 +20,15 @@ namespace Menu
         Lists::List<Button>::Element<Button>* selected;
 
         bool active;
+        int hoveredButton;
 
     public:
         Menu(std::string fileName = MENU_BACKGROUND_PATH, sf::Vector2f size = sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f position = sf::Vector2f(0.0f, 0.0f));
         virtual ~Menu();
 
-        void updateView();
-        void selectDown();
         void selectUp();
+        void selectDown();
+        virtual void pushButton() = 0;
 
         virtual void execute() = 0;
     };

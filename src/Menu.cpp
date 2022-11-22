@@ -12,7 +12,9 @@ namespace Menu
     {
         selected = buttonList.getHead();
         active = false;
+        hoveredButton = 0;
     }
+
 
     Menu::~Menu()
     {
@@ -20,40 +22,35 @@ namespace Menu
         selected = NULL;
     }
 
-    /* Make the menu selection go Down */
-    void Menu::selectDown() {
-        std::cout << "Inside Menu::selectDown()" << std::endl;
-        if (active)
-        {
-            std::cout << "before " << selected << std::endl;
-            if(selected->getNext() != NULL)
-            {
-                selected->getData()->select(false);
-                selected = selected->getNext();
-                selected->getData()->select(true);
-            }
-            std::cout << "after " << selected << std::endl;
-        }
-    }
 
     /* Make the menu selection go Up */
     void Menu::selectUp() {
-        std::cout << "Inside Menu::selectUp()" << std::endl;
+        std::cout << "up\n";
         if (active)
         {
-            std::cout << "before " << selected << std::endl;
             if(selected->getPrev() != NULL)
             {
                 selected->getData()->select(false);
                 selected = selected->getPrev();
                 selected->getData()->select(true);
+                hoveredButton--;
             }
-            std::cout << "after " << selected << std::endl;
         }
     }
 
-    void Menu::updateView() 
-    {
-        
+
+    /* Make the menu selection go Down */
+    void Menu::selectDown() {
+        if (active)
+        {
+            if(selected->getNext() != NULL)
+            {
+                selected->getData()->select(false);
+                selected = selected->getNext();
+                selected->getData()->select(true);
+                hoveredButton++;
+            }
+        }
     }
+
 }//namespace Menu
