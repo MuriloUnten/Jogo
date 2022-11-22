@@ -1,10 +1,10 @@
-#include "PrincipalMenu.hpp"
+#include "MainMenu.hpp"
 #include "Game.hpp"
 
 //#define MENU_PATH "../assets/Menu/ButtonDissected"
 namespace Menu
 {
-    PrincipalMenu::PrincipalMenu(Game* pG, std::string fileName, sf::Vector2f size , sf::Vector2f position):
+    MainMenu::MainMenu(Game* pG, std::string fileName, sf::Vector2f size , sf::Vector2f position):
     Menu(fileName, size, position)
     {
         pGame =  pG;
@@ -37,17 +37,17 @@ namespace Menu
         selected = buttonList.getHead();
     }
 
-    PrincipalMenu::~PrincipalMenu()
+    MainMenu::~MainMenu()
     {
 
     }
 
-    void PrincipalMenu::update()
+    void MainMenu::update()
     {
         active = true;
     }
 
-    void PrincipalMenu::draw()
+    void MainMenu::draw()
     {
         // updateView(); PRA QUE O UPDATEVIEW()????
         if(pGraphics->isWindowOpen())
@@ -61,7 +61,7 @@ namespace Menu
     }
 
 
-    void PrincipalMenu::execute()
+    void MainMenu::execute()
     {
         draw();
     //     if (active) {

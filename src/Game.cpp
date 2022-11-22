@@ -8,7 +8,7 @@ Game::Game():
 graphics(Managers::GraphicsManager::getInstance()),
 player1(),
 //secondLevel(BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player)
-principalMenu(new Menu::PrincipalMenu(this))
+principalMenu(new Menu::MainMenu(this))
 {
     Being::setInstance();
 

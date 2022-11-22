@@ -10,7 +10,7 @@
 #include "Entity.hpp"
 #include "Character.hpp"
 #include "Player.hpp"
-#include "PrincipalMenu.hpp"
+#include "MainMenu.hpp"
 
 class Game
 {
@@ -26,7 +26,7 @@ private:
     Entities::MovingEntities::Player* player1;
 	Entities::MovingEntities::Player* player2;
 
-	Menu::PrincipalMenu* principalMenu;
+	Menu::MainMenu* principalMenu;
 
 	bool lvlEnded;
 
