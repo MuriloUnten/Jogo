@@ -15,6 +15,8 @@ namespace Entities
             damage = newDamage;
             canJump = true;
             Id = id;
+            attacking = false;
+            walking = false;
         }
 
 
@@ -27,6 +29,8 @@ namespace Entities
             damage = 1;
             canJump = true;
             Id = Eempty;
+            attacking = false;
+            walking = false;
         }
 
 
