@@ -35,9 +35,10 @@ namespace Managers
 		void display();
 		sf::RenderWindow* getWindow();
 
-		sf::Font* getFont();
 
 		void updateDeltaTime();
 		static const float getDeltaTime();
+
+		sf::Font* getFont() const;
 	};
 }// namespace Managers

@@ -2,42 +2,38 @@
 
 #define BG1_PATH "../assets/mundo/teste.jpg"
 #define BG2_PATH "../assets/mundo/forestBlack.png"
-#define PRINCIPAL_PATH "../assets/Menu/PrincipalMenu.png"
+
 
 Game::Game():
 graphics(Managers::GraphicsManager::getInstance()),
-//player(),
+player1(),
 //secondLevel(BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player)
 principalMenu(new Menu::PrincipalMenu(this))
 {
     Being::setInstance();
-/*
-    graphics = NULL;
-    player1 = NULL;
-    player2 = NULL;
-    pLevel = NULL;
+
     lvlEnded = false;
-*/
+
     execute();
 }
 
 
 Game::~Game()
 {
+    Managers::GraphicsManager::deleteInstance();
+
     if (pLevel != NULL)
         delete (pLevel);
     if (player1)
         delete (player1);
     if (player2)
         delete (player2);
-
 }
 
 
 /* Runs the core of the program */
 void Game::execute()
 {
-    std::cout << "main loop\n";
     // Main loop
     while (graphics->isWindowOpen())
     {

@@ -15,11 +15,11 @@ namespace Menu {
         sf::Text nameJogo;
 
     public:
-        PrincipalMenu( Game* pG = NULL, std::string fileName = MENU_PATH , sf::Vector2f position = sf::Vector2f(0.0f, 0.0f) , sf::Vector2f size= sf::Vector2f(WIDTH, HEIGHT));
+        PrincipalMenu( Game* pG = NULL, std::string fileName = MENU_PATH, sf::Vector2f size= sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f position = sf::Vector2f(0.0f, 0.0f));
         ~PrincipalMenu();
 
         void update();
-        void render();
+        void draw();
         void execute();
     };
 

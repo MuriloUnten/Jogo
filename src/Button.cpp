@@ -9,10 +9,12 @@ hover(false) {
     setInstance();
 }
 
+
 Button::~Button()
 {
 
 }
+
 
 void Button::setMessage(const char* m) {
     text.setString(m);
@@ -22,26 +24,35 @@ void Button::setMessage(const char* m) {
 
     sf::FloatRect textRect = text.getLocalBounds();
     text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-    text.setPosition(pos);
+    text.setPosition(sf::Vector2f(pos.x + hitBox->getSize().x/2, pos.y + hitBox->getSize().y/2));
     text.setFillColor(sf::Color::White);
 }
 
-void Button::render() {
 
+void Button::draw() {
+
+    // std::cout << "Button::draw()\n";
     if (hover)
-    {
         loadTexture(BUTTONSELECTED_PATH);
-    }
     else
-    {
         loadTexture(BUTTONDISSELECTED_PATH);
+    
+    hitBox->setTexture(texture);
+    // std::cout << "Texture set\n";
+    if(pGraphics->isWindowOpen())
+    {
+        pGraphics->getWindow()->draw(*hitBox);
+        pGraphics->getWindow()->draw(text);
     }
+    // std::cout << "drawing button\n";
 }
+
 
 void Button::execute()
 {
-        
+
 }
+
 
 void Button::select(const bool isSelected) 
 { 

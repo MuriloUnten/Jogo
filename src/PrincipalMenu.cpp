@@ -4,34 +4,37 @@
 //#define MENU_PATH "../assets/Menu/ButtonDissected"
 namespace Menu
 {
-    PrincipalMenu::PrincipalMenu(Game* pG, std::string fileName, sf::Vector2f position , sf::Vector2f size):
-    Menu(fileName, position, size)
+    PrincipalMenu::PrincipalMenu(Game* pG, std::string fileName, sf::Vector2f size , sf::Vector2f position):
+    Menu(fileName, size, position)
     {
         pGame =  pG;
         Button* bt = NULL;
+        sf::Vector2f buttonSize = sf::Vector2f(280.0f, 40.0f);
+        float xPosition = (WIDTH - buttonSize.x) / 2.0f;
 
-        bt = new Button(MENU_PATH, sf::Vector2f(WIDTH/2 , HEIGHT/2));
+
+        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 200));
         bt->setMessage("LEVEL 1");
         bt->select(true);
-        vectorOfButtons.push_back(bt);
+        buttonList.pushElement(bt);
 
-        bt = new Button(MENU_PATH, sf::Vector2f(WIDTH/2 , HEIGHT/2 + 80));
+        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 280));
         bt->setMessage("LEVEL 2");
-        vectorOfButtons.push_back(bt);
+        buttonList.pushElement(bt);
 
-        bt = new Button(MENU_PATH, sf::Vector2f(WIDTH/2 , HEIGHT/2 + 160));
+        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 360));
         bt->setMessage("LOAD GAME");
-        vectorOfButtons.push_back(bt);
+        buttonList.pushElement(bt);
 
-        bt = new Button(MENU_PATH, sf::Vector2f(WIDTH/2 , HEIGHT/2 + 240));
+        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 440));
         bt->setMessage("LEADERBOARD");
-        vectorOfButtons.push_back(bt);
+        buttonList.pushElement(bt);
 
-        bt = new Button(MENU_PATH, sf::Vector2f(WIDTH/2 , HEIGHT/2 + 320));
+        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 620));
         bt->setMessage("QUIT GAME");
-        vectorOfButtons.push_back(bt);
+        buttonList.pushElement(bt);
 
-        max = 4;
+        selected = buttonList.getHead();
     }
 
     PrincipalMenu::~PrincipalMenu()
@@ -44,50 +47,56 @@ namespace Menu
         active = true;
     }
 
-    void PrincipalMenu::render()
+    void PrincipalMenu::draw()
     {
-        updateView();
-        for (it = vectorOfButtons.begin(); it != vectorOfButtons.end(); ++it)
+        // updateView(); PRA QUE O UPDATEVIEW()????
+        if(pGraphics->isWindowOpen())
+            pGraphics->getWindow()->draw(*hitBox);
+
+        for(Lists::List<Button>::Element<Button>* it = buttonList.getHead(); it != NULL; it = it->getNext())
         {
-            (*it)->render();
+            // std::cout << "dentro do loop\n";
+            it->getData()->draw();
         }
     }
 
+
     void PrincipalMenu::execute()
     {
-        if (active) {
-            active = false;
-            switch (selected) {
-            case 0:
-                /*pGame->setCurrentLevel(1);
-                changeState(stateID::newGame);
-                break;*/
-            case 1:
-                /*
-                pGame->setCurrentLevel(2);
-                changeState(stateID::newGame);
-                break;
-                */
-            case 2:
-            /*
-                changeState(stateID::loadGame);
-                break;
-            */
-            case 3:
-                /*
-                changeState(stateID::leaderboard);
-                break;
-                */
-            case 4:
-            /*
-                pGame->endGame();
-                break;
+        draw();
+    //     if (active) {
+    //         active = false;
+    //         switch (selected) {
+    //         case 0:
+    //             /*pGame->setCurrentLevel(1);
+    //             changeState(stateID::newGame);
+    //             break;*/
+    //         case 1:
+    //             /*
+    //             pGame->setCurrentLevel(2);
+    //             changeState(stateID::newGame);
+    //             break;
+    //             */
+    //         case 2:
+    //         /*
+    //             changeState(stateID::loadGame);
+    //             break;
+    //         */
+    //         case 3:
+    //             /*
+    //             changeState(stateID::leaderboard);
+    //             break;
+    //             */
+    //         case 4:
+    //         /*
+    //             pGame->endGame();
+    //             break;
 
-                */
-            default:
-                break;
-            }
-    }
+    //             */
+    //         default:
+    //             break;
+    //         }
+    // }
     }
 
 }//namespace Menu
