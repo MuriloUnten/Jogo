@@ -12,7 +12,15 @@ namespace Menu
         Button* bt = NULL;
         sf::Vector2f buttonSize = sf::Vector2f(280.0f, 40.0f);
         float xPosition = (WIDTH - buttonSize.x) / 2.0f;
-
+        /*
+        nameGame.setString("FOREST++");
+        nameGame.setFont(*pGraphics->getFont());
+        nameGame.setCharacterSize(36);
+        std::cout<<"namegame"<<std::endl;
+        nameGame.setOutlineColor(sf::Color::Black);
+        nameGame.setPosition(xPosition, 50); 
+        nameGame.setOutlineThickness(4);
+        */
 
         bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 200));
         bt->setMessage("LEVEL 1");
