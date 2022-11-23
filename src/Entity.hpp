@@ -32,7 +32,7 @@ namespace Entities
 		Entity();
 		~Entity();
 
-		const int getId() const;
+		ID getId() const;
 
 		virtual void execute() = 0;
 		void update();

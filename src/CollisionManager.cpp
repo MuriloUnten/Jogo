@@ -252,6 +252,7 @@ namespace Managers
                 coordinate.y = 0.0;
                 Player->setCanJump(true);
                 Enemy->setExecutable(false);
+                
             }
             //change position
             else

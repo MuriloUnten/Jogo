@@ -7,8 +7,8 @@ enum stateID
     undefined = -1,
     mainMenu = 0,
     level,
-    leaderboard
-
+    leaderboard,
+    gameOver
 };
 
 namespace Managers

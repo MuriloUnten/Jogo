@@ -15,6 +15,7 @@ namespace Entities
             facingRight = true;
             attackTimer->setLimit(PLAYER_ATTACK_COOLDOWN);
             controls.setKeys("W", "A", "S", "D", "Space");
+            score = 0;
         }
 
 
@@ -22,9 +23,10 @@ namespace Entities
         Character(),
         controls(this)
         {
-            hp = 3;
+            hp = 10;
             facingRight = true;
             attackTimer->setLimit(PLAYER_ATTACK_COOLDOWN);
+            score = 0;
         }
 
 
@@ -36,9 +38,12 @@ namespace Entities
 
         void Player::execute()
         { 
+            if(hp <= 0)
+                executable = false;
             
             float dt = Managers::GraphicsManager::getDeltaTime();
             collisionTimer->update(dt);
+
 
             // TODO Rever
             if(walking)
@@ -134,6 +139,19 @@ namespace Entities
             {
                 vel.x *= 0.3;
             }
+        }
+
+
+        
+        void Player::addScore(const int extraScore)
+        {
+            score += extraScore;
+        }
+
+
+        const int Player::getScore() const
+        {
+            return score;
         }
 
     }// namespace MovingEntities

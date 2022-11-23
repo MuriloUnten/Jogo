@@ -25,6 +25,7 @@ namespace Managers
         void addState(State* state);
         void setState(stateID newStateID);
         void changeState(stateID newState);
+        void overwriteState(State* newState);
         void executeState();
         void drawState();
 

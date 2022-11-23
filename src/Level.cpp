@@ -10,13 +10,15 @@
 
 namespace Levels
 {
-    Level::Level(char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position, Entities::MovingEntities::Player* player1, Entities::MovingEntities::Player* player2):
+    Level::Level(const char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position, Entities::MovingEntities::Player* player1, Entities::MovingEntities::Player* player2):
     State(stateID::level, fileName, size),
     entityList(new Lists::EntityList()),
     collisions(new Managers::CollisionManager())
     {
         pPlayer1 = player1;
         pPlayer2 = player2;
+
+        numberOfEnemies = 0;
 
         if(pPlayer1 != NULL)
         {
@@ -33,6 +35,8 @@ namespace Levels
         }
 
         createLevel(nameLevel);
+
+        countEnemies();
     }
 
 
@@ -62,6 +66,15 @@ namespace Levels
         collisions->Collision();
         entityList->draw();
 
+        if(!pPlayer1->getExecutable())
+            endLevel(false);
+
+        else
+        {
+            countEnemies();
+            if(numberOfEnemies == 0)
+                endLevel(true);
+        }
     }
 
     void Level::draw()
@@ -108,6 +121,7 @@ namespace Levels
         Entities::MovingEntities::Projectile* pProjectile = static_cast<Entities::MovingEntities::Arrow*>(pEntity);
         collisions->pushProjectile(pProjectile);
     }
+    
     void Level::createBoss(sf::Vector2f pos)
     {
         //TODO
@@ -147,7 +161,7 @@ namespace Levels
         entityList->pushEntity(pCastAux);
     }
 
-    void Level::createLevel( char* nameLevel)
+    void Level::createLevel(const char* nameLevel)
     {
         std::cout<<"create fase"<<std::endl;
         srand(time(NULL));
@@ -223,6 +237,41 @@ namespace Levels
         fclose(file);
         // todo Player
         //createPlayers(pPlayer1, sf::Vector2f(150, 600));
+    }
+
+
+    void Level::endLevel(const bool win)
+    {
+        if(win)
+        {
+            /* Pegar pontuação dos players, fazer algo com isso
+               talvez mudar para fase 2 ou outro menu
+               talvez desbloquear fase 2 apenas após ganhar fase 1
+            */
+            changeState(stateID::mainMenu);
+        }
+
+        else
+        {
+            changeState(stateID::gameOver);
+        }
+        entityList->clear();
+    }
+
+
+    void Level::countEnemies()
+    {
+        numberOfEnemies = 0;
+        Lists::List<Entities::Entity>::Element<Entities::Entity>* iterator = entityList->getList().getHead();
+        while(iterator != NULL)
+        {
+            ID entityID = iterator->getData()->getId();
+            if(entityID == ID::Earcher || entityID == ID::Eenemy1 || entityID == ID::Eboss)
+                if(iterator->getData()->getExecutable())
+                    numberOfEnemies++;
+
+            iterator = iterator->getNext();
+        }
     }
 
 

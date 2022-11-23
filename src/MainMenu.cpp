@@ -114,7 +114,10 @@ namespace Menu
 
     void MainMenu::resetState()
     {
-
+        active = true;
+        selected->getData()->select(false);
+        hoveredButton = 0;
+        selected->getData()->select(true);
     }
 
 }//namespace Menu

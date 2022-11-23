@@ -39,6 +39,9 @@ namespace Entities
             void stopAttacking();
             void draw();
 
+            void addScore(const int extraScore);
+            const int getScore() const;
+
         };
     }// namespace MovingEntities
 

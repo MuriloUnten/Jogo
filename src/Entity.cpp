@@ -32,7 +32,7 @@ namespace Entities
 
 	}
 
-	const int Entity::getId() const
+	ID Entity::getId() const
 	{
 		return Id;
 	}
