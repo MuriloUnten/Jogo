@@ -52,6 +52,12 @@ namespace Managers
     }
 
 
+    void StateManager::overwriteState(State* newState)
+    {
+        statesMap[newState->getID()] = newState;
+    }
+
+
     void StateManager::executeState()
     {
         statesMap[currentStateID]->execute();
