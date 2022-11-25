@@ -148,7 +148,7 @@ namespace Levels
 
     void Level::createCactus(sf::Vector2f pos)
     {
-        Entities::StaticEntities::Cactus *pAuxObstacle = new Entities::StaticEntities::Cactus( CACTUS_PATH, sf::Vector2f(80, 20), pos);
+        Entities::StaticEntities::Cactus *pAuxObstacle = new Entities::StaticEntities::Cactus( CACTUS_PATH, sf::Vector2f(80, 18), pos);
 
         Entities::StaticEntities::Obstacle* pCastObsAux = static_cast<Entities::StaticEntities::Obstacle*>(pAuxObstacle);
         collisions->pushObstacle(pCastObsAux);

@@ -22,7 +22,7 @@ PlayerControl::~PlayerControl()
 
 void PlayerControl::handleKeyPressed(std::string key)
 {
-    std::cout << "inside PlayerControl::handleKeyPressed()\n";
+    //std::cout << "inside PlayerControl::handleKeyPressed()\n";
     if(key == jump)
     {
         pPlayer->jump();
