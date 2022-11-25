@@ -15,6 +15,8 @@ namespace Entities{
             ~Web();
 
             void execute();
+            void affectPlayer(MovingEntities::Player* player);
+            
         };
 
     }//namespace StaticEntties

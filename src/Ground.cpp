@@ -25,5 +25,11 @@ namespace Entities{
 
         }
 
+
+        void Ground::affectPlayer(MovingEntities::Player* player)
+        {
+
+        }
+
     }//namespace StaticEntities
 }//namespace Entities

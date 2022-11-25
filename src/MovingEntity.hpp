@@ -29,6 +29,7 @@ namespace Entities
 
             virtual void execute() = 0;
 
+            virtual void affectPlayer(MovingEntities::Player* player) = 0;
         };
 
     }// namespace MovingEntities

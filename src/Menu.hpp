@@ -30,10 +30,10 @@ namespace Menu
         virtual void pushButton() = 0;
 
         virtual void execute() = 0;
-
+        virtual void draw() = 0;
+        virtual void resetState() = 0;
         const bool getActive() const;
         void setActive(const bool isActive);
 
-        virtual void resetState() = 0;
     };
 }//namespace Menu

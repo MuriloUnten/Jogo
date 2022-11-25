@@ -55,5 +55,4 @@ public:
     void deleteLevel();
     void resetPlayers();
     void setLvlEnded(bool x);
-
 };

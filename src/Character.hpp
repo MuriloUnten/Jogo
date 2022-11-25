@@ -40,6 +40,8 @@ namespace Entities
 
             Timer* getCollisionTimer() const;
             Timer* getAttackTimer() const;
+
+            virtual void affectPlayer(MovingEntities::Player* player) = 0;
         };
 
     }// namespace MovingEntities

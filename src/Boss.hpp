@@ -28,7 +28,7 @@ namespace Entities::MovingEntities
 
 
         void execute();
-
+        void affectPlayer(MovingEntities::Player* player);
 
     };
 

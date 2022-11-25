@@ -122,6 +122,12 @@ namespace Entities
 
         }
 
+
+        void Boss::affectPlayer(MovingEntities::Player* player)
+        {
+            
+        }
+
     }//namespace MovingEntities
 
 }//namespace Entities

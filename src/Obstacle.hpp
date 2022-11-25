@@ -25,6 +25,7 @@ namespace Entities
             const float getSlow() const;
 
             void execute();
+            virtual void affectPlayer(MovingEntities::Player* player) = 0;
         };
 
     }// namespace StaticEntities

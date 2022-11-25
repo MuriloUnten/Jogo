@@ -21,5 +21,11 @@ namespace Entities
 
             update();
         }
+
+
+        void Enemy1::affectPlayer(MovingEntities::Player* player)
+        {
+            
+        }
     }// namespace MovingEntities
 }// namespace Entities

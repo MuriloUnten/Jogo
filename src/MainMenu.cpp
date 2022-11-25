@@ -52,12 +52,6 @@ namespace Menu
     }
 
 
-    void MainMenu::update()
-    {
-        active = true;
-    }
-
-
     void MainMenu::draw()
     {
         // updateView(); PRA QUE O UPDATEVIEW()????

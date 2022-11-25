@@ -26,6 +26,11 @@ namespace Entities
 
             }
 
+
+            void Web::affectPlayer(MovingEntities::Player* player)
+            {
+                player->setOnWeb(true);
+            }
         }//namespace StaticEntities
 
 }//naspace Entities

@@ -40,5 +40,15 @@ namespace Entities
 
         }
 
+
+        void Cactus::affectPlayer(MovingEntities::Player* player)
+        {
+            if(Player->getCollisionTimer()->getElapsedTime() >= Player->getCollisionTimer()->getLimit())
+            {
+                Player->takeDamage(damage);// mesmo método de * com a intenção de fazer coisas diferentes???
+                Player->getCollisionTimer()->restart();
+            }
+        }
+
     }//namespace StaticEntities
 }//namespace Entities

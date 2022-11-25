@@ -154,5 +154,11 @@ namespace Entities
             return score;
         }
 
+
+        void Player::affectPlayer(MovingEntities::Player* player)
+        {
+
+        }
+
     }// namespace MovingEntities
 }// namespace Entities
