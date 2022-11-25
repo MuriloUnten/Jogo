@@ -12,17 +12,15 @@ namespace Entities
 
             bool Odamage;
             float buoyancy;
-            float slow;
 
         public:
-            Obstacle(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f), float newSlow = 0.0f);
+            Obstacle(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f,0.0f));
             Obstacle();
             ~Obstacle();
 
-            const bool getDamage();
+            const bool getBoolDamage();
 
-            void setSlow( const float newSlow);
-            const float getSlow() const;
+            
 
             void execute();
             virtual void affectPlayer(MovingEntities::Player* player) = 0;

@@ -16,6 +16,7 @@
 
 class Game
 {
+	
 private:
 
 	//Entities::MovingEntities::Player player;

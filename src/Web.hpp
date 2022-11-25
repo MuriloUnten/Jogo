@@ -14,6 +14,9 @@ namespace Entities{
             Web();
             ~Web();
 
+            void setSlow( const float newSlow);
+            const float getSlow() const;
+
             void execute();
             void affectPlayer(MovingEntities::Player* player);
             

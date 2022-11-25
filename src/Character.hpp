@@ -12,6 +12,7 @@ namespace Entities
         {
             
         protected:
+        
             int hp;
 
             bool walking;
