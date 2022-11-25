@@ -22,10 +22,10 @@ namespace Entities
             }
 
 
-        const float Web::getSlow() const
-        {
-            return slow;
-        }
+            const float Web::getSlow() const
+            {
+                return slow;
+            }
 
             Web::~Web()
             {

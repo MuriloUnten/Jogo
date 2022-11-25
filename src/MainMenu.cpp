@@ -7,20 +7,22 @@ namespace Menu
     MainMenu::MainMenu(Game* pG, std::string fileName, sf::Vector2f size , sf::Vector2f position):
     Menu(stateID::mainMenu, fileName, size, position)
     {
+        setInstance();
         active = true;
         pGame =  pG;
         Button* bt = NULL;
         sf::Vector2f buttonSize = sf::Vector2f(280.0f, 40.0f);
         float xPosition = (WIDTH - buttonSize.x) / 2.0f;
-        /*
+        
+        
         nameGame.setString("FOREST++");
         nameGame.setFont(*pGraphics->getFont());
-        nameGame.setCharacterSize(36);
-        std::cout<<"namegame"<<std::endl;
+        nameGame.setCharacterSize(50);
+        sf::FloatRect textRect = nameGame.getLocalBounds();
+        nameGame.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+        nameGame.setPosition(sf::Vector2f(pos.x + hitBox->getSize().x/2, 50));
         nameGame.setOutlineColor(sf::Color::Black);
-        nameGame.setPosition(xPosition, 50); 
         nameGame.setOutlineThickness(4);
-        */
 
         bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 200));
         bt->setMessage("LEVEL 1");
@@ -62,7 +64,11 @@ namespace Menu
     {
         // updateView(); PRA QUE O UPDATEVIEW()????
         if(pGraphics->isWindowOpen())
+        {
             pGraphics->getWindow()->draw(*hitBox);
+            pGraphics->getWindow()->draw(nameGame);
+        }
+            
 
         for(Lists::List<Button>::Element<Button>* it = buttonList.getHead(); it != NULL; it = it->getNext())
         {
