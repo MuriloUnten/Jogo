@@ -5,9 +5,9 @@ namespace Entities
         namespace StaticEntities
         {
             Web::Web(const std::string fileName, sf::Vector2f size, sf::Vector2f position, float newSlow):
-            Obstacle(Eweb, fileName, size, position, newSlow)
+            Obstacle(Eweb, fileName, size, position)
             {
-
+                slow = newSlow;
             }
 
             Web::Web():
@@ -15,6 +15,17 @@ namespace Entities
             {
 
             }
+
+            void Web::setSlow(const float newSlow)
+            {
+            slow = newSlow;
+            }
+
+
+        const float Web::getSlow() const
+        {
+            return slow;
+        }
 
             Web::~Web()
             {

@@ -4,11 +4,10 @@ namespace Entities
 {
     namespace StaticEntities
     {
-        Obstacle::Obstacle(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, float newSlow):
+        Obstacle::Obstacle(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position):
         Entity(id, fileName, size, position)
         {
             Odamage = false;
-            slow = newSlow;
             buoyancy = -GRAVITY;
         }
 
@@ -17,7 +16,6 @@ namespace Entities
         Entity()
         {
             Odamage = false;
-            slow = 0;
             buoyancy = -GRAVITY;
         }
 
@@ -27,21 +25,9 @@ namespace Entities
             
         }
 
-        const bool Obstacle::getDamage() 
+        const bool Obstacle::getBoolDamage() 
         {
             return Odamage;
-        }
-
-
-        void Obstacle::setSlow(const float newSlow)
-        {
-            slow = newSlow;
-        }
-
-
-        const float Obstacle::getSlow() const
-        {
-            return slow;
         }
 
         void Obstacle::execute()

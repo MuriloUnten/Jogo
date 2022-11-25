@@ -64,7 +64,7 @@ namespace Entities
 
         void Player::jump()
         {
-            std::cout << "jumping\n";
+            //std::cout << "jumping\n";
             if(canJump)
             {
                 vel.y = -600;

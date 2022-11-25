@@ -156,11 +156,11 @@ namespace Managers
     //altera velocidade na direção que bateu e reposiciona o jogador
     void CollisionManager::CollisionPlayerObstacle(Entities::MovingEntities::Player *Player, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection)
     {
-        if(obstacle->getDamage())// *
+        if(obstacle->getBoolDamage())// *
         {
             if(Player->getCollisionTimer()->getElapsedTime() >= Player->getCollisionTimer()->getLimit())
             {
-                Player->takeDamage(obstacle->getDamage());// mesmo método de * com a intenção de fazer coisas diferentes???
+                Player->takeDamage(obstacle->getBoolDamage());// mesmo método de * com a intenção de fazer coisas diferentes???
                 Player->getCollisionTimer()->restart();
             }
         }
@@ -356,19 +356,20 @@ namespace Managers
             {
                 if (Enemy->getPos().x < obstacle->getPos().x)
                     {
-                        //change position
-                        coordinate.x += Intersection.x;
-                        Enemy->setPos(coordinate);
-                        //change velocity
-                        coordinate = Enemy->getVel();
-                    }
                     //change position
-                    else
+                    coordinate.x += Intersection.x;
+                    Enemy->setPos(coordinate);
+                    //change velocity
+                    coordinate = Enemy->getVel();
+                    }
+                      
+                else
                     {
-                        coordinate.x -= Intersection.x;
-                        Enemy->setPos(coordinate);
-                        //change velocity
-                        coordinate = Enemy->getVel();
+                    //change position
+                    coordinate.x -= Intersection.x;
+                    Enemy->setPos(coordinate);
+                    //change velocity
+                    coordinate = Enemy->getVel();
                     }
                 coordinate.x *= -1;
             }
