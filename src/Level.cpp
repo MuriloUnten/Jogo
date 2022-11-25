@@ -7,6 +7,8 @@
 #define GROUND2_PATH "../assets/mundo/ground_tile.png" 
 #define GROUND3_PATH "../assets/mundo/ground2_tile.png"
 #define WEB_PATH "../assets/mundo/SpiderWeb.png"
+#define BOSS_RUN_PATH "../assets/inimigos/Boss_Run.png"
+
 
 namespace Levels
 {
@@ -124,7 +126,12 @@ namespace Levels
     
     void Level::createBoss(sf::Vector2f pos)
     {
-        //TODO
+        Entities::MovingEntities::Boss* boss = new Entities::MovingEntities::Boss(BOSS_RUN_PATH, sf::Vector2f(70, 70), pos);
+        boss->setPlayer1(pPlayer1);
+        Entities::Entity* pEntity = static_cast<Entities::Entity*>(boss);
+        Entities::MovingEntities::Enemy* pEnemy = static_cast<Entities::MovingEntities::Enemy*>(boss);
+        entityList->pushEntity(pEntity);
+        collisions->pushEnemy(pEnemy);
     }
 
     void Level::createGround(std::string fileName, sf::Vector2f pos)

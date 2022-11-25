@@ -9,6 +9,7 @@
 #include "Ground.hpp"
 #include "Enemy1.hpp"
 #include "Archer.hpp"
+#include "Boss.hpp"
 #include "Web.hpp"
 #include "CollisionManager.hpp"
 

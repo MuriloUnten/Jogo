@@ -10,6 +10,7 @@ namespace Entities
     {
         class Character: public MovingEntity
         {
+            
         protected:
             int hp;
 

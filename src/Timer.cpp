@@ -36,7 +36,8 @@ void Timer::update(const float dt)
 {
     elapsedTime += dt;
     if(elapsedTime > limit)
-        elapsedTime = limit;
+        //elapsedTime = limit;
+        restart();
 }
 
 

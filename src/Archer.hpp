@@ -23,7 +23,7 @@ namespace Entities
                 Player* pPlayer;
 
             public:
-                Archer(const std::string fileName, sf::Vector2f size, sf::Vector2f position = sf::Vector2f(0, 0), int hp=3, Player* player = NULL);
+                Archer(const std::string fileName, sf::Vector2f size, sf::Vector2f position = sf::Vector2f(0, 0), int hp=2, Player* player = NULL);
                 Archer();
                 ~Archer();
 
