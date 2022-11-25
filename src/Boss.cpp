@@ -1,7 +1,7 @@
 #include "Boss.hpp"
 
 #define BOSS_ATTACKING_PATH "../assets/inimigos/boss_attack.png"
-#define BOSS_RUN_PATH "../assets/inimigos/boss_run.png"
+#define BOSS_RUN_PATH "../assets/inimigos/Boss_Run.png"
 #define LIMITE_Y 100.0f
 
 namespace Entities
@@ -99,16 +99,20 @@ namespace Entities
             collisionTimer->update(dt);
             attackTimer->update(dt);
             
-            if(attackTimer->getElapsedTime() > 1.0)
+            if(attackTimer->getElapsedTime() < 1.0)
             {
                 attacking = true;
                 loadTexture(BOSS_ATTACKING_PATH);
             }
                 
-            else
+            else if(attackTimer->getElapsedTime() < 2.0 )
             {
                 attacking = false;
                 loadTexture(BOSS_RUN_PATH);
+            }
+            else if(attackTimer->getElapsedTime() >= BOSS_ATTACK_COOLDOWN)
+            {
+                attackTimer->restart();
             }
         
             hitBox->setTexture(texture);
