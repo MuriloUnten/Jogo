@@ -1,4 +1,5 @@
 #include "Level.hpp"
+#include "Game.hpp"
 
 #define PLAYER_PATH "../assets/personagem/kakashi1.png"
 #define ENEMY1_PATH "../assets/inimigos/enemy1.png"
@@ -12,13 +13,15 @@
 
 namespace Levels
 {
-    Level::Level(const char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position, Entities::MovingEntities::Player* player1, Entities::MovingEntities::Player* player2):
+    Level::Level(const char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position,Game* game, Entities::MovingEntities::Player* player1, Entities::MovingEntities::Player* player2):
     State(stateID::level, fileName, size),
     entityList(new Lists::EntityList()),
     collisions(new Managers::CollisionManager())
     {
         pPlayer1 = player1;
         pPlayer2 = player2;
+
+        pGame = game;
 
         numberOfEnemies = 0;
 
@@ -59,7 +62,10 @@ namespace Levels
         collisions = NULL;
     }
 
-
+    void Level::SetTwoPlayers(bool Bplayers)
+    {
+        TwoPlayers = Bplayers;
+    }
     void Level::execute()
     {
         draw();
@@ -218,7 +224,7 @@ namespace Levels
                 createEnemy1(sf::Vector2f( width, height));
                 break;
             case '7':
-                createPlayers(pPlayer1, sf::Vector2f(width, height));
+                //createPlayers(pPlayer1, sf::Vector2f(width, height));
                 break;
             case '8':
                 switch (aux)
@@ -242,6 +248,19 @@ namespace Levels
             }
         }
         fclose(file);
+
+        if(TwoPlayers)
+        {
+            pPlayer1 = pGame->getPlayer1();
+            createPlayers(pPlayer1, sf::Vector2f(40.0f, 600.0f));
+            pPlayer2 = pGame->getPlayer1();
+            createPlayers(pPlayer2, sf::Vector2f(100.0f, 600.0f));
+        }
+        else
+        {
+            pPlayer1 = pGame->getPlayer1();
+            createPlayers(pPlayer1, sf::Vector2f(40.0f, 600.0f));
+        }
         // todo Player
         //createPlayers(pPlayer1, sf::Vector2f(150, 600));
     }
