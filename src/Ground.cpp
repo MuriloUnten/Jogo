@@ -1,4 +1,6 @@
 #include "Ground.hpp"
+#include "Player.hpp"
+
 
 namespace Entities{
     namespace StaticEntities{

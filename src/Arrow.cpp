@@ -1,4 +1,6 @@
 #include "Arrow.hpp"
+#include "Player.hpp"
+
 
 #define ARROW_PATH "../assets/inimigos/flechaBranca.png"
 
@@ -22,6 +24,12 @@ namespace Entities
         void Arrow::execute()
         {
             update();
+        }
+
+
+        void Arrow::affectPlayer(MovingEntities::Player* player)
+        {
+            player->takeDamage(damage);
         }
     }// namespace MovingEntities
 }// namespace Entities

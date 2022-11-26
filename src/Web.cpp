@@ -1,4 +1,6 @@
 #include "Web.hpp"
+#include "Player.hpp"
+
 
 namespace Entities
 {

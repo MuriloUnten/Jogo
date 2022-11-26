@@ -1,4 +1,5 @@
 #include "Cactus.hpp"
+#include "Player.hpp"
 
 namespace Entities
 {
@@ -43,10 +44,10 @@ namespace Entities
 
         void Cactus::affectPlayer(MovingEntities::Player* player)
         {
-            if(Player->getCollisionTimer()->getElapsedTime() >= Player->getCollisionTimer()->getLimit())
+            if(player->getCollisionTimer()->getElapsedTime() >= player->getCollisionTimer()->getLimit())
             {
-                Player->takeDamage(damage);// mesmo método de * com a intenção de fazer coisas diferentes???
-                Player->getCollisionTimer()->restart();
+                player->takeDamage(damage);// mesmo método de * com a intenção de fazer coisas diferentes???
+                player->getCollisionTimer()->restart();
             }
         }
 

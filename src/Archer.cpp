@@ -1,4 +1,6 @@
 #include "Archer.hpp"
+#include "Player.hpp"
+
 
 namespace Entities 
 {
