@@ -10,10 +10,11 @@ namespace Managers
     
     CollisionManager::~CollisionManager()
     {
-        //delete lists
-        playerList.clear();
-        enemyList.clear();
-        obstacleList.clear();
+        /*delete lists*/
+        // playerList.clear();
+        // enemyList.clear();
+        // obstacleList.clear();
+        // projectileList.clear();
     }
     
     
@@ -103,7 +104,6 @@ namespace Managers
         {
             Obstacle1 = obstacleList[i];
             if(Obstacle1 == NULL)
-
                 continue;
              //Obstacle and Enemy
             for(int j = 0; j < enemyList.getSize(); j++)
@@ -111,12 +111,7 @@ namespace Managers
                 Enemy1 = enemyList[j];
                 if(Enemy1 == NULL || !Enemy1->getExecutable())
                     continue;
-                //módulo da distância entre o centro das entidades
-                //CenterDistance.x= fabs(Obstacle1->getPos().x - Enemy1->getPos().x);
-                //CenterDistance.y= fabs(Obstacle1->getPos().y - Enemy1->getPos().y);
-                //distância que as extremidades mais próximas das entidades se econtram  
-                //Intersection.x= CenterDistance.x - (Obstacle1->getSize().x/2 + Enemy1->getSize().x/2);
-                //Intersection.y= CenterDistance.y - (Obstacle1->getSize().y/2 + Enemy1->getSize().y/2);
+
                 CenterDistance.x = fabs(Enemy1->getPos().x + Enemy1->getSize().x/2.0 - (Obstacle1->getPos().x + Obstacle1->getSize().x/2.0));
                 CenterDistance.y = fabs(Enemy1->getPos().y + Enemy1->getSize().y/2.0 - (Obstacle1->getPos().y + Obstacle1->getSize().y/2.0));
                 Intersection.x = CenterDistance.x - (Enemy1->getSize().x/2.0 + Obstacle1->getSize().x/2.0);
@@ -133,12 +128,7 @@ namespace Managers
                 Projectile1 = projectileList[j];
                 if(Projectile1 == NULL || !Projectile1->getExecutable())
                     continue;
-                //módulo da distância entre o centro das entidades
-                //CenterDistance.x= fabs(Obstacle1->getPos().x - Enemy1->getPos().x);
-                //CenterDistance.y= fabs(Obstacle1->getPos().y - Enemy1->getPos().y);
-                //distância que as extremidades mais próximas das entidades se econtram  
-                //Intersection.x= CenterDistance.x - (Obstacle1->getSize().x/2 + Enemy1->getSize().x/2);
-                //Intersection.y= CenterDistance.y - (Obstacle1->getSize().y/2 + Enemy1->getSize().y/2);
+
                 CenterDistance.x = fabs(Projectile1->getPos().x + Projectile1->getSize().x/2.0 - (Obstacle1->getPos().x + Obstacle1->getSize().x/2.0));
                 CenterDistance.y = fabs(Projectile1->getPos().y + Projectile1->getSize().y/2.0 - (Obstacle1->getPos().y + Obstacle1->getSize().y/2.0));
                 Intersection.x = CenterDistance.x - (Projectile1->getSize().x/2.0 + Obstacle1->getSize().x/2.0);
@@ -398,4 +388,12 @@ namespace Managers
         projectileList.pushElement(projectile);
     }
 
+
+    void CollisionManager::clearLists()
+    {
+        playerList.clear();
+        enemyList.clear();
+        obstacleList.clear();
+        projectileList.clear();
+    }
 }//namespace Managers

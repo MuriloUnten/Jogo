@@ -1,6 +1,9 @@
 #pragma once
 
 
+#define LEVEL1 "FirstLevel.txt"
+#define LEVEL2 "SecondLevel.txt"
+
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Level.hpp"
@@ -24,8 +27,8 @@ private:
 	Managers::EventsManager* events;
 	Managers::StateManager* states;
 
-    Entities::MovingEntities::Player* player1;
-	Entities::MovingEntities::Player* player2;
+    // Entities::MovingEntities::Player* player1;
+	// Entities::MovingEntities::Player* player2;
 
 	//Levels::FirstLevel firstLevel;
 	Levels::Level* pLevel;
@@ -33,7 +36,6 @@ private:
 	Menu::MainMenu* mainMenu;
 	
 	int currentLevel;
-	bool lvlEnded;
 
 public:
 	Game();

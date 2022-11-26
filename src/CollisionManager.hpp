@@ -38,5 +38,6 @@ namespace Managers
 		void pushObstacle(Entities::StaticEntities::Obstacle* obstacle);    
         void pushProjectile(Entities::MovingEntities::Projectile* projectile);
  
+        void clearLists();
     };
 }//namespace Managers
