@@ -381,23 +381,21 @@ namespace Managers
     }
 
 
-
-/* teste de nova implementação a partir daqui */
     void CollisionManager::CollisionObstacleProjectile(Entities::MovingEntities::Projectile *projectile, Entities::StaticEntities::Obstacle *obstacle, Math::CoordF Intersection)
     {
         projectile->setExecutable(false);
     }
 
+
     void CollisionManager::CollisionPlayerProjectile(Entities::MovingEntities::Player *Player, Entities::MovingEntities::Projectile *projectile, Math::CoordF Intersection)
     {
-        Player->takeDamage(projectile->getDamage());
-        projectile->setExecutable(false);
+        projectile->affectPlayer(Player);
     }
+
 
     void CollisionManager::pushProjectile(Entities::MovingEntities::Projectile* projectile)
     {
         projectileList.pushElement(projectile);
     }
-
 
 }//namespace Managers
