@@ -265,10 +265,11 @@ namespace Managers
             }
             else
             {
-                if(Enemy->getAttackTimer()->getElapsedTime() == Enemy->getAttackTimer()->getLimit())
+                if(Enemy->getAttackTimer()->getElapsedTime() == Enemy->getAttackTimer()->getLimit() && !Enemy->isAttacking())
                 {
                     Player->takeDamage(Enemy->getDamage());
                     Enemy->getAttackTimer()->restart();
+                    Enemy->getAttackAnimationTimer()->restart();
                 }
             }
 

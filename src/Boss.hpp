@@ -1,6 +1,7 @@
 #pragma once
 
 #define BOSS_ATTACK_COOLDOWN 2.0f
+#define BOSS_ANIMATION_TIME 1.0f
 
 #include "Enemy.hpp"
 #include "Player.hpp"
