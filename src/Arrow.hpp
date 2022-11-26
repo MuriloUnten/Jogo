@@ -16,6 +16,7 @@ namespace Entities
             ~Arrow();
 
             void execute();
+            void affectPlayer(MovingEntities::Player* player);
 
         };
 

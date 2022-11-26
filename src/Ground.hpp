@@ -17,6 +17,8 @@ namespace Entities
             ~Ground();
 
             void execute();
+
+            void affectPlayer(MovingEntities::Player* player);
         };
 
     }// namespace StaticEntities

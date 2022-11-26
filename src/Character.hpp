@@ -24,6 +24,7 @@ namespace Entities
 
             Timer* collisionTimer;
             Timer* attackTimer;
+            Timer* attackAnimationTimer;
 
         public:
             Character(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health=3, int newDamage=1);
@@ -41,6 +42,9 @@ namespace Entities
 
             Timer* getCollisionTimer() const;
             Timer* getAttackTimer() const;
+            Timer* getAttackAnimationTimer() const;
+
+            virtual void affectPlayer(MovingEntities::Player* player) = 0;
         };
 
     }// namespace MovingEntities

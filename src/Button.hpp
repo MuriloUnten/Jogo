@@ -11,7 +11,6 @@
 class Button : public Being
 {
 private:
-
     bool hover;
     sf::Text text;
     sf::Font font;

@@ -17,7 +17,7 @@ namespace Entities
 
             PlayerControl controls;
 
-            bool  onWeb;
+            bool onWeb;
             int score;
 
         public:
@@ -42,6 +42,7 @@ namespace Entities
             void addScore(const int extraScore);
             const int getScore() const;
 
+            void affectPlayer(MovingEntities::Player* player);
         };
     }// namespace MovingEntities
 

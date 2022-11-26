@@ -18,6 +18,8 @@ namespace Entities{
             const float getSlow() const;
 
             void execute();
+            void affectPlayer(MovingEntities::Player* player);
+            
         };
 
     }//namespace StaticEntties

@@ -9,7 +9,8 @@ namespace Entities
         Character::Character(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health, int newDamage):
         MovingEntity(id, fileName, size, position),
         collisionTimer(new Timer(TIMECOLLISON)),
-        attackTimer(new Timer())
+        attackTimer(new Timer()),
+        attackAnimationTimer(new Timer())
         {
             hp = health;
             damage = newDamage;
@@ -73,6 +74,12 @@ namespace Entities
         Timer* Character::getAttackTimer() const
         {
             return attackTimer;
+        }
+
+
+        Timer* Character::getAttackAnimationTimer() const
+        {
+            return attackAnimationTimer;
         }
     }// namespace MovingEntities
 }// namespace Entities

@@ -19,7 +19,8 @@ namespace Entities
             ~Enemy1();
 
             void execute();
-
+            void affectPlayer(MovingEntities::Player* player);
+            
         };
     }// namespace MovingEntities
 }// namespace Entities

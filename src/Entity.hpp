@@ -48,5 +48,7 @@ namespace Entities
 
 		static void setPlayer1(MovingEntities::Player* newPlayer);
 
+		virtual void affectPlayer(MovingEntities::Player* player) = 0;
+
 	};
 }// namespace Entities

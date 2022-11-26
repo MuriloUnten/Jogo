@@ -1,4 +1,5 @@
 #include "Enemy1.hpp"
+#include "Player.hpp"
 
 
 namespace Entities
@@ -20,6 +21,12 @@ namespace Entities
 
 
             update();
+        }
+
+
+        void Enemy1::affectPlayer(MovingEntities::Player* player)
+        {
+            
         }
     }// namespace MovingEntities
 }// namespace Entities

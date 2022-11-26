@@ -14,7 +14,7 @@ namespace Entities
             pPlayer1 = player1;
             pPlayer2 = player2;
             attackTimer->setLimit(BOSS_ATTACK_COOLDOWN);
-
+            attackAnimationTimer->setLimit(BOSS_ANIMATION_TIME);
         }
         Boss::~Boss()
         {
@@ -98,28 +98,35 @@ namespace Entities
             float dt = Managers::GraphicsManager::getDeltaTime();
             collisionTimer->update(dt);
             attackTimer->update(dt);
+            attackAnimationTimer->update(dt);
             
-            if(attackTimer->getElapsedTime() < 1.0)
-            {
-                attacking = true;
-                loadTexture(BOSS_ATTACKING_PATH);
-            }
-                
-            else if(attackTimer->getElapsedTime() < 2.0 )
+            if(attackAnimationTimer->getElapsedTime() == attackAnimationTimer->getLimit())
             {
                 attacking = false;
+            }
+            else
+                attacking = true;
+
+            if(attacking)
+                loadTexture(BOSS_ATTACKING_PATH);
+            else
                 loadTexture(BOSS_RUN_PATH);
-            }
-            else if(attackTimer->getElapsedTime() >= BOSS_ATTACK_COOLDOWN)
-            {
-                attackTimer->restart();
-            }
-        
+
             hitBox->setTexture(texture);
 
+            // else if(attackTimer->getElapsedTime() >= BOSS_ATTACK_COOLDOWN)
+            // {
+            //     attackTimer->restart();
+            // }
 
             update();
 
+        }
+
+
+        void Boss::affectPlayer(MovingEntities::Player* player)
+        {
+            
         }
 
     }//namespace MovingEntities

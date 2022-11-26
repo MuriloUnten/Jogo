@@ -1,4 +1,6 @@
 #include "Ground.hpp"
+#include "Player.hpp"
+
 
 namespace Entities{
     namespace StaticEntities{
@@ -21,6 +23,12 @@ namespace Entities{
         }
 
         void Ground::execute()
+        {
+
+        }
+
+
+        void Ground::affectPlayer(MovingEntities::Player* player)
         {
 
         }

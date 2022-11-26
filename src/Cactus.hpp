@@ -20,6 +20,8 @@ namespace Entities
             const int getDamage() const;
 
             void execute();
+
+            void affectPlayer(MovingEntities::Player* player);
         };
 
     }// namespace StaticEntities

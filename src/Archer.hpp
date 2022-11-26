@@ -33,6 +33,7 @@ namespace Entities
                 bool alcancePlayer();
 
                 void execute();
+                void affectPlayer(MovingEntities::Player* player);
 
         };
     }//namespace MovingEntities

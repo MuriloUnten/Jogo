@@ -1,4 +1,6 @@
 #include "Web.hpp"
+#include "Player.hpp"
+
 
 namespace Entities
 {
@@ -37,6 +39,11 @@ namespace Entities
 
             }
 
+
+            void Web::affectPlayer(MovingEntities::Player* player)
+            {
+                player->setOnWeb(true);
+            }
         }//namespace StaticEntities
 
 }//naspace Entities

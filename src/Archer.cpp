@@ -1,4 +1,6 @@
 #include "Archer.hpp"
+#include "Player.hpp"
+
 
 namespace Entities 
 {
@@ -92,6 +94,10 @@ namespace Entities
 
             update();
         }
-        
+
+        void Archer::affectPlayer(MovingEntities::Player* player)        
+        {
+            
+        }
     }//namespace MovingEntities
 }//namespace Entities
