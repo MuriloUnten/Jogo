@@ -9,13 +9,15 @@ events(Managers::EventsManager::getInstance()),
 states(Managers::StateManager::getInstance()),
 // player1(new Entities::MovingEntities::Player()),
 pLevel(new Levels::Level(LEVEL1, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0))),
-mainMenu(new Menu::MainMenu(this))
+mainMenu(new Menu::MainMenu(this)),
+gameOverMenu(new Menu::MenuGameOver())
 //Level(SecondLevel.txt, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player1)
 {
     Being::setInstance();
 
-    states->addState(static_cast<State*>(mainMenu));
     states->addState(static_cast<State*>(pLevel));
+    states->addState(static_cast<State*>(mainMenu));
+    states->addState(static_cast<State*>(gameOverMenu));
     states->changeState(stateID::mainMenu);
 
     // mainMenu->setActive(false);
