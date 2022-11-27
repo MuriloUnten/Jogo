@@ -16,6 +16,7 @@
 #include "Character.hpp"
 #include "Player.hpp"
 #include "MainMenu.hpp"
+#include "MenuGameOVer.hpp"
 
 class Game
 {
@@ -34,6 +35,7 @@ private:
 	Levels::Level* pLevel;
 	
 	Menu::MainMenu* mainMenu;
+	Menu::MenuGameOver* gameOverMenu;
 	
 	int currentLevel;
 

@@ -54,6 +54,16 @@ namespace Menu
     }
 
 
+    void Menu::drawButtons()
+    {
+        for(Lists::List<Button>::Element<Button>* it = buttonList.getHead(); it != NULL; it = it->getNext())
+        {
+            // std::cout << "dentro do loop\n";
+            it->getData()->draw();
+        }
+    }
+
+
     const bool Menu::getActive() const
     {
         return active;

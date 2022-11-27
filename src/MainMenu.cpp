@@ -23,24 +23,24 @@ namespace Menu
         nameGame.setOutlineColor(sf::Color::Black);
         nameGame.setOutlineThickness(4);
 
-        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 200));
+        bt = new Button(BUTTONDISSELECTED_PATH, buttonSize, sf::Vector2f(xPosition, 200));
         bt->setMessage("LEVEL 1");
         bt->select(true);
         buttonList.pushElement(bt);
 
-        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 280));
+        bt = new Button(BUTTONDISSELECTED_PATH, buttonSize, sf::Vector2f(xPosition, 280));
         bt->setMessage("LEVEL 2");
         buttonList.pushElement(bt);
 
-        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 360));
+        bt = new Button(BUTTONDISSELECTED_PATH, buttonSize, sf::Vector2f(xPosition, 360));
         bt->setMessage("LOAD GAME");
         buttonList.pushElement(bt);
 
-        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 440));
+        bt = new Button(BUTTONDISSELECTED_PATH, buttonSize, sf::Vector2f(xPosition, 440));
         bt->setMessage("LEADERBOARD");
         buttonList.pushElement(bt);
 
-        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 620));
+        bt = new Button(BUTTONDISSELECTED_PATH, buttonSize, sf::Vector2f(xPosition, 620));
         bt->setMessage("QUIT GAME");
         buttonList.pushElement(bt);
 
@@ -59,16 +59,11 @@ namespace Menu
         {
             pGraphics->getWindow()->draw(*hitBox);
             pGraphics->getWindow()->draw(nameGame);
+            drawButtons();
         }
         //TODO recuperar ranking e desenhar na tela
         
 
-
-        for(Lists::List<Button>::Element<Button>* it = buttonList.getHead(); it != NULL; it = it->getNext())
-        {
-            // std::cout << "dentro do loop\n";
-            it->getData()->draw();
-        }
     }
 
 

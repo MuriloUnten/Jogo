@@ -44,7 +44,7 @@ namespace Menu
             pGraphics->getWindow()->draw(*hitBox);
         }
             
-        for(Lists::List<sf::Text>::Element<Button>* it = buttonList.getHead(); it != NULL; it = it->getNext())
+        for(Lists::List<Button>::Element<Button>* it = buttonList.getHead(); it != NULL; it = it->getNext())
         {
             // std::cout << "dentro do loop\n";
             it->getData()->draw();

@@ -40,14 +40,14 @@ namespace Levels
         infoHp.setString("Hp: 10");
         infoHp.setFont(*pGraphics->getFont());
         infoHp.setCharacterSize(14);
-        infoHp.setPosition(sf::Vector2f(5.0f, 5.0f));
+        infoHp.setPosition(sf::Vector2f(40.0f, 40.0f));
         infoHp.setOutlineColor(sf::Color::Black);
         infoHp.setOutlineThickness(4);
 
         infoRanking.setString("Ranking: 0.0");
         infoRanking.setFont(*pGraphics->getFont());
         infoRanking.setCharacterSize(14);
-        infoRanking.setPosition(sf::Vector2f(600.0f, 5.0f));
+        infoRanking.setPosition(sf::Vector2f(200.0f, 40.0f));
         infoRanking.setOutlineColor(sf::Color::Black);
         infoRanking.setOutlineThickness(4);
 
@@ -95,7 +95,6 @@ namespace Levels
 
         draw();
 
-
         entityList->execute();
         collisions->Collision();
         entityList->draw();
@@ -109,8 +108,6 @@ namespace Levels
             if(numberOfEnemies == 0)
                 endLevel(true);
         }
-
-        drawInfo();
     }
 
     void Level::draw()
@@ -119,16 +116,16 @@ namespace Levels
         if(pGraphics->isWindowOpen())
         {
             pGraphics->getWindow()->draw(*hitBox);
+            drawInfo();
         }
     }
+
+
     void Level::drawInfo()
     {
         /* TODO implementar mais coisas talvez?*/
-        if(pGraphics->isWindowOpen())
-        {
-            pGraphics->getWindow()->draw(infoHp);
-            pGraphics->getWindow()->draw(infoRanking);
-        }
+        pGraphics->getWindow()->draw(infoHp);
+        pGraphics->getWindow()->draw(infoRanking);
     }
 
 
@@ -345,6 +342,7 @@ namespace Levels
     {
         if(lvlEnded)
         {
+            ranking = 0;
             lvlEnded = false;
             collisions = new Managers::CollisionManager();
 

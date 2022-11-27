@@ -5,7 +5,7 @@
 #include "List.hpp"
 #include "MenuControl.hpp"
 
-#define MENU_BACKGROUND_PATH "../assets/Menu/menuBackground.png"
+#define MENU_BACKGROUND_PATH "../assets/Menu/PrincipalMenu.png"
 
 
 namespace Menu
@@ -32,6 +32,9 @@ namespace Menu
         virtual void execute() = 0;
         virtual void draw() = 0;
         virtual void resetState() = 0;
+
+        void drawButtons();
+
         const bool getActive() const;
         void setActive(const bool isActive);
 
