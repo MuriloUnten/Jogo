@@ -30,12 +30,17 @@ namespace Levels
         bool TwoPlayers;
         char currentLevel[50];
 
+        sf::Text infoHp;
+	    sf::Text infoRanking;
+        float ranking;
+
     public:
         Level(const char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0));
         Level();
         ~Level();
         void execute();
         void draw();
+        void drawInfo();
 
         void SetTwoPlayers(bool Bplayers);
 

@@ -19,7 +19,7 @@ namespace Menu
         nameGame.setCharacterSize(50);
         sf::FloatRect textRect = nameGame.getLocalBounds();
         nameGame.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-        nameGame.setPosition(sf::Vector2f(pos.x + hitBox->getSize().x/2, 50));
+        nameGame.setPosition(sf::Vector2f(pos.x + hitBox->getSize().x/2, 90));
         nameGame.setOutlineColor(sf::Color::Black);
         nameGame.setOutlineThickness(4);
 
@@ -55,13 +55,14 @@ namespace Menu
 
     void MainMenu::draw()
     {
-        // updateView(); PRA QUE O UPDATEVIEW()????
         if(pGraphics->isWindowOpen())
         {
             pGraphics->getWindow()->draw(*hitBox);
             pGraphics->getWindow()->draw(nameGame);
         }
-            
+        //TODO recuperar ranking e desenhar na tela
+        
+
 
         for(Lists::List<Button>::Element<Button>* it = buttonList.getHead(); it != NULL; it = it->getNext())
         {

@@ -22,6 +22,8 @@ namespace Levels
     {        
         Being::setInstance();
 
+        ranking = 0.0f;
+
         pPlayer1 = new Entities::MovingEntities::Player;
         Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer1);
         entityList->pushEntity(pAux);
@@ -34,6 +36,22 @@ namespace Levels
 
         setCurrentLevel(nameLevel);
         lvlEnded = true;
+
+        infoHp.setString("Hp: 10");
+        infoHp.setFont(*pGraphics->getFont());
+        infoHp.setCharacterSize(14);
+        infoHp.setPosition(sf::Vector2f(5.0f, 5.0f));
+        infoHp.setOutlineColor(sf::Color::Black);
+        infoHp.setOutlineThickness(4);
+
+        infoRanking.setString("Ranking: 0.0");
+        infoRanking.setFont(*pGraphics->getFont());
+        infoRanking.setCharacterSize(14);
+        infoRanking.setPosition(sf::Vector2f(600.0f, 5.0f));
+        infoRanking.setOutlineColor(sf::Color::Black);
+        infoRanking.setOutlineThickness(4);
+
+
     }
 
 
@@ -65,7 +83,18 @@ namespace Levels
     
     void Level::execute()
     {
+        std::string info ;
+        int hp = pPlayer1->getHp();
+        info = "hp: " + std::to_string(hp);
+        infoHp.setString(info);
+
+        ranking += pGraphics->getDeltaTime();
+        int intRanking = ranking;
+        info = "ranking: " + std::to_string(intRanking);
+        infoRanking.setString(info);
+
         draw();
+
 
         entityList->execute();
         collisions->Collision();
@@ -80,13 +109,26 @@ namespace Levels
             if(numberOfEnemies == 0)
                 endLevel(true);
         }
+
+        drawInfo();
     }
 
     void Level::draw()
     {
         /* TODO implementar mais coisas talvez?*/
         if(pGraphics->isWindowOpen())
+        {
             pGraphics->getWindow()->draw(*hitBox);
+        }
+    }
+    void Level::drawInfo()
+    {
+        /* TODO implementar mais coisas talvez?*/
+        if(pGraphics->isWindowOpen())
+        {
+            pGraphics->getWindow()->draw(infoHp);
+            pGraphics->getWindow()->draw(infoRanking);
+        }
     }
 
 

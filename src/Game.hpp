@@ -37,6 +37,7 @@ private:
 	
 	int currentLevel;
 
+
 public:
 	Game();
 	~Game();
