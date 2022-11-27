@@ -8,9 +8,9 @@ namespace Menu
     MenuLeaderboard::MenuLeaderboard(Game* game, std::string fileName, sf::Vector2f size, sf::Vector2f position):
     Menu(stateID::leaderboard, fileName, size, position)
     {
-        setInstance();
-        active = true;
-        pGame =  game;
+        pGame = game;
+        active = false;
+
         Button* bt = NULL;
         sf::Vector2f buttonSize = sf::Vector2f(280.0f, 40.0f);
         float xPosition = (WIDTH - buttonSize.x) / 2.0f;
@@ -34,8 +34,8 @@ namespace Menu
         std::ifstream leaderboardData(LEADERBOARD_TXT_PATH, std::ios::in);
         if (!leaderboard) 
         {
-        std::cout << "Cant Open txt on Load Map" << std::endl;
-        exit(100);
+            std::cout << "Cant Open txt on Load Map" << std::endl;
+            exit(100);
         }
 
         if (leaderboardData.is_open())
@@ -68,7 +68,6 @@ namespace Menu
 	    }
 
 	    leaderboardData.close();
-
     }
 
     void MenuLeaderboard::draw()
@@ -88,13 +87,13 @@ namespace Menu
                 pGraphics->getWindow()->draw(**it);
             }
         }
-
-
     }
+
     void MenuLeaderboard::execute()
     {
         draw();
     }
+
     void MenuLeaderboard::pushButton()
     {
         switch (hoveredButton)
@@ -103,6 +102,7 @@ namespace Menu
             break;
 
         case 0:
+            std::cout << "returning to mainMenu\n";
             changeState(stateID::mainMenu);
             active = false;
             break;

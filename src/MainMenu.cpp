@@ -99,7 +99,8 @@ namespace Menu
             break;
         
         case 3:
-            // pGame->showLeaderBoard();
+            pStateManager->changeState(stateID::leaderboard);
+            active = false;
             break;
         
         case 4:
