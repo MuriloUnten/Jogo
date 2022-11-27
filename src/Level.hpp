@@ -12,6 +12,7 @@
 #include "Boss.hpp"
 #include "Web.hpp"
 #include "CollisionManager.hpp"
+#include "LevelControl.hpp"
 
 
 namespace Levels
@@ -19,6 +20,8 @@ namespace Levels
     class Level : public State
     {
     private:
+        LevelControl controls;
+
 	    Lists::EntityList* entityList;
         Entities::MovingEntities::Player* pPlayer1;
         Entities::MovingEntities::Player* pPlayer2;
@@ -55,6 +58,7 @@ namespace Levels
         void createLevel();
         void setCurrentLevel(const char* newLevel);
         void endLevel(const bool win);
+        void setLvlEnded(const bool option);
         void countEnemies();
 
         void resetState();

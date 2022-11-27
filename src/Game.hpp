@@ -17,6 +17,7 @@
 #include "Player.hpp"
 #include "MainMenu.hpp"
 #include "MenuGameOVer.hpp"
+#include "MenuPause.hpp"
 
 class Game
 {
@@ -36,7 +37,8 @@ private:
 	
 	Menu::MainMenu* mainMenu;
 	Menu::MenuGameOver* gameOverMenu;
-	
+	Menu::MenuPause* pauseMenu;
+
 	int currentLevel;
 
 

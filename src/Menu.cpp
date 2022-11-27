@@ -25,7 +25,6 @@ namespace Menu
 
     /* Make the menu selection go Up */
     void Menu::selectUp() {
-        std::cout << "menu up\n";
         if (active)
         {
             if(selected->getPrev() != NULL)
@@ -62,17 +61,4 @@ namespace Menu
             it->getData()->draw();
         }
     }
-
-
-    const bool Menu::getActive() const
-    {
-        return active;
-    }
-
-
-    void Menu::setActive(const bool isActive)
-    {
-        active = isActive;
-    }
-
 }//namespace Menu

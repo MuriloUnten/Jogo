@@ -17,6 +17,7 @@ namespace Levels
 {
     Level::Level(const char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position):
     State(stateID::level, fileName, size),
+    controls(this),
     entityList(new Lists::EntityList()),
     collisions(new Managers::CollisionManager())
     {        
@@ -57,6 +58,7 @@ namespace Levels
 
     Level::Level():
     State(stateID::level),
+    controls(this),
     entityList(new Lists::EntityList())
     {
         pPlayer1 = NULL;
@@ -305,6 +307,7 @@ namespace Levels
     void Level::endLevel(const bool win)
     {
         lvlEnded = true;
+        active = false;
         if(win)
         {
             /* Pegar pontuação dos players, fazer algo com isso
@@ -319,6 +322,12 @@ namespace Levels
         }
         entityList->clear();
         // delete collisions;
+    }
+
+
+    void Level::setLvlEnded(const bool option)
+    {
+        lvlEnded = option;
     }
 
 
@@ -340,8 +349,11 @@ namespace Levels
 
     void Level::resetState()
     {
+        active = true;
+        
         if(lvlEnded)
         {
+            entityList->clear();
             ranking = 0;
             lvlEnded = false;
             collisions = new Managers::CollisionManager();

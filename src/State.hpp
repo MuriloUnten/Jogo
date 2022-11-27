@@ -9,6 +9,7 @@ enum stateID
     level,
     leaderboard,
     gameOver,
+    pause,
     menuChoosePlayers = 5, 
 };
 
@@ -22,6 +23,7 @@ class State : public Being
 protected:
     Managers::StateManager* pStateManager;
     stateID id;
+    bool active;
 
 public:
     State(stateID id=stateID::undefined, std::string fileName="", sf::Vector2f size=sf::Vector2f(WIDTH, HEIGHT));
@@ -33,5 +35,8 @@ public:
 
     void changeState(stateID id);
     stateID getID() const;
+
+    const bool getActive() const;
+    void setActive(const bool isActive);
 
 };

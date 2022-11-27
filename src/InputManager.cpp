@@ -13,6 +13,7 @@ namespace Managers
         keyMap[sf::Keyboard::S] = "S";
         keyMap[sf::Keyboard::D] = "D";
         keyMap[sf::Keyboard::Space] = "Space";
+        keyMap[sf::Keyboard::Escape] = "Escape";
     }
 
 

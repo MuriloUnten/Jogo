@@ -18,7 +18,6 @@ namespace Menu
         Lists::List<Button> buttonList;
         Lists::List<Button>::Element<Button>* selected;
 
-        bool active;
         int hoveredButton;
 
     public:
@@ -34,9 +33,5 @@ namespace Menu
         virtual void resetState() = 0;
 
         void drawButtons();
-
-        const bool getActive() const;
-        void setActive(const bool isActive);
-
     };
 }//namespace Menu
