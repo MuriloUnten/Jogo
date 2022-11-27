@@ -245,6 +245,20 @@ namespace Levels
             }
         }
         fclose(file);
+        
+        // TODO checar como criar os 2 players devidamente.
+        // if(TwoPlayers)
+        // {
+        //     pPlayer1 = pGame->getPlayer1();
+        //     createPlayers(pPlayer1, sf::Vector2f(40.0f, 600.0f));
+        //     pPlayer2 = pGame->getPlayer1();
+        //     createPlayers(pPlayer2, sf::Vector2f(100.0f, 600.0f));
+        // }
+        // else
+        // {
+        //     pPlayer1 = pGame->getPlayer1();
+        //     createPlayers(pPlayer1, sf::Vector2f(40.0f, 600.0f));
+        // }
     }
 
 
