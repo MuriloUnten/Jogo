@@ -4,6 +4,7 @@
 #include "Button.hpp"
 #include "List.hpp"
 #include "MenuControl.hpp"
+#include <string.h>
 
 #define MENU_BACKGROUND_PATH "../assets/Menu/menuBackground.png"
 
