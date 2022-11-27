@@ -79,7 +79,7 @@ namespace Menu
 
         }
     }
-    
+
 
     void MenuPause::resetState()
     {

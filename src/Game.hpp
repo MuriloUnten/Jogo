@@ -16,7 +16,7 @@
 #include "Character.hpp"
 #include "Player.hpp"
 #include "MainMenu.hpp"
-#include "MenuGameOVer.hpp"
+#include "MenuGameOver.hpp"
 #include "MenuPause.hpp"
 
 class Game
