@@ -103,6 +103,14 @@ void Game::setCurrentLevel(int num)
     currentLevel = num;
 }
 
+void Game::createLevel()
+{
+    if(getCurrentLevel() == 1)
+        pLevel = new Levels::Level(LEVEL1, BG1_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0));
+    else 
+        pLevel = new Levels::Level(LEVEL2, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0));
+
+}
 
 void Game::newGame()
 {

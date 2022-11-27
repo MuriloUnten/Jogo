@@ -42,7 +42,8 @@ public:
 	~Game();
 
 	void execute();
-
+	
+	void createLevel();
     Levels::Level* getpLevel() const;
     void setLevel(Levels::Level* pLevel);
 	void setCurrentLevel(int num);
