@@ -1,4 +1,5 @@
 #include "Level.hpp"
+#include "Game.hpp"
 
 #define PLAYER_PATH "../assets/personagem/kakashi1.png"
 #define ENEMY1_PATH "../assets/inimigos/enemy1.png"
@@ -63,7 +64,10 @@ namespace Levels
         collisions = NULL;
     }
 
-
+    void Level::SetTwoPlayers(bool Bplayers)
+    {
+        TwoPlayers = Bplayers;
+    }
     void Level::execute()
     {
         draw();

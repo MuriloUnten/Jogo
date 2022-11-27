@@ -8,7 +8,8 @@ enum stateID
     mainMenu = 0,
     level,
     leaderboard,
-    gameOver
+    gameOver,
+    menuChoosePlayers = 5, 
 };
 
 namespace Managers

@@ -1,7 +1,6 @@
 #include "MainMenu.hpp"
 #include "Game.hpp"
 
-//#define MENU_PATH "../assets/Menu/ButtonDissected"
 namespace Menu
 {
     MainMenu::MainMenu(Game* pG, std::string fileName, sf::Vector2f size , sf::Vector2f position):
@@ -50,7 +49,7 @@ namespace Menu
 
     MainMenu::~MainMenu()
     {
-
+        pGame = NULL;
     }
 
 

@@ -13,6 +13,7 @@
 #include "Web.hpp"
 #include "CollisionManager.hpp"
 
+class Game;
 
 namespace Levels
 {
@@ -26,7 +27,8 @@ namespace Levels
 
         int numberOfEnemies;
         bool lvlEnded;
-
+        
+        bool TwoPlayers;
         char currentLevel[50];
 
     public:
@@ -35,6 +37,8 @@ namespace Levels
         ~Level();
         void execute();
         void draw();
+
+        void SetTwoPlayers(bool Bplayers);
 
         void createPlayers(Entities::MovingEntities::Player* player, sf::Vector2f pos);
         void createEnemy1(sf::Vector2f pos);
