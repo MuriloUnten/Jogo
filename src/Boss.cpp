@@ -95,32 +95,26 @@ namespace Entities
                 }
             }
             
+            // Updating timers
             float dt = Managers::GraphicsManager::getDeltaTime();
             collisionTimer->update(dt);
             attackTimer->update(dt);
             attackAnimationTimer->update(dt);
             
+            // Checks if it's attacking and sets texture accordingly
             if(attackAnimationTimer->getElapsedTime() == attackAnimationTimer->getLimit())
             {
                 attacking = false;
+                loadTexture(BOSS_RUN_PATH);
             }
             else
+            {
                 attacking = true;
-
-            if(attacking)
                 loadTexture(BOSS_ATTACKING_PATH);
-            else
-                loadTexture(BOSS_RUN_PATH);
-
+            }
             hitBox->setTexture(texture);
 
-            // else if(attackTimer->getElapsedTime() >= BOSS_ATTACK_COOLDOWN)
-            // {
-            //     attackTimer->restart();
-            // }
-
             update();
-
         }
 
 

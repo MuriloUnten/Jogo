@@ -10,38 +10,35 @@
 #define WEB_PATH "../assets/mundo/SpiderWeb.png"
 #define BOSS_RUN_PATH "../assets/inimigos/Boss_Run.png"
 
+#include <string.h>
+
 
 namespace Levels
 {
-    Level::Level(const char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position,Game* game, Entities::MovingEntities::Player* player1, Entities::MovingEntities::Player* player2):
+    Level::Level(const char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position):
     State(stateID::level, fileName, size),
     entityList(new Lists::EntityList()),
     collisions(new Managers::CollisionManager())
     {
-        pPlayer1 = player1;
-        pPlayer2 = player2;
+        Being::setInstance();
 
-        pGame = game;
+        lvlEnded = false;
 
-        numberOfEnemies = 0;
-
-        if(pPlayer1 != NULL)
-        {
-            Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer1);
-            entityList->pushEntity(pAux);
-            collisions->pushPlayer(player1);
-        }
+        pPlayer1 = new Entities::MovingEntities::Player;
+        Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer1);
+        entityList->pushEntity(pAux);
+        collisions->pushPlayer(pPlayer1);
             
-        if(pPlayer2 != NULL)
-        {
-            Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer2);
-            entityList->pushEntity(pAux);
-            collisions->pushPlayer(player2);
-        }
+        pPlayer2 = new Entities::MovingEntities::Player;
+        pAux = static_cast<Entities::Entity*>(pPlayer2);
+        entityList->pushEntity(pAux);
+        collisions->pushPlayer(pPlayer2);
 
-        createLevel(nameLevel);
+        setCurrentLevel(nameLevel);
+        createLevel();
 
         countEnemies();
+
     }
 
 
@@ -56,9 +53,13 @@ namespace Levels
 
     Level::~Level()
     {
+        delete pPlayer1;
+        delete pPlayer2;
+
         delete entityList;
-        delete collisions;
         entityList = NULL;
+        
+        delete collisions;
         collisions = NULL;
     }
 
@@ -95,15 +96,11 @@ namespace Levels
 
     void Level::createPlayers(Entities::MovingEntities::Player* player, sf::Vector2f pos)
     {
-        if(player != NULL)
-        {
-            player->loadTexture(PLAYER_PATH);
-            player->setSize(sf::Vector2f(50, 60));
-            player->getHitBox()->setTexture(player->getTexture());
-            player->setPos(pos);
-
-        }
-
+        player->loadTexture(PLAYER_PATH);
+        player->setSize(sf::Vector2f(50, 60));
+        player->getHitBox()->setTexture(player->getTexture());
+        player->setPos(pos);
+        player->setExecutable(true);
     }
 
     void Level::createEnemy1(sf::Vector2f pos)
@@ -174,9 +171,8 @@ namespace Levels
         entityList->pushEntity(pCastAux);
     }
 
-    void Level::createLevel(const char* nameLevel)
+    void Level::createLevel()
     {
-        std::cout<<"create fase"<<std::endl;
         srand(time(NULL));
         FILE *file;
         char ch;
@@ -184,7 +180,7 @@ namespace Levels
         float obstacleSize = 20.0;
         float width = 0.0, height = 0.0;
 
-        file = fopen( nameLevel, "r");
+        file = fopen(currentLevel, "r");
 
         if(file == NULL)
         {
@@ -224,7 +220,7 @@ namespace Levels
                 createEnemy1(sf::Vector2f( width, height));
                 break;
             case '7':
-                //createPlayers(pPlayer1, sf::Vector2f(width, height));
+                createPlayers(pPlayer1, sf::Vector2f(width, height));
                 break;
             case '8':
                 switch (aux)
@@ -248,7 +244,7 @@ namespace Levels
             }
         }
         fclose(file);
-
+        /*
         if(TwoPlayers)
         {
             pPlayer1 = pGame->getPlayer1();
@@ -261,13 +257,21 @@ namespace Levels
             pPlayer1 = pGame->getPlayer1();
             createPlayers(pPlayer1, sf::Vector2f(40.0f, 600.0f));
         }
+        */
         // todo Player
         //createPlayers(pPlayer1, sf::Vector2f(150, 600));
     }
 
 
+    void Level::setCurrentLevel(const char* newLevel)
+    {
+        strcpy(currentLevel, newLevel);
+    }
+
+
     void Level::endLevel(const bool win)
     {
+        lvlEnded = true;
         if(win)
         {
             /* Pegar pontuação dos players, fazer algo com isso
@@ -276,12 +280,12 @@ namespace Levels
             */
             changeState(stateID::mainMenu);
         }
-
         else
         {
             changeState(stateID::gameOver);
         }
         entityList->clear();
+        // delete collisions;
     }
 
 
@@ -303,6 +307,13 @@ namespace Levels
 
     void Level::resetState()
     {
-        
+        if(lvlEnded)
+        {
+            pPlayer1 = new Entities::MovingEntities::Player;
+            lvlEnded = false;
+            collisions = new Managers::CollisionManager();
+            createLevel();
+        }
     }
+
 }// namespace Levels

@@ -7516,6 +7516,24 @@
 											"height": 13,
 											"text": "+pushObstacle(obstacle: Obstacle*): void",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGEsgQKMcS48x4=",
+											"_parent": {
+												"$ref": "AAAAAAGEU7jTRzDFnRo="
+											},
+											"model": {
+												"$ref": "AAAAAAGEsgQKDMSaxUg="
+											},
+											"fillColor": "#ffc082",
+											"font": "Arial;13;0",
+											"left": 1989,
+											"top": 788,
+											"width": 396.31591796875,
+											"height": 13,
+											"text": "+clearLists(): void",
+											"horizontalAlignment": 0
 										}
 									],
 									"fillColor": "#ffc082",
@@ -7523,7 +7541,7 @@
 									"left": 1984,
 									"top": 678,
 									"width": 406.31591796875,
-									"height": 113
+									"height": 128
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -27664,6 +27682,25 @@
 											"_id": "AAAAAAGEZ4uMZ+DsuhI=",
 											"_parent": {
 												"$ref": "AAAAAAGEZ4tZtN7jDDE="
+											},
+											"type": "void",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGEsgQKDMSaxUg=",
+									"_parent": {
+										"$ref": "AAAAAAGEU7jTRzC8XQ8="
+									},
+									"name": "clearLists",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGEsgQfycgB0OE=",
+											"_parent": {
+												"$ref": "AAAAAAGEsgQKDMSaxUg="
 											},
 											"type": "void",
 											"direction": "return"

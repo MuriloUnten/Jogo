@@ -25,13 +25,14 @@ namespace Levels
         Entities::MovingEntities::Player* pPlayer2;
         Managers::CollisionManager* collisions;
 
-        Game* pGame;
-
         int numberOfEnemies;
+        bool lvlEnded;
+        
         bool TwoPlayers;
+        char currentLevel[50];
 
     public:
-        Level(const char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position = sf::Vector2f(0, 0), Game* game = NULL, Entities::MovingEntities::Player* player1=NULL, Entities::MovingEntities::Player* player2=NULL);
+        Level(const char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0));
         Level();
         ~Level();
         void execute();
@@ -47,13 +48,11 @@ namespace Levels
         void createCactus(sf::Vector2f pos);
         void createWeb(sf::Vector2f pos);
 
-        void createLevel(const char* nameLevel);
-
+        void createLevel();
+        void setCurrentLevel(const char* newLevel);
         void endLevel(const bool win);
         void countEnemies();
 
         void resetState();
-
-
     };
 }// namespace Levels

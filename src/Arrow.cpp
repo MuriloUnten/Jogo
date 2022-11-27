@@ -30,6 +30,7 @@ namespace Entities
         void Arrow::affectPlayer(MovingEntities::Player* player)
         {
             player->takeDamage(damage);
+            executable = false;
         }
     }// namespace MovingEntities
 }// namespace Entities
