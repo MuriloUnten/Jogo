@@ -1,5 +1,6 @@
 #include "InputManager.hpp"
 #include "Observer.hpp"
+#include <iostream>
 
 namespace Managers
 {

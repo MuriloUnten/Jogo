@@ -13,6 +13,12 @@ namespace Entities
         }
 
 
+        Enemy1::~Enemy1()
+        {
+            
+        }
+
+
         void Enemy1::execute()
         { 
             float dt = Managers::GraphicsManager::getDeltaTime();

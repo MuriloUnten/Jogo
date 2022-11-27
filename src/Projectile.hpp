@@ -16,7 +16,7 @@ namespace Entities
         public:
             Projectile(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int newdamage=1);
             Projectile();
-            ~Projectile();
+            virtual ~Projectile();
 
             void shoot(sf::Vector2f newPos, sf::Vector2f newVel);
             
@@ -26,6 +26,3 @@ namespace Entities
         };
     }// namespace MovingEntities
 }//namespace Entities#pragma once
-
-
-    

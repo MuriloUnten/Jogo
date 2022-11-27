@@ -18,10 +18,8 @@ namespace Levels
     State(stateID::level, fileName, size),
     entityList(new Lists::EntityList()),
     collisions(new Managers::CollisionManager())
-    {
+    {        
         Being::setInstance();
-
-        lvlEnded = false;
 
         pPlayer1 = new Entities::MovingEntities::Player;
         Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer1);
@@ -32,6 +30,9 @@ namespace Levels
         pAux = static_cast<Entities::Entity*>(pPlayer2);
         entityList->pushEntity(pAux);
         collisions->pushPlayer(pPlayer2);
+
+
+        lvlEnded = false;
 
         setCurrentLevel(nameLevel);
         createLevel();
@@ -240,8 +241,6 @@ namespace Levels
             }
         }
         fclose(file);
-        // todo Player
-        //createPlayers(pPlayer1, sf::Vector2f(150, 600));
     }
 
 
@@ -291,9 +290,17 @@ namespace Levels
     {
         if(lvlEnded)
         {
-            pPlayer1 = new Entities::MovingEntities::Player;
             lvlEnded = false;
             collisions = new Managers::CollisionManager();
+
+            pPlayer1 = new Entities::MovingEntities::Player;
+            entityList->pushEntity(static_cast<Entities::Entity*>(pPlayer1));
+            collisions->pushPlayer(pPlayer1);
+
+            pPlayer2 = new Entities::MovingEntities::Player;
+            entityList->pushEntity(static_cast<Entities::Entity*>(pPlayer2));
+            collisions->pushPlayer(pPlayer2);
+
             createLevel();
         }
     }

@@ -91,7 +91,7 @@ namespace Menu
             pStateManager->changeState(stateID::level);
             active = false;
             break;
-        
+
         case 1:
             // pGame->setCurrentLevel(2);
             pGame->getpLevel()->setCurrentLevel(LEVEL2);

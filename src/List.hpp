@@ -179,21 +179,15 @@ namespace Lists
 	template <class TL>
 	void List<TL>::clear()
 	{
-		if (head != NULL)
+		Element<TL>* pAux;
+		for(int i = 0; i < size; i++)
 		{
-			Element<TL>* pAux = head->getNext();
-			while (pAux != NULL)
-			{
-				head->setNext(pAux->getNext());
-				delete pAux;
-				pAux = head->getNext();
-			}
-
+			pAux = head->getNext();
 			delete head;
-			head = NULL;
-			tail = NULL;
-			size = 0;
+			head = pAux;
 		}
+		tail = NULL;
+		size = 0;
 	}
 
 
