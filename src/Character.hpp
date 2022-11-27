@@ -29,7 +29,7 @@ namespace Entities
         public:
             Character(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position, int health=3, int newDamage=1);
             Character();
-            ~Character();
+            virtual ~Character();
 
             virtual void execute() = 0;
 

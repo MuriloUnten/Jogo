@@ -30,7 +30,7 @@ namespace Entities
 	public:
 		Entity(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f, 0.0f));
 		Entity();
-		~Entity();
+		virtual ~Entity();
 
 		ID getId() const;
 

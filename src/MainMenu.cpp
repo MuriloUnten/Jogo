@@ -90,7 +90,7 @@ namespace Menu
             pStateManager->changeState(stateID::level);
             active = false;
             break;
-        
+
         case 1:
             // pGame->setCurrentLevel(2);
             pGame->getpLevel()->setCurrentLevel(LEVEL2);
@@ -118,6 +118,7 @@ namespace Menu
         active = true;
         selected->getData()->select(false);
         hoveredButton = 0;
+        selected = buttonList.getHead();
         selected->getData()->select(true);
     }
 

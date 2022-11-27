@@ -25,7 +25,7 @@ protected:
 
 public:
     State(stateID id=stateID::undefined, std::string fileName="", sf::Vector2f size=sf::Vector2f(WIDTH, HEIGHT));
-    ~State();
+    virtual ~State();
 
     virtual void execute() = 0;
     virtual void draw() = 0;

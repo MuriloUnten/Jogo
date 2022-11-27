@@ -16,7 +16,7 @@ protected:
 public:
 	Being(std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0));
 	Being();
-	~Being();
+	virtual ~Being();
 
 	void setPos(const sf::Vector2f position);
 	sf::Vector2f getPos() const;

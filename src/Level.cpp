@@ -19,10 +19,8 @@ namespace Levels
     State(stateID::level, fileName, size),
     entityList(new Lists::EntityList()),
     collisions(new Managers::CollisionManager())
-    {
+    {        
         Being::setInstance();
-
-        lvlEnded = false;
 
         pPlayer1 = new Entities::MovingEntities::Player;
         Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer1);
@@ -35,10 +33,7 @@ namespace Levels
         collisions->pushPlayer(pPlayer2);
 
         setCurrentLevel(nameLevel);
-        createLevel();
-
-        countEnemies();
-
+        lvlEnded = true;
     }
 
 
@@ -245,22 +240,20 @@ namespace Levels
             }
         }
         fclose(file);
-        /*
-        if(TwoPlayers)
-        {
-            pPlayer1 = pGame->getPlayer1();
-            createPlayers(pPlayer1, sf::Vector2f(40.0f, 600.0f));
-            pPlayer2 = pGame->getPlayer1();
-            createPlayers(pPlayer2, sf::Vector2f(100.0f, 600.0f));
-        }
-        else
-        {
-            pPlayer1 = pGame->getPlayer1();
-            createPlayers(pPlayer1, sf::Vector2f(40.0f, 600.0f));
-        }
-        */
-        // todo Player
-        //createPlayers(pPlayer1, sf::Vector2f(150, 600));
+        
+        // TODO checar como criar os 2 players devidamente.
+        // if(TwoPlayers)
+        // {
+        //     pPlayer1 = pGame->getPlayer1();
+        //     createPlayers(pPlayer1, sf::Vector2f(40.0f, 600.0f));
+        //     pPlayer2 = pGame->getPlayer1();
+        //     createPlayers(pPlayer2, sf::Vector2f(100.0f, 600.0f));
+        // }
+        // else
+        // {
+        //     pPlayer1 = pGame->getPlayer1();
+        //     createPlayers(pPlayer1, sf::Vector2f(40.0f, 600.0f));
+        // }
     }
 
 
@@ -310,9 +303,17 @@ namespace Levels
     {
         if(lvlEnded)
         {
-            pPlayer1 = new Entities::MovingEntities::Player;
             lvlEnded = false;
             collisions = new Managers::CollisionManager();
+
+            pPlayer1 = new Entities::MovingEntities::Player;
+            entityList->pushEntity(static_cast<Entities::Entity*>(pPlayer1));
+            collisions->pushPlayer(pPlayer1);
+
+            pPlayer2 = new Entities::MovingEntities::Player;
+            entityList->pushEntity(static_cast<Entities::Entity*>(pPlayer2));
+            collisions->pushPlayer(pPlayer2);
+
             createLevel();
         }
     }

@@ -13,7 +13,6 @@
 #include "Web.hpp"
 #include "CollisionManager.hpp"
 
-class Game;
 
 namespace Levels
 {
