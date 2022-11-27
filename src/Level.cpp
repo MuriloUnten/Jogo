@@ -32,14 +32,8 @@ namespace Levels
         entityList->pushEntity(pAux);
         collisions->pushPlayer(pPlayer2);
 
-
-        lvlEnded = false;
-
         setCurrentLevel(nameLevel);
-        createLevel();
-
-        countEnemies();
-
+        lvlEnded = true;
     }
 
 

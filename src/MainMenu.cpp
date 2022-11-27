@@ -118,6 +118,7 @@ namespace Menu
         active = true;
         selected->getData()->select(false);
         hoveredButton = 0;
+        selected = buttonList.getHead();
         selected->getData()->select(true);
     }
 
