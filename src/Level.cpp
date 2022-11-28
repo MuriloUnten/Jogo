@@ -103,7 +103,7 @@ namespace Levels
         collisions->Collision();
         entityList->draw();
 
-        if(!pPlayer1->getExecutable())
+        if(!pPlayer1->getExecutable() && !pPlayer2->getExecutable())
             endLevel(false);
 
         else
