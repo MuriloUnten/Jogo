@@ -55,6 +55,7 @@ namespace Menu
 
     void MenuPause::execute()
     {
+        active = true;
         draw();
     }
 
@@ -83,7 +84,6 @@ namespace Menu
 
     void MenuPause::resetState()
     {
-        active = true;
         selected->getData()->select(false);
         hoveredButton = 0;
         selected = buttonList.getHead();

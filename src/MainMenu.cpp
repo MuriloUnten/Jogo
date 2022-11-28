@@ -69,6 +69,7 @@ namespace Menu
 
     void MainMenu::execute()
     {
+        active = true;
         draw();
     }
 
@@ -112,7 +113,6 @@ namespace Menu
 
     void MainMenu::resetState()
     {
-        active = true;
         selected->getData()->select(false);
         hoveredButton = 0;
         selected = buttonList.getHead();

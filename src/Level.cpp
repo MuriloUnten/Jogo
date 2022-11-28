@@ -85,6 +85,8 @@ namespace Levels
     
     void Level::execute()
     {
+        active = true;
+
         std::string info ;
         int hp = pPlayer1->getHp();
         info = "hp: " + std::to_string(hp);
@@ -349,7 +351,7 @@ namespace Levels
 
     void Level::resetState()
     {
-        active = true;
+        // active = true;
         
         if(lvlEnded)
         {

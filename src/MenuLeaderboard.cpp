@@ -91,6 +91,7 @@ namespace Menu
 
     void MenuLeaderboard::execute()
     {
+        active = true;
         draw();
     }
 
@@ -102,7 +103,6 @@ namespace Menu
             break;
 
         case 0:
-            std::cout << "returning to mainMenu\n";
             changeState(stateID::mainMenu);
             active = false;
             break;
@@ -111,7 +111,6 @@ namespace Menu
 
     void MenuLeaderboard::resetState()
     {
-        active = true;
         selected->getData()->select(false);
         hoveredButton = 0;
         selected = buttonList.getHead();

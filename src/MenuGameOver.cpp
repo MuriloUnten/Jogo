@@ -44,6 +44,7 @@ namespace Menu
 
     void MenuGameOver::execute()
     {
+        active = true;
         draw();
     }
 
@@ -65,7 +66,6 @@ namespace Menu
 
     void MenuGameOver::resetState()
     {
-        active = true;
         selected->getData()->select(false);
         hoveredButton = 0;
         selected = buttonList.getHead();
