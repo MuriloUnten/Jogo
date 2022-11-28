@@ -35,7 +35,7 @@ namespace Levels
 
         sf::Text infoHp;
 	    sf::Text infoRanking;
-        float ranking;
+        float timePlayed;
 
     public:
         Level(const char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0, 0));

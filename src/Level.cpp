@@ -23,7 +23,7 @@ namespace Levels
     {        
         Being::setInstance();
 
-        ranking = 0.0f;
+        timePlayed = 0.0f;
 
         pPlayer1 = new Entities::MovingEntities::Player;
         Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer1);
@@ -92,9 +92,8 @@ namespace Levels
         info = "hp: " + std::to_string(hp);
         infoHp.setString(info);
 
-        ranking += pGraphics->getDeltaTime();
-        int intRanking = ranking;
-        info = "ranking: " + std::to_string(intRanking);
+        timePlayed += pGraphics->getDeltaTime();
+        info = "Time: " + std::to_string(timePlayed);
         infoRanking.setString(info);
 
         draw();
@@ -103,9 +102,16 @@ namespace Levels
         collisions->Collision();
         entityList->draw();
 
-        if(!pPlayer1->getExecutable() && !pPlayer2->getExecutable())
-            endLevel(false);
-
+        if(!pPlayer1->getExecutable())
+        {
+            if(twoPlayers)
+            {
+                if(!pPlayer2->getExecutable())
+                    endLevel(false);
+            }
+            else
+                endLevel(false);
+        }
         else
         {
             countEnemies();
@@ -368,7 +374,7 @@ namespace Levels
         if(lvlEnded)
         {
             entityList->clear();
-            ranking = 0;
+            timePlayed = 0;
             lvlEnded = false;
             collisions = new Managers::CollisionManager();
 
