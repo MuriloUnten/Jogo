@@ -82,16 +82,16 @@ namespace Menu
             break;
 
         case 0:
-            // pGame->setCurrentLevel(1);
             pGame->getpLevel()->setCurrentLevel(LEVEL1);
-            pStateManager->changeState(stateID::level);
+            changeState(stateID::menuChoosePlayers);
+            std::cout << "State changed to menuChoose\n";
             active = false;
             break;
 
         case 1:
-            // pGame->setCurrentLevel(2);
             pGame->getpLevel()->setCurrentLevel(LEVEL2);
-            pStateManager->changeState(stateID::level);
+            changeState(stateID::menuChoosePlayers);
+            std::cout << "State changed to menuChoose\n";
             active = false;
             break;
 
