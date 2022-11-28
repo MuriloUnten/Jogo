@@ -15,7 +15,7 @@ namespace Menu
         sf::Vector2f buttonSize = sf::Vector2f(280.0f, 40.0f);
         float xPosition = (WIDTH - buttonSize.x) / 2.0f;
 
-        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 200));
+        bt = new Button(MENU_PATH, buttonSize, sf::Vector2f(xPosition, 600));
         bt->setMessage("EXIT");
         bt->select(true);
         buttonList.pushElement(bt);

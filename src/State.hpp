@@ -11,6 +11,7 @@ enum stateID
     gameOver,
     pause,
     menuChoosePlayers = 5, 
+    menuSaveRanking
 };
 
 namespace Managers
