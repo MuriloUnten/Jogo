@@ -6,10 +6,11 @@ enum stateID
 {
     undefined = -1,
     mainMenu = 0,
-    level,
-    leaderboard,
-    gameOver,
-    menuChoosePlayers = 5, 
+    level = 1,
+    leaderboard = 2,
+    gameOver = 3,
+    menuChoosePlayers = 4, 
+    menuSaveRanking = 5,
 };
 
 namespace Managers

@@ -24,6 +24,7 @@ namespace Menu
         ~MenuLeaderboard();
         
         void loadData();
+        
         void draw();
         void execute();
         void pushButton();
