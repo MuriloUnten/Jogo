@@ -59,47 +59,52 @@ namespace Menu
 
     void MenuSaveRanking::saveData()
     {
-        
-        if (nameP.size() == 0)
-        {
-		    return;
-        }
+        std::ifstream readFile;
 
-        std::fstream leaderboardFile(LEADERBOARD_TXT_PATH, std::ios::out);
-        std::string nameFile;
-        std::string p;
-        int pontuationFile;
-        std::multimap< int, std::string, std::greater<int> > fileMap;
+        readFile.open(LEADERBOARD_TXT_PATH, std::ios::in);
 
-        if (leaderboardFile.is_open())
-        {
+        std::multimap<int, std::string> pointsAndNamesMap;
 
-            while (getline(leaderboardFile, nameFile) && getline(leaderboardFile, p))
-            {
-                //std::istringstream pStream(p);
-                //pStream >> pontuationFile;
-                fileMap.insert(std::pair<int, std::string>(pontuationFile, nameFile ));
+        if (readFile) {
+
+            unsigned int points;
+            std::string name;
+            std::string pointsString;
+
+            for (int i = 0; i < 10; i++) {
+                std::getline(readFile, pointsString);
+                std::getline(readFile, name);
+                if (pointsString.length() > 0)
+                    pointsAndNamesMap.insert(std::pair<int, std::string>(std::stoi(pointsString), name));
             }
 
-            leaderboardFile.close();
+            readFile.close();
         }
 
-        fileMap.insert(std::pair<int, std::string>(rankingP, nameP));
+        /* ================================= Writing File ================================= */
+        if (rankingP != 0 && imputPlayer.getString().getSize() > 1)
+            pointsAndNamesMap.insert(std::pair<int, std::string>(rankingP, imputPlayer.getString()));
 
-        leaderboardFile.open("../data/Leaderboard.txt", std::ios::out);
+        std::ofstream writeFile;
 
-        if (leaderboardFile.is_open())
-        {
-            for (std::multimap<int, std::string>::iterator it = fileMap.begin(); it != fileMap.end(); it++)
-            {
-                leaderboardFile << (*it).second << std::endl;
-                leaderboardFile << (*it).first << std::endl;
-            }
+        writeFile.open(LEADERBOARD_TXT_PATH, std::ios::out | std::ios::trunc);
 
-            leaderboardFile.close();
+        if (!writeFile) {
+            std::cout << "ERROR writing to file on GameOverMenu" << std::endl;
+            exit(1);
         }
+
+        while (pointsAndNamesMap.size() > 10)
+            pointsAndNamesMap.erase(pointsAndNamesMap.begin());
+
+        for (auto itr = pointsAndNamesMap.rbegin(); itr != pointsAndNamesMap.rend(); ++itr) {
+            writeFile << (*itr).first << std::endl;
+            writeFile << (*itr).second << std::endl;
+        }
+
+        writeFile.close();
     }
-
+        
     void MenuSaveRanking::draw()
     {
        if(pGraphics->isWindowOpen())
