@@ -13,7 +13,8 @@ pLevel(new Levels::Level(LEVEL1, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vect
 mainMenu(new Menu::MainMenu(this)),
 gameOverMenu(new Menu::MenuGameOver()),
 pauseMenu(new Menu::MenuPause(this)),
-leaderboardMenu(new Menu::MenuLeaderboard(this))
+leaderboardMenu(new Menu::MenuLeaderboard(this)),
+chooseMenu(new Menu::MenuChoose(this))
 {
     Being::setInstance();
 
@@ -23,6 +24,7 @@ leaderboardMenu(new Menu::MenuLeaderboard(this))
     states->addState(static_cast<State*>(gameOverMenu));
     states->addState(static_cast<State*>(pauseMenu));
     states->addState(static_cast<State*>(leaderboardMenu));
+    states->addState(static_cast<State*>(chooseMenu));
 
     /* Changing into Main menu and executing main loop */
     states->changeState(stateID::mainMenu);
