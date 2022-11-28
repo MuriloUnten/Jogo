@@ -10,7 +10,8 @@ enum stateID
     leaderboard,
     gameOver,
     pause,
-    menuChoosePlayers = 5, 
+    menuChoosePlayers,
+    menuEndLevel, 
     menuSaveRanking
 };
 

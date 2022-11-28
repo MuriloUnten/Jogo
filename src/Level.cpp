@@ -38,12 +38,19 @@ namespace Levels
         setCurrentLevel(nameLevel);
         lvlEnded = true;
 
-        infoHp.setString("Hp: 10");
-        infoHp.setFont(*pGraphics->getFont());
-        infoHp.setCharacterSize(14);
-        infoHp.setPosition(sf::Vector2f(40.0f, 40.0f));
-        infoHp.setOutlineColor(sf::Color::Black);
-        infoHp.setOutlineThickness(4);
+        infoHp1.setString("Hp: 10");
+        infoHp1.setFont(*pGraphics->getFont());
+        infoHp1.setCharacterSize(14);
+        infoHp1.setPosition(sf::Vector2f(40.0f, 40.0f));
+        infoHp1.setOutlineColor(sf::Color::Black);
+        infoHp1.setOutlineThickness(4);
+
+        infoHp2.setString("Hp: 10");
+        infoHp2.setFont(*pGraphics->getFont());
+        infoHp2.setCharacterSize(14);
+        infoHp2.setPosition(sf::Vector2f(40.0f, 70.0f));
+        infoHp2.setOutlineColor(sf::Color::Black);
+        infoHp2.setOutlineThickness(4);
 
         infoRanking.setString("Ranking: 0.0");
         infoRanking.setFont(*pGraphics->getFont());
@@ -51,8 +58,6 @@ namespace Levels
         infoRanking.setPosition(sf::Vector2f(200.0f, 40.0f));
         infoRanking.setOutlineColor(sf::Color::Black);
         infoRanking.setOutlineThickness(4);
-
-
     }
 
 
@@ -90,7 +95,13 @@ namespace Levels
         std::string info ;
         int hp = pPlayer1->getHp();
         info = "hp: " + std::to_string(hp);
-        infoHp.setString(info);
+        infoHp1.setString(info);
+
+        if(twoPlayers)
+        {
+            info = "hp: " + std::to_string(pPlayer2->getHp());
+            infoHp2.setString(info);
+        }
 
         timePlayed += pGraphics->getDeltaTime();
         info = "Time: " + std::to_string(timePlayed);
@@ -134,7 +145,9 @@ namespace Levels
     void Level::drawInfo()
     {
         /* TODO implementar mais coisas talvez?*/
-        pGraphics->getWindow()->draw(infoHp);
+        pGraphics->getWindow()->draw(infoHp1);
+        if(twoPlayers)
+            pGraphics->getWindow()->draw(infoHp2);
         pGraphics->getWindow()->draw(infoRanking);
     }
 
@@ -332,10 +345,6 @@ namespace Levels
         active = false;
         if(win)
         {
-            /* Pegar pontuação dos players, fazer algo com isso
-               talvez mudar para fase 2 ou outro menu
-               talvez desbloquear fase 2 apenas após ganhar fase 1
-            */
             changeState(stateID::mainMenu);
         }
         else
@@ -382,9 +391,12 @@ namespace Levels
             entityList->pushEntity(static_cast<Entities::Entity*>(pPlayer1));
             collisions->pushPlayer(pPlayer1);
 
-            pPlayer2 = new Entities::MovingEntities::Player;
-            entityList->pushEntity(static_cast<Entities::Entity*>(pPlayer2));
-            collisions->pushPlayer(pPlayer2);
+            if(twoPlayers)
+            {
+                pPlayer2 = new Entities::MovingEntities::Player;
+                entityList->pushEntity(static_cast<Entities::Entity*>(pPlayer2));
+                collisions->pushPlayer(pPlayer2);
+            }
 
             createLevel();
         }

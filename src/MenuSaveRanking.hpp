@@ -1,20 +1,25 @@
 #pragma once
 
-#include  "Menu.hpp" 
 #define MENU_PATH "../assets/Menu/PrincipalMenu.png"
+#define LEADERBOARD_TXT_PATH "../assets/Saves/Leaderboard.txt"
+#include  "Menu.hpp" 
+#include "TextControl.hpp"
 #include <fstream>
 #include <map>
 
-namespace Menu {
+class Game;
+
+
+namespace Menu
+{
     class MenuSaveRanking : public Menu
     {
-    public:
-        std::string nameP;
-        sf::Text message;
-        sf::Text imputPlayer;
-        float rankingP;
     private:
-        MenuSaveRanking( float ranking, std::string fileName = MENU_PATH, sf::Vector2f size= sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f position = sf::Vector2f(0.0f, 0.0f));
+        TextControl* textControl;
+        sf::Text playerInput;
+
+    public:
+        MenuSaveRanking(std::string fileName = MENU_PATH, sf::Vector2f size= sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f position = sf::Vector2f(0.0f, 0.0f));
         ~MenuSaveRanking();
 
         void saveData();
@@ -22,8 +27,6 @@ namespace Menu {
         void draw();
         void execute();
         void pushButton();
-        //void updateString();
-
         void resetState();
     };
 

@@ -20,6 +20,7 @@
 #include "MenuPause.hpp"
 #include "MenuLeaderboard.hpp"
 #include "MenuChoose.hpp"
+#include "MenuEndLevel.hpp"
 
 class Game
 {
@@ -37,6 +38,7 @@ private:
 	Menu::MenuPause* pauseMenu;
 	Menu::MenuLeaderboard* leaderboardMenu;
 	Menu::MenuChoose* chooseMenu;
+	Menu::MenuEndLevel* endLevelMenu;
 
 	int currentLevel;
 
@@ -50,7 +52,7 @@ public:
     Levels::Level* getpLevel() const;
     void setLevel(Levels::Level* pLevel);
 	void setCurrentLevel(int num);
-    int getCurrentLevel() const;   
+    int getCurrentLevel() const;
 
     Entities::MovingEntities::Player* getPlayer1();
     Entities::MovingEntities::Player* getPlayer2();

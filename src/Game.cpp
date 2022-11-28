@@ -14,7 +14,8 @@ mainMenu(new Menu::MainMenu(this)),
 gameOverMenu(new Menu::MenuGameOver()),
 pauseMenu(new Menu::MenuPause(this)),
 leaderboardMenu(new Menu::MenuLeaderboard(this)),
-chooseMenu(new Menu::MenuChoose(this))
+chooseMenu(new Menu::MenuChoose(this)),
+endLevelMenu(new Menu::MenuEndLevel(this))
 {
     Being::setInstance();
 
@@ -25,6 +26,7 @@ chooseMenu(new Menu::MenuChoose(this))
     states->addState(static_cast<State*>(pauseMenu));
     states->addState(static_cast<State*>(leaderboardMenu));
     states->addState(static_cast<State*>(chooseMenu));
+    states->addState(static_cast<State*>(endLevelMenu));
 
     /* Changing into Main menu and executing main loop */
     states->changeState(stateID::mainMenu);
@@ -36,6 +38,7 @@ Game::~Game()
 {
     Managers::GraphicsManager::deleteInstance();
     Managers::EventsManager::deleteInstance();
+    Managers::StateManager::deleteInstance();
 
     // if (pLevel != NULL)
     //     delete (pLevel);

@@ -33,7 +33,8 @@ namespace Levels
         bool twoPlayers;
         char currentLevel[50];
 
-        sf::Text infoHp;
+        sf::Text infoHp1;
+        sf::Text infoHp2;
 	    sf::Text infoRanking;
         float timePlayed;
 
