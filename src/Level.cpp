@@ -80,7 +80,7 @@ namespace Levels
 
     void Level::SetTwoPlayers(bool Bplayers)
     {
-        TwoPlayers = Bplayers;
+        twoPlayers = Bplayers;
     }
     
     void Level::execute()
@@ -227,8 +227,10 @@ namespace Levels
             exit(1);
         }
 
+        bool player1Created = false;
         while((ch = fgetc(file)) != EOF)
         {
+
             aux = rand()%2;
             switch (ch)
             {
@@ -259,7 +261,19 @@ namespace Levels
                 createEnemy1(sf::Vector2f( width, height));
                 break;
             case '7':
-                createPlayers(pPlayer1, sf::Vector2f(width, height));
+                if(!player1Created)
+                {
+                    createPlayers(pPlayer1, sf::Vector2f(width, height));
+                    pPlayer1->getControls()->setKeys("W", "A", "S", "D", "Space");
+                    player1Created = true;
+                }
+                else if(twoPlayers)
+                {
+                    std::cout << "creating second player\n";
+                    createPlayers(pPlayer2, sf::Vector2f(width, height));
+                    pPlayer2->getControls()->setKeys("Up", "Left", "Down", "Right", "Enter");
+                }
+                    
                 break;
             case '8':
                 switch (aux)
@@ -351,8 +365,6 @@ namespace Levels
 
     void Level::resetState()
     {
-        // active = true;
-        
         if(lvlEnded)
         {
             entityList->clear();

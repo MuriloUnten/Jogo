@@ -3,12 +3,7 @@
 
 PlayerControl::PlayerControl(Entities::MovingEntities::Player* player):
 Observer(),
-pPlayer(player),
-jump("W"),
-left("A"),
-down("S"),
-right("D"),
-attack("Space")
+pPlayer(player)
 {
 
 }

@@ -30,7 +30,7 @@ namespace Levels
         int numberOfEnemies;
         bool lvlEnded;
         
-        bool TwoPlayers;
+        bool twoPlayers;
         char currentLevel[50];
 
         sf::Text infoHp;
