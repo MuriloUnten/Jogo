@@ -10,6 +10,7 @@ namespace Entities
 
             vel = sf::Vector2f(100.0f, 0.0f);
             damage=1;
+            punctuationPlayer = 100;
         }
 
 
@@ -24,6 +25,11 @@ namespace Entities
         Enemy::~Enemy()
         {
 
+        }
+
+        const int Enemy::getPonctuation() const
+        {
+            return punctuationPlayer;
         }
     }// namespace MovingEntities
 }// namespace Entities

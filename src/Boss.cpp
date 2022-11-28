@@ -16,6 +16,7 @@ namespace Entities
             attackTimer->setLimit(BOSS_ATTACK_COOLDOWN);
             attackAnimationTimer->setLimit(BOSS_ANIMATION_TIME);
             damage = 3;
+            punctuationPlayer = 100;
         }
         Boss::~Boss()
         {

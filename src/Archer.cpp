@@ -13,7 +13,8 @@ namespace Entities
             pPlayer = player;
             vel = sf::Vector2f(0.0f, 0.0f);
             attackTimer->setLimit(ARCHER_ATTACK_COOLDOWN);
-        
+            punctuationPlayer = 100;
+            
         }
 
 

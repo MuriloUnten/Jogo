@@ -224,6 +224,7 @@ namespace Managers
                 coordinate.y = 0.0;
                 Player->setCanJump(true);
                 Enemy->setExecutable(false);
+                Player->addScore(Enemy->getPonctuation());
                 
             }
             //change position
@@ -251,6 +252,8 @@ namespace Managers
                         Enemy->takeDamage(Player->getDamage());
                         if(Enemy->getHp() <= 0)
                             Enemy->setExecutable(false);
+                        Player->addScore(Enemy->getPonctuation());
+                        //std::cout<<"pontuação: "<< Enemy->getPonctuation()<< std::endl;
                     }
             }
             else

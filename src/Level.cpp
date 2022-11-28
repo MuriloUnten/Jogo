@@ -45,7 +45,7 @@ namespace Levels
         infoHp.setOutlineColor(sf::Color::Black);
         infoHp.setOutlineThickness(4);
 
-        infoRanking.setString("Ranking: 0.0");
+        infoRanking.setString("Score: 0");
         infoRanking.setFont(*pGraphics->getFont());
         infoRanking.setCharacterSize(14);
         infoRanking.setPosition(sf::Vector2f(200.0f, 40.0f));
@@ -93,7 +93,7 @@ namespace Levels
         infoHp.setString(info);
 
         timePlayed += pGraphics->getDeltaTime();
-        info = "Time: " + std::to_string(timePlayed);
+        info = "Score: " + std::to_string( pPlayer1->getScore());
         infoRanking.setString(info);
 
         draw();
