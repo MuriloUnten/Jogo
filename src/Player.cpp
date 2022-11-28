@@ -117,7 +117,6 @@ namespace Entities
                 //hitBox->setSize(sf::Vector2f(50, 60));
             }
             hitBox->setTexture(texture);
-
             if(pGraphics->isWindowOpen())
 		        pGraphics->getWindow()->draw(*hitBox);
         }

@@ -30,7 +30,6 @@ namespace Entities
         void MovingEntity::setFacingRight(const bool isFacingRight)
         {
             facingRight = isFacingRight;
-            //hitBox->scale(-1,1);
         }
 
 
@@ -43,11 +42,17 @@ namespace Entities
 
         void MovingEntity::flipImage()
         {
-            float posX = pos.x;
-            hitBox->scale(-1, 1);
-            setPos(sf::Vector2f(pos.x + (pos.x - posX)/2, pos.y));
+            if(!facingRight)
+            {
+                float posX = pos.x;
+                hitBox->setScale(-1, 1);
+                // setPos(sf::Vector2f(pos.x + (pos.x - posX)/2, pos.y));
+            }
+            else
+            {
+                hitBox->setScale(1, 1);
+            }
+
         }
-
-
     }// namespace MovingEntities
 }// namespace Entities
