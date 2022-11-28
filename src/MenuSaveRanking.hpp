@@ -14,6 +14,12 @@ namespace Menu
 {
     class MenuSaveRanking : public Menu
     {
+    public:
+        std::string nameP;
+        sf::Text message;
+        sf::Text imputPlayer;
+        float rankingP;
+        
     private:
         TextControl* textControl;
         sf::Text playerInput;

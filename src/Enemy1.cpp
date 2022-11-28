@@ -10,6 +10,7 @@ namespace Entities
         Enemy(Eenemy1,fileName, size, position, hp)
         {
             attackTimer->setLimit(ENEMY1_ATTACK_COOLDOWN);
+            punctuationPlayer = 100;
         }
 
 
