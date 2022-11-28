@@ -85,7 +85,6 @@ namespace Menu
             pGame->getpLevel()->setCurrentLevel(LEVEL1);
             pGame->setCurrentLevel(1);
             changeState(stateID::menuChoosePlayers);
-            std::cout << "State changed to menuChoose\n";
             active = false;
             break;
 
@@ -93,7 +92,6 @@ namespace Menu
             pGame->getpLevel()->setCurrentLevel(LEVEL2);
             pGame->setCurrentLevel(2);
             changeState(stateID::menuChoosePlayers);
-            std::cout << "State changed to menuChoose\n";
             active = false;
             break;
 

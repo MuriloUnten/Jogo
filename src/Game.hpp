@@ -54,11 +54,6 @@ public:
 	void setCurrentLevel(int num);
     int getCurrentLevel() const;
 
-    Entities::MovingEntities::Player* getPlayer1();
-    Entities::MovingEntities::Player* getPlayer2();
-	bool isTwoPlayersActive() const;
-    bool isPlaying() const;  
-
 	void newGame();
     void endGame();
     void deleteLevel();

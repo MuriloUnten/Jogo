@@ -21,7 +21,6 @@ MenuControl::~MenuControl()
 
 void MenuControl::handleKeyPressed(std::string key)
 {
-    //std::cout << "inside MenuControl::handleKeyPressed()\n";
     if(pMenu->getActive())
     {
         if(key == up)

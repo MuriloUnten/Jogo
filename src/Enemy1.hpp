@@ -12,7 +12,7 @@ namespace Entities
         class Enemy1 : public Enemy
         {
         private:
-            
+            float timeAlive;
 
         public:
             Enemy1(const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f, 0.0f), int hp=1);

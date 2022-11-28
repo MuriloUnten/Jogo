@@ -81,28 +81,6 @@ void Game::setLevel(Levels::Level* pLevel)
 }
 
 
-// Entities::MovingEntities::Player* Game::getPlayer1() 
-// {
-//     if (player1 == NULL)
-//         player1 = new Entities::MovingEntities::Player();
-//     return player1;
-// }
-
-
-// Entities::MovingEntities::Player* Game::getPlayer2()
-//  {
-//     if (player2 == NULL)
-//         player2 = new Entities::MovingEntities::Player();
-//     return player2;
-// }
-
-
-// bool Game::isTwoPlayersActive() const 
-// {
-//     return ((player1 != NULL) && (player2 != NULL));
-// }
-
-
 int Game::getCurrentLevel() const 
 {
     return currentLevel;

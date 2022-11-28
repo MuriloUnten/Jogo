@@ -25,7 +25,6 @@ namespace Entities
 
         void  Projectile::shoot(sf::Vector2f newPos, sf::Vector2f newVel)
         {
-            //std::cout << "Atirando projetil Vy = " << newVel.y << std::endl;
             executable = true;
             setPos(newPos);
             setVel(newVel);

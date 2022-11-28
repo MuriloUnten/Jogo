@@ -41,7 +41,6 @@ namespace Menu
             for(Lists::List<Button>::Element<Button>* it = buttonList.getHead(); it != NULL; it = it->getNext())
             {
                 it->getData()->draw();
-                std::cout << it->getData();
             }
             //draw Text
             pGraphics->getWindow()->draw(message);
@@ -102,7 +101,6 @@ namespace Menu
         hoveredButton = 0;
         selected = buttonList.getHead();
         selected->getData()->select(true);
-        std::cout << "menu reset\n";
     }
 
 
@@ -130,7 +128,6 @@ namespace Menu
 
 
         selected = buttonList.getHead();
-        std::cout << "EndLevelMenu recreated\n";
     }
 
 }//namePspace Menu

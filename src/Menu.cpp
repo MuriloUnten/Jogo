@@ -57,7 +57,6 @@ namespace Menu
     {
         for(Lists::List<Button>::Element<Button>* it = buttonList.getHead(); it != NULL; it = it->getNext())
         {
-            // std::cout << "dentro do loop\n";
             it->getData()->draw();
         }
     }

@@ -25,8 +25,6 @@ namespace Entities
 		bool executable;
 		ID Id;
 
-		static Entities::MovingEntities::Player* pPlayer1;
-
 	public:
 		Entity(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position=sf::Vector2f(0.0f, 0.0f));
 		Entity();
@@ -45,8 +43,6 @@ namespace Entities
 
 		void setExecutable(const bool newExecutable);
 		const bool getExecutable() const;
-
-		static void setPlayer1(MovingEntities::Player* newPlayer);
 
 		virtual void affectPlayer(MovingEntities::Player* player) = 0;
 
