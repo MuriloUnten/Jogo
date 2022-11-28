@@ -15,7 +15,7 @@ namespace Menu {
         sf::Text nameGame;
 
     public:
-        MainMenu( Game* pG = NULL, std::string fileName = MENU_PATH, sf::Vector2f size= sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f position = sf::Vector2f(0.0f, 0.0f));
+        MainMenu(Game* pG = NULL, std::string fileName = MENU_PATH, sf::Vector2f size= sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f position = sf::Vector2f(0.0f, 0.0f));
         ~MainMenu();
 
         void draw();

@@ -4,24 +4,30 @@
 
 
 Game::Game():
+/* Initializing Managers */
 graphics(Managers::GraphicsManager::getInstance()),
 events(Managers::EventsManager::getInstance()),
 states(Managers::StateManager::getInstance()),
-// player1(new Entities::MovingEntities::Player()),
+/* Initializing States */
 pLevel(new Levels::Level(LEVEL1, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0))),
 mainMenu(new Menu::MainMenu(this)),
-gameOverMenu(new Menu::MenuGameOver())
-//Level(SecondLevel.txt, BG2_PATH, sf::Vector2f(WIDTH, HEIGHT), sf::Vector2f(0, 0), &player1)
+gameOverMenu(new Menu::MenuGameOver()),
+pauseMenu(new Menu::MenuPause(this)),
+leaderboardMenu(new Menu::MenuLeaderboard(this)),
+chooseMenu(new Menu::MenuChoose(this))
 {
     Being::setInstance();
 
+    /* Adding States to the StateManager's statesMap */
     states->addState(static_cast<State*>(pLevel));
     states->addState(static_cast<State*>(mainMenu));
     states->addState(static_cast<State*>(gameOverMenu));
+    states->addState(static_cast<State*>(pauseMenu));
+    states->addState(static_cast<State*>(leaderboardMenu));
+    states->addState(static_cast<State*>(chooseMenu));
+
+    /* Changing into Main menu and executing main loop */
     states->changeState(stateID::mainMenu);
-
-    // mainMenu->setActive(false);
-
     execute();
 }
 

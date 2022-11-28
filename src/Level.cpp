@@ -17,12 +17,13 @@ namespace Levels
 {
     Level::Level(const char* nameLevel, std::string fileName, sf::Vector2f size, sf::Vector2f position):
     State(stateID::level, fileName, size),
+    controls(this),
     entityList(new Lists::EntityList()),
     collisions(new Managers::CollisionManager())
     {        
         Being::setInstance();
 
-        ranking = 0.0f;
+        timePlayed = 0.0f;
 
         pPlayer1 = new Entities::MovingEntities::Player;
         Entities::Entity* pAux = static_cast<Entities::Entity*>(pPlayer1);
@@ -57,6 +58,7 @@ namespace Levels
 
     Level::Level():
     State(stateID::level),
+    controls(this),
     entityList(new Lists::EntityList())
     {
         pPlayer1 = NULL;
@@ -78,19 +80,20 @@ namespace Levels
 
     void Level::SetTwoPlayers(bool Bplayers)
     {
-        TwoPlayers = Bplayers;
+        twoPlayers = Bplayers;
     }
     
     void Level::execute()
     {
+        active = true;
+
         std::string info ;
         int hp = pPlayer1->getHp();
         info = "hp: " + std::to_string(hp);
         infoHp.setString(info);
 
-        ranking += pGraphics->getDeltaTime();
-        int intRanking = ranking;
-        info = "ranking: " + std::to_string(intRanking);
+        timePlayed += pGraphics->getDeltaTime();
+        info = "Time: " + std::to_string(timePlayed);
         infoRanking.setString(info);
 
         draw();
@@ -100,8 +103,15 @@ namespace Levels
         entityList->draw();
 
         if(!pPlayer1->getExecutable())
-            endLevel(false);
-
+        {
+            if(twoPlayers)
+            {
+                if(!pPlayer2->getExecutable())
+                    endLevel(false);
+            }
+            else
+                endLevel(false);
+        }
         else
         {
             countEnemies();
@@ -223,8 +233,10 @@ namespace Levels
             exit(1);
         }
 
+        bool player1Created = false;
         while((ch = fgetc(file)) != EOF)
         {
+
             aux = rand()%2;
             switch (ch)
             {
@@ -255,7 +267,19 @@ namespace Levels
                 createEnemy1(sf::Vector2f( width, height));
                 break;
             case '7':
-                createPlayers(pPlayer1, sf::Vector2f(width, height));
+                if(!player1Created)
+                {
+                    createPlayers(pPlayer1, sf::Vector2f(width, height));
+                    pPlayer1->getControls()->setKeys("W", "A", "S", "D", "Space");
+                    player1Created = true;
+                }
+                else if(twoPlayers)
+                {
+                    std::cout << "creating second player\n";
+                    createPlayers(pPlayer2, sf::Vector2f(width, height));
+                    pPlayer2->getControls()->setKeys("Up", "Left", "Down", "Right", "Enter");
+                }
+                    
                 break;
             case '8':
                 switch (aux)
@@ -305,6 +329,7 @@ namespace Levels
     void Level::endLevel(const bool win)
     {
         lvlEnded = true;
+        active = false;
         if(win)
         {
             /* Pegar pontuação dos players, fazer algo com isso
@@ -319,6 +344,12 @@ namespace Levels
         }
         entityList->clear();
         // delete collisions;
+    }
+
+
+    void Level::setLvlEnded(const bool option)
+    {
+        lvlEnded = option;
     }
 
 
@@ -342,7 +373,8 @@ namespace Levels
     {
         if(lvlEnded)
         {
-            ranking = 0;
+            entityList->clear();
+            timePlayed = 0;
             lvlEnded = false;
             collisions = new Managers::CollisionManager();
 

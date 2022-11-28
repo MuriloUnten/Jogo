@@ -9,19 +9,18 @@ namespace Entities
     {
         Player::Player(const std::string fileName, sf::Vector2f size, sf::Vector2f position, int hp):
         Character(Eplayer, fileName, size, position, hp),
-        controls(this)
+        controls(new PlayerControl(this))
         {
             onWeb = false;
             facingRight = true;
             attackTimer->setLimit(PLAYER_ATTACK_COOLDOWN);
-            controls.setKeys("W", "A", "S", "D", "Space");
             score = 0;
         }
 
 
         Player::Player():
         Character(),
-        controls(this)
+        controls(new PlayerControl(this))
         {
             hp = 10;
             facingRight = true;
@@ -152,6 +151,12 @@ namespace Entities
         const int Player::getScore() const
         {
             return score;
+        }
+
+
+        PlayerControl* Player::getControls() const
+        {
+            return controls;
         }
 
 

@@ -6,6 +6,7 @@ Being(fileName, size),
 pStateManager(Managers::StateManager::getInstance())
 {
     this->id = id;
+    active = false;
 }
 
 
@@ -24,4 +25,16 @@ void State::changeState(stateID id)
 stateID State::getID() const
 {
     return id;
+}
+
+
+const bool State::getActive() const
+{
+    return active;
+}
+
+
+void State::setActive(const bool isActive)
+{
+    active = isActive;
 }

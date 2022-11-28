@@ -17,28 +17,28 @@
 #include "Player.hpp"
 #include "MainMenu.hpp"
 #include "MenuGameOver.hpp"
+#include "MenuPause.hpp"
+#include "MenuLeaderboard.hpp"
+#include "MenuChoose.hpp"
 
 class Game
 {
 	
 private:
-
-	//Entities::MovingEntities::Player player;
+	/* Managers */
 	Managers::GraphicsManager* graphics;
 	Managers::EventsManager* events;
 	Managers::StateManager* states;
 
-    // Entities::MovingEntities::Player* player1;
-	// Entities::MovingEntities::Player* player2;
-
-	//Levels::FirstLevel firstLevel;
+	/* States*/
 	Levels::Level* pLevel;
-	
 	Menu::MainMenu* mainMenu;
 	Menu::MenuGameOver* gameOverMenu;
-	
-	int currentLevel;
+	Menu::MenuPause* pauseMenu;
+	Menu::MenuLeaderboard* leaderboardMenu;
+	Menu::MenuChoose* chooseMenu;
 
+	int currentLevel;
 
 public:
 	Game();

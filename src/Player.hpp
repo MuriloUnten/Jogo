@@ -15,7 +15,7 @@ namespace Entities
         {
         private:
 
-            PlayerControl controls;
+            PlayerControl* controls;
 
             bool onWeb;
             int score;
@@ -41,6 +41,8 @@ namespace Entities
 
             void addScore(const int extraScore);
             const int getScore() const;
+
+            PlayerControl* getControls() const;
 
             void affectPlayer(MovingEntities::Player* player);
         };

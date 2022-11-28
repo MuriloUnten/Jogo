@@ -69,6 +69,7 @@ namespace Menu
 
     void MainMenu::execute()
     {
+        active = true;
         draw();
     }
 
@@ -81,16 +82,16 @@ namespace Menu
             break;
 
         case 0:
-            // pGame->setCurrentLevel(1);
             pGame->getpLevel()->setCurrentLevel(LEVEL1);
-            pStateManager->changeState(stateID::level);
+            changeState(stateID::menuChoosePlayers);
+            std::cout << "State changed to menuChoose\n";
             active = false;
             break;
 
         case 1:
-            // pGame->setCurrentLevel(2);
             pGame->getpLevel()->setCurrentLevel(LEVEL2);
-            pStateManager->changeState(stateID::level);
+            changeState(stateID::menuChoosePlayers);
+            std::cout << "State changed to menuChoose\n";
             active = false;
             break;
 
@@ -99,7 +100,8 @@ namespace Menu
             break;
         
         case 3:
-            // pGame->showLeaderBoard();
+            pStateManager->changeState(stateID::leaderboard);
+            active = false;
             break;
         
         case 4:
@@ -111,7 +113,6 @@ namespace Menu
 
     void MainMenu::resetState()
     {
-        active = true;
         selected->getData()->select(false);
         hoveredButton = 0;
         selected = buttonList.getHead();
