@@ -19,8 +19,7 @@
 #include "MenuGameOver.hpp"
 #include "MenuPause.hpp"
 #include "MenuLeaderboard.hpp"
-#include "MenuChoose.hpp"
-#include "MenuEndLevel.hpp"
+
 
 class Game
 {
@@ -37,8 +36,6 @@ private:
 	Menu::MenuGameOver* gameOverMenu;
 	Menu::MenuPause* pauseMenu;
 	Menu::MenuLeaderboard* leaderboardMenu;
-	Menu::MenuChoose* chooseMenu;
-	Menu::MenuEndLevel* endLevelMenu;
 
 	int currentLevel;
 
