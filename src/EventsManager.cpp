@@ -49,7 +49,6 @@ namespace Managers
             else if(event.type == sf::Event::KeyReleased)
                 pInput->notifyKeyReleased(event.key.code);
         }
-        // std::cout << "Polled all events.\n";
     }
 
 

@@ -6,7 +6,6 @@
 
 namespace Entities
 {
-	MovingEntities::Player* pPlayer1 = NULL;
 
 	Entity::Entity(ID id, const std::string fileName, sf::Vector2f size, sf::Vector2f position):
 	Being(fileName, size, position)
@@ -57,7 +56,6 @@ namespace Entities
 		}
 	
 		hitBox->setPosition(pos);
-		//std::cout << "VEL: " << vel.y << std::endl;
 	}
 
 
@@ -94,11 +92,5 @@ namespace Entities
 	const bool Entity::getExecutable() const
 	{
 		return executable;
-	}
-
-
-	void Entity::setPlayer1(MovingEntities::Player* newPlayer)
-	{
-		//pPlayer1 = newPlayer;
 	}
 }// namespace Entities

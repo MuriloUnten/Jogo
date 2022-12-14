@@ -31,20 +31,17 @@ void Button::setMessage(const char* m) {
 
 void Button::draw() {
 
-    // std::cout << "Button::draw()\n";
     if (hover)
         loadTexture(BUTTONSELECTED_PATH);
     else
         loadTexture(BUTTONDISSELECTED_PATH);
     hitBox->setTexture(texture);
     
-    // std::cout << "Texture set\n";
     if(pGraphics->isWindowOpen())
     {
         pGraphics->getWindow()->draw(*hitBox);
         pGraphics->getWindow()->draw(text);
     }
-    // std::cout << "drawing button\n";
 }
 
 

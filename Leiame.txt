@@ -1,0 +1,5 @@
+Sistema Operacional: Ubuntu 22.04 lts
+
+Compilador: g++ 7.3.0
+
+Biblioteca Gráfica: SFML 2.5.1

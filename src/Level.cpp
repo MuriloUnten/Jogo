@@ -240,82 +240,82 @@ namespace Levels
 
         file = fopen(currentLevel, "r");
 
-        if(file == NULL)
+        try
         {
-            std::cout << "Error opening File.\n";
-            exit(1);
-        }
+            bool player1Created = false;
+            while((ch = fgetc(file)) != EOF)
+            {
 
-        bool player1Created = false;
-        while((ch = fgetc(file)) != EOF)
+                aux = rand()%2;
+                switch (ch)
+                {
+                case '1':
+                    switch (aux)
+                    {
+                    case 0 :
+                        createWeb(sf::Vector2f( width, height));
+                        break;
+                    case 1:
+                        createCactus(sf::Vector2f( width, height));       
+                        break;
+                    }
+                    break;
+                case '2':
+                    createGround(GROUND2_PATH, sf::Vector2f( width, height));
+                    break;
+                case '3': 
+                    createGround(GROUND3_PATH, sf::Vector2f( width, height));
+                    break;
+                case '4':
+                    createArcher( sf::Vector2f( width, height));                
+                    break;
+                case '5':
+                    createBoss(sf::Vector2f( width, height));
+                    break;
+                case '6':
+                    createEnemy1(sf::Vector2f( width, height));
+                    break;
+                case '7':
+                    if(!player1Created)
+                    {
+                        createPlayers(pPlayer1, sf::Vector2f(width, height));
+                        pPlayer1->getControls()->setKeys("W", "A", "S", "D", "Space");
+                        player1Created = true;
+                    }
+                    else if(twoPlayers)
+                    {
+                        createPlayers(pPlayer2, sf::Vector2f(width, height));
+                        pPlayer2->getControls()->setKeys("Up", "Left", "Down", "Right", "Enter");
+                    }
+                        
+                    break;
+                case '8':
+                    switch (aux)
+                    {
+                    case 0 :
+                        createArcher(sf::Vector2f( width, height));
+                        break;
+                    case 1:
+                        createEnemy1(sf::Vector2f( width, height));       
+                        break;
+                    }
+                    break;
+                }
+
+                width+=20.0f;
+
+                if(width == 1300.0f)
+                {
+                    width = 0.0f;
+                    height+=20.0f;
+                }
+            }
+            fclose(file);
+        }
+        catch(...)
         {
-
-            aux = rand()%2;
-            switch (ch)
-            {
-            case '1':
-                switch (aux)
-                {
-                case 0 :
-                    createWeb(sf::Vector2f( width, height));
-                    break;
-                case 1:
-                    createCactus(sf::Vector2f( width, height));       
-                    break;
-                }
-                break;
-            case '2':
-                createGround(GROUND2_PATH, sf::Vector2f( width, height));
-                break;
-            case '3': 
-                createGround(GROUND3_PATH, sf::Vector2f( width, height));
-                break;
-            case '4':
-                createArcher( sf::Vector2f( width, height));                
-                break;
-            case '5':
-                createBoss(sf::Vector2f( width, height));
-                break;
-            case '6':
-                createEnemy1(sf::Vector2f( width, height));
-                break;
-            case '7':
-                if(!player1Created)
-                {
-                    createPlayers(pPlayer1, sf::Vector2f(width, height));
-                    pPlayer1->getControls()->setKeys("W", "A", "S", "D", "Space");
-                    player1Created = true;
-                }
-                else if(twoPlayers)
-                {
-                    std::cout << "creating second player\n";
-                    createPlayers(pPlayer2, sf::Vector2f(width, height));
-                    pPlayer2->getControls()->setKeys("Up", "Left", "Down", "Right", "Enter");
-                }
-                    
-                break;
-            case '8':
-                switch (aux)
-                {
-                case 0 :
-                    createArcher(sf::Vector2f( width, height));
-                    break;
-                case 1:
-                    createEnemy1(sf::Vector2f( width, height));       
-                    break;
-                }
-                break;
-            }
-
-            width+=20.0f;
-
-            if(width == 1300.0f)
-            {
-                width = 0.0f;
-                height+=20.0f;
-            }
+            std::cout << "Unable to read from File " << currentLevel << std::endl;
         }
-        fclose(file);
         
         // TODO checar como criar os 2 players devidamente.
         // if(TwoPlayers)

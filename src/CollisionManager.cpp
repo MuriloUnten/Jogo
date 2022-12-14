@@ -253,7 +253,6 @@ namespace Managers
                         if(Enemy->getHp() <= 0)
                             Enemy->setExecutable(false);
                         Player->addScore(Enemy->getPonctuation());
-                        //std::cout<<"pontuação: "<< Enemy->getPonctuation()<< std::endl;
                     }
             }
             else

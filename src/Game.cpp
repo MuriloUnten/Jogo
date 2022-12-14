@@ -14,8 +14,7 @@ mainMenu(new Menu::MainMenu(this)),
 gameOverMenu(new Menu::MenuGameOver()),
 pauseMenu(new Menu::MenuPause(this)),
 leaderboardMenu(new Menu::MenuLeaderboard(this)),
-chooseMenu(new Menu::MenuChoose(this)),
-endLevelMenu(new Menu::MenuEndLevel(this))
+chooseMenu(new Menu::MenuChoose(this))
 {
     Being::setInstance();
 
@@ -26,7 +25,6 @@ endLevelMenu(new Menu::MenuEndLevel(this))
     states->addState(static_cast<State*>(pauseMenu));
     states->addState(static_cast<State*>(leaderboardMenu));
     states->addState(static_cast<State*>(chooseMenu));
-    states->addState(static_cast<State*>(endLevelMenu));
 
     /* Changing into Main menu and executing main loop */
     states->changeState(stateID::mainMenu);
@@ -79,28 +77,6 @@ void Game::setLevel(Levels::Level* pLevel)
  {
     this->pLevel = pLevel;
 }
-
-
-// Entities::MovingEntities::Player* Game::getPlayer1() 
-// {
-//     if (player1 == NULL)
-//         player1 = new Entities::MovingEntities::Player();
-//     return player1;
-// }
-
-
-// Entities::MovingEntities::Player* Game::getPlayer2()
-//  {
-//     if (player2 == NULL)
-//         player2 = new Entities::MovingEntities::Player();
-//     return player2;
-// }
-
-
-// bool Game::isTwoPlayersActive() const 
-// {
-//     return ((player1 != NULL) && (player2 != NULL));
-// }
 
 
 int Game::getCurrentLevel() const 
